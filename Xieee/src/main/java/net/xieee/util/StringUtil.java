@@ -1,5 +1,8 @@
 package net.xieee.util;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
 /**
  * this is string utils ,it is contain more method with string
  * 
