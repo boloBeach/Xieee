@@ -5,7 +5,8 @@ import java.util.Date;
 public class Picture {
 	private Integer id;
 	private String picture_name;
-	private String url;
+	private String local_url;
+	private String inter_url;
 	private String title;
 	private String type;
 	private Date modify_time;
@@ -34,11 +35,18 @@ public class Picture {
 	public void setPicture_name(String picture_name) {
 		this.picture_name = picture_name;
 	}
-	public String getUrl() {
-		return url;
+	
+	public String getLocal_url() {
+		return local_url;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setLocal_url(String local_url) {
+		this.local_url = local_url;
+	}
+	public String getInter_url() {
+		return inter_url;
+	}
+	public void setInter_url(String inter_url) {
+		this.inter_url = inter_url;
 	}
 	public String getTitle() {
 		return title;

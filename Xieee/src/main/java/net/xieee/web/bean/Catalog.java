@@ -5,7 +5,7 @@ import java.util.Date;
 public class Catalog {
 	private Integer id;
 	private String name;
-	private Integer parant_id;// this is catalog id
+	private Integer parent_catalog_id;// this is catalog id
 	private String url;
 	private Date modify_time;
 	private String is_delete;
@@ -21,11 +21,12 @@ public class Catalog {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getParant_id() {
-		return parant_id;
+	
+	public Integer getParent_catalog_id() {
+		return parent_catalog_id;
 	}
-	public void setParant_id(Integer parant_id) {
-		this.parant_id = parant_id;
+	public void setParent_catalog_id(Integer parent_catalog_id) {
+		this.parent_catalog_id = parent_catalog_id;
 	}
 	public String getUrl() {
 		return url;

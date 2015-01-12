@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ParentPicture {
 	private Integer id;
-	private String name;
+	private String parent_picture_name;
 	private Integer skim_count;
 	private Date modify_time;
 	private String is_delete;
@@ -15,11 +15,12 @@ public class ParentPicture {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	
+	public String getParent_picture_name() {
+		return parent_picture_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setParent_picture_name(String parent_picture_name) {
+		this.parent_picture_name = parent_picture_name;
 	}
 	public Integer getSkim_count() {
 		return skim_count;

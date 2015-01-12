@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Common {
 	private Integer id;
+	private Integer user_id;
 	private Integer resource_id;
 	private String ip;
 	private String address;
@@ -12,6 +13,14 @@ public class Common {
 	private Integer down_count;
 	private Date modify_time;
 	private String is_delete;
+	
+	
+	public Integer getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
+	}
 	public Integer getId() {
 		return id;
 	}

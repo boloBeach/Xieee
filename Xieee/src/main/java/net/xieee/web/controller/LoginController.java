@@ -19,8 +19,8 @@ public class LoginController {
 	@RequestMapping(value = "login")
 	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response, Users users) {
-		String username = users.getName();
-		String password = users.getPassword();
+		String username = users.getUser_name();
+		String password = users.getUser_password();
 		boolean isLogin = usersServiceImpl.checkUsers(username, password);
 		ModelAndView modelAndView = null;
 		if (isLogin) {

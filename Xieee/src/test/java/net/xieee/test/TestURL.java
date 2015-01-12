@@ -72,7 +72,6 @@ public class TestURL {
 				+ pageIndex
 				* pageSize
 				+ "&rn=60&z=3&itg=1&fr=&width=0&height=0&lm=-1&ic=0&s=0";
-		System.out.println(url);
 		Connection connection = Jsoup.connect(url);
 		List<Picture> list = new ArrayList<Picture>();
 		connection.referrer("http://image.baidu.com/");
@@ -94,12 +93,13 @@ public class TestURL {
 				picture.setType("美女");
 				pictureName = jsonObj.get("objURL").toString();
 				picture.setPicture_name(pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()));
-				picture.setUrl("D:/images/but/"+pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()));
+				picture.setLocal_url("D:/images/but/"+pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()));
+				picture.setInter_url(pictureName);
 				picture.setSpark_url(jsonObj.getString("fromURL"));
 				picture.setKey_word("美女,清纯");
 				picture.setParent_catalog_id(2);
 				list.add(picture);
-				download(jsonObj.get("objURL").toString(),pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()), "D:\\images\\but");
+				//download(jsonObj.get("objURL").toString(),pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()), "D:\\images\\but");
 			}
 		}
 		return list;
