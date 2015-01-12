@@ -1,17 +1,18 @@
 package net.xieee.test;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.xieee.web.bean.Picture;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -19,13 +20,13 @@ import org.jsoup.nodes.Document;
 
 public class TestURL {
 	public static void main(String[] args) throws Exception {
-		
+
 		int pageSize = 60;
-		//getPictureBuit("ÃÀÅ®", 1, pageSize);
-		// getPictureUrl("ÃÀÅ®", 1, pageSize);
+		// getPictureBuit("ç¾Žå¥³", 1, pageSize);
+		// getPictureUrl("gif", 1, pageSize);
 		for (int i = 0; i < 1000; i++) {
-			getPictureBuit("ÃÀÅ®", i+1, pageSize);
-			//getPictureUrlByGif("gif", i + 1, pageSize);
+			List<Picture> list = getPictureBuit("ç¾Žå¥³", i + 1, pageSize);
+			// getPictureUrlByGif("gif", i + 1, pageSize);
 		}
 	}
 
@@ -43,7 +44,7 @@ public class TestURL {
 		// String urlString =
 		// "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word="+keywords+"&cg=girl&pn="+pageIndex*pageSize+"&rn="+pageSize+"&z=9&itg=1&width=0&height=0&lm=-1&ic=0&s=0";
 		// String url =
-		// "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word=ÃÀÅ®&cg=girl&pn=120&rn=60&z=9&itg=1&width=0&height=0&lm=-1&ic=0&s=0";
+		// "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word=ï¿½ï¿½Å®&cg=girl&pn=120&rn=60&z=9&itg=1&width=0&height=0&lm=-1&ic=0&s=0";
 		System.err.println(url);
 		Connection connection = Jsoup.connect(url);
 		connection.referrer("http://image.baidu.com/");
@@ -63,25 +64,45 @@ public class TestURL {
 		}
 	}
 
-	public static void getPictureBuit(String keywords, int pageIndex,
+	public static List<Picture> getPictureBuit(String keywords, int pageIndex,
 			int pageSize) throws Exception {
-		//String url = "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word=%E7%BE%8E%E5%A5%B3&cg=girl&pn=60&rn=60&z=3&itg=1&fr=&width=0&height=0&lm=-1&ic=0&s=0";
-		String url = "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word=%E7%BE%8E%E5%A5%B3&cg=girl&pn="+pageIndex*pageSize+"&rn=60&z=3&itg=1&fr=&width=0&height=0&lm=-1&ic=0&s=0";
+		// String url =
+		// "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word=%E7%BE%8E%E5%A5%B3&cg=girl&pn=60&rn=60&z=3&itg=1&fr=&width=0&height=0&lm=-1&ic=0&s=0";
+		String url = "http://image.baidu.com/i?tn=resultjsonavatarnew&ie=utf-8&word=%E7%BE%8E%E5%A5%B3&cg=girl&pn="
+				+ pageIndex
+				* pageSize
+				+ "&rn=60&z=3&itg=1&fr=&width=0&height=0&lm=-1&ic=0&s=0";
 		System.out.println(url);
 		Connection connection = Jsoup.connect(url);
+		List<Picture> list = new ArrayList<Picture>();
 		connection.referrer("http://image.baidu.com/");
 		connection.userAgent("Mozilla").timeout(600000);
 		Document document = connection.get();// get html document
 		JSONObject jsonObject = JSONObject.fromObject(document.text());
 		JSONArray jsonArray = jsonObject.getJSONArray("imgs");
 		System.out.println(jsonArray);
+		String pictureName = null;
 		for (int i = 0; i < jsonArray.size(); i++) {
 			Object object = jsonArray.get(i);
 			JSONObject jsonObj = JSONObject.fromObject(object);
-			if (jsonObj.get("objURL") != null)
-				download(jsonObj.get("objURL").toString(),
-						new Date().getTime() + ".jpg", "D:\\images\\but");
+			if (jsonObj.get("objURL") != null) {
+				Picture picture = new Picture();
+				picture.setAuthor("admin");
+				picture.setTitle(jsonObj.getString("fromPageTitle"));
+				picture.setHeight(jsonObj.getInt("height"));
+				picture.setWidth(jsonObj.getInt("width"));
+				picture.setType("ç¾Žå¥³");
+				pictureName = jsonObj.get("objURL").toString();
+				picture.setPicture_name(pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()));
+				picture.setUrl("D:/images/but/"+pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()));
+				picture.setSpark_url(jsonObj.getString("fromURL"));
+				picture.setKey_word("ç¾Žå¥³,æ¸…çº¯");
+				picture.setParent_catalog_id(2);
+				list.add(picture);
+				download(jsonObj.get("objURL").toString(),pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()), "D:\\images\\but");
+			}
 		}
+		return list;
 	}
 
 	public static void download(String urlString, String filename,
@@ -106,26 +127,28 @@ public class TestURL {
 		 * conn.setRequestProperty("If-None-Match", "1627972333");
 		 */
 		conn.setRequestProperty("Referer", "http://image.baidu.com");
-		conn.setRequestProperty(" User-Agent","Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2194.2 Safari/537.36");
+		conn.setRequestProperty(
+				" User-Agent",
+				"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2194.2 Safari/537.36");
 		// System.out.println(conn.getRequestProperty("connection"));
-		// ÊäÈëÁ÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		InputStream is = conn.getInputStream();
 
-		// 1KµÄÊý¾Ý»º³å
+		// 1Kï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½
 		byte[] bs = new byte[1024];
-		// ¶ÁÈ¡µ½µÄÊý¾Ý³¤¶È
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
 		int len;
-		// Êä³öµÄÎÄ¼þÁ÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 		File sf = new File(savePath);
 		if (!sf.exists()) {
 			sf.mkdirs();
 		}
 		OutputStream os = new FileOutputStream(sf.getPath() + "\\" + filename);
-		// ¿ªÊ¼¶ÁÈ¡
+		// ï¿½ï¿½Ê¼ï¿½ï¿½È¡
 		while ((len = is.read(bs)) != -1) {
 			os.write(bs, 0, len);
 		}
-		// Íê±Ï£¬¹Ø±ÕËùÓÐÁ´½Ó
+		// ï¿½ï¿½Ï£ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		os.close();
 		is.close();
 	}

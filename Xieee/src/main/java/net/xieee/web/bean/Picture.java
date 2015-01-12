@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Picture {
 	private Integer id;
-	private String name;
+	private String picture_name;
 	private String url;
 	private String title;
-	private String type; // 图片的类型
+	private String type;
 	private Date modify_time;
-	private String spark_url; // 从那个网站爬的
+	private String spark_url; 
 	private String detail;
 	private Integer width;
-	private String height;
+	private Integer height;
 	private String is_delete;
 	private Integer common_id;
 	private String author;
@@ -27,11 +27,12 @@ public class Picture {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	
+	public String getPicture_name() {
+		return picture_name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPicture_name(String picture_name) {
+		this.picture_name = picture_name;
 	}
 	public String getUrl() {
 		return url;
@@ -75,10 +76,10 @@ public class Picture {
 	public void setWidth(Integer width) {
 		this.width = width;
 	}
-	public String getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
-	public void setHeight(String height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 	public String getIs_delete() {

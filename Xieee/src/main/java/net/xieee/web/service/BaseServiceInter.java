@@ -1,0 +1,62 @@
+package net.xieee.web.service;
+
+import java.util.List;
+import java.util.Map;
+
+import net.xieee.util.Pager;
+
+public interface BaseServiceInter {
+	/**
+	 * 根据sql获取一条数据
+	 * @param sql
+	 * @return
+	 */
+	public Object get(String sql);
+	/**
+	 * 保存数据
+	 * @param sql
+	 */
+	public void save(String sql,Object[] valus);
+	/**
+	 * 更新数据
+	 * @param sql
+	 * @param valus
+	 */
+	public void update(String sql,Object[] valus);
+	/**
+	 * 获取记录数
+	 * @param sql
+	 * @return
+	 */
+	public int getCount(String sql);
+	
+	/**
+	 * 根据条件查询一条数据
+	 * @param sql
+	 * @param valus
+	 * @param obj
+	 * @return
+	 */
+	public Object getObject(String sql,Object[] valus,Class c);
+	/**
+	 * 查询数据集合
+	 * @param sql
+	 * @return
+	 */
+	public List<Object> getList(String sql);
+	
+	/**
+	 * get list by sql and params is params
+	 * @param sql the sql
+	 * @param params
+	 * @return
+	 */
+	public List<Map<String,Object>> getList(String sql,Object[] params);
+	
+	/**
+	 * 分页查询
+	 * @param sql
+	 * @return
+	 */
+	public Pager findBypager(String sql,Pager pager);
+}
