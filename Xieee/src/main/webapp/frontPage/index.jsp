@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <meta http-equiv="description" content="This is my page">
    <link href="./styles/reset.css" rel="stylesheet" type="text/css">
     <link href="./styles/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="./styles/style.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="./scripts/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="./scripts/index.js"></script>
  </head>
@@ -289,6 +289,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><i class="g"></i>Happy Day</li>
                     <li><a href="aboutus.html">关于我们</a></li>
                     <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="./background/index.html">后台管理</a></li>
                 </ul>
                 <ul>
                     <li><i class="r"></i>友情链接</li>

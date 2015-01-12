@@ -24,7 +24,7 @@ public class TestSpring {
 				List<Picture> list = testURL.getPictureBuit("美女", i + 1, 60);
 				System.out.println(list.size());
 				for (Picture picture : list) {
-					stringBuffer.append(" (\""+picture.getPicture_name()+"\", \""+picture.getLocal_url()+"\", \""+picture.getTitle()+"\", \""+picture.getType()+"\", \""+picture.getSpark_url()+"\", \""+picture.getAuthor()+"\", \""+picture.getParent_catalog_id()+"\", \""+picture.getKey_word()+"\" ,  \""+picture.getWidth()+"\" , \""+picture.getHeight()+"\", \""+picture.getInter_url()+"\") , ");
+					stringBuffer.append(" (\""+picture.getPicture_name()+"\", \""+picture.getLocal_url()+"\", \""+picture.getTitle()+"\", \""+picture.getType()+"\", \""+picture.getSpark_url()+"\", \""+picture.getAuthor()+"\", \""+picture.getParent_picture()+"\", \""+picture.getKey_word()+"\" ,  \""+picture.getWidth()+"\" , \""+picture.getHeight()+"\", \""+picture.getInter_url()+"\") , ");
 				}
 				sql = stringBuffer.substring(0, stringBuffer.toString().lastIndexOf(","));
 				stringBuffer = null;

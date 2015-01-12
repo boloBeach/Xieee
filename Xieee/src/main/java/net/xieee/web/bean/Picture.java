@@ -17,7 +17,7 @@ public class Picture {
 	private String is_delete;
 	private Integer common_id;
 	private String author;
-	private Integer parent_catalog_id;
+	private Integer parent_picture;
 	private Integer top_count;
 	private Integer down_count;
 	private Integer old_count;
@@ -108,11 +108,13 @@ public class Picture {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Integer getParent_catalog_id() {
-		return parent_catalog_id;
+	
+	
+	public Integer getParent_picture() {
+		return parent_picture;
 	}
-	public void setParent_catalog_id(Integer parent_catalog_id) {
-		this.parent_catalog_id = parent_catalog_id;
+	public void setParent_picture(Integer parent_picture) {
+		this.parent_picture = parent_picture;
 	}
 	public Integer getTop_count() {
 		return top_count;

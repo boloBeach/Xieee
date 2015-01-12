@@ -97,7 +97,7 @@ public class TestURL {
 				picture.setInter_url(pictureName);
 				picture.setSpark_url(jsonObj.getString("fromURL"));
 				picture.setKey_word("美女,清纯");
-				picture.setParent_catalog_id(2);
+				picture.setParent_picture(1);;
 				list.add(picture);
 				//download(jsonObj.get("objURL").toString(),pictureName.substring(pictureName.lastIndexOf("/")+1,pictureName.length()), "D:\\images\\but");
 			}
