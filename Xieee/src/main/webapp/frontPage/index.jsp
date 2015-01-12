@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="item-more">
                         <i class="fa fa-plus-circle fa-lg green"></i>
-                        <a class="green" href="detail.html" target="_blank">阅读更多</a>
+                        <a class="green" href="./frontPage/detail.jsp" target="_blank">阅读更多</a>
                     </div>
                 </div>
                 <div class="index-content-left-item">
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="item-more">
                         <i class="fa fa-plus-circle fa-lg green"></i>
-                        <a class="green" href="detail.html" target="_blank">阅读更多</a>
+                        <a class="green" href="./frontPage/detail.jsp" target="_blank">阅读更多</a>
                     </div>
                 </div>
             </div>
