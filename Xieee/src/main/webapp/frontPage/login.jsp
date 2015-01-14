@@ -30,6 +30,7 @@ html, body {
 <script type="text/javascript"
 	src="scripts/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/login.js"></script>
+<script type="text/javascript" src="scripts/regist.js"></script>
 <script type="text/javascript">
 	function refresh(obj) {
 		obj.src = "imageServlet?" + Math.random();
@@ -45,26 +46,30 @@ html, body {
             </ul>
             <form action="login" method="post">
                 <ul class="login-form own ft12">
+                	
                     <li>
-                        <label for="email">邮　　箱：</label>
-                        <input type="text" id="email" name="email">
+                        <label for="login_email">邮　　箱：</label>
+                        <input type="text" id="login_email" name="email">
                     </li>
                     <li>
-                        <label for="password">密　　码：</label>
-                        <input type="password" id="password" name="user_password">
+                        <label for="login_password">密　　码：</label>
+                        <input type="password" id="login_password" name="user_password">
                     </li>
                     <li>
                     	<label for="randomCode">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
                     	<input type="text" id="randomCode" name="checkCode"/>
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
                     </li>
+                    <li style="color: red;text-align: center;" id="error_message">
+                		
+                	</li>
                     <li style="line-height: 25px;">
                         <label for="remember"></label>
                         <input type="checkbox" id="remember">
                         <span>下次自动登录</span>
                     </li>
                     <li>
-                        <input type="submit" class="ft16" id="submit" value="登录">
+                        <input type="submit" class="ft16" id="login_submit" value="登录">
                     </li>
                     <li>
                     <span>

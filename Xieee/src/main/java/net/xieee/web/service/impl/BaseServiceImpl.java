@@ -22,9 +22,9 @@ public class BaseServiceImpl implements BaseServiceInter {
 	}
 
 	
-	public int getCount(String sql) {
+	public int getCount(String sql,Object[] params) {
 		// TODO Auto-generated method stub
-		return baseDao.getCount(sql);
+		return baseDao.getCount(sql,params);
 	}
 
 	

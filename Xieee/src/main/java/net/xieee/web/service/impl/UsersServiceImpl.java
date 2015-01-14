@@ -12,6 +12,8 @@ import net.xieee.web.service.UsersServiceInter;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 @Repository
 public class UsersServiceImpl extends BaseServiceImpl implements
 		UsersServiceInter {
@@ -61,6 +63,20 @@ public class UsersServiceImpl extends BaseServiceImpl implements
 		if (result == 1) {
 			LOGGER.warn("用户名为:"+users.getUser_name()+"   email:"+users.getEmail()+"的注册成功");
 			return true;
+		}
+		return false;
+	}
+
+	public boolean checkEmail(String email) {
+		if(!StringUtil.isNull(email)){
+			String sql = "select count(1) from users where email=?";
+			Object[] params = {email};
+			int count = getCount(sql,params);
+			if(count != 1){
+				return false;
+			}else {
+				return true;
+			}
 		}
 		return false;
 	}

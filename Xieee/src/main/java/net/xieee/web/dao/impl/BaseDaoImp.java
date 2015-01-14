@@ -34,9 +34,9 @@ public class BaseDaoImp implements BaseDao {
 	}
 
 	
-	public int getCount(String sql) {
+	public int getCount(String sql,Object[] params) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.queryForInt(sql);
+		return jdbcTemplate.queryForInt(sql,params);
 	}
 
 	@SuppressWarnings("unchecked")

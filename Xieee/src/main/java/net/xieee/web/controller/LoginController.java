@@ -1,5 +1,8 @@
 package net.xieee.web.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
 @Controller
 public class LoginController {
@@ -59,5 +60,26 @@ public class LoginController {
 			}
 		}
 		return "register";
+	}
+	
+	@RequestMapping(value="checkEmail")
+	public void checkEmail(HttpServletRequest request,HttpServletResponse response){
+		response.setContentType("text/json; charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		String email = request.getParameter("email");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			logger.error(e.toString());
+		}
+		boolean isTure = usersServiceImpl.checkEmail(email);
+		if (isTure) {
+			out.write("1");
+		}else {
+			out.write("0");
+		}
+		out.close();
 	}
 }

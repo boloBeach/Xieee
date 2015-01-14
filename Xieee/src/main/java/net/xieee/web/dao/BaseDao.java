@@ -30,7 +30,7 @@ public interface BaseDao {
 	 * @param sql
 	 * @return
 	 */
-	public int getCount(String sql);
+	public int getCount(String sql,Object[] params);
 	
 	/**
 	 * 根据条件查询一条数据
