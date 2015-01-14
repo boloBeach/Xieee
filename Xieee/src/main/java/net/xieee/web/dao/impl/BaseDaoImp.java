@@ -59,15 +59,15 @@ public class BaseDaoImp implements BaseDao {
 	}
 
 	
-	public void save(String sql,Object[] valus) {
+	public int save(String sql,Object[] params) {
 		// TODO Auto-generated method stub
-		jdbcTemplate.update(sql,valus);
+		return jdbcTemplate.update(sql,params);
 	}
 
 	
-	public void update(String sql, Object[] valus) {
+	public int update(String sql, Object[] params) {
 		// TODO Auto-generated method stub
-		jdbcTemplate.update(sql, valus);
+		return jdbcTemplate.update(sql, params);
 		
 	}
 

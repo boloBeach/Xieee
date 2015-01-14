@@ -16,13 +16,13 @@ public interface BaseServiceInter {
 	 * 保存数据
 	 * @param sql
 	 */
-	public void save(String sql,Object[] valus);
+	public int save(String sql,Object[] params);
 	/**
 	 * 更新数据
 	 * @param sql
 	 * @param valus
 	 */
-	public void update(String sql,Object[] valus);
+	public int update(String sql,Object[] params);
 	/**
 	 * 获取记录数
 	 * @param sql

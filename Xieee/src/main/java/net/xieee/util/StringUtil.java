@@ -15,7 +15,7 @@ public class StringUtil {
 	 * @param params
 	 * @return boolean
 	 */
-	public static boolean isNull(String params) {
+	public static boolean isNull(Object params) {
 		if (params == null || params == "") {
 			return true;
 		}

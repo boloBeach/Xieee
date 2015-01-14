@@ -37,19 +37,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <ul class="login-type">
                 <li data-type="own" class="ft14 on" style="width: 100%">新用户注册</li>
             </ul>
-            <form>
+            <form action="regist" method="post">
                 <ul class="login-form ft12">
                     <li>
                         <label for="email">邮　　箱：</label>
-                        <input type="text" id="email">
+                        <input type="text" id="email" name="email">
                     </li>
                     <li>
                         <label for="username">昵　　称：</label>
-                        <input type="text" id="username">
+                        <input type="text" id="username" name="user_name">
                     </li>
                     <li>
                         <label for="password">密　　码：</label>
-                        <input type="password" id="password">
+                        <input type="password" id="password" name="user_password">
                     </li>
                     <li>
                         <label for="chk_password">确认密码：</label>
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     
                     <li>
                     	<label for="randomImage">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
-                    	<input type="text" id="randomImage"/>
+                    	<input type="text" id="randomImage" name="checkCode"/>
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet"> 
                     </li>
                     <li>

@@ -43,19 +43,19 @@ html, body {
                 <li data-type="own" class="on ft14">账号密码登录</li>
                 <li data-type="other" class="ft14">快速登录</li>
             </ul>
-            <form>
+            <form action="login" method="post">
                 <ul class="login-form own ft12">
                     <li>
                         <label for="email">邮　　箱：</label>
-                        <input type="text" id="email">
+                        <input type="text" id="email" name="email">
                     </li>
                     <li>
                         <label for="password">密　　码：</label>
-                        <input type="password" id="password">
+                        <input type="password" id="password" name="user_password">
                     </li>
                     <li>
                     	<label for="randomCode">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
-                    	<input type="text" id="randomCode"/>
+                    	<input type="text" id="randomCode" name="checkCode"/>
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
                     </li>
                     <li style="line-height: 25px;">
@@ -70,7 +70,7 @@ html, body {
                     <span>
                         <a href="./frontPage/register.jsp">没有账号?</a>&nbsp;&nbsp;
                         <a href="">忘记密码?</a>&nbsp;&nbsp;
-                        <a href="index.html">返回首页</a>
+                        <a href="./">返回首页</a>
                     </span>
                     </li>
                 </ul>

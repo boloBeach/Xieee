@@ -4,15 +4,16 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">  
-    <title>邪恶搞笑gif</title>        
+   <title>邪恶搞笑gif</title>        
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">    
-  <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+  <meta http-equiv="keywords" content="搞笑,gif,内涵图">
   <meta http-equiv="description" content="This is my page">
    <link href="./styles/reset.css" rel="stylesheet" type="text/css">
     <link href="./styles/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +24,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <body>
   <div class="index-title">
         <ul>
-            <li><a href="./frontPage/login.jsp" class="ft12">登陆</a></li>
+        <c:choose>
+        	<c:when test="${!empty user_name }">
+        		<li class="ft12">${user_name}欢迎您</li>
+        	</c:when>
+        	<c:otherwise>
+        		<li><a href="./frontPage/login.jsp" class="ft12">登陆</a></li>
+        	</c:otherwise>
+        </c:choose>
+        	<%-- <c:if test="${1==1}">
+        		<li class="ft14">${user_name}欢迎您</li>
+        	</c:if> 
+        	<c:if test="${1=1}">
+           	 	<li><a href="./frontPage/login.jsp" class="ft12">登陆</a></li>
+            </c:if> --%>
             <li><a href="./frontPage/register.jsp" class="ft12">注册</a></li>
             <li><a href="" class="ft12">投诉</a></li>
         </ul>

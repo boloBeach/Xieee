@@ -40,15 +40,15 @@ public class BaseServiceImpl implements BaseServiceInter {
 	}
 
 	
-	public void save(String sql,Object[] valus) {
+	public int save(String sql,Object[] params) {
 		// TODO Auto-generated method stub
-		baseDao.save(sql,valus);
+		return baseDao.save(sql,params);
 	}
 
 	
-	public void update(String sql, Object[] valus) {
+	public int update(String sql, Object[] params) {
 		// TODO Auto-generated method stub
-		baseDao.update(sql, valus);
+		return baseDao.update(sql, params);
 	}
 
 	

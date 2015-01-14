@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import net.xieee.util.RandomValidateCode;
 
 public class ImageServlet extends HttpServlet {
-
+	private static final Logger LOGGER = Logger.getLogger(ImageServlet.class);
     private static final long serialVersionUID = 1L;
     
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,7 +26,8 @@ public class ImageServlet extends HttpServlet {
         try {
             randomValidateCode.getRandcode(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
+        	LOGGER.error(e.toString());
+            //e.printStackTrace();
         }
     }
 
