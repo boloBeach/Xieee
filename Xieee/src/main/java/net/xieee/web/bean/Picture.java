@@ -140,5 +140,18 @@ public class Picture {
 	public void setKey_word(String key_word) {
 		this.key_word = key_word;
 	}
+	@Override
+	public String toString() {
+		return "Picture [id=" + id + ", picture_name=" + picture_name
+				+ ", local_url=" + local_url + ", inter_url=" + inter_url
+				+ ", title=" + title + ", type=" + type + ", modify_time="
+				+ modify_time + ", spark_url=" + spark_url + ", detail="
+				+ detail + ", width=" + width + ", height=" + height
+				+ ", is_delete=" + is_delete + ", common_id=" + common_id
+				+ ", author=" + author + ", parent_picture=" + parent_picture
+				+ ", top_count=" + top_count + ", down_count=" + down_count
+				+ ", old_count=" + old_count + ", key_word=" + key_word + "]";
+	}
+	
 	
 }

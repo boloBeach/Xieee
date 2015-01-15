@@ -20,7 +20,7 @@ public class Constants {
 	/**
 	 * 
 	 */
-	public final static int timeout = 6000;
+	public final static int timeout = 60000;
 	
 	public final static String savePath = "D:/images";
 }

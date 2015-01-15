@@ -54,7 +54,7 @@ public class InterImagesUtil {
 			String href = null;
 			for (Element element : httpURLElements) {
 				href = element.attr("href");
-				if (!StringUtil.isNull(href) && ! Constants.filter.contains(href)) {
+				if (!StringUtil.isNull(href) && ! Constants.filter.contains(href) && href.trim().contains("html")) {
 					if (href.startsWith("/") && ! href.equals("#")) {
 						href = httpStart + href;
 					}
@@ -71,7 +71,7 @@ public class InterImagesUtil {
 	 * @param url
 	 * @throws IOException 
 	 */
-	public static List<Picture> getImageByUrl(String url,String host) throws IOException{
+	public static List<Picture> getImageByUrl(String url,String host,String webUrl) throws IOException{
 		if(StringUtil.isNull(url)){
 			return null;
 		}
@@ -103,9 +103,9 @@ public class InterImagesUtil {
 			detail = elementImg.attr("alt") == null?elementImg.attr("ALT"):elementImg.attr("alt");
 			if (!StringUtil.isNull(imgUrl)) {
 				if (imgUrl.startsWith("/")) {
-					imgUrl = host + imgUrl;
+					imgUrl = webUrl + imgUrl;
 				}
-				filename = imgUrl.substring(imgUrl.lastIndexOf("/"), imgUrl.length());
+				filename = imgUrl.substring(imgUrl.lastIndexOf("/")+1, imgUrl.length());
 				if (filename.contains(".gif")) {
 					Picture picture = new Picture();
 					picture.setKey_word(keyWord);
