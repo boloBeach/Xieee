@@ -106,7 +106,7 @@ public class InterImagesUtil {
 					imgUrl = webUrl + imgUrl;
 				}
 				filename = imgUrl.substring(imgUrl.lastIndexOf("/")+1, imgUrl.length());
-				if (filename.contains(".gif")) {
+				if (filename.contains(".gif") || filename.contains(".jpg")) {
 					Picture picture = new Picture();
 					picture.setKey_word(keyWord);
 					picture.setInter_url(imgUrl);
