@@ -137,21 +137,21 @@ public class Testlebazi {
 		connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36");
 		InputStream is = connection.getInputStream();
 
-		// 1KµÄÊý¾Ý»º³å
+		// 1Kï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½
 		byte[] bs = new byte[1024];
-		// ¶ÁÈ¡µ½µÄÊý¾Ý³¤¶È
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½
 		int len;
-		// Êä³öµÄÎÄ¼þÁ÷
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 		File sf = new File(savePath);
 		if (!sf.exists()) {
 			sf.mkdirs();
 		}
 		OutputStream os = new FileOutputStream(sf.getPath() + "\\" + filename);
-		// ¿ªÊ¼¶ÁÈ¡
+		// ï¿½ï¿½Ê¼ï¿½ï¿½È¡
 		while ((len = is.read(bs)) != -1) {
 			os.write(bs, 0, len);
 		}
-		// Íê±Ï£¬¹Ø±ÕËùÓÐÁ´½Ó
+		// ï¿½ï¿½Ï£ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		os.close();
 		is.close();
 	}
