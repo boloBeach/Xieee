@@ -63,4 +63,10 @@ public class BaseServiceImpl implements BaseServiceInter {
 		return baseDao.getList(sql, params);
 	}
 
+
+	public List findList(String sql, Object[] params) {
+		
+		return baseDao.findList(sql, params);
+	}
+
 }

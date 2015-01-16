@@ -59,4 +59,13 @@ public interface BaseServiceInter {
 	 * @return
 	 */
 	public Pager findBypager(String sql,Pager pager);
+	
+	/**
+	 * 获取list
+	 * @param sql
+	 * @param params
+	 * @param clazz
+	 * @return
+	 */
+	public List findList(String sql,Object[] params);
 }

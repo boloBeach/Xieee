@@ -3,6 +3,7 @@ package net.xieee.test;
 import java.util.List;
 
 import net.xieee.web.bean.Picture;
+import net.xieee.web.service.impl.PictureServiceImpl;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -10,11 +11,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TestSpring {
 	public static void main(String[] args) {
-		ApplicationContext context = new FileSystemXmlApplicationContext(
-				"C:\\Users\\royzhang\\git\\Xieee\\Xieee\\src\\main\\webapp\\WEB-INF\\applicationContext.xml");
-		JdbcTemplate jdbcTemplate = (JdbcTemplate) context
-				.getBean("jdbcTemplate");
-		TestURL testURL = new TestURL();
+		String path = TestSpring.class.getClassLoader().getResource("applicationContext.xml").getPath();
+		ApplicationContext context = new FileSystemXmlApplicationContext(path);
+		PictureServiceImpl pictureServiceImpl = (PictureServiceImpl) context.getBean("pictureServiceImpl");
+		pictureServiceImpl.getPageUrls(0, 60);
+		System.out.println(path);
+		/*TestURL testURL = new TestURL();
 		// getPictureBuit("美女", 1, pageSize);
 		// getPictureUrl("gif", 1, pageSize);
 		String sql = null;
@@ -33,7 +35,7 @@ public class TestSpring {
 				e.printStackTrace();
 			}
 			// getPictureUrlByGif("gif", i + 1, pageSize);
-		}
+		}*/
 		
 	}
 }

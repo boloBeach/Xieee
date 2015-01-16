@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.xieee.util.Pager;
 
-public interface BaseDao {
+public interface BaseDao<T> {
 	
 	/**
 	 * 根据sql获取一条数据
@@ -61,5 +61,8 @@ public interface BaseDao {
 	 * @return
 	 */
 	public Pager findBypager(String sql,Pager pager);
+	
+	
+	public List findList(String sql,Object[] params);
 	
 }

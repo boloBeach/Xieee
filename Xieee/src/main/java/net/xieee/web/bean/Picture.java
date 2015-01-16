@@ -22,6 +22,14 @@ public class Picture {
 	private Integer down_count;
 	private Integer old_count;
 	private String key_word;
+	private String inter_url_title;
+	
+	public String getInter_url_title() {
+		return inter_url_title;
+	}
+	public void setInter_url_title(String inter_url_title) {
+		this.inter_url_title = inter_url_title;
+	}
 	public Integer getId() {
 		return id;
 	}

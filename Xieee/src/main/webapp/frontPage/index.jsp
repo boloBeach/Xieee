@@ -328,7 +328,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="image-show">
         <div class="image-content">
-            <div>
+            <div class="">
                 <img src="">
                 <i></i>
             </div>

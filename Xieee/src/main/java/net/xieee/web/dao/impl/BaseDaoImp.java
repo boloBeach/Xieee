@@ -91,4 +91,12 @@ public class BaseDaoImp implements BaseDao {
 		return null;
 	}
 
+
+	public  List findList(String sql, Object[] params) {
+		List list = jdbcTemplate.queryForList(sql, params);
+		if(list.size()>0)
+			return list;
+		return null;
+	}
+
 }

@@ -1,44 +1,60 @@
 package net.xieee.test;
 
-import java.io.IOException;
 import java.util.List;
 
-import net.xieee.spider.util.Constants;
-import net.xieee.spider.util.DownloadImage;
 import net.xieee.spider.util.InterImagesUtil;
-import net.xieee.spider.util.LinkQueue;
-import net.xieee.spider.util.Queue;
-import net.xieee.web.bean.Picture;
+import net.xieee.web.bean.PageUrl;
 
 import org.jsoup.nodes.Document;
 
 public class TestSpider {
 	public static void main(String[] args) {
+		
 		Document document = null;
 		String host = "www.lebazi.com";
-		while (LinkQueue.getVisitedUrl().size() < Constants.max_url) {
+		//DownloadImage downloadImage = new DownloadImage();
+		InterImagesUtil imagesUtil = new InterImagesUtil();
+		int i = 0;
+		int startId = 0;
+		int pageSize = 10;
+		while (true) {
 			try {
+				if(i==0){
 				// 先抓取一次
-				document = InterImagesUtil.getDocumentByUrl("http://www.lebazi.com/gaoxiaogif/", host);
-				InterImagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
-				String url = LinkQueue.getUnVisitedUrl().deQueue().toString();
-				document = InterImagesUtil.getDocumentByUrl(url, host);
-				InterImagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
-
-				while (!LinkQueue.isUnvisitedUrlsEmpty()) { // 如果访问的不是空，那么我们就读取队列的东西出来
+					System.out.println("来了。");
+					document = imagesUtil.getDocumentByUrl("http://www.lebazi.com/", host);
+					imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
+					++i;
+				}
+				
+				List<PageUrl> list = imagesUtil.getList(startId, pageSize);
+				for (PageUrl pageUrl : list) {
+					imagesUtil.update(pageUrl.getId());
+					startId = pageUrl.getId();
+					document = imagesUtil.getDocumentByUrl(pageUrl.getUrl(), host);
+					imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
+				}
+				Thread.sleep(300);
+				
+				/*while (!LinkQueue.isUnvisitedUrlsEmpty() && LinkQueue.getVisitedUrl().size()<Constants.max_url) { // 如果访问的不是空，那么我们就读取队列的东西出来
 					String urlString = LinkQueue.getUnVisitedUrl().deQueue().toString();
+					
+					if(!urlString.contains("http")){
+						urlString="http://www.lebazi.com/"+urlString;
+					}
 					System.out.println("即将抓取的url地址"+urlString);
-					List<Picture> list = InterImagesUtil.getImageByUrl(
-							urlString, host, "http://www.lebazi.com");
+					document = InterImagesUtil.getDocumentByUrl(urlString, host);
+					InterImagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
+					List<Picture> list = InterImagesUtil.getImageByUrl(urlString, host, "http://www.lebazi.com");
 					if (list.size() != 0) {
 						for (Picture picture : list) {
-							DownloadImage.Download(picture, host);
+							downloadImage.Download(picture, host);
 						}
 					}
-				}
-			} catch (IOException e) {
-				// e.printStackTrace();
-				System.out.println(e.toString());
+				}*/
+			} catch (Exception e) {
+				 e.printStackTrace();
+				//System.out.println(e.toString());
 			}
 		}
 	}
