@@ -4,15 +4,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import net.xieee.test.MD5;
+import net.xieee.util.MD5;
 import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Users;
 import net.xieee.web.service.UsersServiceInter;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
-
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
 @Repository
 public class UsersServiceImpl extends BaseServiceImpl implements
