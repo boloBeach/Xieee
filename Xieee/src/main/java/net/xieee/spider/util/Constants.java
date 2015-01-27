@@ -25,7 +25,12 @@ public class Constants {
 	/**
 	 * save img path
 	 */
-	public final static String savePath = "D:/images";
+	public final static String savePath = "/usr/local/nginx/html/xieee/images/";
+	
+	/**
+	 * 图片显示地址
+	 */
+	public final static String imgHTTPPath = "http://172.17.111.191:8080/images/";
 
 	/**
 	 * spring xml name

@@ -33,7 +33,7 @@ public class PictureServiceImpl extends BaseServiceImpl implements PictureServic
 
 	public int checkURL(String url) {
 		if(!StringUtil.isNull(url)){
-			String sql = "select count(1) from pageUrl where url=? and is_delete=?";
+			String sql = "select count(1) from pageurl where url=? and is_delete=?";
 			Object[] params = {url,0};
 			return getCount(sql, params);
 		}

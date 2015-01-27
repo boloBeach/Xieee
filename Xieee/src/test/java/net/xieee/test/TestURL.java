@@ -127,9 +127,7 @@ public class TestURL {
 		 * conn.setRequestProperty("If-None-Match", "1627972333");
 		 */
 		conn.setRequestProperty("Referer", "http://image.baidu.com");
-		conn.setRequestProperty(
-				" User-Agent",
-				"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2194.2 Safari/537.36");
+		conn.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2194.2 Safari/537.36");
 		// System.out.println(conn.getRequestProperty("connection"));
 		// ������
 		InputStream is = conn.getInputStream();

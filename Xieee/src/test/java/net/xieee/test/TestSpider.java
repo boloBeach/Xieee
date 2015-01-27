@@ -2,8 +2,11 @@ package net.xieee.test;
 
 import java.util.List;
 
+import net.xieee.spider.util.DownloadImage;
 import net.xieee.spider.util.InterImagesUtil;
+import net.xieee.util.StringUtil;
 import net.xieee.web.bean.PageUrl;
+import net.xieee.web.bean.Picture;
 
 import org.jsoup.nodes.Document;
 
@@ -15,7 +18,7 @@ public class TestSpider {
 		//DownloadImage downloadImage = new DownloadImage();
 		InterImagesUtil imagesUtil = new InterImagesUtil();
 		int i = 0;
-		int startId = 0;
+		int startId = 1117;
 		int pageSize = 10;
 		while (true) {
 			try {
@@ -23,16 +26,30 @@ public class TestSpider {
 				// 先抓取一次
 					System.out.println("来了。");
 					document = imagesUtil.getDocumentByUrl("http://www.lebazi.com/", host);
-					imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
-					++i;
+					if(document!=null){
+						System.err.println("document is not null");
+						imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
+						++i;
+					}
 				}
 				
 				List<PageUrl> list = imagesUtil.getList(startId, pageSize);
+				DownloadImage downloadImage = new DownloadImage();
 				for (PageUrl pageUrl : list) {
 					imagesUtil.update(pageUrl.getId());
 					startId = pageUrl.getId();
 					document = imagesUtil.getDocumentByUrl(pageUrl.getUrl(), host);
-					imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
+					if(document!=null){
+						System.err.println("document is not null");
+						imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
+						List<Picture> pictures = imagesUtil.getImagesByDocument(document,pageUrl.getUrl(), host, "http://www.lebazi.com");
+						if(!StringUtil.isNull(pictures)){
+							for (Picture picture : pictures) {
+								System.out.println(picture.toString());
+								downloadImage.Download(picture, host);
+							}
+						}
+					}
 				}
 				Thread.sleep(300);
 				
