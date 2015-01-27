@@ -63,6 +63,21 @@ public interface BaseDao<T> {
 	public Pager findBypager(String sql,Pager pager);
 	
 	
+	/**
+	 * 通过sql语句来获取分页数据
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
 	public List findList(String sql,Object[] params);
+	
+	/**
+	 * 通过class 返回的list<object>对象
+	 * @param sql sql语句
+	 * @param clazz class对象
+	 * @param params 參數對象
+	 * @return list<object> 
+	 */
+	public List<Object> getListByClass(String sql,Class clazz,Object[] params);
 	
 }

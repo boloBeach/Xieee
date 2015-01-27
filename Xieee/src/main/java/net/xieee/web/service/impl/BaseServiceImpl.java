@@ -69,4 +69,9 @@ public class BaseServiceImpl implements BaseServiceInter {
 		return baseDao.findList(sql, params);
 	}
 
+
+	public List<Object> getListByClass(String sql, Class clazz,Object[] params) {
+		return baseDao.getListByClass(sql, clazz,params);
+	}
+
 }

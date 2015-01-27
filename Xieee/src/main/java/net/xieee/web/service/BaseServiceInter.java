@@ -68,4 +68,13 @@ public interface BaseServiceInter {
 	 * @return
 	 */
 	public List findList(String sql,Object[] params);
+	
+	/**
+	 * 通过sql和class获取list<object>
+	 * @param sql 语句
+	 * @param clazz class类型
+	 * @param params 參數對象
+	 * @return list<object>
+	 */
+	public List<Object> getListByClass(String sql,Class clazz,Object[] params);
 }
