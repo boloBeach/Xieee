@@ -47,11 +47,11 @@ public class DownloadImage {
 		//connection.setRequestProperty("Accept", "image/webp,*/*;q=0.8");
 		//connection.setRequestProperty("Accept-Encoding", "gzip,deflate,sdch");
 		//connection.setRequestProperty("Accept-Language", "en-US,en;q=0.8");
-		//connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36");
+		connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36");
 		InputStream is = connection.getInputStream();
-		BufferedImage bufferedImage = ImageIO.read(is);
+		/*BufferedImage bufferedImage = ImageIO.read(is);
 		picture.setWidth(bufferedImage.getWidth());
-		picture.setHeight(bufferedImage.getHeight());
+		picture.setHeight(bufferedImage.getHeight());*/
 		byte[] bs = new byte[1024];
 		int len;
 		File sf = new File(Constants.savePath);
@@ -60,7 +60,6 @@ public class DownloadImage {
 		}
 		System.out.println("创建文件了。");
 		OutputStream os = new FileOutputStream(sf.getPath() + "/" + picture.getPicture_name());
-		System.err.println(is.read(bs));
 		while ((len = is.read(bs)) != -1) {
 			os.write(bs, 0, len);
 		}
