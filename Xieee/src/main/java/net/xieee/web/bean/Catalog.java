@@ -46,5 +46,12 @@ public class Catalog {
 	public void setIs_delete(String is_delete) {
 		this.is_delete = is_delete;
 	}
+	@Override
+	public String toString() {
+		return "Catalog [id=" + id + ", name=" + name + ", parent_catalog_id="
+				+ parent_catalog_id + ", url=" + url + ", modify_time="
+				+ modify_time + ", is_delete=" + is_delete + "]";
+	}
+	
 	
 }

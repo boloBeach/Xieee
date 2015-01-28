@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.xieee.util.Pager;
 
-public interface BaseServiceInter {
+public interface BaseServiceInter<T> {
 	/**
 	 * 根据sql获取一条数据
 	 * @param sql
@@ -76,5 +76,5 @@ public interface BaseServiceInter {
 	 * @param params 參數對象
 	 * @return list<object>
 	 */
-	public List<Object> getListByClass(String sql,Class clazz,Object[] params);
+	public List<T> getListByClass(String sql,Class clazz,Object[] params);
 }

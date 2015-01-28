@@ -11,7 +11,7 @@ import net.xieee.web.service.BaseServiceInter;
 
 import org.springframework.stereotype.Repository;
 @Repository
-public class BaseServiceImpl implements BaseServiceInter {
+public class BaseServiceImpl<T> implements BaseServiceInter {
 
 	@Resource
 	private BaseDao baseDao;
@@ -70,7 +70,7 @@ public class BaseServiceImpl implements BaseServiceInter {
 	}
 
 
-	public List<Object> getListByClass(String sql, Class clazz,Object[] params) {
+	public List<T> getListByClass(String sql, Class clazz,Object[] params) {
 		return baseDao.getListByClass(sql, clazz,params);
 	}
 

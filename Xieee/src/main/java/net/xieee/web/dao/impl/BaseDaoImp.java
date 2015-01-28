@@ -1,6 +1,5 @@
 package net.xieee.web.dao.impl;
 
-import java.awt.datatransfer.StringSelection;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class BaseDaoImp implements BaseDao {
+public class BaseDaoImp<T> implements BaseDao {
 
 	@Resource
 	private JdbcTemplate jdbcTemplate;
@@ -92,8 +91,8 @@ public class BaseDaoImp implements BaseDao {
 		return null;
 	}
 
-	public List getListByClass(String sql, Class clazz,Object[] params) {
-		List<Object> list = jdbcTemplate.queryForList(sql,params, clazz);
+	public List<T> getListByClass(String sql, Class clazz,Object[] params) {
+		List<T> list = jdbcTemplate.queryForList(sql,params, clazz);
 		if (list.size() > 0) {
 			return list;
 		}

@@ -78,6 +78,6 @@ public interface BaseDao<T> {
 	 * @param params 參數對象
 	 * @return list<object> 
 	 */
-	public List<Object> getListByClass(String sql,Class clazz,Object[] params);
+	public List<T> getListByClass(String sql,Class clazz,Object[] params);
 	
 }

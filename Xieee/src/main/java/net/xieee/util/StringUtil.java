@@ -21,4 +21,16 @@ public class StringUtil {
 		}
 		return false;
 	}
+	
+	/**
+	 * 判断一个值是否为null，如果为null，则返回空串,如果不为空，则返回string
+	 * @param param
+	 * @return
+	 */
+	public static String getString(Object param){
+		if(isNull(param)){
+			return "";
+		}
+		return param.toString();
+	}
 }
