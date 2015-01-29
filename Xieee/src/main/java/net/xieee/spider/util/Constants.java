@@ -41,4 +41,14 @@ public class Constants {
 	 * get img by name
 	 */
 	public final static String admin = "admin";
+	
+	/**
+	 * 显示首页的信息的默认的pagesize个数
+	 */
+	public final static Integer index_pageSize = 5;
+	
+	/**
+	 * 显示首页的信息的默认显示方式，按照时间的先后顺序来进系
+	 */
+	public final static Integer index_types = 1;
 }

@@ -70,7 +70,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="index-nav">
                 <ul>
-                    <li class="on"><a href="./frontPage/index.jsp" class="ft14">首页</a></li>
+                	<c:forEach items="${catalogList}" var="catalogList" varStatus="status">
+                		
+                			<c:if test="${status.index==0}">
+	                			<li class="on">
+	                				<a href="${catalogList.url}?urlId=${catalogList.id}" class="ft14" title="${catalogList.name }">${catalogList.name }</a>
+	                			</li>
+                			</c:if>
+                			
+                			<c:if test="${status.index!=0}">
+	                			<li>
+	                				<a href="${catalogList.url}?urlId=${catalogList.id}" class="ft14" title="${catalogList.name }">${catalogList.name }</a>
+	                			</li>
+                			</c:if>
+                		
+                	</c:forEach>
+                   <!--  <li class="on"><a href="./frontPage/index.jsp" class="ft14">首页</a></li>
                     <li>
                         <a href="" class="ft14">今日囧图</a>
                         <ul class="index-child-nav">
@@ -82,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><a href="" class="ft14">搞笑gif</a></li>
                     <li><a href="" class="ft14">专业吐槽</a></li>
                     <li><a href="" class="ft14">恶搞ps</a></li>
-                    <li><a href="" class="ft14">搞笑漫画</a></li>
+                    <li><a href="" class="ft14">搞笑漫画</a></li> -->
                     <!--<li><a href="" class="ft14">MOVIES</a></li>-->
                     <!--<li><a href="" class="ft14">MUSIC</a></li>-->
                 </ul>
@@ -121,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="item-more">
                         <i class="fa fa-plus-circle fa-lg green"></i>
-                        <a class="green" href="detail.html" target="_blank">阅读更多</a>
+                        <a class="green" href="detail.jsp" target="_blank">阅读更多</a>
                     </div>
                 </div>
                 <div class="index-content-left-item">

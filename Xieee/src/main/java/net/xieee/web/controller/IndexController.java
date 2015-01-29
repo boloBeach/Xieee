@@ -27,11 +27,10 @@ public class IndexController {
 	public ModelAndView showIndex(HttpServletRequest request,
 			HttpServletResponse response) {
 		String parentCatalogId = request.getParameter("parentCatalogId");
+		String urlId = request.getParameter("urlId");
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(parentCatalogId);
-		for (Catalog catalog : list) {
-			System.out.println(catalog.toString());
-		}
 		ModelAndView modelAndView = new ModelAndView("/index");
+		modelAndView.addObject("catalogList", list);
 		return modelAndView;
 	}
 }

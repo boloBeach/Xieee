@@ -6,6 +6,7 @@ public class ParentPicture {
 	private Integer id;
 	private String parent_picture_name;
 	private Integer skim_count;
+	private String detail;
 	private Date modify_time;
 	private String is_delete;
 	private Integer catalog_id;
@@ -16,6 +17,12 @@ public class ParentPicture {
 		this.id = id;
 	}
 	
+	public String getDetail() {
+		return detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
 	public String getParent_picture_name() {
 		return parent_picture_name;
 	}
