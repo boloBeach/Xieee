@@ -67,7 +67,8 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		if(StringUtil.isNull(types)){
 			types = Constants.index_types;
 		}
-		String sql = "select id,parent_picture_name,detail,modify_time,"
+		// 等下在修改。
+		String sql = "select id,parent_picture_name,detail,modify_time,";
 		
 		
 		return null;
