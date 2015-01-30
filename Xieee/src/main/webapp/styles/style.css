@@ -723,7 +723,7 @@ em {
 }
 .index-content-ringht-newcomments{
 	width:  320px;
-	height:520px;
+	height:550px;
 	overflow:hidden;
 	border-bottom-style:1px solid #DCDCDC;
 }
@@ -776,6 +776,49 @@ em {
 .random-image{
 	float: right;
 	margin-top: 14px;
+}
+.index-content-item{
+	margin-top:20px;
+	width:100%;
+	height:1293px;
+	border: 1px solid #D1D1D1;
+}
+.index-content-item-title{
+	font-size:18px;
+	color: #B2B2B2;
+	height: 45px;
+	line-height: 46px;
+	padding-left: 15px;
+	border-bottom: 1px solid #D1D1D1;
+}
+.index-content-item-title span{
+	float: right;
+	margin-right: 30px;
+}
+.index-content-item-content{
+	width: 100%;
+	height: 600px;
+	border-bottom: 1px solid #D1D1D1;
+}
+.content-list li{
+	float: left;
+	width: 177px;
+	text-align: center;
+	margin-right: 7px;
+	margin-top: 10px;
+	margin-left: 7px;
+}
+.content-list img{
+	height: 155px;
+	width: 174px;
+	border: 1px solid #EBEBEB;
+	padding: 3px;
+}
+.content-list div{
+	text-indent: 2em;
+	overflow: hidden;
+	text-align:left;
+	height: 24px;
 }
 /* this is zhangbing write css end */
 /** index.html register.html end*/
