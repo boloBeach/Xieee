@@ -444,7 +444,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul>
                     <li><i class="g"></i>Happy Day</li>
                     <li><a href="./frontPage/aboutus.jsp">关于我们</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="contact">联系我们</a></li>
                     <li><a href="./background/index.html">后台管理</a></li>
                 </ul>
                 <ul>

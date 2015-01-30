@@ -81,10 +81,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="index-content-left-item">
                     <div class="item-contact ft14">
                         <ul>
-                            <li>联系人：XXX</li>
-                            <li>联系电话：XXX</li>
-                            <li>联系邮箱：XXX</li>
-                            <li>联系地址：XXX</li>
+                            <li>联系人：${contact.constact_name }</li>
+                            <li>联系电话：${contact.telphone }</li>
+                            <li>联系邮箱：${contact.email }</li>
+                            <li>联系地址：${contact.address }</li>
                         </ul>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul>
                     <li><i class="g"></i>Happy Day</li>
                     <li><a href="./frontPage/aboutus.jsp">关于我们</a></li>
-                    <li><a href="./frontPage/contact.jsp">联系我们</a></li>
+                    <li><a href="contact">联系我们</a></li>
                 </ul>
                 <ul>
                     <li><i class="r"></i>友情链接</li>

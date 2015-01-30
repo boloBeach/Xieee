@@ -6,7 +6,7 @@ public class Contact {
 	private Integer id;
 	private String constact_name;
 	private String email;
-	private String telephone;
+	private String telphone;
 	private String address;
 	private Date modify_time;
 	private String is_delete;
@@ -41,11 +41,11 @@ public class Contact {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTelephone() {
-		return telephone;
+	public String getTelphone() {
+		return telphone;
 	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setTelphone(String telphone) {
+		this.telphone = telphone;
 	}
 	public String getAddress() {
 		return address;

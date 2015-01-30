@@ -47,7 +47,7 @@ public class BaseDaoImp<T> implements BaseDao {
 	@SuppressWarnings("unchecked")
 	public Object getObject(String sql, Object[] valus, Class c) {
 		// TODO Auto-generated method stub
-		List list = jdbcTemplate.queryForList(sql, valus);
+		List list = jdbcTemplate.queryForList(null, valus, c);
 		Object obj = null;
 		if (list.size() > 0) {
 			obj = list.get(0);
