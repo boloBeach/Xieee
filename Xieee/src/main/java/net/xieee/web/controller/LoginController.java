@@ -35,12 +35,10 @@ public class LoginController {
 			String user_name = usersServiceImpl.checkUsers(email, password);
 			if (!StringUtil.isNull(user_name)) {
 				session.setAttribute("user_name", user_name);
-				return  new ModelAndView("/index", "loginInfo",
-						"LOGIN SUCCESS, " + email);
+				return  new ModelAndView("/index", "loginInfo","LOGIN SUCCESS, " + email);
 			} 
 		}
-		return new ModelAndView("/error", "loginInfo",
-				"LOGIN ERROR, " + email);
+		return new ModelAndView("/login", "loginInfo","LOGIN ERROR, " + email);
 	}
 
 	@RequestMapping(value="regist")

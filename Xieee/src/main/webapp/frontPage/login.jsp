@@ -61,7 +61,7 @@ html, body {
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
                     </li>
                     <li style="color: red;text-align: center;" id="error_message">
-                		
+                		${login}
                 	</li>
                     <li style="line-height: 25px;">
                         <label for="remember"></label>

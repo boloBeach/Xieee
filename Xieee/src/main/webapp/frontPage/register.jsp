@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="login-form ft12">
                     <li>
                         <label for="login_email">邮　　箱：</label>
-                        <input type="text" id="login_email" name="email">
+                        <input type="text" id="regist_email" name="email">
                     </li>
                     <li>
                         <label for="username">昵　　称：</label>

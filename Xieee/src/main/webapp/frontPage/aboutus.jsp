@@ -94,8 +94,8 @@
             <div class="index-content-contact ft14">
                 <ul>
                     <li><i class="g"></i>Happy Day</li>
-                    <li><a href="./frontPage/aboutus.jsp">关于我们</a></li>
-                    <li><a href="./frontPage/contact.jsp">联系我们</a></li>
+                    <li><a href="aboutAs">关于我们</a></li>
+                    <li><a href="contact">联系我们</a></li>
                 </ul>
                 <ul>
                     <li><i class="r"></i>友情链接</li>

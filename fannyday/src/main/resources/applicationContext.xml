@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+         http://www.springframework.org/schema/tx 
+         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd" default-autowire="byName" >
+	<context:annotation-config />
+	<!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
+	<context:component-scan base-package="net.xieee.web" />
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+		    <value>classpath:config.properties</value>
+		</property>
+	</bean>
+	<!-- apache.dbcp连接池的配置 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${driverClassName}">
+		</property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="maxActive" value="${maxActive}"></property>
+		<property name="maxIdle" value="${maxIdle}"></property>
+		<property name="maxWait" value="${maxWait}"></property>
+		<property name="defaultAutoCommit" value="${defaultAutoCommit}"></property>
+		<property name="initialSize" value="${initialSize}"></property>
+		<property name="connectionProperties" value="${connectionProperties}"></property>
+	</bean>
+
+	<!-- jdbc注入 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	<!-- 创建事务管理器-->
+	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">    
+        <property name="dataSource">    
+            <ref local="dataSource" />    
+        </property>    
+    </bean> 
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

@@ -1,0 +1,825 @@
+/**
+    编写要求：
+    1.按模块编写样式
+*/
+
+/** 统一样式 start*/
+html {
+    font-family: Avenir,"Hiragino Sans GB","Noto Sans S Chinese","Microsoft Yahei","Microsoft Sans Serif","WenQuanYi Micro Hei",sans-serif;
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+html, body {
+    min-width: 1000px;
+}
+input, button {
+    outline: none;
+    border: none;
+}
+input::-webkit-input-placeholder {
+    color: #FFFFFF;
+}
+input::-moz-placeholder {
+    color: #FFFFFF;
+}
+a {
+    text-decoration: none;
+}
+em {
+    font-style: normal;
+}
+.clear {
+    clear: both;
+}
+
+.ft12 {
+    font-size: 12px;
+}
+.ft14 {
+    font-size: 14px;
+}
+.ft16 {
+    font-size: 16px;
+}
+.ft18 {
+    font-size: 18px;
+}
+.ft20 {
+    font-size: 20px;
+}
+.gray {
+    color: #B2B2B2;
+}
+.black {
+    color: #000000;
+}
+.black-light {
+    color: #676767;
+}
+.green {
+    color: #67D4AA;
+}
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.icon {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url("../images/glyphicons-halfings.png") no-repeat scroll;
+}
+.icon-hand-up {
+    background-position: -192px -144px;
+}
+.icon-hand-down {
+    background-position: -216px -144px;
+}
+.icon-map-marker {
+    background-position: -24px -72px;
+}
+.icon-heart {
+    background-position: -96px 0;
+}
+.icon-share {
+    background-position: -120px -72px;
+}
+.icon-thumbs-down {
+    background-position: -120px -144px;
+}
+.item-type {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: block;
+    background: url("../images/item-types.png") no-repeat scroll;
+}
+.item-type-1 {
+    background-position: 0 0;
+}
+.item-type-2 {
+    background-position: 0 -30px;
+}
+.item-type-3 {
+    background-position: 0 -60px;
+}
+.item-type-4 {
+    background-position: 0 -90px;
+}
+.item-type-5 {
+    background-position: 0 -120px;
+}
+/** 统一样式 end*/
+
+
+/** index.html start*/
+.index-title {
+    width: 100%;
+    height: 35px;
+    background: #EFEFEF;
+}
+.index-title ul {
+    display: block;
+    height: 35px;
+    width: 980px;
+    margin: 0 auto;
+    text-align: right;
+}
+.index-title ul li {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 10px;
+}
+.index-title ul li a {
+    color: #000000;
+}
+
+.index-container {
+    width: 980px;
+    margin: 0 auto;
+}
+.index-header {
+    margin: 0 0 40px 0;
+}
+.index-head {
+    padding: 20px 0 35px 0;
+}
+.index-logo {
+    position: relative;
+    display: inline-block;
+}
+.index-rss {
+    min-width: 350px;
+    float: right;
+}
+.index-rss ul {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.index-rss ul li {
+    display: inline-block;
+    float: right;
+}
+.index-rss a {
+    display: block;
+    height: 37px;
+    cursor: pointer;
+}
+.index-rss a.qq i {
+    display: block;
+    background: url("../images/subscribe.png") no-repeat 0 0 scroll;
+    width: 37px;
+    height: 37px;
+    float: left;
+}
+.index-rss a.qq:hover > i {
+    background: url("../images/subscribe.png") no-repeat 0 -37px scroll;
+}
+.index-rss a.qq span {
+    float: right;
+    display: block;
+    margin-top: 5px;
+    line-height: 13px;
+}
+.index-search {
+    margin-bottom: 15px;
+    position: relative;
+}
+.index-search input[type=text] {
+    width: 315px;
+    position: absolute;
+    right: 0;
+    background: #EFEFEF;
+    padding: 8px 0 8px 5px;
+}
+.index-search input[type=text]:focus ~ i {
+    background: url("../images/glyphicons-halfings.png") no-repeat -312px 0 scroll;
+}
+.index-search i {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    display: block;
+    opacity: 0.5;
+    background: url("../images/glyphicons-halfings.png") no-repeat -48px 0 scroll;
+}
+.index-nav {
+    height: 60px;
+}
+.index-nav> ul {
+    height: 100%;
+    display: block;
+    background: url("../images/nav-bg.png") repeat-x center scroll;
+}
+.index-nav> ul> li {
+    height: 100%;
+    min-width: 12.5%;
+    line-height: 60px;
+    float: left;
+    display: block;
+    text-align: center;
+    position: relative;
+    border-top: 3px solid;
+}
+.index-nav> ul> li:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 56px;
+    right: 0;
+    top: 0;
+    background: #464646;
+}
+.index-nav> ul> li:before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 56px;
+    right: 1px;
+    top: 0;
+    background: #000000;
+}
+.index-nav> ul> li:nth-child(1) {
+    border-top-color: #808080;
+}
+.index-nav> ul> li:nth-child(2) {
+    border-top-color: #C21C1C;
+}
+.index-nav> ul> li:nth-child(3) {
+    border-top-color: #E98503;
+}
+.index-nav> ul> li:nth-child(4) {
+    border-top-color: #F1DC2B;
+}
+.index-nav> ul> li:nth-child(5) {
+    border-top-color: #9CCC0A;
+}
+.index-nav> ul> li:nth-child(6) {
+    border-top-color: #0ACCAA;
+}
+.index-nav> ul> li:nth-child(7) {
+    border-top-color: #0A93CC;
+}
+.index-nav> ul> li:nth-child(8) {
+    border-top-color: #8734C8;
+}
+.index-nav> ul> li a {
+    color: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.index-nav .on, .index-nav> ul> li:hover {
+    background: url("../images/nav-bg-hover.png") repeat-x center scroll;
+    height: 56px !important;
+}
+.index-nav> ul> li:hover > ul {
+    display: block;
+}
+.index-nav .on> a:before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    margin-left: 4px;
+    bottom: -15px;
+    width: 0;
+    height: 0;
+    border-color: #555555 transparent transparent transparent;
+    border-style: solid;
+    border-width: 8px;
+}
+.index-nav .index-child-nav {
+    display: none;
+}
+.index-nav .index-child-nav li {
+    line-height: 30px;
+    background: #1E1E1E;
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #464646;
+}
+.index-nav .index-child-nav li:hover {
+    background: #282828;
+}
+.index-nav .index-child-nav li:first-child {
+    border-top: none;
+}
+.index-nav .index-child-nav li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: none;
+}
+
+.index-content {
+    width: 100%;
+}
+.index-content-left {
+    width: 590px;
+    float: left;
+    min-height: 300px;
+}
+.index-content-left-title {
+    border-bottom: 1px solid #D1D1D1;
+    padding-bottom: 20px;
+}
+.index-content-left-title ul {
+    display: block;
+    float: right;
+    height: 25px;
+    position: relative;
+}
+.index-content-left-title ul li {
+    display: block;
+    float: left;
+    height: 100%;
+    line-height: 25px;
+    margin-right: 20px;
+    position: relative;
+}
+/*.index-content-left-title ul li a{*/
+    /*display: block;*/
+    /*height: 100%;*/
+/*}*/
+.index-content-left-title .on:before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    bottom: -13px;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent #ADADAD transparent;
+    border-style: solid;
+    border-width: 8px;
+}
+.index-content-left-title .on:after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    bottom: -14px;
+    width: 0;
+    height: 0;
+    border-color: transparent transparent #FFFFFF transparent;
+    border-style: solid;
+    border-width: 8px;
+}
+
+.index-content-left-item {
+    border-bottom: 1px solid #DCDCDC;
+    padding-bottom: 20px;
+}
+.index-content-left-item h1{
+    padding: 15px 0 10px 0;
+}
+.index-content-left-item .item-info {
+    margin-bottom: 15px;
+    height: 30px;
+    line-height: 30px;
+}
+.index-content-left-item .item-info span {
+    display: inline-block;
+    float: right;
+}
+.index-content-left-item .item-content {
+    margin-bottom: 20px;
+    color: #333333;
+}
+.index-content-left-item .item-content p {
+    line-height: 28px;
+    margin-bottom: 10px;
+}
+.index-content-left-item .item-content img {
+    max-width: 100%;
+}
+
+.index-content-left-item .item-assess a {
+    display: block;
+    float: left;
+    padding: 5px 10px;
+    border: 1px solid #DCDCDC;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    line-height: 20px;
+}
+.index-content-left-item .item-assess a i{
+    float: left;
+    margin-right: 2px;
+    position: relative;
+    top: 3px;
+}
+.index-content-left-item .item-assess a:hover {
+    border: 1px solid #ABADB3;
+}
+
+.index-content-left-item .item-next {
+    margin-top: 20px;
+}
+
+/* 评论输入*/
+.index-content-left-item .item-comment-write {
+    margin-top: 20px;
+    background-color: #F9F9F9;
+    min-height: 180px;
+}
+
+.index-content-left-item .item-comment-write textarea {
+    width: 96%;
+    margin: 9px 0 10px 9px;
+    min-height: 100px;
+}
+.index-content-left-item .item-comment-write input[type=button] {
+    float: right;
+    margin: 15px 9px 0 0;
+    padding: 3px 5px;
+    cursor: pointer;
+}
+
+/*评论内容*/
+.index-content-left-item .item-comment {
+    margin-top: 20px;
+    border-top: 1px solid #DEDEDE;
+    padding-top: 20px;
+}
+
+.index-content-left-item .item-comment ul {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+.index-content-left-item .item-comment ul li {
+    display: block;
+    width: 100%;
+    float: left;
+    border-bottom: 1px dashed #DEDEDE;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.index-content-left-item .item-comment ul li img {
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.index-content-left-item .item-comment ul li div {
+    float: left;
+    width: 90%;
+    margin-left: 10px;
+}
+.index-content-left-item .item-comment ul li div span {
+    display: block;
+    width: 100%;
+    line-height: 18px;
+}
+.index-content-left-item .item-comment em {
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.index-content-left-item .item-comment em i {
+    width: 13px;
+    height: 15px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 3px;
+    margin-right: 1px;
+}
+.index-content-left-item .item-comment em i.favour {
+    background: url("../images/icon_view_up.png") no-repeat scroll;
+    background-position: 0 0;
+}
+.index-content-left-item .item-comment em i.tread {
+    background: url("../images/icon_view_down.png") no-repeat 0 0 scroll;
+    background-position: 0 0;
+}
+.index-content-left-item .item-comment em:hover i {
+    background-position: 0 -20px;
+}
+
+
+/*联系我们*/
+.index-content-left-item .item-contact {
+    margin-top: 20px;
+}
+.index-content-left-item .item-contact ul li {
+    line-height: 20px;
+}
+
+/*关于我们*/
+.index-content-left-item .item-aboutus {
+    margin-top: 20px;
+}
+
+
+
+.index-content-right {
+    width: 320px;
+    border: 1px solid #D1D1D1;
+    float: right;
+}
+
+.index-content-contact {
+    margin-top: 30px;
+    border: 1px solid #C1C1C1;
+    border-bottom: none;
+}
+.index-content-contact ul {
+    display: block;
+    width: 20%;
+    float: left;
+    padding: 20px 0 20px 20px;
+}
+.index-content-contact ul li {
+    padding-left: 20px;
+    position: relative;
+    line-height: 25px;
+}
+.index-content-contact ul li:first-child {
+    margin-bottom: 10px;
+}
+.index-content-contact ul li:first-child i {
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: 0;
+    top: 8px;
+}
+.index-content-contact .g {
+    background: #56CC99;
+}
+.index-content-contact .r {
+    background: #FF5555;
+}
+.index-content-contact .b {
+    background: #55AADE;
+}
+.index-content-contact .a {
+    background: #676767;
+}
+.index-footer {
+    padding: 8px 0;
+    background: url("../images/nav-bg.png") repeat-x center scroll;
+}
+.index-footer p {
+    text-align: center;
+    line-height: 20px;
+}
+
+.image-show {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+}
+.image-show img{
+	
+}
+.image-show .image-content {
+    margin: 20px auto;
+    position: relative;
+    text-align: center;
+}
+.image-show .image-content div{
+    border: 5px solid #FFFFFF;
+    border-radius: 10px;
+    display: inline-block;
+    position: relative;
+}
+.image-show .image-content div i {
+    width: 24px;
+    height: 24px;
+    background: url("../images/close.png") no-repeat center scroll;
+    position: absolute;
+    right: -10px;
+    top: -15px;
+    z-index: 9999;
+}
+.image-show .image-content div img {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    border: none;
+}
+/** index.html end*/
+
+
+/** login.html register.html start*/
+.login-container {
+    width: 100%;
+    height: 100%;
+    background-color: #EEEEEE;
+}
+.login-content {
+    width: 370px;
+    min-height: 350px;
+    border: 5px solid #67D4AA;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    top: 35%;
+    margin-top: -175px;
+}
+.login-content h1 {
+    text-align: center;
+    margin-top: 20px;
+    float: left;
+    display: block;
+    width: 100%;
+}
+.login-type {
+    width: 100%;
+    height: 50px;
+    display: block;
+    position: relative;
+}
+.login-type li {
+    width: 50%;
+    display: block;
+    float: left;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #67D4AA;
+    color: #F0F0F0;
+}
+.login-type li.on {
+    color: #FAFAFA;
+}
+.login-type li.on:after {
+    content: '';
+    width: 80%;
+    height: 3px;
+    position: absolute;
+    left: 10%;
+    bottom: 3px;
+    background: #FAFAFA;
+}
+.login-form {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.login-form li {
+    line-height: 55px;
+}
+.login-form li input[type=text],.login-form li input[type=password] {
+    border: 1px solid #999999;
+    width: 180px;
+    padding: 5px 0 5px 5px;
+}
+.login-form li input[type=text]:focus,
+.login-form li input[type=text]:hover,
+.login-form li input[type=password]:focus,
+.login-form li input[type=password]:hover {
+    border: 1px solid #84B7EB;
+}
+.login-form li input[type=checkbox] {
+    margin: 0 5px 0 40px;
+    top: 2px;
+    position: relative;
+}
+.login-form li input[type=submit] {
+    width: 187px;
+    padding: 0;
+    line-height: 30px;
+    margin-left: 65px;
+    background-color: #67D4AA;
+    color: #FAFAFA;
+}
+.login-form li:last-child span {
+    margin-left: 85px;
+}
+/* this is zhangbing write css start */
+
+.index-content-ringht-randpicture,.index-content-ringht-hotarticles{
+	width:  320px;
+	height:300px;
+	border-bottom-style:1px solid #DCDCDC;
+}
+.index-content-ringht-catalog{
+	width:  320px;
+	height:200px;
+	border-bottom-style:1px solid #DCDCDC;
+}
+.index-content-ringht-catalog li{
+	float: left;
+	width: 80px;
+	margin: 10px 0px 0px 20px;
+}
+.index-content-ringht-newcomments{
+	width:  320px;
+	height:550px;
+	overflow:hidden;
+	border-bottom-style:1px solid #DCDCDC;
+}
+.index-content-ringht-title {
+	width: 100%;
+	color:#B2B2B2;
+	background-color:#E0E0E0;
+	height: 30px;
+}
+.index-content-ringht-title span{
+	line-height: 27px;
+	padding-left: 20px;
+}
+.index-content-rightItem,.index-content-ringht-newcommentsusers{
+	margin-top: 15px;
+	text-align: left;
+}
+.index-content-ringht-newcommentsusers{
+	width: 100%;
+}
+.index-content-rightItem li, .index-content-ringht-hotarticles li{
+	margin-left:18px;
+	line-height: 20px;
+}
+.index-content-ringht-newcommentsusers li{
+	margin-left:18px;
+	margin-top:10px;
+	line-height: 20px;
+	height: 100px;
+	display: inline-block;
+	border-bottom-style: 1px solid #DCDCDC; 
+}
+
+.user-picture{
+	width: 50px;
+	height:100px;
+	float: left;
+}
+.user-comments{
+	width: 240px;
+	float: right;
+	margin-left:10px;
+	padding-top:13px;
+	overflow:hidden;
+	height: 100px;
+}
+.user-comments div{
+	margin-top: 15px;
+}
+.random-image{
+	float: right;
+	margin-top: 14px;
+}
+.index-content-item{
+	margin-top:20px;
+	width:100%;
+	height:1293px;
+	border: 1px solid #D1D1D1;
+}
+.index-content-item-title{
+	font-size:18px;
+	color: #B2B2B2;
+	height: 45px;
+	line-height: 46px;
+	padding-left: 15px;
+	border-bottom: 1px solid #D1D1D1;
+}
+.index-content-item-title span{
+	float: right;
+	margin-right: 30px;
+}
+.index-content-item-content{
+	width: 100%;
+	height: 600px;
+	border-bottom: 1px solid #D1D1D1;
+}
+.content-list li{
+	float: left;
+	width: 177px;
+	text-align: center;
+	margin-right: 7px;
+	margin-top: 10px;
+	margin-left: 7px;
+}
+.content-list img{
+	height: 155px;
+	width: 174px;
+	border: 1px solid #EBEBEB;
+	padding: 3px;
+}
+.content-list div{
+	text-indent: 2em;
+	overflow: hidden;
+	text-align:left;
+	height: 24px;
+}
+/* this is zhangbing write css end */
+/** index.html register.html end*/
+

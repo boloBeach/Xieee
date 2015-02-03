@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
+
 /**
  * 这个是用来做首页登录的controller
  * 
@@ -23,14 +25,29 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 	@Autowired
 	private IndexServiceInter indexServiceImpl;
-	@RequestMapping(value="showIndex")
+	@RequestMapping(value="index.html")
 	public ModelAndView showIndex(HttpServletRequest request,
 			HttpServletResponse response) {
-		String parentCatalogId = request.getParameter("parentCatalogId");
 		String urlId = request.getParameter("urlId");
+		// 获取一级菜单
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
+		ModelAndView modelAndView = new ModelAndView("/index");
+		modelAndView.addObject("catalogList", list);
+		return modelAndView;
+	}
+	
+	@RequestMapping("header")
+	public ModelAndView Header(HttpServletRequest request,HttpServletResponse response){
+		String parentCatalogId = request.getParameter("parentCatalogId");
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(parentCatalogId);
 		ModelAndView modelAndView = new ModelAndView("/index");
 		modelAndView.addObject("catalogList", list);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="aboutAs")
+	public ModelAndView aboutAs(HttpServletRequest request,HttpServletResponse response){
+		ModelAndView modelAndView = new ModelAndView("aboutus");
 		return modelAndView;
 	}
 }
