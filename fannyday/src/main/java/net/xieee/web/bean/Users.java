@@ -71,5 +71,13 @@ public class Users {
 	public void setIs_delete(String is_delete) {
 		this.is_delete = is_delete;
 	}
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", user_name=" + user_name + ", email="
+				+ email + ", user_password=" + user_password + ", regist_date="
+				+ regist_date + ", login_count=" + login_count
+				+ ", last_login_date=" + last_login_date + ", modify_time="
+				+ modify_time + ", is_delete=" + is_delete + "]";
+	}
 	
 }

@@ -6,7 +6,7 @@
 			<li><i class="g"></i>Happy Day</li>
 			<li><a href="about.html">关于我们</a></li>
 			<li><a href="contact.html">联系我们</a></li>
-			<li><a href="backIndex">后台管理</a></li>
+			<li><a href="backIndex.action">后台管理</a></li>
 		</ul>
 		<ul>
 			<li><i class="r"></i>友情链接</li>

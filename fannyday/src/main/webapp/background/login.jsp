@@ -9,6 +9,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <base href="<%=basePath%>">
 <title>Happy Day -- login</title>
 <meta http-equiv="pragma" content="no-cache">
@@ -44,7 +45,11 @@ html, body {
                 <li data-type="own" class="on ft14">账号密码登录</li>
                 <li data-type="other" class="ft14">快速登录</li>
             </ul>
-            <form action="backLogin" method="post">
+            <%
+            	String errorIndex = request.getParameter("errorIndex");
+                request.setAttribute("errorIndex",errorIndex); 
+            %>
+            <form action="backLogin.action" method="post">
                 <ul class="login-form own ft12">
                 	
                     <li>
@@ -61,7 +66,25 @@ html, body {
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
                     </li>
                     <li style="color: red;text-align: center;" id="error_message">
-                		
+                		 <c:if test="${errorIndex==-1 }">
+                		 	对不起，您输入的用户不存在
+                		 </c:if>
+                		 
+                		  <c:if test="${errorIndex==0 }">
+                		 	对不起，您输入的用户为空
+                		  </c:if>
+                		 
+                		  <c:if test="${errorIndex==-2 }">
+                		 	对不起，您输入的用户密码为空
+                		 </c:if>
+                		 
+                		  <c:if test="${errorIndex==-3 }">
+                		 	对不起，您输入的密码不正确
+                		 </c:if>
+                		 
+                		  <c:if test="${errorIndex==-4 }">
+                		 	对不起，您输入的验证码错误
+                		 </c:if>
                 	</li>
                     <li style="line-height: 25px;">
                         <label for="remember"></label>

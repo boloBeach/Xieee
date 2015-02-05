@@ -6,10 +6,11 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>background/">
 <head>
 <title>后台管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -82,7 +83,7 @@
 					}, {
 						id : '6',
 						text : '菜单管理',
-						href : 'menu/index.html'
+						href : 'menuIndex.action'
 					}, {
 						id : '7',
 						text : '图片标题管理',
