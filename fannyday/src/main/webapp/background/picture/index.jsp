@@ -9,11 +9,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<base href="<%=basePath%>">
+<base href="<%=basePath%>background/">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <title>图片后台审核管理页面</title>
-<link href="background/Css/pictureManager.css" rel="stylesheet"
+<link href="Css/pictureManager.css" rel="stylesheet"
 	type="text/css" />
-<link href="background/Css/common.css" rel="stylesheet" type="text/css" />
+<link href="Css/common.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -22,12 +23,15 @@
 </head>
 <body>
 	<div class="content-title ft18">
-		请选择菜单: <select>
-			<option>菜单一</option>
-			<option>菜单一</option>
-			<option>菜单一</option>
-			<option>菜单一</option>
-		</select> 请选择标题: <select>
+		请选择菜单: 
+		<select>
+			<option value="0">请选择一级菜单</option>
+			<c:forEach items="${catalogList }" var="catalog">
+				<option value="${catalog.id }">${catalog.name }</option>
+			</c:forEach>
+		</select> 
+		请选择标题: 
+		<select>
 			<option>第XXX期 搞笑图片</option>
 			<option>第XXX期 搞笑图片</option>
 			<option>第XXX期 搞笑图片</option>

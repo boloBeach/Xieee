@@ -87,7 +87,7 @@
 					}, {
 						id : '7',
 						text : '图片标题管理',
-						href : 'menu/picturemenuindex.jsp'
+						href : 'showPicture.action'
 					} ]
 				} ]
 			}, {
