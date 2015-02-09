@@ -103,12 +103,23 @@ public class BackIndexServiceImpl<T> extends BaseServiceImpl<T> implements BackI
 		}
 		return null;
 	}
-	public int saveCatalog(Catalog catalog) {
+	
+	public int updateCatalog(Catalog catalog) {
 		String sql = "update catalog set name=?,url=?,is_delete=? where id=?";
 		if(StringUtil.isNull(catalog) || StringUtil.isNull(catalog.getId())){
 			return 0;
 		}
 		Object[] params = {catalog.getName(),catalog.getUrl(),catalog.getIs_delete(),catalog.getId()};
+		return save(sql, params);
+	}
+	
+	public int saveCatalog(Catalog catalog) {
+		
+		String sql = "insert into catalog(name,parent_catalog_id,url,is_delete) values(?,?,?,?)";
+		if(StringUtil.isNull(catalog) || StringUtil.isNull(catalog.getParent_catalog_id())){
+			return 0;
+		}
+		Object[] params = {catalog.getName(),catalog.getParent_catalog_id(),catalog.getUrl(),catalog.getIs_delete()};
 		return save(sql, params);
 	}
 }

@@ -41,9 +41,25 @@ public class BGMenuController {
 	@RequestMapping(value="updateMenu.action",method=RequestMethod.POST)
 	public ModelAndView updateMenu(HttpServletRequest request,HttpServletResponse response,Catalog catalog){
 		ModelMap map = new ModelMap();
-		backIndexServiceImpl.saveCatalog(catalog);
+		backIndexServiceImpl.updateCatalog(catalog);
 		map.addAttribute("id", catalog.getId());
 		ModelAndView modelAndView = new ModelAndView("redirect:menuEditShow.action",map);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="addshow.action")
+	public ModelAndView addMenuShow(HttpServletRequest request,HttpServletResponse response){
+		List<Catalog> list = backIndexServiceImpl.getCatalogByParentId(null);
+		ModelAndView modelAndView = new ModelAndView("/menu/add");
+		modelAndView.addObject("catalog", list);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="addMenu.action",method=RequestMethod.POST)
+	public ModelAndView addMenu(HttpServletRequest request,HttpServletResponse response,Catalog catalog){
+		backIndexServiceImpl.saveCatalog(catalog);
+		ModelAndView modelAndView = new ModelAndView("redirect:addshow.action");
+		return modelAndView;
+	}
+	
 }

@@ -32,8 +32,15 @@ public interface BackIndexServiceInter extends BaseServiceInter{
 	public Catalog getCatalogById(String catalog_id);
 	
 	/**
-	 * 保存catalog信息
+	 * 保存修改信息
 	 * @param catalog catalog对象
+	 * @return
+	 */
+	public int updateCatalog(Catalog catalog);
+	
+	/**
+	 * 保持 一个catalog对象
+	 * @param catalog 对象
 	 * @return
 	 */
 	public int saveCatalog(Catalog catalog);

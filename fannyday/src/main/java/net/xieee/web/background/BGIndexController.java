@@ -43,6 +43,7 @@ public class BGIndexController {
 			return  new ModelAndView("redirect:backIndex.action",map);
 		}else {
 			// 存入session
+			session.setAttribute("backUsers", users.getEmail());
 			return new ModelAndView("index");
 		}
 	}
