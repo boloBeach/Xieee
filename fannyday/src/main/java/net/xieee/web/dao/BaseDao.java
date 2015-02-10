@@ -60,7 +60,7 @@ public interface BaseDao<T> {
 	 * @param sql
 	 * @return
 	 */
-	public Pager findBypager(String sql,Pager pager);
+	public Pager findBypager(String sql,Pager pager,Object... params);
 	
 	
 	/**

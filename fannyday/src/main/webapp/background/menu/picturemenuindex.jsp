@@ -32,21 +32,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<th>菜单标题</th>
 				<th>上级菜单</th>
-				<th>ACTION</th>
+				<th>URL</th>
 				<th>状态</th>
 				<th>管理操作</th>
 			</tr>
 		</thead>
-		
-		<c:forEach items="${catalogList }" var="catalog">
-			<tr>
-				<td>${catalog.name }</td>
-				<td>${catalog.parent_catalog_id }</td>
-				<td>${catalog.url }</td>
-				<td>${catalog.is_delete }</td>
-				<td><a href="background/menu/pictureEdit.jsp?id=${catalog.id }">编辑</a></td>
-			</tr>
-		</c:forEach>
+		<tbody id="tbody">
+			<c:forEach items="${catalogList }" var="catalog">
+				<tr>
+					<td>${catalog.name }</td>
+					<td>${catalog.parent_catalog_id }</td>
+					<td>${catalog.url }</td>
+					<td>${catalog.is_delete }</td>
+					<td><a href="background/menu/pictureEdit.jsp?id=${catalog.id }">编辑</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
  	</div>
  </body>

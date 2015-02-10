@@ -16,9 +16,9 @@ public class BaseServiceImpl<T> implements BaseServiceInter {
 	@Resource
 	private BaseDao baseDao;
 	
-	public Pager findBypager(String sql, Pager pager) {
+	public Pager findBypager(String sql, Pager pager,Object... params) {
 		// TODO Auto-generated method stub
-		return baseDao.findBypager(sql, pager);
+		return baseDao.findBypager(sql, pager,params);
 	}
 
 	

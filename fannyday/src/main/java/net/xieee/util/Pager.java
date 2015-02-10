@@ -14,8 +14,10 @@ public class Pager implements Serializable {
 
 	private Integer pageNumber = 1;// 当前页码
 	private Integer pageSize = 15;// 每页记录数
-	private Integer totalPage = 0;// 总记录数
 	private Integer pageCount = 0;// 总页数
+	private Integer totalRows = 0;
+	private boolean haveNextPage = false;
+	private boolean havePrePage = false;
 	private String keyWord;  //查询关键字r
 	@SuppressWarnings("unchecked")
 	private List list;// 数据List
@@ -24,6 +26,30 @@ public class Pager implements Serializable {
 	public Integer getPageNumber() {
 		return pageNumber;
 	}
+
+	
+	public Integer getTotalRows() {
+		return totalRows;
+	}
+
+	public boolean isHaveNextPage() {  
+        haveNextPage = false;  
+        if ((getPageCount() > 1) && (getPageCount() > pageNumber))  
+        	haveNextPage = true;  
+        return haveNextPage;  
+    }  
+  
+    public boolean isHavePrePage() {  
+        havePrePage = false;  
+        if ((getPageCount() > 1) && (pageNumber > 1))  
+            havePrePage = true;  
+        return havePrePage;  
+    }  
+    
+	public void setTotalRows(Integer totalRows) {
+		this.totalRows = totalRows;
+	}
+
 
 	public void setPageNumber(Integer pageNumber) {
 		if (pageNumber < 1) {
@@ -45,26 +71,45 @@ public class Pager implements Serializable {
 		this.pageSize = pageSize;
 	}
 	
+	
 	public Integer getPageCount() {
-		pageCount = totalPage / pageSize;
-		if (totalPage % pageSize > 0) {
+		pageCount = totalRows / pageSize;
+		if (totalRows % pageSize > 0) {
 			pageCount ++;
 		}
 		return pageCount;
 	}
+	
+	
+	public void setHaveNextPage(boolean haveNextPage) {
+		this.haveNextPage = haveNextPage;
+	}
 
+
+	public void setHavePrePage(boolean havePrePage) {
+		this.havePrePage = havePrePage;
+	}
+
+
+	public  Pager Pager(Integer totalRows,Integer pageSize,Integer currentPage){
+		this.totalRows = totalRows;
+		this.pageSize = pageSize;
+		this.pageNumber = currentPage;
+		Pager pager = new Pager();
+		pager.setPageSize(pageSize);
+		pager.setPageNumber(currentPage);
+		pager.setPageCount(getPageCount());
+		pager.setHaveNextPage(isHaveNextPage());
+		pager.setHavePrePage(isHavePrePage());
+		pager.setTotalRows(totalRows); // 总记录数
+		return pager;
+	}
+	
 	public void setPageCount(Integer pageCount) {
 		this.pageCount = pageCount;
 	}
 
-	public Integer getTotalPage() {
-		return totalPage;
-	}
-
-	public void setTotalPage(Integer totalPage) {
-		this.totalPage = totalPage;
-	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List getList() {
 		return list;

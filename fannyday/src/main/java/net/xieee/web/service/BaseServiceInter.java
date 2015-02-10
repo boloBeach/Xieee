@@ -58,7 +58,7 @@ public interface BaseServiceInter<T> {
 	 * @param sql
 	 * @return
 	 */
-	public Pager findBypager(String sql,Pager pager);
+	public Pager findBypager(String sql,Pager pager,Object... params);
 	
 	/**
 	 * 获取list

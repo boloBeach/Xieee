@@ -20,7 +20,7 @@ public class BaseDaoImp<T> implements BaseDao {
 	private JdbcTemplate jdbcTemplate;
 
 	@SuppressWarnings("unchecked")
-	public Pager findBypager(String sql, Pager pager) {
+	public Pager findBypager(String sql, Pager pager,Object... params) {
 		// TODO Auto-generated method stub
 		if (pager == null) {
 			pager = new Pager();
@@ -28,7 +28,7 @@ public class BaseDaoImp<T> implements BaseDao {
 
 		sql += " limit " + (pager.getPageNumber() - 1) * pager.getPageSize()
 				+ " , " + pager.getPageSize();
-		List rows = jdbcTemplate.queryForList(sql);
+		List rows = jdbcTemplate.queryForList(sql,params);
 		pager.setList(rows);
 		return pager;
 	}
