@@ -26,4 +26,11 @@ public interface BackPictureManagerServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public int updateParentPicture(ParentPicture parentPicture);
+	
+	/**
+	 * 保持picture
+	 * @param parentPicture
+	 * @return
+	 */
+	public int saveParentPicture(ParentPicture parentPicture);
 }

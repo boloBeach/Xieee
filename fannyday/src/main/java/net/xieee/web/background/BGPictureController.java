@@ -89,4 +89,11 @@ public class BGPictureController {
 		modelAndView.addObject("catalogList", list);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="saveParentPicture.action",method=RequestMethod.POST)
+	public ModelAndView saveParentPicture(HttpServletRequest request,HttpServletResponse response,ParentPicture parentPicture){
+		backPictureManagerServiceImpl.saveParentPicture(parentPicture);
+		ModelAndView modelAndView = new ModelAndView("redirect:showPicture.action");
+		return modelAndView;
+	}
 }

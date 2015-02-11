@@ -55,6 +55,14 @@ public class BGMenuController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="addParentPicture.action")
+	public ModelAndView addParentPicture(HttpServletRequest request,HttpServletResponse response){
+		List<Catalog> list = backIndexServiceImpl.getCatalogByParentId(null);
+		ModelAndView modelAndView = new ModelAndView("/menu/addParentPicture");
+		modelAndView.addObject("catalog", list);
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="addMenu.action",method=RequestMethod.POST)
 	public ModelAndView addMenu(HttpServletRequest request,HttpServletResponse response,Catalog catalog){
 		backIndexServiceImpl.saveCatalog(catalog);

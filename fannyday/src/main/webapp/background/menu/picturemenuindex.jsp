@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  				<option value="${catalog.id }">${catalog.name }</option>
  			</c:forEach>
  		</select>
+ 		<button type="button" class="btn btn-success" id="addnew">添加图片标题</button>
  	</div>
  	<div>
  		<table class="table table-bordered table-hover definewidth m10">
@@ -52,3 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	</div>
  </body>
 </html>
+<script>
+	$(function() {
+
+		$('#addnew').click(function() {
+			window.location.href = "background/addParentPicture.action";
+		});
+
+	});
+</script>
