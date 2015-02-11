@@ -67,7 +67,7 @@
 					items : [ {
 						id : '1',
 						text : '图片管理',
-						href : 'picture/index.jsp'
+						href : 'showPictureIndex.action'
 					}, {
 						id : '2',
 						text : '抓取管理',

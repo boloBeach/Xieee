@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">    
-    <title>this is title</title>        
+    <title>this is title</title>  
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>       
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">    
@@ -44,39 +45,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </style>
 </head>
 <body>
-<form action="index.html" method="post" class="definewidth m20">
-<input type="hidden" name="id" value="{$menu.id}" />
+<form action="background/updatePicture.action" method="post" class="definewidth m20">
 <table class="table table-bordered table-hover m10">
     <tr>
-        <td width="10%" class="tableleft">上级</td>
+        <td width="10%" class="tableleft">上级菜单ID</td>
         <td>
-            <select name="parentid">
-           		 <option value="0">一级菜单</option>
-           		 <option value="0">二级菜单</option>
-            </select>
+           <input type="text" name="catalog_id" value="${parentPicture.catalog_id }" readonly="readonly"/>
         </td>
     </tr>
+    
+    <tr>
+        <td width="10%" class="tableleft">ID</td>
+        <td>	
+           <input type="text" name="id" value="${parentPicture.id }" readonly="readonly"/>
+        </td>
+    </tr>
+    
     <tr>
         <td class="tableleft">名称</td>
-        <td><input type="text" name="name"/></td>
+        <td><input type="text" name="parent_picture_name" value="${parentPicture.parent_picture_name }"/></td>
     </tr>
     <tr>
-        <td class="tableleft">Model</td>
-        <td><input type="text" name="module"/></td>
+        <td class="tableleft">detail-详情</td>
+        <td><textarea rows="10" cols="10" name="detail">${parentPicture.detail }</textarea></td>
     </tr>
     <tr>
-        <td class="tableleft">Action</td>
-        <td><input type="text" name="action"/></td>
-    </tr>
-    <tr>
-        <td class="tableleft">备注</td>
-        <td><input type="text" name="remark"/></td>
+        <td class="tableleft">点击次数</td>
+        <td><input type="text" name="skim_count" value="${parentPicture.skim_count }"/></td>
     </tr>
     <tr>
         <td class="tableleft">状态</td>
         <td>
-            <input type="radio" name="status" value="0" checked/> 启用
-            <input type="radio" name="status" value="1"/> 禁用
+        	<c:if test="${parentPicture.is_delete==1 }">
+	            <input type="radio" name="is_delete" value="1" checked="checked"/> 启用
+	            <input type="radio" name="is_delete" value="0"/> 禁用
+            </c:if>
+            
+            <c:if test="${parentPicture.is_delete!=1 }">
+	            <input type="radio" name="is_delete" value="1" /> 启用
+	            <input type="radio" name="is_delete" value="0" checked="checked"/> 禁用
+            </c:if>
         </td>
     </tr>
     <tr>
@@ -94,6 +102,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$('#backid').click(function(){
 				window.location.href="index.html";
 		 });
-
     });
 </script>

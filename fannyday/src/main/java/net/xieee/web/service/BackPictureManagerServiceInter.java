@@ -1,6 +1,7 @@
 package net.xieee.web.service;
 
 import net.xieee.util.Pager;
+import net.xieee.web.bean.ParentPicture;
 
 public interface BackPictureManagerServiceInter extends BaseServiceInter {
 	
@@ -11,4 +12,18 @@ public interface BackPictureManagerServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public Pager getPagerByParentId(String currentPage,String parentId);
+	
+	/**
+	 * 通过id来获取 parentPicture
+	 * @param id
+	 * @return
+	 */
+	public ParentPicture getParentPictureById(String id);
+	
+	/**
+	 * 更新parentPicture
+	 * @param parentPicture
+	 * @return
+	 */
+	public int updateParentPicture(ParentPicture parentPicture);
 }

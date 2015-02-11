@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${catalog.parent_catalog_id }</td>
 					<td>${catalog.url }</td>
 					<td>${catalog.is_delete }</td>
-					<td><a href="background/menu/pictureEdit.jsp?id=${catalog.id }">编辑</a></td>
+					<td><a href="background/editPicture.action?id=${catalog.id }">编辑</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

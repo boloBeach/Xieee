@@ -53,5 +53,15 @@ public class ParentPicture {
 	public void setCatalog_id(Integer catalog_id) {
 		this.catalog_id = catalog_id;
 	}
+	@Override
+	public String toString() {
+		return "ParentPicture [id=" + id + ", parent_picture_name="
+				+ parent_picture_name + ", skim_count=" + skim_count
+				+ ", detail=" + detail + ", modify_time=" + modify_time
+				+ ", is_delete=" + is_delete + ", catalog_id=" + catalog_id
+				+ "]";
+	}
+	
+	
 	
 }

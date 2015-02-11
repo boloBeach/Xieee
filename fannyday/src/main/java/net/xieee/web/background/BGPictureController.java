@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.xieee.util.Pager;
 import net.xieee.web.bean.Catalog;
+import net.xieee.web.bean.ParentPicture;
 import net.xieee.web.service.BackIndexServiceInter;
 import net.xieee.web.service.BackPictureManagerServiceInter;
 import net.xieee.web.service.impl.BackPictureManagerServiceImpl;
@@ -16,11 +17,13 @@ import net.xieee.web.service.impl.BackPictureManagerServiceImpl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.sun.swing.internal.plaf.metal.resources.metal;
 
 @Controller
 @RequestMapping(value="/background")
@@ -59,5 +62,31 @@ public class BGPictureController {
 		Gson gson = new Gson();
 		out.write(gson.toJson(pager));
 		out.close();
+	}
+	
+	@RequestMapping(value="editPicture.action")
+	public ModelAndView editPicture(HttpServletRequest request,HttpServletResponse response){	
+		String id = request.getParameter("id");
+		ParentPicture parentPicture = backPictureManagerServiceImpl.getParentPictureById(id);
+		ModelAndView modelAndView = new ModelAndView("menu/pictureEdit");
+		modelAndView.addObject("parentPicture",parentPicture);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="updatePicture.action")
+	public ModelAndView updatePicture(HttpServletRequest request,HttpServletResponse response,ParentPicture parentPicture){
+		ModelAndView modelAndView = null;
+		backPictureManagerServiceImpl.updateParentPicture(parentPicture);
+		ModelMap map = new ModelMap("id", parentPicture.getId());
+		modelAndView =  new ModelAndView("redirect:editPicture.action",map);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="showPictureIndex.action")
+	public ModelAndView showPictureIndex(HttpServletResponse response,HttpServletRequest request){
+		ModelAndView modelAndView = new ModelAndView("picture/index");
+		List<Catalog> list = backIndexServiceImpl.getCatalogByParentId(null);
+		modelAndView.addObject("catalogList", list);
+		return modelAndView;
 	}
 }
