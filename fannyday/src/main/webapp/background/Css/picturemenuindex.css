@@ -5,3 +5,11 @@
 	margin: 0 auto;
 	text-align: center;
 }
+.pagers{
+	width: 100%;
+	height: 50px;
+	background-color: red;
+}
+.pagers button{
+	margin-left: 15px;
+}

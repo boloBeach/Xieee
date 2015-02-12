@@ -9,5 +9,5 @@ public class Contants {
 	/**
 	 * 图片菜单分页大小
 	 */
-	public static final Integer picture_catalog_pagesize=18;
+	public static final Integer picture_catalog_pagesize=10;
 }
