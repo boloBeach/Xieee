@@ -19,7 +19,7 @@
 <script type="text/javascript" src="background/Js/pricturement.js"></script>
 <style type="text/css">
 .pagers {
-	width: 700px;
+	width: 950px;
 	height: 50px;
 	margin-top:20px;
 	margin: 0 auto;
