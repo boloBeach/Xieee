@@ -47,4 +47,11 @@ public interface PictureServiceInter extends BaseServiceInter{
 	 * @return
 	 */
 	public List getPageUrls(int startId,int pageSize);
+	
+	/**
+	 * 抓取的时候检查是否有重复的url
+	 * @param url
+	 * @return
+	 */
+	public int checkSpiderUrl(String url);
 }

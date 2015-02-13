@@ -18,7 +18,7 @@ public class TestSpider {
 		//DownloadImage downloadImage = new DownloadImage();
 		InterImagesUtil imagesUtil = new InterImagesUtil();
 		int i = 0;
-		int startId = 1117;
+		int startId = 1;
 		int pageSize = 10;
 		while (true) {
 			try {
@@ -39,8 +39,10 @@ public class TestSpider {
 					imagesUtil.update(pageUrl.getId());
 					startId = pageUrl.getId();
 					document = imagesUtil.getDocumentByUrl(pageUrl.getUrl(), host);
+					// 需要修改pageUrl
 					if(document!=null){
 						System.err.println("document is not null");
+						imagesUtil.update(startId);
 						imagesUtil.insertUrlToQuen(document,"http://www.lebazi.com");
 						List<Picture> pictures = imagesUtil.getImagesByDocument(document,pageUrl.getUrl(), host, "http://www.lebazi.com");
 						if(!StringUtil.isNull(pictures)){

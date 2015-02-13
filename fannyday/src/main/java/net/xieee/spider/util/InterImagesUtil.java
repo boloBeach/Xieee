@@ -83,7 +83,13 @@ public class InterImagesUtil {
 					if (href.startsWith("/") && ! href.equals("#")) {
 						href = httpStart + href;
 					}
-					if(!StringUtil.isNull(title) && pictureServiceImpl.checkURL(href)==0){
+					
+					if (!href.contains("http")) {
+						href = httpStart+href;
+					}
+					
+					
+					if(!StringUtil.isNull(title) && pictureServiceImpl.checkSpiderUrl(href)==0){
 						pictureServiceImpl.savePictureURL(href,title);
 					}
 				}
@@ -129,19 +135,22 @@ public class InterImagesUtil {
 				if (imgUrl.startsWith("/")) {
 					imgUrl = webUrl + imgUrl;
 				}
+				
 				filename = imgUrl.substring(imgUrl.lastIndexOf("/")+1, imgUrl.length());
-				if (filename.contains(".gif") || filename.contains(".jpg")) {
-					Picture picture = new Picture();
-					picture.setKey_word(keyWord);
-					picture.setInter_url(imgUrl);
-					picture.setSpark_url(parentUrl);
-					if(StringUtil.isNull(title)){
-						title = detail;
+				if (filename.contains(".gif")) {
+					if(!pictureServiceImpl.checkHasPicture(filename)){
+						Picture picture = new Picture();
+						picture.setKey_word(keyWord);
+						picture.setInter_url(imgUrl);
+						picture.setSpark_url(parentUrl);
+						if(StringUtil.isNull(title)){
+							title = detail;
+						}
+						picture.setTitle(title);
+						picture.setDetail(detail);
+						picture.setPicture_name(filename);
+						list.add(picture);
 					}
-					picture.setTitle(title);
-					picture.setDetail(detail);
-					picture.setPicture_name(filename);
-					list.add(picture);
 				}
 			}
 		}
@@ -189,7 +198,7 @@ public class InterImagesUtil {
 					imgUrl = webUrl + imgUrl;
 				}
 				filename = imgUrl.substring(imgUrl.lastIndexOf("/")+1, imgUrl.length());
-				if (filename.contains(".gif") || filename.contains(".jpg")) {
+				if (filename.contains(".gif")) {
 					Picture picture = new Picture();
 					picture.setKey_word(keyWord);
 					picture.setInter_url(imgUrl);

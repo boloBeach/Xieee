@@ -60,4 +60,13 @@ public class PictureServiceImpl extends BaseServiceImpl implements PictureServic
 		return update(sql, new Object[]{1,pageUrlId});
 	}
 
+	public int checkSpiderUrl(String url) {
+		if(!StringUtil.isNull(url)){
+			String sql = "select count(1) from pageurl where url=?";
+			Object[] params = {url};
+			return getCount(sql, params);
+		}
+		return 0;
+	}
+
 }
