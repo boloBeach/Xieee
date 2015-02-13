@@ -14,7 +14,6 @@ public class TestSpider {
 	public static void main(String[] args) {
 		
 		Document document = null;
-		
 		String host = "www.lebazi.com";
 		//DownloadImage downloadImage = new DownloadImage();
 		InterImagesUtil imagesUtil = new InterImagesUtil();
