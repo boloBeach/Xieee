@@ -85,7 +85,7 @@ public class InterImagesUtil {
 					}
 					
 					if (!href.contains("http")) {
-						href = httpStart+href;
+						href = httpStart+"/"+href;
 					}
 					
 					
