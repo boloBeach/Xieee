@@ -10,4 +10,9 @@ public class Contants {
 	 * 图片菜单分页大小
 	 */
 	public static final Integer picture_catalog_pagesize=10;
+	
+	/**
+	 * 每次显示图片的大小
+	 */
+	public static final Integer show_picture_pagesize = 10;
 }

@@ -122,11 +122,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- 内容部分-->
                <div class="index-content-item">
               		<div class="index-content-item-title">
-              			QQ皮肤列表<span><a href="#" title="更多" target="_blank">更多</a></span>
+              			随机图片<span><a href="#" title="更多" target="_blank">更多</a></span>
               		</div>
               		<div class="index-content-item-content">
               			<ul class="content-list">
-              				<li>
+              			
+              				<c:forEach var="randPicture" items="${randPicture}">
+              					<li>
+	              					<a href="#" target="_blank">
+	              						<img src="${randPicture.picture_url }" data-bd-imgshare-binded="1">
+	              					</a><p>
+		              				<a href="#" target="_blank" title="${randPicture.detail }">
+		              					<div>${randPicture.detail}</div>
+		              				</a></p>
+              					</li>
+              				</c:forEach>
+              				
+              				
+              				<!-- <li>
               					<a href="#" target="_blank">
               						<img src="http://image.qqsky.cc/uploads/allimg/150126/1-150126234532R5-lp.gif" data-bd-imgshare-binded="1">
               					</a><p>
@@ -197,16 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               					<div>老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了</div>
               				</a></p>
               				</li>
-              				
-              				<li>
-              					<a href="#" target="_blank">
-              						<img src="http://image.qqsky.cc/uploads/allimg/150126/1-150126234532R5-lp.gif" data-bd-imgshare-binded="1">
-              					</a><p>
-              				<a href="#" target="_blank" title="老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了">
-              					<div>老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了</div>
-              				</a></p>
-              				</li>
-              				
+              				 -->
               				
               			</ul>
               		</div>
@@ -217,7 +221,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               		</div>
               		<div class="index-content-item-content">
               			<ul class="content-list">
-              				<li>
+              			
+              			<c:forEach var="randGifPicture" items="${randGifPicture}">
+              					<li>
+	              					<a href="#" target="_blank">
+	              						<img src="${randGifPicture.picture_url }" data-bd-imgshare-binded="1">
+	              					</a><p>
+		              				<a href="#" target="_blank" title="${randGifPicture.detail}">
+		              					<div>${randGifPicture.detail }</div>
+		              				</a></p>
+	              				</li>
+              				</c:forEach>
+              				
+              				
+              				<!-- <li>
               					<a href="#" target="_blank">
               						<img src="http://image.qqsky.cc/uploads/allimg/150126/1-150126234532R5-lp.gif" data-bd-imgshare-binded="1">
               					</a><p>
@@ -287,16 +304,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               				<a href="#" target="_blank" title="老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了">
               					<div>老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了</div>
               				</a></p>
-              				</li>
-              				
-              				<li>
-              					<a href="#" target="_blank">
-              						<img src="http://image.qqsky.cc/uploads/allimg/150126/1-150126234532R5-lp.gif" data-bd-imgshare-binded="1">
-              					</a><p>
-              				<a href="#" target="_blank" title="老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了">
-              					<div>老妈给儿子讲故事，突然深情并茂地喊了一声……熊妈妈太坏了</div>
-              				</a></p>
-              				</li>
+              				</li> -->
               				
               				
               			</ul>

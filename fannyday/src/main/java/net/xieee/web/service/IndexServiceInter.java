@@ -22,4 +22,16 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 * @return 返回一个list<parentPicture>
 	 */
 	public List<ParentPicture> getParentPictures(String urlId,Integer pageSize,Integer types);
+	
+	/**
+	 * 获取9个随机的图片
+	 * @return
+	 */
+	public List randPicture();
+	
+	/**
+	 * 随机的获取9个gif
+	 * @return
+	 */
+	public List randGifPicture();
 }

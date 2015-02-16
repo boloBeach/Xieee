@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.xieee.util.Pager;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.bean.ParentPicture;
+import net.xieee.web.bean.PictureBean;
 import net.xieee.web.service.BackIndexServiceInter;
 import net.xieee.web.service.BackPictureManagerServiceInter;
 import net.xieee.web.service.impl.BackPictureManagerServiceImpl;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.sun.jndi.url.dns.dnsURLContext;
 import com.sun.swing.internal.plaf.metal.resources.metal;
 
 @Controller
@@ -64,6 +66,24 @@ public class BGPictureController {
 		out.close();
 	}
 	
+	@RequestMapping(value="catalogByParentPicture.action")
+	public void getCatalogByParentPicture(HttpServletRequest request,HttpServletResponse response){
+		response.setContentType("text/json; charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		String parentId = request.getParameter("parentId");
+		List pager = backPictureManagerServiceImpl.getPictureCatalog(parentId);
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			LOGGER.error(e.toString());
+		}
+		Gson gson = new Gson();
+		out.write(gson.toJson(pager));
+		out.close();
+	}
+	
 	@RequestMapping(value="editPicture.action")
 	public ModelAndView editPicture(HttpServletRequest request,HttpServletResponse response){	
 		String id = request.getParameter("id");
@@ -87,6 +107,9 @@ public class BGPictureController {
 		ModelAndView modelAndView = new ModelAndView("picture/index");
 		List<Catalog> list = backIndexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
+		String currentPage = request.getParameter("currentPage");
+		Pager pager = backPictureManagerServiceImpl.getPicturePager(currentPage);
+		modelAndView.addObject("pager", pager);
 		return modelAndView;
 	}
 	
@@ -94,6 +117,13 @@ public class BGPictureController {
 	public ModelAndView saveParentPicture(HttpServletRequest request,HttpServletResponse response,ParentPicture parentPicture){
 		backPictureManagerServiceImpl.saveParentPicture(parentPicture);
 		ModelAndView modelAndView = new ModelAndView("redirect:showPicture.action");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="submitPicture.action",method=RequestMethod.POST)
+	public ModelAndView submitPicture(HttpServletRequest request,HttpServletResponse response,PictureBean pictureBean){
+		backPictureManagerServiceImpl.submitPicture(pictureBean);
+		ModelAndView modelAndView = new ModelAndView("redirect:showPictureIndex.action");
 		return modelAndView;
 	}
 }

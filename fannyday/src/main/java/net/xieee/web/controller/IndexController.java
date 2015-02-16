@@ -33,6 +33,8 @@ public class IndexController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("/index");
 		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("randPicture", indexServiceImpl.randPicture());
+		modelAndView.addObject("randGifPicture", indexServiceImpl.randGifPicture());
 		return modelAndView;
 	}
 	
