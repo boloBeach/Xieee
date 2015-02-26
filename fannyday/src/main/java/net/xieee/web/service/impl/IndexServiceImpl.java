@@ -87,8 +87,9 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 	}
 
 	public List getTag() {
-		String sql = "select DISTINCT(key_word) from picture";
-		return findList(sql, null);
+		String sql = "select DISTINCT(key_word) from picture where is_delete=?";
+		Object[] params = {1};
+		return findList(sql, params);
 	}
 
 }
