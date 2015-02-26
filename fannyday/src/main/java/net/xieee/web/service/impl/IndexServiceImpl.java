@@ -86,4 +86,9 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		return findList(sql, params);
 	}
 
+	public List getTag() {
+		String sql = "select DISTINCT(key_word) from picture";
+		return findList(sql, null);
+	}
+
 }

@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
  <div class="index-content-ringht-catalog">
 	<div class="index-content-ringht-title ft18">
   			<span>标签</span>
   		</div>
   		<ul class="ft16">
-  			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
+  			<c:forEach var="tag" items="${tag }">
+  				<li><a href="#" title="${tag.key_word }">${tag.key_word }</a></li>
+  			</c:forEach>
+  			<!-- <li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="专业吐槽">专业吐槽</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
-  			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
+  			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li> -->
   		</ul>
 </div>
 
