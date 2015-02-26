@@ -34,4 +34,16 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public List randGifPicture();
+	
+	/**
+	 * 获取首页的标签页
+	 * @return
+	 */
+	public List getTag();
+	
+	/**
+	 * 获取12个随机的漫画
+	 * @return
+	 */
+	public List getCartoon();
 }

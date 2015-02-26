@@ -1,23 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
  <div class="index-content-ringht-catalog">
 	<div class="index-content-ringht-title ft18">
   			<span>标签</span>
   		</div>
   		<ul class="ft16">
+  			<c:forEach var="tag" items="${tag }">
+  				<li><a href="#" title="${tag.key_word }">${tag.key_word }</a></li>
+  			</c:forEach>
+  		
+  			
+  			<!-- <li><a href="#" title="专业吐槽">专业吐槽</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
-  			<li><a href="#" title="专业吐槽">专业吐槽</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
-  			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
-  			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
+  			<li><a href="#" title="搞笑漫画">搞笑漫画</a></li> -->
   		</ul>
 </div>
 
   <div class="index-content-ringht-randpicture">
   		<div class="index-content-ringht-title ft18">
-  			<span>随机日志</span>
+  			<span>随机漫画</span>
   		</div>
   		<div class="index-content-rightItem ft12">
   			<ul>
@@ -41,7 +46,7 @@
  <!-- this is 24 hours hot articles -->
  <div class="index-content-ringht-hotarticles">
  		<div class="index-content-ringht-title ft18">
- 			<span>24小时热评文章</span>
+ 			<span>24小时热评</span>
  		</div>
  		<div class="index-content-rightItem ft12">
  			<ul>

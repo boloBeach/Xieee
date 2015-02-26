@@ -35,6 +35,7 @@ public class IndexController {
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("randPicture", indexServiceImpl.randPicture());
 		modelAndView.addObject("randGifPicture", indexServiceImpl.randGifPicture());
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		return modelAndView;
 	}
 	
