@@ -51,7 +51,7 @@ public class BGPictureController {
 	public void getCatalogInfo(HttpServletRequest request,HttpServletResponse response){
 		response.setContentType("text/json; charset=UTF-8");
 		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Pragma", 	"no-cache");
 		String parentId = request.getParameter("parentId");
 		String currentPage = request.getParameter("currentPage");
 		Pager pager = backPictureManagerServiceImpl.getPagerByParentId(currentPage, parentId);

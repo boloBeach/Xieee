@@ -1,13 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
  <div class="index-content-ringht-catalog">
 	<div class="index-content-ringht-title ft18">
   			<span>标签</span>
   		</div>
   		<ul class="ft16">
   			<c:forEach var="tag" items="${tag }">
-  				<li><a href="#" title="${tag.key_word }">${tag.key_word }</a></li>
+	  			<c:choose>
+	  				<c:when test="${fn:length(tag.key_word)>4}">
+	  					 <li><a href="#" title="${tag.key_word }">${fn:substring(tag.key_word, 0, 4)}</a></li>
+	  				</c:when>
+	  				<c:otherwise>
+	  					<c:if test="${!empty tag.key_word}">
+	  						<li><a href="#" title="${tag.key_word }">${tag.key_word }</a></li>
+	  					</c:if>
+	  				</c:otherwise>
+	  			</c:choose>
   			</c:forEach>
   			<!-- <li><a href="#" title="搞笑漫画">搞笑漫画</a></li>
   			<li><a href="#" title="专业吐槽">专业吐槽</a></li>

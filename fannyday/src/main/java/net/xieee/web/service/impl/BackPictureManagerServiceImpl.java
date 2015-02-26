@@ -43,7 +43,7 @@ public class BackPictureManagerServiceImpl extends BaseServiceImpl implements Ba
 	public ParentPicture getParentPictureById(String id) {
 		if(StringUtil.isNull(id))
 			return null;
-		String sql = "select id,parent_picture_name,detail,skim_count,catalog_id,is_delete from parent_picture where id=?";
+		String sql = "select id,parent_picture_name,picture_url,detail,skim_count,catalog_id,is_delete from parent_picture where id=?";
 		Object[] params = {id};
 		List list = findList(sql, params);
 		if (StringUtil.isNull(list) || list.size()==0) {
@@ -57,14 +57,15 @@ public class BackPictureManagerServiceImpl extends BaseServiceImpl implements Ba
 		parentPicture.setSkim_count((Integer)map.get("skim_count"));
 		parentPicture.setCatalog_id((Integer)map.get("catalog_id"));
 		parentPicture.setIs_delete((String)map.get("is_delete"));
+		parentPicture.setPicture_url((String)map.get("picture_url"));
 		return parentPicture;
 	}
 
 	public int updateParentPicture(ParentPicture parentPicture) {
 		if(StringUtil.isNull(parentPicture))
 			return 0;
-		String sql = "update parent_picture set parent_picture_name=?,detail=?,skim_count=? where id=?";
-		Object[] params = {parentPicture.getParent_picture_name(),parentPicture.getDetail(),parentPicture.getSkim_count(),parentPicture.getId()};
+		String sql = "update parent_picture set parent_picture_name=?,detail=?,skim_count=?,picture_url=? where id=?";
+		Object[] params = {parentPicture.getParent_picture_name(),parentPicture.getDetail(),parentPicture.getSkim_count(),parentPicture.getPicture_url(),parentPicture.getId()};
 		return update(sql, params);
 	}
 
