@@ -11,7 +11,9 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  */
 public class StringUtil {
 	/**
-	 * check string is null ,if the params is null or "" thus return true,else return false;
+	 * check string is null ,if the params is null or "" thus return true,else
+	 * return false;
+	 * 
 	 * @param params
 	 * @return boolean
 	 */
@@ -21,16 +23,40 @@ public class StringUtil {
 		}
 		return false;
 	}
-	
+
+
+
 	/**
 	 * 判断一个值是否为null，如果为null，则返回空串,如果不为空，则返回string
+	 * 
 	 * @param param
 	 * @return
 	 */
-	public static String getString(Object param){
-		if(isNull(param)){
+	public static String getString(Object param) {
+		if (isNull(param)) {
 			return "";
 		}
 		return param.toString();
+	}
+
+
+
+	/**
+	 * 把一个string的转为int类型
+	 * <method description>
+	 *
+	 * @param params
+	 * @return
+	 */
+	public static int stringToInt(String params) {
+		if (isNull(params)) {
+			return 0;
+		}
+		try {
+			return Integer.valueOf(params);
+		} catch (NumberFormatException  e) {
+			return 0;
+		}
+		
 	}
 }
