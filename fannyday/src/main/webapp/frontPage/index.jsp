@@ -129,10 +129,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               			
               				<c:forEach var="randPicture" items="${randPicture}">
               					<li>
-	              					<a href="#" target="_blank">
+	              					<a href="detailpicture.html?parentId=${randPicture.id }" target="_blank">
 	              						<img src="${randPicture.picture_url }" data-bd-imgshare-binded="1">
 	              					</a><p>
-		              				<a href="#" target="_blank" title="${randPicture.detail }">
+		              				<a href="detailpicture.html?parentId=${randPicture.id }" target="_blank" title="${randPicture.detail }">
 		              					<div>${randPicture.detail}</div>
 		              				</a></p>
               					</li>
