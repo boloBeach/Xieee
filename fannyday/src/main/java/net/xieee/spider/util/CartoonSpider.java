@@ -37,12 +37,14 @@ public class CartoonSpider {
 		Document document = Jsoup.parse(StringEscapeUtils.unescapeJava(getJsonString(url, host, referer)));
 		Elements elementsDiv = document.getElementsByTag("div");
 		Element elementImg = null;
+		String src = null;
 		for (Element element : elementsDiv) {
+			src = elementImg.attr("src");
 			elementImg = element.getElementsByTag("img").first();
 			Cartoon cartoon = new Cartoon();
 			cartoon.setCartoon_detail(getDetail(element.text()));
-			cartoon.setCartoon_image_name(elementImg.attr("alt"));
-			cartoon.setCartoon_inter_url(httpHost + elementImg.attr("src"));
+			cartoon.setCartoon_image_name(src.substring(src.lastIndexOf("/")+1));
+			cartoon.setCartoon_inter_url(httpHost + src);
 			cartoon.setCartoon_user_name("admin");
 			cartoon.setCartoon_parent_url(url);
 			cartoon.setCartoon_name(elementImg.attr("alt"));
