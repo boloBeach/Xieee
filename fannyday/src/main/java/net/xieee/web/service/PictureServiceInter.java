@@ -2,6 +2,7 @@ package net.xieee.web.service;
 
 import java.util.List;
 
+import net.xieee.web.bean.Cartoon;
 import net.xieee.web.bean.PageUrl;
 import net.xieee.web.bean.Picture;
 
@@ -54,4 +55,18 @@ public interface PictureServiceInter extends BaseServiceInter{
 	 * @return
 	 */
 	public int checkSpiderUrl(String url);
+	
+	/**
+	 * check catoon spider img url if return ture the img have exist thus return false
+	 * @param imgUrl
+	 * @return
+	 */
+	public boolean checkCartoonImg(String imgUrl);
+	
+	/**
+	 * save a cartoon and download cartoon img
+	 * @param cartoon
+	 * @return
+	 */
+	public int saveCartoon(Cartoon cartoon);
 }

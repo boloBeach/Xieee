@@ -1,6 +1,5 @@
 package net.xieee.spider.util;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,16 +7,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
-import javax.imageio.ImageIO;
-
-import org.omg.CORBA.PRIVATE_MEMBER;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-
+import net.xieee.web.bean.Cartoon;
 import net.xieee.web.bean.Picture;
 import net.xieee.web.service.impl.PictureServiceImpl;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class DownloadImage {
 	public PictureServiceImpl pictureServiceImpl;
@@ -27,13 +24,46 @@ public class DownloadImage {
 		ApplicationContext context = new FileSystemXmlApplicationContext("/"+xmlPath);
 		pictureServiceImpl = (PictureServiceImpl) context.getBean("pictureServiceImpl");
 	}
+	
+	public void DownloadCartoonImg(List<Cartoon> cartoons) throws Exception{
+		if(cartoons.isEmpty()){
+			return;
+		}
+		for (Cartoon cartoon : cartoons) {
+			boolean isTure = pictureServiceImpl.checkCartoonImg(cartoon.getCartoon_inter_url());
+			if(!isTure){
+				URL url = new URL(cartoon.getCartoon_inter_url());
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36");
+				InputStream is = connection.getInputStream();
+				/*BufferedImage bufferedImage = ImageIO.read(is);
+				picture.setWidth(bufferedImage.getWidth());
+				picture.setHeight(bufferedImage.getHeight());*/
+				byte[] bs = new byte[1024];
+				int len;
+				File sf = new File(Constants.cartoon_savePath);
+				if (!sf.exists()) {
+					sf.mkdirs();
+				}
+				OutputStream os = new FileOutputStream(sf.getPath() + "/" + cartoon.getCartoon_image_name());
+				while ((len = is.read(bs)) != -1) {
+					os.write(bs, 0, len);
+				}
+				cartoon.setCartoon_local_url(Constants.cartoon_img_http_path+cartoon.getCartoon_image_name());
+				pictureServiceImpl.saveCartoon(cartoon);
+				os.close();
+				is.close();
+			}
+		}
+		
+	}
+	
 	public void Download(Picture picture,String host) throws IOException{
 		boolean isTrue = pictureServiceImpl.checkHasPicture(picture.getPicture_name());
 		if (isTrue) {
 			return;
 		}
 		URL url = new URL(picture.getInter_url());
-		System.out.println(picture.getInter_url());
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestProperty("Accept", "image/webp,*/*;q=0.8");
 		connection.setRequestProperty("Accept-Encoding", "gzip, deflate, sdch");
@@ -58,13 +88,11 @@ public class DownloadImage {
 		if (!sf.exists()) {
 			sf.mkdirs();
 		}
-		System.out.println("创建文件了。");
 		OutputStream os = new FileOutputStream(sf.getPath() + "/" + picture.getPicture_name());
 		while ((len = is.read(bs)) != -1) {
 			os.write(bs, 0, len);
 		}
 		picture.setLocal_url(Constants.imgHTTPPath+picture.getPicture_name());
-		picture.setParent_picture(2);
 		pictureServiceImpl.savePicture(picture);
 		os.close();
 		is.close();

@@ -13,12 +13,15 @@ import java.util.regex.Pattern;
 
 import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Cartoon;
+import net.xieee.web.service.impl.PictureServiceImpl;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.sun.xml.internal.ws.message.StringHeader;
 
@@ -29,31 +32,6 @@ import com.sun.xml.internal.ws.message.StringHeader;
  * @version: 1.0, 2015年2月27日
  */
 public class CartoonSpider {
-	public static void main(String[] args) {
-		CartoonSpider cartoonSpider = new CartoonSpider();
-		int num = 10;
-		String url = null;
-		String host = "www.neihan8.com";
-		String referer = "http://www.neihan8.com/s/";
-		String httpHost = "http://www.neihan8.com";
-		for (int start = 0; start <= 10; start+=num) {
-			url = "http://www.neihan8.com/s/data.php?start="+start+"&num="+num+"&type=3&markid=undefined&typeid=63446&hotdate=365&tagtid=2";
-			try {
-				List<Cartoon> list = cartoonSpider.getCartoonsByUrl(url, host, referer, httpHost);
-				for (Cartoon cartoon : list) {
-					System.out.println(cartoon.toString());
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-	
-	}
-
-
-
 	public List<Cartoon> getCartoonsByUrl(String url, String host, String referer, String httpHost) throws Exception {
 		List<Cartoon> list = new ArrayList<Cartoon>();
 		Document document = Jsoup.parse(StringEscapeUtils.unescapeJava(getJsonString(url, host, referer)));
@@ -65,7 +43,6 @@ public class CartoonSpider {
 			cartoon.setCartoon_detail(getDetail(element.text()));
 			cartoon.setCartoon_image_name(elementImg.attr("alt"));
 			cartoon.setCartoon_inter_url(httpHost + elementImg.attr("src"));
-			cartoon.setCartoon_local_url("");
 			cartoon.setCartoon_user_name("admin");
 			cartoon.setCartoon_parent_url(url);
 			cartoon.setCartoon_name(elementImg.attr("alt"));
@@ -89,7 +66,6 @@ public class CartoonSpider {
 			return 0;
 		}
 		Pattern pattern = Pattern.compile("ht:(.*?)px;");
-		System.out.println(style);
 		Matcher matcher = pattern.matcher(style);
 		if (matcher.find()) {
 			return StringUtil.stringToInt(matcher.group(1));

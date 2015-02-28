@@ -53,8 +53,9 @@ public class StringUtil {
 			return 0;
 		}
 		try {
-			return Integer.valueOf(params);
+			return Integer.valueOf(params.trim());
 		} catch (NumberFormatException  e) {
+			e.printStackTrace();
 			return 0;
 		}
 		
