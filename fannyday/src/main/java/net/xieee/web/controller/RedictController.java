@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.xieee.web.bean.Catalog;
+import net.xieee.web.service.CartoonServiceInter;
 import net.xieee.web.service.IndexServiceInter;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class RedictController {
 	@Autowired
 	private IndexServiceInter	indexServiceImpl;
+	
+	@Autowired
+	private CartoonServiceInter cartoonServiceImpl;
 
 
 
@@ -69,6 +73,17 @@ public class RedictController {
 		ModelAndView modelAndView = new ModelAndView("detailpicture");
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		return modelAndView;
+	}
+
+	@RequestMapping(value="cartoon.html")
+	public ModelAndView cartoon(HttpServletRequest request,HttpServletResponse response){
+		String currentPage = request.getParameter("currentPage");
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
+		ModelAndView modelAndView = new ModelAndView("cartoon");
+		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage));
 		return modelAndView;
 	}
 }

@@ -15,4 +15,9 @@ public class Contants {
 	 * 每次显示图片的大小
 	 */
 	public static final Integer show_picture_pagesize = 10;
+	
+	/**
+	 * 每页显示1条数据
+	 */
+	public static final Integer cartoon_picture_pagesize = 1;
 }

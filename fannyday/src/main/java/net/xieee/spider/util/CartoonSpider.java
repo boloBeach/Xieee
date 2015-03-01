@@ -30,24 +30,23 @@ public class CartoonSpider {
 	public List<Cartoon> getCartoonsByUrl(String url, String host, String referer, String httpHost) throws Exception {
 		List<Cartoon> list = new ArrayList<Cartoon>();
 		Document document = Jsoup.parse(StringEscapeUtils.unescapeJava(getJsonString(url, host, referer)));
-		Elements elementsDiv = document.getElementsByTag("div");
+		Element elementsDiv = document.getElementsByTag("div").first();
+		System.out.println(elementsDiv);
 		Element elementImg = null;
 		String src = null;
-		for (Element element : elementsDiv) {
-			elementImg = element.getElementsByTag("img").first();
-			src = elementImg.attr("src");
-			Cartoon cartoon = new Cartoon();
-			cartoon.setCartoon_detail(element.text());
-			cartoon.setCartoon_image_name(src.substring(src.lastIndexOf("/")+1));
-			cartoon.setCartoon_inter_url(httpHost + src);
-			cartoon.setCartoon_user_name("admin");
-			cartoon.setCartoon_parent_url(url);
-			cartoon.setCartoon_name(elementImg.attr("alt"));
-			cartoon.setCartoon_title(getTitle(document));
-			cartoon.setImage_height(getHeightByStyle(elementImg.attr("style")));
-			cartoon.setImage_width(getWidthByStyle(elementImg.attr("style")));
-			list.add(cartoon);
-		}
+		elementImg = elementsDiv.getElementsByTag("img").first();
+		src = elementImg.attr("src");
+		Cartoon cartoon = new Cartoon();
+		cartoon.setCartoon_detail(elementsDiv.text());
+		cartoon.setCartoon_image_name(src.substring(src.lastIndexOf("/")+1));
+		cartoon.setCartoon_inter_url(httpHost + src);
+		cartoon.setCartoon_user_name("admin");
+		cartoon.setCartoon_parent_url(url);
+		cartoon.setCartoon_name(elementImg.attr("alt"));
+		cartoon.setCartoon_title(getTitle(document));
+		cartoon.setImage_height(getHeightByStyle(elementImg.attr("style")));
+		cartoon.setImage_width(getWidthByStyle(elementImg.attr("style")));
+		list.add(cartoon);
 		return list;
 	}
 
