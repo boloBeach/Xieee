@@ -41,24 +41,24 @@
 					</span>
 				</div>
 				<div class="index-content-left-item">
-					<h1 class="ft20">${cartoon.list[0].cartoon_title }</h1>
+					<h1 class="ft20">${cartoon[1].cartoon_title }</h1>
 					<div class="item-info ft12">
-						<i class="gray">by</i>&nbsp;&nbsp;${cartoon.list[0].cartoon_user_name }&nbsp; <i class="gray">on
+						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[1].cartoon_user_name }&nbsp; <i class="gray">on
 							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
 					</div>
 					
 					<div class="item-content ft14" style="text-align: center;">
 						<c:choose>
-							<c:when test="${cartoon.list[0].cartoon_width>600}">
-								<img alt="${cartoon.list[0].cartoon_title }" src="${cartoon.list[0].cartoon_local_url }" style="width:600px ;height: ${cartoon.list[0].cartoon_heigth}px;">
+							<c:when test="${cartoon[1].cartoon_width>600}">
+								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:600px ;height: ${cartoon[1].cartoon_heigth}px;">
 							</c:when>
 							<c:otherwise>
-								<img alt="${cartoon.list[0].cartoon_title }" src="${cartoon.list[0].cartoon_local_url }" style="width:${cartoon.list[0].cartoon_width}px ;height: ${cartoon.list[0].cartoon_heigth}px;">
+								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:${cartoon[1].cartoon_width}px ;height: ${cartoon[1].cartoon_heigth}px;">
 							</c:otherwise>
 						</c:choose>
 						<br>
 						<br>
-						${cartoon.list[0].cartoon_detial }<br>
+						${cartoon[1].cartoon_detial }<br>
 					</div>
 					<div class="item-assess">
 						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i>10
@@ -109,8 +109,8 @@
 					<div class="item-next">
 						<span class="float-left ft12"> 上一篇：
 						<c:choose>
-							<c:when test="${cartoon.havePrePage}">
-								<a href="cartoon.html?currentPage=${cartoon.pageNumber-1}">xxx</a>
+							<c:when test="${!empty cartoon[2]}">
+								<a href="cartoon.html?currentPage=${cartoon[2].id-1}">${cartoon[2].cartoon_title }</a>
 							</c:when>
 							<c:otherwise>
 								<a href="cartoon.html">没有上一页了。。</a>
@@ -122,8 +122,8 @@
 						<span class="float-right ft12"> 
 						下一篇：
 						<c:choose>
-							<c:when test="${cartoon.haveNextPage}">
-								<a href="cartoon.html?currentPage=${cartoon.pageNumber+1}">xxx</a>
+							<c:when test="${!empty cartoon[0]}">
+								<a href="cartoon.html?currentPage=${cartoon[0].id+1}">${cartoon[0].cartoon_title }</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">没有下一页了。。</a>

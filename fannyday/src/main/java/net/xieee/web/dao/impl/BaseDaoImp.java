@@ -33,6 +33,26 @@ public class BaseDaoImp<T> implements BaseDao {
 		return pager;
 	}
 
+	@SuppressWarnings("unchecked")
+	public Pager findCartoonPager(String sql, Pager pager,Object... params) {
+		// TODO Auto-generated method stub
+		if (pager == null) {
+			pager = new Pager();
+		}
+
+		if(pager.getPageNumber()!=1){
+			sql += " limit " + ((pager.getPageNumber() - 1) * pager.getPageSize()-2)
+					+ " , " + pager.getPageSize();
+			
+		}else {
+			sql += " limit " + (pager.getPageNumber() - 1) * pager.getPageSize()
+					+ " , " + pager.getPageSize();
+		}
+		List rows = jdbcTemplate.queryForList(sql,params);
+		pager.setList(rows);
+		return pager;
+	}
+
 	public int getCount(String sql, Object[] params) {
 		// TODO Auto-generated method stub
 		return jdbcTemplate.queryForInt(sql, params);

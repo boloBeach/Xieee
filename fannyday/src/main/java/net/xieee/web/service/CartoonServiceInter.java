@@ -1,5 +1,7 @@
 package net.xieee.web.service;
 
+import java.util.List;
+
 import net.xieee.util.Pager;
 
 public interface CartoonServiceInter extends BaseServiceInter {
@@ -8,5 +10,5 @@ public interface CartoonServiceInter extends BaseServiceInter {
 	 * @param currentPage
 	 * @return
 	 */
-	public Pager getCartoon(String currentPage);
+	public List getCartoon(String currentPage);
 }

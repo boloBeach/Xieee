@@ -55,12 +55,23 @@ public interface BaseDao<T> {
 	 */
 	public List<Map<String,Object>> getList(String sql,Object[] params);
 	
+	
+	
 	/**
 	 * 分页查询
 	 * @param sql
 	 * @return
 	 */
 	public Pager findBypager(String sql,Pager pager,Object... params);
+	
+	/**
+	 * 分页查询，主要是是cartoon指定的查询
+	 * @param sql
+	 * @param pager
+	 * @param params
+	 * @return
+	 */
+	public Pager findCartoonPager(String sql,Pager pager,Object...params);
 	
 	
 	/**

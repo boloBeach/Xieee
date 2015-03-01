@@ -77,4 +77,13 @@ public interface BaseServiceInter<T> {
 	 * @return list<object>
 	 */
 	public List<T> getListByClass(String sql,Class clazz,Object[] params);
+	
+	/**
+	 * 查询cartoonPager
+	 * @param sql
+	 * @param pager
+	 * @param params
+	 * @return
+	 */
+	public Pager findCartoonPager(String sql, Pager pager,Object... params);
 }

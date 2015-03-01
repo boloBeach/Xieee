@@ -20,6 +20,10 @@ public class BaseServiceImpl<T> implements BaseServiceInter {
 		// TODO Auto-generated method stub
 		return baseDao.findBypager(sql, pager,params);
 	}
+	
+	public Pager findCartoonPager(String sql, Pager pager,Object... params){
+		return baseDao.findCartoonPager(sql, pager, params);
+	}
 
 	
 	public int getCount(String sql,Object[] params) {

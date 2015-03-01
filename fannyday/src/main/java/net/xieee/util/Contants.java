@@ -19,5 +19,5 @@ public class Contants {
 	/**
 	 * 每页显示1条数据
 	 */
-	public static final Integer cartoon_picture_pagesize = 1;
+	public static final Integer cartoon_picture_pagesize = 3;
 }
