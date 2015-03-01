@@ -39,8 +39,8 @@ public class CartoonSpider {
 		Element elementImg = null;
 		String src = null;
 		for (Element element : elementsDiv) {
-			src = elementImg.attr("src");
 			elementImg = element.getElementsByTag("img").first();
+			src = elementImg.attr("src");
 			Cartoon cartoon = new Cartoon();
 			cartoon.setCartoon_detail(getDetail(element.text()));
 			cartoon.setCartoon_image_name(src.substring(src.lastIndexOf("/")+1));
