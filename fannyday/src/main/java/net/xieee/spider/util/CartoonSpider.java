@@ -31,7 +31,6 @@ public class CartoonSpider {
 		List<Cartoon> list = new ArrayList<Cartoon>();
 		Document document = Jsoup.parse(StringEscapeUtils.unescapeJava(getJsonString(url, host, referer)));
 		Element elementsDiv = document.getElementsByTag("div").first();
-		System.out.println(elementsDiv);
 		Element elementImg = null;
 		String src = null;
 		elementImg = elementsDiv.getElementsByTag("img").first();
