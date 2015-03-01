@@ -13,17 +13,12 @@ import java.util.regex.Pattern;
 
 import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Cartoon;
-import net.xieee.web.service.impl.PictureServiceImpl;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-
-import com.sun.xml.internal.ws.message.StringHeader;
 
 /**
  * 抓取漫画的信息，主要抓取网站为内涵吧O <class description>
@@ -42,12 +37,13 @@ public class CartoonSpider {
 			elementImg = element.getElementsByTag("img").first();
 			src = elementImg.attr("src");
 			Cartoon cartoon = new Cartoon();
-			cartoon.setCartoon_detail(getDetail(element.text()));
+			cartoon.setCartoon_detail(element.text());
 			cartoon.setCartoon_image_name(src.substring(src.lastIndexOf("/")+1));
 			cartoon.setCartoon_inter_url(httpHost + src);
 			cartoon.setCartoon_user_name("admin");
 			cartoon.setCartoon_parent_url(url);
 			cartoon.setCartoon_name(elementImg.attr("alt"));
+			cartoon.setCartoon_title(getTitle(document));
 			cartoon.setImage_height(getHeightByStyle(elementImg.attr("style")));
 			cartoon.setImage_width(getWidthByStyle(elementImg.attr("style")));
 			list.add(cartoon);
@@ -76,6 +72,24 @@ public class CartoonSpider {
 	}
 
 
+	/**
+	 * 获取title
+	 * @param document
+	 * @return
+	 */
+	public String getTitle(Document document){
+		if(StringUtil.isNull(document)){
+			return null;
+		}
+		Pattern pattern = Pattern.compile("\"title\":\"(.*?)\",");
+		Matcher matcher = pattern.matcher(document.toString());
+		if (matcher.find()) {
+			return matcher.group(1);
+		}
+		return null;
+		
+	}
+	
 
 	/**
 	 * 获取长度
@@ -108,7 +122,7 @@ public class CartoonSpider {
 		if (StringUtil.isNull(document)) {
 			return null;
 		}
-		Pattern pattern = Pattern.compile("<br>([^>]*)</div>");
+		Pattern pattern = Pattern.compile("(<br>|<br/>)([^>]*)</div>");
 		Matcher matcher = pattern.matcher(document.toString());
 		if (matcher.find()) {
 			return matcher.group(1);

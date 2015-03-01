@@ -798,7 +798,7 @@ em {
 .index-content-item-content{
 	width: 100%;
 	height: 600px;
-	border-bottom: 1px solid #D1D1D1;
+	/* border-bottom: 1px solid #D1D1D1; */
 }
 .content-list li{
 	float: left;
@@ -807,6 +807,7 @@ em {
 	margin-right: 7px;
 	margin-top: 10px;
 	margin-left: 7px;
+	border: 1px dashed #D1D1D1;
 }
 .content-list img{
 	height: 155px;

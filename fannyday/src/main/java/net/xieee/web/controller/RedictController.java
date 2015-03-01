@@ -47,6 +47,7 @@ public class RedictController {
 		// 获取一级菜单
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		return modelAndView;
 	}
 
@@ -62,7 +63,12 @@ public class RedictController {
 	@RequestMapping(value = "detailpicture.html")
 	public ModelAndView detailPicture(HttpServletRequest request, HttpServletResponse response) {
 		String parentId = request.getParameter("parentId");
+		String urlId = request.getParameter("urlId");
+		// 获取一级菜单
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("detailpicture");
+		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		return modelAndView;
 	}
 }

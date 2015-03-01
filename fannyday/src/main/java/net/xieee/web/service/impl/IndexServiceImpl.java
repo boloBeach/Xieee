@@ -75,14 +75,8 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 	}
 
 	public List randPicture() {
-		String sql = "select id,parent_picture_name,picture_url,detail from parent_picture where is_delete=?  order by rand() limit 9";
+		String sql = "select id,parent_picture_name,picture_url,detail from parent_picture where is_delete=?  order by rand() limit 18";
 		Object[] params = {1};
-		return findList(sql, params);
-	}
-
-	public List randGifPicture() {
-		String sql = "select id,parent_picture_name,picture_url,detail from parent_picture  where catalog_id=? and  is_delete=? order by rand() limit 9";
-		Object[] params = {4,1};
 		return findList(sql, params);
 	}
 

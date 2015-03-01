@@ -65,6 +65,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td class="tableleft">点击次数</td>
         <td><input type="text" name="skim_count"/></td>
     </tr>
+    
+     <tr>
+        <td class="tableleft">url</td>
+        <td><input type="text" name="picture_url"/></td>
+    </tr>
     <tr>
         <td class="tableleft">状态</td>
         <td>

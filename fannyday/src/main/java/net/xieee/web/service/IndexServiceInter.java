@@ -41,14 +41,6 @@ public interface IndexServiceInter extends BaseServiceInter {
 
 
 
-	/**
-	 * 随机的获取9个gif
-	 * 
-	 * @return
-	 */
-	public List randGifPicture();
-
-
 
 	/**
 	 * 获取标签 <method description>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.IndexServiceInter;
 
@@ -33,8 +34,9 @@ public class IndexController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("/index");
 		modelAndView.addObject("catalogList", list);
-		modelAndView.addObject("randPicture", indexServiceImpl.randPicture());
-		modelAndView.addObject("randGifPicture", indexServiceImpl.randGifPicture());
+		if(StringUtil.isNull(urlId) || urlId.equals("1")){
+			modelAndView.addObject("randPicture", indexServiceImpl.randPicture());
+		}
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		return modelAndView;
 	}

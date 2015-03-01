@@ -73,8 +73,8 @@ public class BackPictureManagerServiceImpl extends BaseServiceImpl implements Ba
 		if(StringUtil.isNull(parentPicture)){
 			return 0;
 		}
-		String sql = "insert into parent_picture(parent_picture_name,detail,catalog_id,skim_count,is_delete) values(?,?,?,?,?)";
-		Object[] params = {parentPicture.getParent_picture_name(),parentPicture.getDetail(),parentPicture.getCatalog_id(),parentPicture.getSkim_count(),parentPicture.getIs_delete()};
+		String sql = "insert into parent_picture(parent_picture_name,detail,catalog_id,skim_count,is_delete,picture_url) values(?,?,?,?,?)";
+		Object[] params = {parentPicture.getParent_picture_name(),parentPicture.getDetail(),parentPicture.getCatalog_id(),parentPicture.getSkim_count(),parentPicture.getIs_delete(),parentPicture.getPicture_url()};
 		return save(sql, params);
 	}
 
