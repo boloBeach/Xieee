@@ -16,12 +16,51 @@ public class Cartoon {
 	private String	cartoon_detail;
 	private String	cartoon_image_name;
 	private String	cartoon_inter_url;
-	private int	image_height;
-	private int	image_width;
+	private int		image_height;
+	private int		image_width;
 	private String	cartoon_local_url;
 	private String	cartoon_parent_url;
+	private Integer	old_cartoon;
+	private Integer	down_count;
+	private Integer	up_count;
 	private String	is_delete;
 	private Date	modify_time;
+
+
+
+	public Integer getOld_cartoon() {
+		return old_cartoon;
+	}
+
+
+
+	public void setOld_cartoon(Integer pOld_cartoon) {
+		old_cartoon = pOld_cartoon;
+	}
+
+
+
+	public Integer getDown_count() {
+		return down_count;
+	}
+
+
+
+	public void setDown_count(Integer pDown_count) {
+		down_count = pDown_count;
+	}
+
+
+
+	public Integer getUp_count() {
+		return up_count;
+	}
+
+
+
+	public void setUp_count(Integer pUp_count) {
+		up_count = pUp_count;
+	}
 
 
 
@@ -190,7 +229,5 @@ public class Cartoon {
 				+ cartoon_local_url + ", cartoon_parent_url=" + cartoon_parent_url + ", is_delete=" + is_delete
 				+ ", modify_time=" + modify_time + "]";
 	}
-	
-	
 
 }

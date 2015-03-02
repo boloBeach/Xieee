@@ -64,9 +64,9 @@
 						${cartoon[1].cartoon_detial }<br>
 					</div>
 					<div class="item-assess">
-						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i>10
-						</a> <a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i>10
-						</a> <a class="bad" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(10)
+						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i>${cartoon[1].top_count}
+						</a> <a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i>${cartoon[1].down_count}
+						</a> <a class="bad" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(${cartoon[1].old_cartoon})
 						</a> <a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
 						</a>
 					</div>
