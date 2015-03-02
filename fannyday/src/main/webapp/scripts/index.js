@@ -51,7 +51,23 @@
          * heat 按热度排序
          */
         function doSort(type) {
-            alert('doSort: ' + type);
+           var contentList = $(".content-list");
+           var uriId = $(".showUrlId").val();
+           $.ajax({
+        	   url:"showResource.html",
+        	   data:{type:type,urlId:uriId},
+        	   dataType:"json",
+        	   success:function(data){
+        		   if(data==null){
+        			   contentList.html("对不起，后台没有数据了。");
+        		   }else{
+        			   contentList.html("");
+        			   for(var i=0;i<data.length;i++){
+        				   $("<li> <a href='detailpicture.html?parentId="+data[i].id+"}' target='_blank'><img src= "+data[i].picture_url+" data-bd-imgshare-binded='1'/> </a><p><a href='detailpicture.html?parentId="+data[i].id+"' target='_blank' title="+data[i].detail+"><div>"+data[i].detail+"</div> </a></p> </li>").appendTo(contentList);
+        			   }
+        		   }
+        	   }
+           });
         }
 
 

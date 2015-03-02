@@ -22,7 +22,7 @@ public class Cartoon {
 	private String	cartoon_parent_url;
 	private Integer	old_cartoon;
 	private Integer	down_count;
-	private Integer	up_count;
+	private Integer	top_count;
 	private String	is_delete;
 	private Date	modify_time;
 
@@ -52,14 +52,16 @@ public class Cartoon {
 
 
 
-	public Integer getUp_count() {
-		return up_count;
+
+
+	public Integer getTop_count() {
+		return top_count;
 	}
 
 
 
-	public void setUp_count(Integer pUp_count) {
-		up_count = pUp_count;
+	public void setTop_count(Integer top_count) {
+		this.top_count = top_count;
 	}
 
 

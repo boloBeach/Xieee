@@ -1,3 +1,4 @@
+<%@page import="net.xieee.util.StringUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="index-title">
@@ -34,18 +35,27 @@
 		</div>
 		<div class="clear"></div>
 	</div>
+	<%
+		String uriId = request.getParameter("urlId");
+		Integer id = StringUtil.stringToInt(uriId);
+		if(id ==0){
+			id = 1;
+		}
+		request.setAttribute("id",id);  
+	%>
 	<div class="index-nav">
 		<ul>
 			<c:forEach items="${catalogList}" var="catalogList"
 				varStatus="status">
-
-				<c:if test="${status.index==0}">
-					<li class="on"><a
-						href="${catalogList.url}?urlId=${catalogList.id}" class="ft14"
+				
+				<c:if test="${catalogList.id eq id}">
+					<li class="on">
+					<input type="hidden" value="${catalogList.id}" class="showUrlId"/>
+					<a href="${catalogList.url}?urlId=${catalogList.id}" class="ft14"
 						title="${catalogList.name }">${catalogList.name }</a></li>
 				</c:if>
 
-				<c:if test="${status.index!=0}">
+				<c:if test="${catalogList.id != id}">
 					<li><a href="${catalogList.url}?urlId=${catalogList.id}"
 						class="ft14" title="${catalogList.name }">${catalogList.name }</a>
 					</li>

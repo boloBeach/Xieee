@@ -1,5 +1,7 @@
 package net.xieee.web.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +11,13 @@ import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.IndexServiceInter;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
 
 /**
@@ -24,6 +28,7 @@ import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
  */
 @Controller
 public class IndexController {
+	private final static Logger logger = Logger.getLogger(IndexController.class);
 	@Autowired
 	private IndexServiceInter indexServiceImpl;
 	@RequestMapping(value="index.html")
@@ -34,9 +39,7 @@ public class IndexController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("/index");
 		modelAndView.addObject("catalogList", list);
-		if(StringUtil.isNull(urlId) || urlId.equals("1")){
-			modelAndView.addObject("randPicture", indexServiceImpl.randPicture());
-		}
+		modelAndView.addObject("randPicture", indexServiceImpl.randPicture(urlId,null));
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		return modelAndView;
 	}
@@ -58,5 +61,23 @@ public class IndexController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="showResource.html")
+	public void showResource(HttpServletRequest request,HttpServletResponse response){
+		response.setContentType("text/json; charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		String urlId = request.getParameter("urlId");
+		String type = request.getParameter("type");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			logger.error(e.toString());
+		}
+		Gson gson = new Gson();
+		out.write(gson.toJson(indexServiceImpl.randPicture(urlId,type)));
+		out.close();
 	}
 }
