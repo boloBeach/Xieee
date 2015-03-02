@@ -52,6 +52,9 @@
 							<c:when test="${cartoon[1].cartoon_width>600}">
 								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:600px ;height: ${cartoon[1].cartoon_heigth}px;">
 							</c:when>
+							<c:when test="${cartoon[1].cartoon_width==0 }">
+								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:600px ;height: 2500px;">
+							</c:when>
 							<c:otherwise>
 								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:${cartoon[1].cartoon_width}px ;height: ${cartoon[1].cartoon_heigth}px;">
 							</c:otherwise>
@@ -109,8 +112,8 @@
 					<div class="item-next">
 						<span class="float-left ft12"> 上一篇：
 						<c:choose>
-							<c:when test="${!empty cartoon[2]}">
-								<a href="cartoon.html?currentPage=${cartoon[2].id-1}">${cartoon[2].cartoon_title }</a>
+							<c:when test="${!empty cartoon[0]}">
+								<a href="cartoon.html?currentPage=${cartoon[0].id}">${cartoon[0].cartoon_title }</a>
 							</c:when>
 							<c:otherwise>
 								<a href="cartoon.html">没有上一页了。。</a>
@@ -122,8 +125,8 @@
 						<span class="float-right ft12"> 
 						下一篇：
 						<c:choose>
-							<c:when test="${!empty cartoon[0]}">
-								<a href="cartoon.html?currentPage=${cartoon[0].id+1}">${cartoon[0].cartoon_title }</a>
+							<c:when test="${!empty cartoon[2]}">
+								<a href="cartoon.html?currentPage=${cartoon[2].id}">${cartoon[2].cartoon_title }</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">没有下一页了。。</a>
