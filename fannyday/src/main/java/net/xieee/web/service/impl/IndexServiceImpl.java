@@ -106,4 +106,9 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		return findList(sql, params);
 	}
 
+	public List randCartoon() {
+		String sql = "SELECT id,cartoon_title FROM cartoon ORDER BY RAND() limit "+Constants.rand_cartoon_count+" ";
+		return findList(sql, null);
+	}
+
 }

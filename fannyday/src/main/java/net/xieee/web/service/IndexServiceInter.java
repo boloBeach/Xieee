@@ -34,12 +34,14 @@ public interface IndexServiceInter extends BaseServiceInter {
 
 	/**
 	 * 获取18个随机的图片
-	 * @param urlId 菜单Id值
-	 * @param type 类型，默认是按照热度来进行排序，有热度和时间
+	 * 
+	 * @param urlId
+	 *            菜单Id值
+	 * @param type
+	 *            类型，默认是按照热度来进行排序，有热度和时间
 	 * @return
 	 */
-	public List randPicture(String urlId,String type);
-
+	public List randPicture(String urlId, String type);
 
 
 
@@ -49,5 +51,15 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public List getTag();
-	
+
+
+
+	/**
+	 * 随机生成12个搞笑的漫画进去
+	 * <method description>
+	 *
+	 * @return
+	 */
+	public List randCartoon();
+
 }

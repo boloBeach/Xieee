@@ -84,6 +84,7 @@ public class RedictController {
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage));
+		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		return modelAndView;
 	}
 }

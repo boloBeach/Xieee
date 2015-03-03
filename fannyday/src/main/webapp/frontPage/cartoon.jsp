@@ -64,10 +64,11 @@
 						${cartoon[1].cartoon_detial }<br>
 					</div>
 					<div class="item-assess">
-						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i>${cartoon[1].top_count}
-						</a> <a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i>${cartoon[1].down_count}
-						</a> <a class="bad" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(${cartoon[1].old_cartoon})
-						</a> <a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
+						<input type="hidden" class="cartoon_id" value="${cartoon[1].id }"/>
+						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${cartoon[1].top_count}</span></a> 
+						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${cartoon[1].down_count}</span> </a> 
+						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${cartoon[1].old_cartoon}</span>)</a>
+						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
 						</a>
 					</div>
 					<div>
@@ -180,5 +181,8 @@
 			<%@include file="footer.jsp"%>
 		</div>
 	</div>
+	<script type="text/javascript" src="http://tool.keleyi.com/ip/visitoriphost/"></script>
+	<span id="keleyivisitorip" style="visibility: hidden;"></span>
 </body>
 </html>
+<script type="text/javascript" src="scripts/likeResource.js"></script>

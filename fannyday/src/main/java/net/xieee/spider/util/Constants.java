@@ -76,4 +76,9 @@ public class Constants {
 	 * @see 在内涵吧里面的返回json中，很多都是一个相对路径，我们需要加上上下文对象。
 	 */
 	public final static String cartoon_httpHost = "http://www.neihan8.com";
+	
+	/**
+	 * @see 随机生成12个搞笑漫画出来。
+	 */
+	public final static Integer rand_cartoon_count = 12;
 }

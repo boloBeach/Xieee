@@ -23,4 +23,22 @@ public class CartoonServiceImpl extends BaseServiceImpl implements CartoonServic
 		return findList(sql, params);
 	}
 
+	public int likeResource(String pUriId, String pSpanCount, String pType) {
+		// good is top_count
+		// bad is down_count
+		// old is old_cartoon
+		String updateSql = null;
+		if(StringUtil.isNull(pType) || pType.trim().equals("good")){
+			updateSql = "update cartoon set top_count=top_count+1 where id=?";
+		}else if (pType.trim().equals("bad")) {
+			updateSql = "update cartoon set down_count=down_count+1 where id=?";
+		}else if (pType.trim().equals("old")) {
+			updateSql = "update cartoon set old_cartoon=old_cartoon+1 where id=?";
+		}else {
+			updateSql = "update cartoon set top_count=top_count+1 where id=?";
+		}
+		Object[] params = {pUriId};
+		return update(updateSql, params);
+	}
+
 }

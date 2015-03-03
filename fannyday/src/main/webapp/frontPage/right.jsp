@@ -31,12 +31,15 @@
 
   <div class="index-content-ringht-randpicture">
   		<div class="index-content-ringht-title ft18">
-  			<span>随机日志</span>
+  			<span>随机漫画</span>
   		</div>
   		<div class="index-content-rightItem ft12">
   			<ul>
+  				<c:forEach var="randCartoon" items="${randCartoon}">
+  					<li><a href="cartoon.html?urlId=${randCartoon.id }" class="blank" title=${randCartoon.cartoon_title }">${randCartoon.cartoon_title }</a></li>
+  				</c:forEach>
   				<!-- this is foreach 12 pages  -->
- 				<li><a href="detail.html" class="blank" title="姑娘你别胡思乱想了，世界上爱你的人多着呢">姑娘你别胡思乱想了，世界上爱你的人多着呢</a></li>
+ 				<!-- <li><a href="detail.html" class="blank" title="姑娘你别胡思乱想了，世界上爱你的人多着呢">姑娘你别胡思乱想了，世界上爱你的人多着呢</a></li>
  				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
  				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
  				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
@@ -47,7 +50,7 @@
  				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
  				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
  				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
+ 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li> -->
  			</ul>
  		</div>
  </div>
