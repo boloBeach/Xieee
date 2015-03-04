@@ -28,7 +28,6 @@ public class NeiHanJokePicture {
 	public Picture getPicturesByNeiHan(String url, String referer, String host, String httpHost) throws Exception {
 		CartoonSpider cartoonSpider = new CartoonSpider();
 		Document document = Jsoup.parse(StringEscapeUtils.unescapeJava(CartoonSpider.getJsonString(url, host, referer)));
-		System.out.println(document);
 		Element elementsDiv = document.getElementsByTag("div").first();
 		Element elementImg = null;
 		String src = null;
