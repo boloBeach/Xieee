@@ -84,7 +84,7 @@ public class DownloadImage {
 		picture.setHeight(bufferedImage.getHeight());*/
 		byte[] bs = new byte[1024];
 		int len;
-		File sf = new File(Constants.savePath);
+		File sf = new File(Constants.ps_picture_save_path);
 		if (!sf.exists()) {
 			sf.mkdirs();
 		}

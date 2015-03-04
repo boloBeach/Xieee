@@ -28,6 +28,11 @@ public class Constants {
 	public final static String savePath = "/usr/local/nginx/html/fannyday/images/";
 	
 	/**
+	 * ps picture save path
+	 */
+	public final static String ps_picture_save_path = "/usr/local/nginx/html/fannyday/images/ps";
+	
+	/**
 	 * save cartoon img path
 	 */
 	public final static String cartoon_savePath = "/usr/local/nginx/html/fannyday/cartoon";
