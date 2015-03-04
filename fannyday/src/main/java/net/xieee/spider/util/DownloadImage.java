@@ -70,7 +70,7 @@ public class DownloadImage {
 		connection.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4");
 		connection.setRequestProperty("Cache-Control", "max-age=0");
 		connection.setRequestProperty("Connection", "keep-alive");
-		connection.setRequestProperty("Host", "img0.bdstatic.com");
+		connection.setRequestProperty("Host", host);
 		connection.setRequestProperty("Referer", "http://image.baidu.com");
 		
 		//connection.setRequestProperty("Host", host);
