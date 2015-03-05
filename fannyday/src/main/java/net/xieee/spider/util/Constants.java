@@ -48,6 +48,16 @@ public class Constants {
 	public final static String imgHTTPPath = "http://172.17.111.59:8080/images/";
 	
 	/**
+	 * 节操漫画的图片放置位置
+	 */
+	public final static String joker_img_save_path = "/usr/local/nginx/html/fannyday/images/joke";
+	
+	/**
+	 * 节操漫画的图片放置位置
+	 */
+	public final static String joker_img_http_path = "http://172.17.111.59/images/joke/";
+	
+	/**
 	 * cartoon nginx img path
 	 */
 	public final static String cartoon_img_http_path = "http://192.168.0.112/cartoon/";
