@@ -33,6 +33,11 @@ public class Constants {
 	public final static String ps_picture_save_path = "/usr/local/nginx/html/fannyday/images/ps";
 	
 	/**
+	 * 搞笑图片的nginx路径
+	 */
+	public final static String joke_picture_save_path = "/usr/local/nginx/html/fannyday/images";
+	
+	/**
 	 * save cartoon img path
 	 */
 	public final static String cartoon_savePath = "/usr/local/nginx/html/fannyday/cartoon";
@@ -46,6 +51,11 @@ public class Constants {
 	 * cartoon nginx img path
 	 */
 	public final static String cartoon_img_http_path = "http://192.168.0.112/cartoon/";
+	
+	/**
+	 * ps 图片的http地址
+	 */
+	public final static String ps_img_http_path = "http://172.17.111.59/images/ps/";
 
 	/**
 	 * spring xml name

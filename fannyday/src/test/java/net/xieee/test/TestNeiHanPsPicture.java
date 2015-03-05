@@ -1,5 +1,6 @@
 package net.xieee.test;
 
+import net.xieee.spider.util.Constants;
 import net.xieee.spider.util.DownloadImage;
 import net.xieee.spider.util.NeiHanPsPicture;
 import net.xieee.web.bean.Picture;
@@ -16,7 +17,7 @@ public class TestNeiHanPsPicture {
 			url = "http://www.neihan8.com/s/data.php?start="+i+"&num=1&type=3&markid=undefined&typeid=1&hotdate=14&tagtid=2";
 			try {
 				Picture picture = neiHanPsPicture.getPicturesByNeiHanPs(url, referer, host, httpHost);
-				downloadImage.Download(picture, host);
+				downloadImage.Download(picture, host,Constants.ps_picture_save_path,Constants.ps_img_http_path);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

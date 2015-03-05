@@ -25,7 +25,7 @@ public class DownloadImage {
 		pictureServiceImpl = (PictureServiceImpl) context.getBean("pictureServiceImpl");
 	}
 	
-	public void DownloadCartoonImg(List<Cartoon> cartoons) throws Exception{
+	public void DownloadCartoonImg(List<Cartoon> cartoons,String fileSavePath,String httpPath) throws Exception{
 		if(cartoons.isEmpty()){
 			return;
 		}
@@ -41,7 +41,7 @@ public class DownloadImage {
 				picture.setHeight(bufferedImage.getHeight());*/
 				byte[] bs = new byte[1024];
 				int len;
-				File sf = new File(Constants.cartoon_savePath);
+				File sf = new File(fileSavePath);
 				if (!sf.exists()) {
 					sf.mkdirs();
 				}
@@ -49,7 +49,7 @@ public class DownloadImage {
 				while ((len = is.read(bs)) != -1) {
 					os.write(bs, 0, len);
 				}
-				cartoon.setCartoon_local_url(Constants.cartoon_img_http_path+cartoon.getCartoon_image_name());
+				cartoon.setCartoon_local_url(httpPath+cartoon.getCartoon_image_name());
 				pictureServiceImpl.saveCartoon(cartoon);
 				os.close();
 				is.close();
@@ -58,7 +58,13 @@ public class DownloadImage {
 		
 	}
 	
-	public void Download(Picture picture,String host) throws IOException{
+	/**
+	 * @param picture 每一张图片
+	 * @param host host
+	 * @param fileSavePath 保存的文件名字
+	 * @param httpPath http路径path
+	 */
+	public void Download(Picture picture,String host,String fileSavePath,String httpPath) throws IOException{
 		boolean isTrue = pictureServiceImpl.checkHasPicture(picture.getPicture_name());
 		if (isTrue) {
 			return;
@@ -84,7 +90,7 @@ public class DownloadImage {
 		picture.setHeight(bufferedImage.getHeight());*/
 		byte[] bs = new byte[1024];
 		int len;
-		File sf = new File(Constants.ps_picture_save_path);
+		File sf = new File(fileSavePath);
 		if (!sf.exists()) {
 			sf.mkdirs();
 		}
@@ -92,7 +98,7 @@ public class DownloadImage {
 		while ((len = is.read(bs)) != -1) {
 			os.write(bs, 0, len);
 		}
-		picture.setLocal_url(Constants.imgHTTPPath+picture.getPicture_name());
+		picture.setLocal_url(httpPath+picture.getPicture_name());
 		pictureServiceImpl.savePicture(picture);
 		os.close();
 		is.close();
