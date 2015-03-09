@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.CartoonServiceInter;
 import net.xieee.web.service.IndexServiceInter;
@@ -79,8 +80,20 @@ public class RedictController {
 	@RequestMapping(value="cartoon.html")
 	public ModelAndView cartoon(HttpServletRequest request,HttpServletResponse response){
 		String currentPage = request.getParameter("currentPage");
-		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("cartoon");
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
+		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage));
+		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="virgin.html")
+	public ModelAndView virgin(HttpServletRequest request,HttpServletResponse response){
+		String currentPage = request.getParameter("currentPage");
+		ModelAndView modelAndView = new ModelAndView("virgin");
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage));
