@@ -21,6 +21,9 @@
 
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
+	
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/freemarkerHtml/" p:suffix=".html"/> 
+    
 	 <!-- ===================================================== -->
     <!-- ViewResolver For FreeMarker -->
     <!-- ===================================================== -->
@@ -55,14 +58,14 @@
         </property>
     </bean> 
     
-   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!--   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/frontPage/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>
         </property>
-    </bean> 
+    </bean> -->
     
    
 </beans>

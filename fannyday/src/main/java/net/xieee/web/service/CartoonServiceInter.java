@@ -11,7 +11,15 @@ public interface CartoonServiceInter extends BaseServiceInter {
 	 * @param currentPage
 	 * @return
 	 */
-	public List getCartoon(String currentPage);
+	public List getCartoon(String currentPage,int maxId);
+	
+	/**
+	 * 获取cartoon的maxId值
+	* <method description>
+	*
+	* @return
+	 */
+	public int getMaxId();
 
 
 

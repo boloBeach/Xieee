@@ -84,7 +84,7 @@ public class RedictController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
-		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage));
+		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage,cartoonServiceImpl.getMaxId()));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		return modelAndView;
 	}
@@ -96,7 +96,7 @@ public class RedictController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
-		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage));
+		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage,cartoonServiceImpl.getMaxId()));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		return modelAndView;
 	}

@@ -31,43 +31,33 @@
 						class="ft12">首页</a>&nbsp;»&nbsp;<a href="" class="ft12">今日囧图</a>
 					</span>
 				</div>
-				
 				<#list cartoon as cartoon>
-					<#if cartoon_index==0>
-						<#assign currentPrev="${cartoon}"/>
-					</#if>
-					
-					<#if cartoon_index==1>
-						<#assign currentCartoon="${cartoon}"/>
-					</#if>
-					
-					<#if cartoon_index==2>
-						<#assign currentNext="${cartoon}"/>
-					</#if>
-				</#list>
+					<#if cartoon_index=0>
 				<div class="index-content-left-item">
-					<h1 class="ft20">${currentCartoon.cartoon_title }</h1>
+					<h1 class="ft20">${cartoon.cartoon_title }</h1>
 					<div class="item-info ft12">
-						<i class="gray">by</i>&nbsp;&nbsp;${currentCartoon.cartoon_user_name }&nbsp; <i class="gray">on
+						<i class="gray">by</i>&nbsp;&nbsp;${cartoon.cartoon_user_name }&nbsp; <i class="gray">on
 							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
 					</div>
 					<div class="item-content ft14" style="text-align: center;">
-						<#if (currentCartoon.cartoon_width>600)>
-							<img alt="${currentCartoon.cartoon_title }" src="${currentCartoon.cartoon_local_url }" style="width:600px ;height: ${currentCartoon.cartoon_heigth}px;">
-						<#elseif currentCartoon.cartoon_width==0 >
-							<img alt="${currentCartoon.cartoon_title }" src="${currentCartoon.cartoon_local_url }" style="width:600px ;height: 2500px;">
+						<#--
+						<img alt="${cartoon.cartoon_title }" src="${cartoon.cartoon_local_url }" style="width:600px ;height: ${cartoon.image_heigth}px;">
+						<#elseif cartoon.image_width==0 >
+							<img alt="${cartoon.cartoon_title }" src="${cartoon.cartoon_local_url }" style="width:600px ;height: 2500px;">
 						<#else>
-							<img alt="${currentCartoon.cartoon_title }" src="${currentCartoon.cartoon_local_url }" style="width:${currentCartoon.cartoon_width}px ;height: ${currentCartoon.cartoon_heigth}px;">
+						-->
+						<#if cartoon.image_width??>
+							<img alt="${cartoon.cartoon_title }" src="${cartoon.cartoon_local_url }" style="width:${cartoon.image_width}px ;height: ${cartoon.image_height}px;">
 						</#if>
 						<br>
 						<br>
-						${currentCartoon.cartoon_detial }<br>
+						${cartoon.cartoon_detail }<br>
 					</div>
 					<div class="item-assess">
-						<input type="hidden" class="cartoon_id" value="${currentCartoon.id }"/>
-						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${currentCartoon.top_count}</span></a> 
-						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${currentCartoon.down_count}</span> </a> 
-						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${currentCartoon.old_cartoon}</span>)</a>
+						<input type="hidden" class="cartoon_id" value="${cartoon.id }"/>
+						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${cartoon.top_count}</span></a> 
+						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${cartoon.down_count}</span> </a> 
+						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${cartoon.old_cartoon}</span>)</a>
 						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
 						</a>
 					</div>
@@ -109,27 +99,34 @@
 										+ ~(-new Date() / 36e5)];
 						</script>
 					</div>
-					<div class="clear"></div>
-					<div class="item-next">
+					</#if>
+					<#if cartoon_index=0>
+						<div class="clear"></div>
+						<div class="item-next">
+					</#if>
+					<#if cartoon_index=1>
 						<span class="float-left ft12"> 上一篇：
-						
-						<#if currentPrev??>
-							<a href="cartoon.html?urlId=${id }&currentPage=${currentPrev.id}">${currentPrev.cartoon_title }</a>
-						<#else>
-							<a href="cartoon.html">没有上一页了。。</a>
-						</#if>
-						
+							<#if cartoon??>
+								<a href="cartoon.html?urlId=${id }&currentPage=${cartoon.id}">${cartoon.cartoon_title }</a>
+							<#else>
+								<a href="cartoon.html">没有上一页了。。</a>
+							</#if>
 						</span> 
-						
+					</#if>
+					<#if cartoon_index=2>
 						<span class="float-right ft12"> 
 						下一篇：
-						<#if currentNext??>
-							<a href="cartoon.html?urlId=${id }&currentPage=${currentNext.id}">${currentNext.cartoon_title }</a>
-						<#else>
-							<a href="#">没有下一页了。。</a>
-						</#if>
+							<#if cartoon??>
+								<a href="cartoon.html?urlId=${id }&currentPage=${cartoon.id}">${cartoon.cartoon_title }</a>
+							<#else>
+								<a href="#">没有下一页了。。</a>
+							</#if>
 						</span>
-					</div>
+					</#if>
+					<#if cartoon_index=0>
+						</div>
+					</#if>
+					</#list>
 					<div class="clear"></div>
 					<div class="item-comment-write">
 						<form>

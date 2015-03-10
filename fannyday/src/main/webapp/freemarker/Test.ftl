@@ -1,18 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">  
-   <title>邪恶搞笑gif</title>        
+  <head> 
+  <title>邪恶搞笑gif</title>        
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">    
   <meta http-equiv="keywords" content="搞笑,gif,内涵图">
   <meta http-equiv="description" content="This is my page">
-   <link href="./styles/reset.css" rel="stylesheet" type="text/css">
-    <link href="./styles/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="./scripts/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="./scripts/index.js"></script>
+   <link href="./../styles/reset.css" rel="stylesheet" type="text/css">
+    <link href="./../styles/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./../styles/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./../scripts/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="./../scripts/index.js"></script>
  </head>
  <body>
  	<div class="index-container">

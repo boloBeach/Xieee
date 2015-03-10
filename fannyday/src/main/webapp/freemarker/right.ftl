@@ -4,9 +4,9 @@
   		</div>
   		<ul class="ft16">
   			<#list tag as tag>
-  				<#if tag.key_word?length gt 4>
+  				<#if tag.key_word?length gt 5>
   					<li><a href="#" title="${tag.key_word }">${tag.key_word?substring(0,4)}</a></li>
-  				<#else>
+  				<#elseif tag.key_word!="">
   					<li><a href="#" title="${tag.key_word }">${tag.key_word }</a></li>
   				</#if>
   			</#list>
