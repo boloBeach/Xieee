@@ -6,8 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.xieee.freemarker.FreemarkertUtil;
-import net.xieee.freemarker.ProcessClient;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.CartoonServiceInter;
 import net.xieee.web.service.IndexServiceInter;
@@ -35,7 +33,7 @@ public class TestController {
 		request.setAttribute("randCartoon",indexServiceImpl.randCartoon());
 		HashMap<String, Object> root = new HashMap<String, Object>();
 		ModelAndView modelAndView = new ModelAndView("cartoon/"+urlId+"-"+cartoonId);
-		if(FreemarkertUtil.checkCartoonExist(fileName, request.getServletContext())){
+		/*if(FreemarkertUtil.checkCartoonExist(fileName, request.getServletContext())){
 			System.out.println("存在");
 		}else {
 			System.err.println("不存在，则创建一个html");
@@ -44,8 +42,8 @@ public class TestController {
 			root.put("cartoon",cartoonServiceImpl.getCartoon(cartoonId,cartoonServiceImpl.getMaxId()));
 			root.put("randCartoon",indexServiceImpl.randCartoon());
 			root.put("id","1");
-			ProcessClient.processCartoon(fileName, root,request.getServletContext());
-		}
+			//ProcessClient.processCartoon(fileName, root,request.getServletContext());
+		}*/
 		return modelAndView;
 	}
 }

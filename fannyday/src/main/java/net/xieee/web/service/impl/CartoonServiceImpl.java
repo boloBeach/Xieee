@@ -3,6 +3,7 @@ package net.xieee.web.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import net.xieee.spider.util.Constants;
 import net.xieee.util.StringUtil;
 import net.xieee.web.service.CartoonServiceInter;
 
@@ -21,7 +22,7 @@ public class CartoonServiceImpl extends BaseServiceImpl implements CartoonServic
 		return findList(sql, params);
 	}
 
-	public int likeResource(String pUriId, String pSpanCount, String pType) {
+	public int likeResource(String pUriId,String pType) {
 		// good is top_count
 		// bad is down_count
 		// old is old_cartoon
@@ -43,6 +44,25 @@ public class CartoonServiceImpl extends BaseServiceImpl implements CartoonServic
 	public int getMaxId() {
 		String sqlId = "select max(id) as id from cartoon";
 		Map map = (Map)getList(sqlId).get(0);
+		return StringUtil.stringToInt(map.get("id").toString());
+	}
+
+	@Override
+	public List getVirgin(String pCurrentId, int pMaxId) {
+		String sql = "SELECT id,picture_name,author,title,detail,height,width,local_url,down_count,	top_count,old_picture, modify_time FROM picture WHERE id = ? AND key_word =? AND is_delete = 1 UNION SELECT id,picture_name,author,title,detail,height,width,	local_url,down_count,	top_count,old_picture, modify_time FROM picture WHERE id = (SELECT max(id) FROM picture WHERE id < ? AND key_word =? AND is_delete = 1 	) UNION SELECT id,picture_name,author,title,detail,height,width,	local_url,down_count,	top_count,old_picture, modify_time FROM picture WHERE id = ( SELECT min(id) FROM  picture WHERE id > ? AND key_word =? AND is_delete = 1)";
+		Integer id = StringUtil.stringToInt(pCurrentId);
+		if(id==0){
+			id = pMaxId;
+		}
+		Object[] params = {id,Constants.key_word,id,Constants.key_word,id,Constants.key_word};
+		return findList(sql, params);
+	}
+
+	@Override
+	public int getVirginMaxId() {
+		String sqlId = "select max(id) as id from picture where key_word=?";
+		Object[] param = {Constants.key_word};
+		Map map = (Map)getList(sqlId,param).get(0);
 		return StringUtil.stringToInt(map.get("id").toString());
 	}
 

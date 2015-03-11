@@ -12,6 +12,7 @@ import net.xieee.web.service.IndexServiceInter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -77,27 +78,27 @@ public class RedictController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="cartoon.html")
-	public ModelAndView cartoon(HttpServletRequest request,HttpServletResponse response){
-		String currentPage = request.getParameter("currentPage");
+	@RequestMapping(value="cartoon/{urlId}-{cartoonId}.html")
+	public ModelAndView cartoon(@PathVariable String urlId,@PathVariable String cartoonId,HttpServletRequest request,HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("cartoon");
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
-		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage,cartoonServiceImpl.getMaxId()));
+		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(cartoonId,cartoonServiceImpl.getMaxId()));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("id", urlId);
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="virgin.html")
-	public ModelAndView virgin(HttpServletRequest request,HttpServletResponse response){
-		String currentPage = request.getParameter("currentPage");
+	@RequestMapping(value="virgin/{urlId}-{virginId}.html")
+	public ModelAndView virgin(@PathVariable String urlId,@PathVariable String virginId,HttpServletRequest request,HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("virgin");
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
-		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(currentPage,cartoonServiceImpl.getMaxId()));
+		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(virginId, cartoonServiceImpl.getVirginMaxId()));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("id", urlId);
 		return modelAndView;
 	}
 }

@@ -21,7 +21,11 @@
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <link href="styles/style.css" rel="stylesheet" type="text/css">
-
+ <script type="text/javascript">
+	  function refresh(obj) {
+	      obj.src = "imageServlet?"+Math.random();
+	   }
+    </script>
 <script type="text/javascript"
 	src="scripts/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/index.js"></script>
@@ -41,33 +45,33 @@
 					</span>
 				</div>
 				<div class="index-content-left-item">
-					<h1 class="ft20">${cartoon[1].cartoon_title }</h1>
+					<h1 class="ft20">${cartoon[0].cartoon_title }</h1>
 					<div class="item-info ft12">
-						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[1].cartoon_user_name }&nbsp; <i class="gray">on
+						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[0].cartoon_user_name }&nbsp; <i class="gray">on
 							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
 					</div>
 					
 					<div class="item-content ft14" style="text-align: center;">
 						<c:choose>
-							<c:when test="${cartoon[1].cartoon_width>600}">
-								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:600px ;height: ${cartoon[1].cartoon_heigth}px;">
+							<c:when test="${cartoon[0].cartoon_width>600}">
+								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
 							</c:when>
-							<c:when test="${cartoon[1].cartoon_width==0 }">
-								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:600px ;height: 2500px;">
+							<c:when test="${cartoon[0].cartoon_width==0 }">
+								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: 2500px;">
 							</c:when>
 							<c:otherwise>
-								<img alt="${cartoon[1].cartoon_title }" src="${cartoon[1].cartoon_local_url }" style="width:${cartoon[1].cartoon_width}px ;height: ${cartoon[1].cartoon_heigth}px;">
+								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:auto ;height: auto;">
 							</c:otherwise>
 						</c:choose>
 						<br>
 						<br>
-						${cartoon[1].cartoon_detial }<br>
+						${cartoon[0].cartoon_detial }<br>
 					</div>
 					<div class="item-assess">
-						<input type="hidden" class="cartoon_id" value="${cartoon[1].id }"/>
-						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${cartoon[1].top_count}</span></a> 
-						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${cartoon[1].down_count}</span> </a> 
-						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${cartoon[1].old_cartoon}</span>)</a>
+						<input type="hidden" class="cartoon_id" value="${cartoon[0].id }"/>
+						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${cartoon[0].top_count}</span></a> 
+						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${cartoon[0].down_count}</span> </a> 
+						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${cartoon[0].old_cartoon}</span>)</a>
 						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
 						</a>
 					</div>
@@ -113,8 +117,8 @@
 					<div class="item-next">
 						<span class="float-left ft12"> 上一篇：
 						<c:choose>
-							<c:when test="${!empty cartoon[0]}">
-								<a href="cartoon.html?urlId=${id }&currentPage=${cartoon[0].id}">${cartoon[0].cartoon_title }</a>
+							<c:when test="${!empty cartoon[1]}">
+								<a href="cartoon/${id}-${cartoon[1].id}.html">${cartoon[1].cartoon_title }</a>
 							</c:when>
 							<c:otherwise>
 								<a href="cartoon.html">没有上一页了。。</a>
@@ -127,7 +131,7 @@
 						下一篇：
 						<c:choose>
 							<c:when test="${!empty cartoon[2]}">
-								<a href="cartoon.html?urlId=${id }&currentPage=${cartoon[2].id}">${cartoon[2].cartoon_title }</a>
+								<a href="cartoon/${id}-${cartoon[2].id}.html">${cartoon[2].cartoon_title }</a>
 							</c:when>
 							<c:otherwise>
 								<a href="#">没有下一页了。。</a>
@@ -139,6 +143,9 @@
 					<div class="item-comment-write">
 						<form>
 							<textarea id="comment" class="ft14"></textarea>
+							<label for="checkCode">请输入验证码:</label>
+							<input id="checkCode" type="text" name="checkCode" id="checkCode"/>
+							<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
 							<input type="button" value="发表评论">
 						</form>
 					</div>

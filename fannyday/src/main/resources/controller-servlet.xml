@@ -22,23 +22,22 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
 	
-  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/freemarkerHtml/" p:suffix=".html"/> 
-    
+   
 	 <!-- ===================================================== -->
     <!-- ViewResolver For FreeMarker -->
     <!-- ===================================================== -->
-     <bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+   <!--   <bean id="freemarkerResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="order" value="1" />
         <property name="suffix" value=".ftl" />
         <property name="contentType" value="text/html;charset=utf-8" />
         <property name="viewClass">
             <value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
         </property>
-    </bean>
+    </bean> -->
     <!--=====================================================
     ViewResolver For FreeMarkerConfigurer
     =====================================================-->
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+   <!--  <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath">
             <value>/freemarker/</value>
         </property>
@@ -56,16 +55,16 @@
                 <prop key="url_escaping_charset">UTF-8</prop>
             </props>
         </property>
-    </bean> 
+    </bean>  -->
     
-<!--   <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/frontPage/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>
         </property>
-    </bean> -->
+    </bean> 
     
    
 </beans>

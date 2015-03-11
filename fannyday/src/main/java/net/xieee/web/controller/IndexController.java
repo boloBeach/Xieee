@@ -14,6 +14,7 @@ import net.xieee.web.service.IndexServiceInter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,10 +32,9 @@ public class IndexController {
 	private final static Logger logger = Logger.getLogger(IndexController.class);
 	@Autowired
 	private IndexServiceInter indexServiceImpl;
-	@RequestMapping(value="index.html")
-	public ModelAndView showIndex(HttpServletRequest request,
+	@RequestMapping(value="{urlId}/index.html")
+	public ModelAndView showIndex(@PathVariable String urlId,HttpServletRequest request,
 			HttpServletResponse response) {
-		String urlId = request.getParameter("urlId");
 		// 获取一级菜单
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("/index");
@@ -42,6 +42,7 @@ public class IndexController {
 		modelAndView.addObject("randPicture", indexServiceImpl.randPicture(urlId,null));
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("id",urlId);
 		return modelAndView;
 	}
 	

@@ -35,14 +35,6 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	<%
-		String uriId = request.getParameter("urlId");
-		Integer id = StringUtil.stringToInt(uriId);
-		if(id ==0){
-			id = 1;
-		}
-		request.setAttribute("id",id);  
-	%>
 	<div class="index-nav">
 		<ul>
 			<c:forEach items="${catalogList}" var="catalogList"
@@ -51,12 +43,12 @@
 				<c:if test="${catalogList.id eq id}">
 					<li class="on">
 					<input type="hidden" value="${catalogList.id}" class="showUrlId"/>
-					<a href="${catalogList.url}?urlId=${catalogList.id}" class="ft14"
+					<a href="${catalogList.url}" class="ft14"
 						title="${catalogList.name }">${catalogList.name }</a></li>
 				</c:if>
 
 				<c:if test="${catalogList.id != id}">
-					<li><a href="${catalogList.url}?urlId=${catalogList.id}"
+					<li><a href="${catalogList.url}"
 						class="ft14" title="${catalogList.name }">${catalogList.name }</a>
 					</li>
 				</c:if>

@@ -41,7 +41,6 @@ $(document).ready(function(){
 					data:{spanCount:spanCount,type:type,urlId:cartoonId},
 					dataType:"text",
 					success:function(data){
-						
 						if(data!=null){
 							node.children("span").html(spanCount+1);
 							alert("顶成功");

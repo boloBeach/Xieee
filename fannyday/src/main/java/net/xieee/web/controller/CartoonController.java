@@ -28,15 +28,13 @@ public class CartoonController {
 		response.setHeader("Pragma", "no-cache");
 		String urlId = request.getParameter("urlId");
 		String type = request.getParameter("type");
-		String spanCount = request.getParameter("spanCount");
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
 		} catch (IOException e) {
 			LOGGER.error(e.toString());
 		}
-		System.err.println(cartoonServiceImpl.likeResource(urlId, spanCount, type));
-		out.write(cartoonServiceImpl.likeResource(urlId, spanCount, type));
+		out.write(cartoonServiceImpl.likeResource(urlId, type));
 		Gson gson = new Gson();
 		out.close();
 	}
