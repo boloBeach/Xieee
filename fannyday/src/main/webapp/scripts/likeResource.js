@@ -1,4 +1,67 @@
 $(document).ready(function(){
+	// 对Date的扩展，将 Date 转化为指定格式的String 
+	// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
+	// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字) 
+	// 例子： 
+	// (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423 
+	// (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18 
+	Date.prototype.Format = function(fmt) 
+	{ //author: meizz 
+	  var o = { 
+	    "M+" : this.getMonth()+1,                 //月份 
+	    "d+" : this.getDate(),                    //日 
+	    "h+" : this.getHours(),                   //小时 
+	    "m+" : this.getMinutes(),                 //分 
+	    "s+" : this.getSeconds(),                 //秒 
+	    "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+	    "S"  : this.getMilliseconds()             //毫秒 
+	  }; 
+	  if(/(y+)/.test(fmt)) 
+	    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+	  for(var k in o) 
+	    if(new RegExp("("+ k +")").test(fmt)) 
+	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length))); 
+	  return fmt; 
+	}
+	
+	$("#submitCommont").on("click",function(){
+		var content = $("#comment").val();
+		var checkCode = $("#checkCode").val();
+		var catalogId = $("#catalogId").val();
+		var cartoonId = $("#cartoonId").val();
+		var ip = $("#ip").val();
+		var errorMessage = $("#error-message");
+		var ipaddress = $("#ipaddress").val();
+		var userName=$("#userName").val();
+		// check content and checkCode
+		if(content==null || content==""){
+			$("#comment").focus();
+			errorMessage.html("您输入的内容为空");
+			return false;
+		}
+		if(checkCode==null || checkCode=="" || checkCode.length!=4){
+			$("#checkCode").focus();
+			errorMessage.html("对不起，您输入的验证码错误!");
+			return false;
+		}
+		// ajax提交
+		$.ajax({
+			url:"saveCommont.html",
+			type:"POST",
+			datatype:"text",
+			data:{ip:ip,catalogId:catalogId,cartoonId:cartoonId,checkCode:checkCode,ipaddress:ipaddress,content:content,userName:userName},
+			success:function(data){
+				if(data=="-2"){
+					$("#checkCode").focus();
+					errorMessage.html("对不起，您输入的验证码错误,请重新输入!");
+				}
+				if(data=="1"){
+					$(".common").prepend($("<li><img src='images/user.png'><div><span class='name gray'>"+ipaddress+"的网友:</span> <span class='says black'>"+content+"</span><span class='time gray'>"+new Date().Format("yyyy-MM-dd hh:mm:ss ") +"<em> <i class='tread'></i>(0) </em> <em> <i class='favour'></i>(0) </em> </span> </div></li>"));
+				}
+			}
+		});
+	});
+	
 	
 	// 采用cookie来进行设置每天只能点击一次
 	/**
@@ -71,5 +134,12 @@ $(document).ready(function(){
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
 		oldresource($(this),ipAddress,span,"old",cartoonId);
+	});
+	
+	$(".tread").on("click",function(){
+		alert("觉得不好");
+	});
+	$(".favour").on("click",function(){
+		alert("觉得好");
 	});
 });

@@ -9,12 +9,19 @@ public class Common {
 	private String ip;
 	private String address;
 	private String content;
+	private String catalogId;
 	private Integer top_count;
 	private Integer down_count;
 	private Date modify_time;
 	private String is_delete;
 	
 	
+	public String getCatalogId() {
+		return catalogId;
+	}
+	public void setCatalogId(String pCatalogId) {
+		catalogId = pCatalogId;
+	}
 	public Integer getUser_id() {
 		return user_id;
 	}

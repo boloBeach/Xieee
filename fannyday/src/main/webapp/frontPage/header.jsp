@@ -6,6 +6,7 @@
 		<c:choose>
 			<c:when test="${!empty user_name }">
 				<li class="ft12">${user_name}欢迎您</li>
+				<input type="hidden" id="userName" value="${user_name}"/>
 			</c:when>
 			<c:otherwise>
 				<li><a href="login.html" class="ft12">登陆</a></li>

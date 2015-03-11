@@ -821,6 +821,19 @@ em {
 	text-align:left;
 	height: 24px;
 }
+
+#commont input[type=text]{
+	border: 1px solid #7C7A7A;
+	width: 100px;
+	height: 26px;
+}
+#commont img{
+	float: none;
+	width:80px;
+	height:26px;
+	margin-top: 5px;
+	padding: 0px;
+}
 /* this is zhangbing write css end */
 /** index.html register.html end*/
 

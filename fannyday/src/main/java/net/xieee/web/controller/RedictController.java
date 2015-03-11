@@ -5,9 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.CartoonServiceInter;
+import net.xieee.web.service.CommonServerInter;
 import net.xieee.web.service.IndexServiceInter;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,9 @@ public class RedictController {
 	
 	@Autowired
 	private CartoonServiceInter cartoonServiceImpl;
+	
+	@Autowired
+	private CommonServerInter commonServiceImpl;
 
 
 
@@ -86,6 +89,7 @@ public class RedictController {
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("cartoon",cartoonServiceImpl.getCartoon(cartoonId,cartoonServiceImpl.getMaxId()));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(cartoonId, urlId, null));
 		modelAndView.addObject("id", urlId);
 		return modelAndView;
 	}

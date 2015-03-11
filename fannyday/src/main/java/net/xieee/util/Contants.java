@@ -20,4 +20,9 @@ public class Contants {
 	 * 每页显示1条数据
 	 */
 	public static final Integer cartoon_picture_pagesize = 3;
+	
+	/**
+	 * 评论，每页显示五个
+	 */
+	public static final Integer commont_pagesize = 5;
 }

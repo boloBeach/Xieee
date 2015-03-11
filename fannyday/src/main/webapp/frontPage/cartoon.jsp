@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -50,7 +51,8 @@
 						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[0].cartoon_user_name }&nbsp; <i class="gray">on
 							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
 					</div>
-					
+					<input type="hidden" value="${id }" id="catalogId"/>
+					<input type="hidden" value="${cartoon[0].id}" id="cartoonId"/>
 					<div class="item-content ft14" style="text-align: center;">
 						<c:choose>
 							<c:when test="${cartoon[0].cartoon_width>600}">
@@ -141,19 +143,32 @@
 					</div>
 					<div class="clear"></div>
 					<div class="item-comment-write">
-						<form>
+						<form action="#" method="post" id="commont">
 							<textarea id="comment" class="ft14"></textarea>
 							<label for="checkCode">请输入验证码:</label>
-							<input id="checkCode" type="text" name="checkCode" id="checkCode"/>
+							<input id="checkCode" type="text" name="checkCode" id="checkCode"/>&nbsp;&nbsp;
 							<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
-							<input type="button" value="发表评论">
+							<span  style="color: red" id="error-message"></span>
+							<input type="button" id="submitCommont" value="发表评论">
 						</form>
 					</div>
 					<div class="clear"></div>
 					<div class="item-comment ft12">
 						<h2>评论：</h2>
-						<ul>
-							<li><img src="images/user.png">
+						<ul class="common">
+						<!-- this is common -->
+							<c:forEach var="common" items="${commonList.list}" >
+								<li><img src="images/user.png">
+									<div>
+										<span class="name gray">${common.address}的网友:</span> <span class="says black">${common.content }</span>
+										<span class="time gray">${fn:substring(common.modify_time, 0, 19)} <em> <i class="tread"></i>(${common.down_count })
+										</em> <em> <i class="favour"></i>(${common.top_count })
+										</em>
+										</span>
+									</div>
+								</li>
+							</c:forEach>
+							<!-- <li><img src="images/user.png">
 								<div>
 									<span class="name gray">XX</span> <span class="says black">搞笑</span>
 									<span class="time gray">1天前 <em> <i class="tread"></i>(21)
@@ -176,7 +191,7 @@
 									</em> <em> <i class="favour"></i>(23)
 									</em>
 									</span>
-								</div></li>
+								</div></li> -->
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -188,8 +203,13 @@
 			<%@include file="footer.jsp"%>
 		</div>
 	</div>
-	<script type="text/javascript" src="http://tool.keleyi.com/ip/visitoriphost/"></script>
-	<span id="keleyivisitorip" style="visibility: hidden;"></span>
+	<input type="hidden" id="ipaddress" value=""/>
+	<input type="hidden" id="ip" value=""/>
+	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+	<script type="text/javascript">
+		document.getElementById("ipaddress").value=returnCitySN["cname"];
+		document.getElementById("ip").value=returnCitySN["cip"];
+	</script>
 </body>
 </html>
 <script type="text/javascript" src="scripts/likeResource.js"></script>
