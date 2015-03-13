@@ -66,4 +66,19 @@ public class CartoonServiceImpl extends BaseServiceImpl implements CartoonServic
 		return StringUtil.stringToInt(map.get("id").toString());
 	}
 
+	@Override
+	public int commonTop(String pCommonId, String pType) {
+		if(StringUtil.isNull(pCommonId) || StringUtil.isNull(pType)){
+			return -1;
+		}
+		String sql = null;
+		if(pType.equals("treadDown") || pType=="treadDown"){
+			sql = "update commont set down_count=down_count+1 where id=?";
+		}else {
+			sql = "update commont set top_count=top_count+1 where id=?";
+		}
+		Object[] params = {pCommonId};
+		return update(sql, params);
+	}
+
 }

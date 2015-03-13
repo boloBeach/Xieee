@@ -159,11 +159,12 @@
 						<!-- this is common -->
 							<c:forEach var="common" items="${commonList.list}" >
 								<li><img src="images/user.png">
-									<div>
+									<div class="commonGray">
 										<span class="name gray">${common.address}的网友:</span> <span class="says black">${common.content }</span>
-										<span class="time gray">${fn:substring(common.modify_time, 0, 19)} <em> <i class="tread"></i>(${common.down_count })
-										</em> <em> <i class="favour"></i>(${common.top_count })
-										</em>
+										<span class="time gray">${fn:substring(common.modify_time, 0, 19)} 
+										<em class="treadDown"> <i class="tread"></i>(${common.down_count })</em>
+										<em class="favourTop"> <i class="favour"></i>(${common.top_count })</em>
+										<input type="hidden" value="${common.id }"/>
 										</span>
 									</div>
 								</li>

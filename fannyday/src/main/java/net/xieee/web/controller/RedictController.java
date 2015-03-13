@@ -101,6 +101,7 @@ public class RedictController {
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(virginId, cartoonServiceImpl.getVirginMaxId()));
+		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(virginId, urlId, null));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("id", urlId);
 		return modelAndView;

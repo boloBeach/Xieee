@@ -56,6 +56,7 @@ $(document).ready(function(){
 					errorMessage.html("对不起，您输入的验证码错误,请重新输入!");
 				}
 				if(data=="1"){
+					alert($(".common"));
 					$(".common").prepend($("<li><img src='images/user.png'><div><span class='name gray'>"+ipaddress+"的网友:</span> <span class='says black'>"+content+"</span><span class='time gray'>"+new Date().Format("yyyy-MM-dd hh:mm:ss ") +"<em> <i class='tread'></i>(0) </em> <em> <i class='favour'></i>(0) </em> </span> </div></li>"));
 				}
 			}
@@ -136,10 +137,59 @@ $(document).ready(function(){
 		oldresource($(this),ipAddress,span,"old",cartoonId);
 	});
 	
-	$(".tread").on("click",function(){
-		alert("觉得不好");
+	function replace(obj){
+		if(obj==null || obj==""){
+			return 0;
+		}else{
+			return parseInt(obj.replace("(","").replace(")",""));
+		}
+	}
+	
+	/**
+	 * 把提交的ajax写入一个方法
+	 * @param catalogId是菜单的id
+	 * @param cartoonId是内容的id
+	 * @param spanCount表示点赞的次数
+	 * @param type 表示类型,theadDown是不喜欢，favourTop 表示喜欢
+	 */
+	function submitCommonTop(node,id,spanCount,type){
+		var cookieCartoonId = getCookie(id+type);
+		if(cookieCartoonId == null || cookieCartoonId == "" || cookieCartoonId!=id){
+			setCookie(id+type,id,24);
+			if(!isNaN(spanCount)){
+				$.ajax({
+					url:"commonTop.html",
+					type:"post",
+					data:{type:type,commonId:id},
+					dataType:"text",
+					success:function(data){
+						if(data!=null){
+							var count = spanCount+1;
+							if(type=="treadDown"){
+								node.html("<i class='tread'></i>("+count+")");
+							}else{
+								node.html("<i class='favour'></i>("+count+")");
+							}
+							alert("顶成功");
+						}
+					}
+				});
+			}
+		}else{
+			alert("对不起，您今天已经顶过了");
+		}
+	}
+	
+	$(".treadDown").on("click",function(){
+		var id = $(this).nextAll("input").eq(0).val();
+		var catalogId = $("#catalogId").val();
+		var spanCount = replace($(this).text());
+		submitCommonTop($(this),id,spanCount,"treadDown");
 	});
-	$(".favour").on("click",function(){
-		alert("觉得好");
+	
+	$(".favourTop").on("click",function(){
+		var id = $(this).nextAll("input").eq(0).val();
+		var spanCount = replace($(this).text());
+		submitCommonTop($(this),id,spanCount,"favourTop");
 	});
 });

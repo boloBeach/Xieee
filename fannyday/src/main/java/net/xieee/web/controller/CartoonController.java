@@ -38,4 +38,22 @@ public class CartoonController {
 		Gson gson = new Gson();
 		out.close();
 	}
+	
+	@RequestMapping(value="commonTop.html")
+	public void commonTop(HttpServletRequest request,HttpServletResponse response){
+		response.setContentType("text/json; charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		String commonId = request.getParameter("commonId");
+		String type = request.getParameter("type");
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			LOGGER.error(e.toString());
+		}
+		out.write(cartoonServiceImpl.commonTop(commonId, type)+"");
+		Gson gson = new Gson();
+		out.close();
+	}
 }
