@@ -18,6 +18,7 @@ public class TestVirgin {
 			url = "http://www.neihan8.com/s/data.php?start="+i+"&num=1&type=3&markid=undefined&typeid=63434&hotdate=14&tagtid=2";
 			try {
 				Picture picture = neiHanPsPicture.getPicturesByNeiHanVirgin(url, referer, host, httpHost);
+				System.out.println(picture.toString());
 				downloadImage.Download(picture, host,Constants.virgin_img_save_path,Constants.virgin_img_http_path);
 			} catch (Exception e) {
 				e.printStackTrace();

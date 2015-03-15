@@ -92,7 +92,7 @@ $(document).ready(function(){
 		}
 		return "";
 	}
-	function oldresource(node,ipAddress,spanCount,type,cartoonId){
+	function oldresource(node,ipAddress,spanCount,type,cartoonId,url){
 		var spanCount = parseInt(spanCount);
 		// 首先获取cookie
 		var cookieCartoonId = getCookie(cartoonId+type);
@@ -100,7 +100,7 @@ $(document).ready(function(){
 			setCookie(cartoonId+type,cartoonId,24);
 			if(!isNaN(spanCount)){
 				$.ajax({
-					url:"likeResource.html",
+					url:url,
 					type:"post",
 					data:{spanCount:spanCount,type:type,urlId:cartoonId},
 					dataType:"text",
@@ -116,25 +116,49 @@ $(document).ready(function(){
 			alert("对不起，您今天已经顶过了");
 		}
 	}
-	$(".good").on("click",function(){
-		var ipAddress = $("#keleyivisitorip").html();
+	
+	
+	$(".goodVirgin").on("click",function(){
+		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"good",cartoonId);
+		oldresource($(this),ipAddress,span,"good",cartoonId,"likePicture.html");
+	});
+	
+	$(".badVirgin").on("click",function(){
+		var ipAddress = $("#ipaddress").val();
+		var cartoonId = $(".cartoon_id").val();
+		var span = $(this).children("span").html();
+		oldresource($(this),ipAddress,span,"bad",cartoonId,"likePicture.html");
+	});
+	
+	$(".oldVirgin").on("click",function(){
+		var ipAddress = $("#ipaddress").val();
+		var cartoonId = $(".cartoon_id").val();
+		var span = $(this).children("span").html();
+		oldresource($(this),ipAddress,span,"old",cartoonId,"likePicture.html");
+	});
+	
+	
+	$(".good").on("click",function(){
+		var ipAddress = $("#ipaddress").val();
+		var cartoonId = $(".cartoon_id").val();
+		var span = $(this).children("span").html();
+		oldresource($(this),ipAddress,span,"good",cartoonId,"likeResource.html");
 	});
 	
 	$(".bad").on("click",function(){
-		var ipAddress = $("#keleyivisitorip").html();
+		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"bad",cartoonId);
+		oldresource($(this),ipAddress,span,"bad",cartoonId,"likeResource.html");
 	});
 	
 	$(".old").on("click",function(){
-		var ipAddress = $("#keleyivisitorip").html();
+		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"old",cartoonId);
+		oldresource($(this),ipAddress,span,"old",cartoonId,"likeResource.html");
 	});
 	
 	function replace(obj){

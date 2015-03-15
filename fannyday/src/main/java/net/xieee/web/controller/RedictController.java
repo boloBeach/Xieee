@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.xieee.spider.util.Constants;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.CartoonServiceInter;
 import net.xieee.web.service.CommonServerInter;
@@ -100,9 +101,24 @@ public class RedictController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
-		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(virginId, cartoonServiceImpl.getVirginMaxId()));
-		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(virginId, urlId, null));
+		int maxId = cartoonServiceImpl.getVirginMaxId();
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(virginId,maxId,Constants.key_word ));
+		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(virginId, urlId, maxId+""));
+		modelAndView.addObject("id", urlId);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="ps/{urlId}-{psId}.html")
+	public ModelAndView ps(@PathVariable String urlId,@PathVariable String psId,HttpServletRequest request,HttpServletResponse response){
+		ModelAndView modelAndView = new ModelAndView("ps");
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
+		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		int maxId = cartoonServiceImpl.getPsMaxId();
+		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(psId,maxId,Constants.ps_key_word));
+		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(psId, urlId, maxId+""));
 		modelAndView.addObject("id", urlId);
 		return modelAndView;
 	}

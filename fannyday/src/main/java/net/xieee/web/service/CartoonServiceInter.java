@@ -2,6 +2,7 @@ package net.xieee.web.service;
 
 import java.util.List;
 
+import freemarker.cache.StringTemplateLoader;
 import net.xieee.util.Pager;
 
 public interface CartoonServiceInter extends BaseServiceInter {
@@ -31,7 +32,7 @@ public interface CartoonServiceInter extends BaseServiceInter {
 	 * @param maxId
 	 * @return
 	 */
-	public List getVirgin(String currentId, int maxId);
+	public List getVirgin(String currentId, int maxId,String key_word);
 
 
 
@@ -42,6 +43,11 @@ public interface CartoonServiceInter extends BaseServiceInter {
 	 */
 	public int getVirginMaxId();
 
+	/**
+	 * 获取搞笑ps的最大id值
+	 * @return
+	 */
+	public int getPsMaxId();
 
 
 	/**
@@ -52,6 +58,14 @@ public interface CartoonServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public int likeResource(String urlId, String type);
+	
+	/**
+	 * 对picture表的定操作
+	 * @param urlId urlId值
+	 * @param type 类型
+	 * @return
+	 */
+	public int likePicture(String urlId,String type);
 
 
 

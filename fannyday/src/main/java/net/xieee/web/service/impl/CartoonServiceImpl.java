@@ -48,13 +48,13 @@ public class CartoonServiceImpl extends BaseServiceImpl implements CartoonServic
 	}
 
 	@Override
-	public List getVirgin(String pCurrentId, int pMaxId) {
+	public List getVirgin(String pCurrentId, int pMaxId,String key_word) {
 		String sql = "SELECT id,picture_name,author,title,detail,height,width,local_url,down_count,	top_count,old_picture, modify_time FROM picture WHERE id = ? AND key_word =? AND is_delete = 1 UNION SELECT id,picture_name,author,title,detail,height,width,	local_url,down_count,	top_count,old_picture, modify_time FROM picture WHERE id = (SELECT max(id) FROM picture WHERE id < ? AND key_word =? AND is_delete = 1 	) UNION SELECT id,picture_name,author,title,detail,height,width,	local_url,down_count,	top_count,old_picture, modify_time FROM picture WHERE id = ( SELECT min(id) FROM  picture WHERE id > ? AND key_word =? AND is_delete = 1)";
 		Integer id = StringUtil.stringToInt(pCurrentId);
 		if(id==0){
 			id = pMaxId;
 		}
-		Object[] params = {id,Constants.key_word,id,Constants.key_word,id,Constants.key_word};
+		Object[] params = {id,key_word,id,key_word,id,key_word};
 		return findList(sql, params);
 	}
 
@@ -79,6 +79,30 @@ public class CartoonServiceImpl extends BaseServiceImpl implements CartoonServic
 		}
 		Object[] params = {pCommonId};
 		return update(sql, params);
+	}
+
+	@Override
+	public int likePicture(String urlId, String type) {
+		String updateSql = null;
+		if(StringUtil.isNull(type) || type.trim().equals("good")){
+			updateSql = "update picture set top_count=top_count+1 where id=?";
+		}else if (type.trim().equals("bad")) {
+			updateSql = "update picture set down_count=down_count+1 where id=?";
+		}else if (type.trim().equals("old")) {
+			updateSql = "update picture set old_picture=old_picture+1 where id=?";
+		}else {
+			updateSql = "update picture set top_count=top_count+1 where id=?";
+		}
+		Object[] params = {urlId};
+		return update(updateSql, params);
+	}
+
+	@Override
+	public int getPsMaxId() {
+		String sqlId = "select max(id) as id from picture where key_word=?";
+		Object[] param = {Constants.ps_key_word};
+		Map map = (Map)getList(sqlId,param).get(0);
+		return StringUtil.stringToInt(map.get("id").toString());
 	}
 
 }

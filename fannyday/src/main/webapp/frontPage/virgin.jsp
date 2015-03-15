@@ -48,7 +48,7 @@
 				<div class="index-content-left-item">
 					<h1 class="ft20">${virgin[0].title }</h1>
 					<input type="hidden" value="${id }" id="catalogId"/>
-					<input type="hidden" value="${virgin[0].id}" id="cartoonId"/>
+					<input type="hidden" value="${virgin[0].id}" class="cartoon_id"/>
 					<div class="item-info ft12">
 						<i class="gray">by</i>&nbsp;&nbsp;${virgin[0].author }&nbsp; <i class="gray">on
 							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
@@ -72,9 +72,9 @@
 					</div>
 					<div class="item-assess">
 						<input type="hidden" class="virgin_id" value="${virgin[0].id }"/>
-						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${virgin[0].top_count}</span></a> 
-						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${virgin[0].down_count}</span> </a> 
-						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${virgin[0].old_virgin}</span>)</a>
+						<a class="goodVirgin" title="顶一个"> <i class="icon icon-hand-up"></i><span>${virgin[0].top_count}</span></a> 
+						<a class="badVirgin" title="且..."> <i class="icon icon-thumbs-down"></i><span>${virgin[0].down_count}</span> </a> 
+						<a class="oldVirgin" title="老漫画"> <i class="icon icon-hand-down"></i>老笑话(<span>${virgin[0].old_picture}</span>)</a>
 						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
 						</a>
 					</div>
