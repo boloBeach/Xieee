@@ -42,6 +42,7 @@ public class IndexController {
 		modelAndView.addObject("randPicture", indexServiceImpl.randPicture(urlId,null));
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		modelAndView.addObject("id",urlId);
 		return modelAndView;
 	}
@@ -62,6 +63,7 @@ public class IndexController {
 		// 获取一级菜单
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		return modelAndView;
 	}
 	

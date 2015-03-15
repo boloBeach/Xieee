@@ -51,7 +51,7 @@
 					<input type="hidden" value="${virgin[0].id}" class="cartoon_id"/>
 					<div class="item-info ft12">
 						<i class="gray">by</i>&nbsp;&nbsp;${virgin[0].author }&nbsp; <i class="gray">on
-							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
+							${fn:substring(virgin[0].modify_time, 0, 19)} </i>&nbsp; ${commontRows } comments <span class="item-type item-type-4"></span>
 					</div>
 					
 					<div class="item-content ft14" style="text-align: center;">

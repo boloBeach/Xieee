@@ -28,7 +28,7 @@ $(document).ready(function(){
 		var content = $("#comment").val();
 		var checkCode = $("#checkCode").val();
 		var catalogId = $("#catalogId").val();
-		var cartoonId = $("#cartoonId").val();
+		var cartoonId = $(".cartoon_id").val();
 		var ip = $("#ip").val();
 		var errorMessage = $("#error-message");
 		var ipaddress = $("#ipaddress").val();
@@ -56,7 +56,6 @@ $(document).ready(function(){
 					errorMessage.html("对不起，您输入的验证码错误,请重新输入!");
 				}
 				if(data=="1"){
-					alert($(".common"));
 					$(".common").prepend($("<li><img src='images/user.png'><div><span class='name gray'>"+ipaddress+"的网友:</span> <span class='says black'>"+content+"</span><span class='time gray'>"+new Date().Format("yyyy-MM-dd hh:mm:ss ") +"<em> <i class='tread'></i>(0) </em> <em> <i class='favour'></i>(0) </em> </span> </div></li>"));
 				}
 			}

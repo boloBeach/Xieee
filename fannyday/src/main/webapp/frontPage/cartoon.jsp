@@ -49,7 +49,7 @@
 					<h1 class="ft20">${cartoon[0].cartoon_title }</h1>
 					<div class="item-info ft12">
 						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[0].cartoon_user_name }&nbsp; <i class="gray">on
-							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
+							${fn:substring(virgin[0].modify_time, 0, 19)} </i>&nbsp; ${commontRows } comments <span class="item-type item-type-4"></span>
 					</div>
 					<input type="hidden" value="${id }" id="catalogId"/>
 					<input type="hidden" value="${cartoon[0].id}" id="cartoonId"/>

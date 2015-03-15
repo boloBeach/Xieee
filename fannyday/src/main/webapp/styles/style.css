@@ -758,10 +758,15 @@ em {
 }
 
 .user-picture{
-	width: 50px;
-	height:100px;
+	width: 30px;
+	height:30px;
 	float: left;
 }
+.user-picture img{
+	width: 30px;
+	height:30px;
+}
+
 .user-comments{
 	width: 240px;
 	float: right;
@@ -770,8 +775,10 @@ em {
 	overflow:hidden;
 	height: 100px;
 }
-.user-comments div{
-	margin-top: 15px;
+.user-comments-div{
+	margin-top: 5px;
+	height: 75px;
+	overflow: hidden;
 }
 .random-image{
 	float: right;

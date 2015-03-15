@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 import net.xieee.spider.util.Constants;
+import net.xieee.util.Contants;
+import net.xieee.util.Pager;
 import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.bean.ParentPicture;
 import net.xieee.web.service.IndexServiceInter;
 
 import org.springframework.stereotype.Repository;
+
 import sun.print.resources.serviceui;
 
 
@@ -109,6 +112,39 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 	public List randCartoon() {
 		String sql = "SELECT id,cartoon_title FROM cartoon ORDER BY RAND() limit "+Constants.rand_cartoon_count+" ";
 		return findList(sql, null);
+	}
+
+	@Override
+	public List getNewCommontList() {
+		String sql ="select id,user_id,resource_id,address,content,catalogId,modify_time from commont where is_delete=1 order by id desc limit 4";
+		return findList(sql, null);
+	}
+
+	@Override
+	public Pager getGifPicture(String parentId, String currentPage) {
+		if(StringUtil.isNull(parentId)){
+			return null;
+		}
+		Pager pager = new Pager();
+		Integer currentPages = 1;
+		if(!StringUtil.isNull(currentPage)){
+			currentPages = Integer.valueOf(currentPage);
+		}
+		Object[] params = {parentId};
+		pager.Pager(getRowsGif(parentId), Constants.detailt_picture_size, currentPages);
+		String sql = "select id,height,width,detail,author,top_count,down_count,old_picture,modify_time,title,local_url from picture where parent_picture =? and  is_delete=1";
+		pager =  findBypager(sql, pager, params);
+		return pager;
+	}
+
+	@Override
+	public int getRowsGif(String parentId) {
+		if(StringUtil.isNull(parentId)){
+			return 0;
+		}
+		String sql ="select count(id) from picture where parent_picture=? and is_delete=1";
+		Object[] params = {parentId};
+		return getCount(sql, params);
 	}
 
 }

@@ -6,13 +6,13 @@ import net.xieee.util.Pager;
 
 /**
  * 评论的借口类 <class description>
- *
+ * 
  * @author: royzhang
  * @version: 1.0, 2015年3月11日
  */
 public interface CommonServerInter extends BaseServiceInter {
 
-	/**
+	/**O
 	 * 
 	 * <method description> 根据[漫画]资源Id来获取评论内容
 	 * 
@@ -20,23 +20,41 @@ public interface CommonServerInter extends BaseServiceInter {
 	 *            资源的id值
 	 * @param catalogId
 	 *            菜单的id值
-	 * @param currentPage 当前页
+	 * @param currentPage
+	 *            当前页
 	 * @return java.util.Pager对象 对象
 	 */
-	public Pager getCartoonCommonByResourceId(String resourceId, String catalogId,String currentPage);
-
-
+	public Pager getCartoonCommonByResourceId(String resourceId,Integer commontRows,
+			String catalogId, String currentPage);
 
 	/**
-	 * 保存评论，通过资源ID和catalogId来进行区分评论的内容
-	 * <method description>
-	 * @param userName 用户的名字
-	 * @param catalogId 菜单的Id值
-	 * @param resourceId 资源的id值
-	 * @param ip ip地址
-	 * @param ipaddress ip对象的地址
-	 * @param content 内容
-	 * @return java.lang.int 如果返回0表示插入失败， 如果返回-1表示资源id和catalogId为空，或者不可用，如果是1表示成功
+	 * 通过资源Id和菜单的id来准确的获取评论的条数
+	 * @param catalogId 菜单的id
+	 * @param resourceId 资源的id
+	 * @return java.lang.Integer 资源评论的个数
 	 */
-	public int saveCommont(String userName,String catalogId, String resourceId, String ip, String ipaddress, String content);
+	public int getCommontRowsById(String catalogId, String resourceId);
+
+	/**
+	 * 保存评论，通过资源ID和catalogId来进行区分评论的内容 <method description>
+	 * 
+	 * @param userName
+	 *            用户的名字
+	 * @param catalogId
+	 *            菜单的Id值
+	 * @param resourceId
+	 *            资源的id值
+	 * @param ip
+	 *            ip地址
+	 * @param ipaddress
+	 *            ip对象的地址
+	 * @param content
+	 *            内容
+	 * @return java.lang.int 如果返回0表示插入失败，
+	 *         如果返回-1表示资源id和catalogId为空，或者不可用，如果是1表示成功
+	 */
+	public int saveCommont(String userName, String catalogId,
+			String resourceId, String ip, String ipaddress, String content);
+	
+	
 }

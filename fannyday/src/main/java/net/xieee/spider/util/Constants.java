@@ -126,4 +126,9 @@ public class Constants {
 	 * @see 恶搞图片
 	 */
 	public final static String ps_key_word = "恶搞图片";
+	
+	/**
+	 * @see detail每个分页的条数
+	 */
+	public final static Integer detailt_picture_size=1;
 }

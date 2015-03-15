@@ -86,7 +86,34 @@
  		</div>
  		<div class="index-content-ringht-newcommentsusers ft12">
  			<ul>
- 				<li>
+ 				<c:if test="${!empty newcommontList}">
+		 			<c:forEach var="newcommontList" items="${newcommontList }">
+		 				<li>
+	 					<div class="user-picture">
+	  					<span>
+	  						<img alt="傻逼" src="images/user.png"> 
+	  					</span>
+	 					</div>
+	 					<div class="user-comments">
+	 						<span class="ft14">
+	 						<c:if test="${empty newcommontList.user_id}">
+	 							${newcommontList.address}的网友:
+	 						</c:if>
+	 						
+	 						<c:if test="${not empty newcommontList.user_id }">
+	 							${newcommontList.user_id}
+	 						</c:if>
+	 						</span>
+	 						<div class="user-comments-div">
+	 							<a href="#" title="${newcommontList.content }">${newcommontList.content }</a>
+	 						</div>
+	 					</div>
+	 				</li>	
+		 			</c:forEach>
+	 			</c:if>
+ 				
+ 				
+ 				<!-- <li>
  					<div class="user-picture">
   					<span>
   						<img alt="傻逼" src="http://ds.cdncache.org/avatar-50/359/133312.jpg"> 
@@ -132,23 +159,7 @@
  							<a href="#" title="这里是评论内容">这里是评论内容,这个怎么那么搞笑咯。我确认这个是很搞笑的，真的，你不相信你可以点击下来试一试。反正是笑死我了。</a>
  						</div>
  					</div>
- 				</li>
- 				
- 				<li>
- 					<div class="user-picture">
-  					<span>
-  						<img alt="傻逼" src="http://ds.cdncache.org/avatar-50/359/133312.jpg"> 
-  					</span>
- 					</div>
- 					<div class="user-comments">
- 						<span class="ft16">
- 						傻逼<span class="newcomment-username ft16">• 2015-01-05 12:12:12</span>
- 						</span>
- 						<div>
- 							<a href="#" title="这里是评论内容">这里是评论内容,这个怎么那么搞笑咯。我确认这个是很搞笑的，真的，你不相信你可以点击下来试一试。反正是笑死我了。</a>
- 						</div>
- 					</div>
- 				</li>
+ 				</li> -->
  			</ul>
  		</div>
  </div>

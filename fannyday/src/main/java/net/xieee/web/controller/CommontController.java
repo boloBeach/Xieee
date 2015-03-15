@@ -54,8 +54,7 @@ public class CommontController {
 		}
 		// 应该检查checkCode
 		if(!StringUtil.isNull(checkCode) && !StringUtil.isNull(randCode) && checkCode.toLowerCase().equals(randCode.toString().toLowerCase())){
-			System.out.println(commonServerImpl.saveCommont(userName, catalogId, cartoonId, ip, ipaddress, content));
-			out.write("1");
+			out.write(commonServerImpl.saveCommont(userName, catalogId, cartoonId, ip, ipaddress, content)+"");
 		}else {
 			// -2 表示验证码错误
 			out.write("-2");

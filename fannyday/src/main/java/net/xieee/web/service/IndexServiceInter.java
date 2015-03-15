@@ -2,6 +2,7 @@ package net.xieee.web.service;
 
 import java.util.List;
 
+import net.xieee.util.Pager;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.bean.ParentPicture;
 
@@ -61,5 +62,26 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public List randCartoon();
+	
+	/**
+	 * 获取最新的4条评论
+	 * @return java.util.List<Commont>
+	 */
+	public List getNewCommontList();
+	
+	/**
+	 * 获取搞笑图片的子页面
+	 * @param parentId 子页面的父类id
+	 * @param currentPage 每个parentId的子图片的张数
+	 * @return
+	 */
+	public Pager getGifPicture(String parentId,String currentPage);
+	
+	/**
+	 * 通过parentId来获取对应的gif个数
+	 * @param parentId 父类id值
+	 * @return java.util.integer
+	 */
+	public int getRowsGif(String parentId);
 
 }
