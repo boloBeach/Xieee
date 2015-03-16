@@ -37,8 +37,9 @@ public class InterImagesUtil {
 	
 	/**
 	 * get Document by Url
+	 * @param referer "http://www.lebazi.com/"
 	 */
-	public  Document getDocumentByUrl(String url,String host) throws IOException{
+	public  Document getDocumentByUrl(String url,String host,String referer) throws IOException{
 		if(StringUtil.isNull(url) || StringUtil.isNull(host)){
 			return null;
 		}
@@ -50,7 +51,7 @@ public class InterImagesUtil {
 			connection.header("Cache-Control", "max-age=0");
 			connection.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 			connection.header("Accept-Encoding", "gzip,deflate,sdch");
-			connection.header("Referer", "http://www.lebazi.com/");
+			connection.header("Referer", referer);
 			connection.header("Connection", "keep-alive");
 			connection.header("Accept-Language", "zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4");
 			connection.userAgent("Mozilla");

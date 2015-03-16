@@ -36,7 +36,7 @@
   		<div class="index-content-rightItem ft12">
   			<ul>
   				<c:forEach var="randCartoon" items="${randCartoon}">
-  					<li><a href="cartoon.html?urlId=${randCartoon.id }" class="blank" title=${randCartoon.cartoon_title }">${randCartoon.cartoon_title }</a></li>
+  					<li><a href="cartoon/1-${randCartoon.id }.html" class="blank" title=${randCartoon.cartoon_title }">${randCartoon.cartoon_title }</a></li>
   				</c:forEach>
   				<!-- this is foreach 12 pages  -->
  				<!-- <li><a href="detail.html" class="blank" title="姑娘你别胡思乱想了，世界上爱你的人多着呢">姑娘你别胡思乱想了，世界上爱你的人多着呢</a></li>
@@ -58,7 +58,7 @@
  <!-- this is 24 hours hot articles -->
  <div class="index-content-ringht-hotarticles">
  		<div class="index-content-ringht-title ft18">
- 			<span>24小时热评文章</span>
+ 			<span>24小时热评资源</span>
  		</div>
  		<div class="index-content-rightItem ft12">
  			<ul>

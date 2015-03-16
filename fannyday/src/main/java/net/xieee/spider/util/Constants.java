@@ -71,6 +71,16 @@ public class Constants {
 	 * 节操笑话的保存路径
 	 */
 	public final static String virgin_img_save_path = "/usr/local/nginx/html/fannyday/images/virgin";
+	
+	/**
+	 * 存放神回复的地址
+	 */
+	public final static String god_reply_img_save_path = "/usr/local/nginx/html/fannyday/images/godreply";
+	
+	/**
+	 * 神回复的http地址
+	 */
+	public final static String god_img_http_path = "http://192.168.255.130/images/godreply/";
 
 	/**
 	 * ps 图片的http地址
@@ -131,4 +141,10 @@ public class Constants {
 	 * @see detail每个分页的条数
 	 */
 	public final static Integer detailt_picture_size=1;
+	
+	
+	/**
+	 * @see 神回复
+	 */
+	public final static String god_reply="神回复";
 }
