@@ -26,19 +26,22 @@ public class TestHahaqu {
 		DownloadImage downloadImage = new DownloadImage();
 		String url = "";
 		String host = "www.hahaqu.com";
-		url = "http://www.hahaqu.com/tag_7_"+40+".html";
-		try {
-			List<Picture> pictures = hahaquGodReply.getPicturesByHahaqu(url, host, host,"http://www.hahaqu.com/");
-			for (Picture picture : pictures) {
-				System.out.println(picture.toString());
-				if(StringUtil.isNull(picture.getPicture_name())){
-					pictureServiceImpl.saveGadReply(picture);
-				}else{
-					downloadImage.Download(picture, host,Constants.god_reply_img_save_path,Constants.god_img_http_path);
+			for(int i=1;i<=6770;i++){
+			url = "http://www.hahaqu.com/tag_7_"+i+".html";
+			try {
+				List<Picture> pictures = hahaquGodReply.getPicturesByHahaqu(url, host, host,"http://www.hahaqu.com/");
+				for (Picture picture : pictures) {
+					System.out.println(picture.toString());
+					if(StringUtil.isNull(picture.getPicture_name())){
+						System.err.println(pictureServiceImpl.saveGadReply(picture));
+					}else{
+						downloadImage.Download(picture, host,Constants.god_reply_img_save_path,Constants.god_img_http_path);
+					}
 				}
+			
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	public static void main(String[] args) {

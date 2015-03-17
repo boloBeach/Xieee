@@ -46,6 +46,7 @@ public class HahaquGodReply {
 				picture.setTitle(hrefs.get(1).text());
 			}
 			pic_text = element.getElementsByClass("pic_text");
+			picture.setSpark_url(url);
 			if(pic_text!=null){
 				if(pic_text.first()!=null){
 					pictures = pic_text.first().getElementsByTag("img");
@@ -54,7 +55,6 @@ public class HahaquGodReply {
 							Element pictureElement = pictures.first();
 							picture.setWidth(StringUtil.stringToInt(pictureElement.attr("w").replaceAll("px", "")));
 							picture.setHeight(StringUtil.stringToInt(pictureElement.attr("h").replaceAll("px", "")));
-							picture.setSpark_url(url);
 							imgUrl = pictureElement.attr("src");
 							picture.setPicture_name(imgUrl.substring(imgUrl.lastIndexOf("/")+1, imgUrl.length()));
 							picture.setInter_url(httpHost+imgUrl);
