@@ -49,7 +49,7 @@ public class HahaquGodReply {
 			if(pic_text!=null){
 				if(pic_text.first()!=null){
 					pictures = pic_text.first().getElementsByTag("img");
-					if(pictures!=null){
+					if(pictures!=null && pictures.size()!=0){
 						if(pictures.size()==1){
 							Element pictureElement = pictures.first();
 							picture.setWidth(StringUtil.stringToInt(pictureElement.attr("w").replaceAll("px", "")));
@@ -61,7 +61,7 @@ public class HahaquGodReply {
 							pictureList.add(picture);
 						}
 					}else {
-						picture.setDetail(pic_text.first().getElementsByTag("p").text());
+						picture.setDetail(pic_text.first().getElementsByTag("p").first().text());
 						pictureList.add(picture);
 					}
 				}

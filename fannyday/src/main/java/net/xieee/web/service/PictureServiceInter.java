@@ -7,39 +7,54 @@ import net.xieee.web.bean.PageUrl;
 import net.xieee.web.bean.Picture;
 
 /**
- * this is control picture 
+ * this is control picture
+ * 
  * @author royzhang
  *
  */
-public interface PictureServiceInter extends BaseServiceInter{
+public interface PictureServiceInter extends BaseServiceInter {
 	/**
-	 * check db has picture ，if db has picture then return false,thus return ture;
+	 * check db has picture ，if db has picture then return false,thus return
+	 * ture;
+	 * 
 	 * @param pictureName
 	 * @return
 	 */
 	public boolean checkHasPicture(String pictureName);
-	
+
+
+
 	/**
 	 * this method is save different img
-	 * @param picture the picture object
+	 * 
+	 * @param picture
+	 *            the picture object
 	 * @return handler success count
 	 */
 	public int savePicture(Picture picture);
-	
+
+
+
 	/**
 	 * check the have url
+	 * 
 	 * @param url
 	 * @return
 	 */
 	public int checkURL(String url);
-	
+
+
+
 	/**
 	 * save the url
+	 * 
 	 * @param pageUrl
 	 * @return
 	 */
-	public int savePictureURL(String pageUrl,String pageTitle);
-	
+	public int savePictureURL(String pageUrl, String pageTitle);
+
+
+
 	/**
 	 * 获取分页信息
 	 * 
@@ -47,26 +62,47 @@ public interface PictureServiceInter extends BaseServiceInter{
 	 * @param pageSize
 	 * @return
 	 */
-	public List getPageUrls(int startId,int pageSize);
-	
+	public List getPageUrls(int startId, int pageSize);
+
+
+
 	/**
 	 * 抓取的时候检查是否有重复的url
+	 * 
 	 * @param url
 	 * @return
 	 */
 	public int checkSpiderUrl(String url);
-	
+
+
+
 	/**
-	 * check catoon spider img url if return ture the img have exist thus return false
+	 * check catoon spider img url if return ture the img have exist thus return
+	 * false
+	 * 
 	 * @param imgUrl
 	 * @return
 	 */
 	public boolean checkCartoonImg(String imgUrl);
-	
+
+
+
 	/**
 	 * save a cartoon and download cartoon img
+	 * 
 	 * @param cartoon
 	 * @return
 	 */
 	public int saveCartoon(Cartoon cartoon);
+
+
+
+	/**
+	 * 保存神回复的信息,并且需要判断是否存在此数据
+	 * <method description>
+	 *
+	 * @param pPicture
+	 * @return
+	 */
+	public int saveGadReply(Picture pPicture);
 }

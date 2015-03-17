@@ -98,4 +98,15 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 		return save(sql, params);
 	}
 
+	@Override
+	public int saveGadReply(Picture pPicture) {
+		String checkSql = "select count(1) from picture where title =? and detail=? ";
+		Object[] params = {pPicture.getTitle(),pPicture.getDetail()};
+		if(getCount(checkSql, params)==0){
+			checkSql  = "insert into picture(title,detail) values(?,?)";
+			return save(checkSql, params);
+		}
+		return 0;
+	}
+
 }

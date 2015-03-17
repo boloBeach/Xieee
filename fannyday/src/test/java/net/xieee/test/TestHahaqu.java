@@ -21,23 +21,28 @@ public class TestHahaqu {
 		ApplicationContext context = new FileSystemXmlApplicationContext("/"+xmlPath);
 		pictureServiceImpl = (PictureServiceImpl) context.getBean("pictureServiceImpl");
 	}
-	
-	public static void main(String[] args) throws Exception{
+	public void test(){
 		HahaquGodReply hahaquGodReply = new HahaquGodReply();
 		DownloadImage downloadImage = new DownloadImage();
 		String url = "";
 		String host = "www.hahaqu.com";
-		for (int i = 1; i < 1129; i++) {
-			url = "http://www.hahaqu.com/tag_7_"+i+".html";
+		url = "http://www.hahaqu.com/tag_7_"+40+".html";
+		try {
 			List<Picture> pictures = hahaquGodReply.getPicturesByHahaqu(url, host, host,"http://www.hahaqu.com/");
 			for (Picture picture : pictures) {
 				System.out.println(picture.toString());
 				if(StringUtil.isNull(picture.getPicture_name())){
-					pictureServiceImpl.savePicture(picture);
+					pictureServiceImpl.saveGadReply(picture);
 				}else{
 					downloadImage.Download(picture, host,Constants.god_reply_img_save_path,Constants.god_img_http_path);
 				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		TestHahaqu testHahaqu = new TestHahaqu();
+		testHahaqu.test();
 	}
 }
