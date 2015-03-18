@@ -121,10 +121,10 @@
 						<span class="float-left ft12"> 上一篇：
 						<c:choose>
 							<c:when test="${!empty virgin[1]}">
-								<a href="virgin/${id }-${virgin[1].id}.html">${virgin[1].title }</a>
+								<a title="${virgin[1].title }" href="virgin/${id }-${virgin[1].id}.html">${virgin[1].title }</a>
 							</c:when>
 							<c:otherwise>
-								<a href="virgin.html">没有上一页了。。</a>
+								<a title="没有上一页了!!" href="virgin/${id }-0.html">没有上一页了!!</a>
 							</c:otherwise>
 						</c:choose>
 						
@@ -134,10 +134,10 @@
 						下一篇：
 						<c:choose>
 							<c:when test="${!empty virgin[2]}">
-								<a href="virgin/${id }-${virgin[2].id}.html">${virgin[2].title }</a>
+								<a title="${virgin[2].title }" href="virgin/${id }-${virgin[2].id}.html">${virgin[2].title }</a>
 							</c:when>
 							<c:otherwise>
-								<a href="#">没有下一页了。。</a>
+								<a href="virgin/${id }-0.html" title="没有下一页了!!" >没有下一页了!!</a>
 							</c:otherwise>
 						</c:choose>
 						</span>

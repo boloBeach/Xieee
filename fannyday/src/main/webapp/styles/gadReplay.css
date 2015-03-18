@@ -1,0 +1,182 @@
+.index-content-items {
+	width: 630px;
+	border: 1px solid #c9dfa9;
+	background: #f1faf2;
+	margin-top: 10px;
+	padding-left:5px;
+	padding-right:5px;
+	border-radius:5px;
+}
+
+.item-content {
+	min-height: 100px;
+}
+
+.items-assess {
+	width: 100%;
+	height: 50px;
+}
+
+.items-assess a i {
+	float: left;
+	margin-right: 2px;
+	position: relative;
+	top: 3px;
+}
+
+.items-assess a:hover {
+	border: 1px solid #ABADB3;
+}
+
+.items-assess a {
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	border: 1px solid #DCDCDC;
+	border-radius: 3px;
+	margin-right: 10px;
+	cursor: pointer;
+	line-height: 20px;
+}
+
+dd {
+	float: left;
+	height: 30px;
+	border: 1px solid #adce7c;
+}
+
+.btn01 {
+	width: 60px;
+	color: #457c21;
+	height: 30px;
+	border: none;
+	cursor: pointer;
+	border-left: 1px solid #adce7c;
+	background: #e2f4d8;
+}
+
+.text01 {
+	width: 234px;
+	height: 25px;
+	border: none;
+	margin: 2px 0 0 2px;
+	line-height: 20px;
+	background: none;
+	color: #CCC;
+	padding-left: 5px;
+}
+
+dt {
+	float: left;
+	line-height: 26px;
+	padding-left: 15px;
+}
+
+.comentlist {
+	width: 630px;
+	color: #868686;
+	display: none;
+	margin-top: 16px;
+	padding-bottom: 10px;
+	background: #ffffff;
+	
+}
+
+.comentlist h2 {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 13px;
+	font-size: 14px;
+	background: url(../images/yxhBj.gif) 0 -33px repeat-x;
+	overflow: hidden;
+	font-weight: bold;
+}
+
+.comentlist ul {
+	display: inline-block;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.comentlist ul li {
+	display: block;
+	width: 100%;
+	float: left;
+	border-bottom: 1px dashed #DEDEDE;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+.comentlist ul li img {
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.comentlist ul li div {
+    float: left;
+    width: 90%;
+    margin-left: 10px;
+}
+.comentlist ul li div span {
+    display: block;
+    width: 100%;
+    line-height: 18px;
+}
+.comentlist em {
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.comentlist em i {
+    width: 13px;
+    height: 15px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 3px;
+    margin-right: 1px;
+}
+.item-content-title{
+	margin-top:5px;
+	margin-bottom:5px;
+	text-align: center;
+}
+.item-content-img{
+	width: 100%;
+	margin-top:10px;
+	text-indent:2em;
+	text-align: left;
+}
+.item-content-img div{
+	text-align: center;
+}
+.item-content-img img{
+	text-align: center;
+	margin-top:10px;
+	width: auto;
+	max-width:90%;
+	max-height:1500px;
+	height: auto;
+}
+.comentlist em i.favour {
+    background: url("../images/icon_view_up.png") no-repeat scroll;
+    background-position: 0 0;
+}
+.comentlist em i.tread {
+    background: url("../images/icon_view_down.png") no-repeat 0 0 scroll;
+    background-position: 0 0;
+}
+.index-content-left-item .item-comment em:hover i {
+    background-position: 0 -20px;
+}
+.bobtn{
+	background: url(../images/xTb_pic.gif) 0 -484px no-repeat;
+	cursor: pointer;
+	width: 50px;
+	margin: 5px auto;
+	padding-left: 20px;
+}
+.allp{
+	text-align: center;
+	height: 20px;
+	margin-top: 15px;
+}

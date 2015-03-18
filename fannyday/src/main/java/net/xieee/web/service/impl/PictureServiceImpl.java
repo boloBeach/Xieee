@@ -102,6 +102,7 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 	public int saveGadReply(Picture pPicture) {
 		String checkSql = "select count(1) from picture where title =? and detail=? ";
 		Object[] params = {pPicture.getTitle(),pPicture.getDetail()};
+		System.out.println(getCount(checkSql, params));
 		if(getCount(checkSql, params)==0){
 			checkSql  = "insert into picture(title,detail) values(?,?)";
 			return save(checkSql, params);

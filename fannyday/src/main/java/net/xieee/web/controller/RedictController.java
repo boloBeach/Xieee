@@ -145,4 +145,14 @@ public class RedictController {
 		modelAndView.addObject("id", urlId);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="gadreplay/{urlId}_{currentPage}.html")
+	public ModelAndView gadReplay(@PathVariable String urlId,@PathVariable String currentPage,HttpServletRequest request,HttpServletResponse response){
+		ModelAndView modelAndView = new ModelAndView("gadReplay");
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
+		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		return modelAndView;
+	}
 }
