@@ -10,6 +10,7 @@ import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.CartoonServiceInter;
 import net.xieee.web.service.CommonServerInter;
+import net.xieee.web.service.GadreplayServiceInter;
 import net.xieee.web.service.IndexServiceInter;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class RedictController {
 	
 	@Autowired
 	private CommonServerInter commonServiceImpl;
+	
+	@Autowired
+	private GadreplayServiceInter gadreplayServiceImpl;
 
 
 
@@ -152,6 +156,9 @@ public class RedictController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
+		int rows = gadreplayServiceImpl.getGadRows();
+		modelAndView.addObject("gadrelayList", gadreplayServiceImpl.getGadReplay(currentPage, rows));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		return modelAndView;
 	}

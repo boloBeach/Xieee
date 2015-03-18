@@ -3,9 +3,9 @@
 	border: 1px solid #c9dfa9;
 	background: #f1faf2;
 	margin-top: 10px;
-	padding-left:5px;
-	padding-right:5px;
-	border-radius:5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 5px;
 }
 
 .item-content {
@@ -79,7 +79,6 @@ dt {
 	margin-top: 16px;
 	padding-bottom: 10px;
 	background: #ffffff;
-	
 }
 
 .comentlist h2 {
@@ -106,77 +105,102 @@ dt {
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 }
+
 .comentlist ul li img {
-    width: 30px;
-    height: 30px;
-    float: left;
+	width: 30px;
+	height: 30px;
+	float: left;
 }
+
 .comentlist ul li div {
-    float: left;
-    width: 90%;
-    margin-left: 10px;
+	float: left;
+	width: 90%;
+	margin-left: 10px;
 }
+
 .comentlist ul li div span {
-    display: block;
-    width: 100%;
-    line-height: 18px;
+	display: block;
+	width: 100%;
+	line-height: 18px;
 }
+
 .comentlist em {
-    float: right;
-    margin-right: 10px;
-    cursor: pointer;
+	float: right;
+	margin-right: 10px;
+	cursor: pointer;
 }
+
 .comentlist em i {
-    width: 13px;
-    height: 15px;
-    display: block;
-    float: left;
-    position: relative;
-    top: 3px;
-    margin-right: 1px;
+	width: 13px;
+	height: 15px;
+	display: block;
+	float: left;
+	position: relative;
+	top: 3px;
+	margin-right: 1px;
 }
-.item-content-title{
-	margin-top:5px;
-	margin-bottom:5px;
+
+.item-content-title {
+	margin-top: 5px;
+	margin-bottom: 5px;
 	text-align: center;
 }
-.item-content-img{
+
+.item-content-img {
 	width: 100%;
-	margin-top:10px;
-	text-indent:2em;
+	margin-top: 10px;
+	text-indent: 2em;
 	text-align: left;
 }
-.item-content-img div{
+
+.item-content-img div {
 	text-align: center;
 }
-.item-content-img img{
+
+.item-content-img img {
 	text-align: center;
-	margin-top:10px;
+	margin-top: 10px;
 	width: auto;
-	max-width:90%;
-	max-height:1500px;
+	max-width: 90%;
+	max-height: 1500px;
 	height: auto;
 }
+
 .comentlist em i.favour {
-    background: url("../images/icon_view_up.png") no-repeat scroll;
-    background-position: 0 0;
+	background: url("../images/icon_view_up.png") no-repeat scroll;
+	background-position: 0 0;
 }
+
 .comentlist em i.tread {
-    background: url("../images/icon_view_down.png") no-repeat 0 0 scroll;
-    background-position: 0 0;
+	background: url("../images/icon_view_down.png") no-repeat 0 0 scroll;
+	background-position: 0 0;
 }
+
 .index-content-left-item .item-comment em:hover i {
-    background-position: 0 -20px;
+	background-position: 0 -20px;
 }
-.bobtn{
+
+.bobtn {
 	background: url(../images/xTb_pic.gif) 0 -484px no-repeat;
 	cursor: pointer;
 	width: 50px;
 	margin: 5px auto;
 	padding-left: 20px;
 }
-.allp{
+
+.allp {
 	text-align: center;
 	height: 20px;
 	margin-top: 15px;
+}
+
+.item-next{
+	text-align: center;
+}
+.item-next a {
+	display: inline-block;
+	margin-left: 5px;
+	padding: 3px 5px 3px 5px;
+	border: 1px solid #d9d9d9;
+	color: #649c30;
 }

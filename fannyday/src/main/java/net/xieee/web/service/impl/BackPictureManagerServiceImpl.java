@@ -32,7 +32,7 @@ public class BackPictureManagerServiceImpl extends BaseServiceImpl implements Ba
 		String sqlRow = "select count(id) from parent_picture where catalog_id=?";
 		Integer countInteger = getCount(sqlRow, params);
 		if (StringUtil.isNull(countInteger)) {
-			countInteger = 0;
+			countInteger = 1;
 		}
 		pager.Pager(countInteger, Contants.picture_catalog_pagesize, currentPages);
 		String sql = "select id,parent_picture_name,picture_url,is_delete,catalog_id from parent_picture where catalog_id=?";

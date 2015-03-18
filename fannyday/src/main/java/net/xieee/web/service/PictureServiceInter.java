@@ -105,4 +105,12 @@ public interface PictureServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public int saveGadReply(Picture pPicture);
+	
+	/**
+	 * 通过图片的名字来查询是否gad图片抓取过
+	 * @param title picture的title
+	 * @param detail picture的detail
+	 * @return
+	 */
+	public int checkGadReply(String title,String detail);
 }

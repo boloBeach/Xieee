@@ -45,26 +45,36 @@
 					</span>
 				</div>
 				<div class="index-content-left-item">
-					<div class="index-content-items">
+					<c:forEach var="gadReplayList" items="${gadrelayList.list}">
+						<div class="index-content-items">
 						<div class="item-content ft14" style="text-align: center;">
 							<div class="item-content-title ft20">
-								神回复title
+								${gadReplayList.title}
 							</div>
 							<div class="item-info ft12">
 								<i class="gray">by</i>&nbsp;&nbsp;admin&nbsp; <i class="gray">on
-									2015-03-04 18:16:05  </i>
+									${fn:substring(gadReplayList.modify_time, 0, 19)}  </i>
 							</div>
 							<div class="item-content-img ft16">
-								老婆害羞的说：咱俩第一次开房，你特别规矩，就和衣而卧轻轻抱着我睡了个午觉，从那天我就认定你是值得托付终身的男子。老子暗想：那天要不是看见你包里的姨妈巾，老子用得着演么!在卫生间还撸了一发!(神回复：她用姨妈巾试了一大拨人)
+								<c:choose>
+									<c:when test="${empty gadReplayList.picture_name }">
+										${gadReplayList.detail}
+									</c:when>
+									<c:otherwise>
+										<div>
+											<img alt="${gadReplayList.detail }" src="${gadReplayList.local_url }">
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 						<div class="items-assess">
 							<a class="goodVirgin" title="顶一个"> <i
-								class="icon icon-hand-up"></i><span>0</span></a> <a
+								class="icon icon-hand-up"></i><span>${gadReplayList.top_count }</span></a> <a
 								class="badVirgin" title="且..."> <i
-								class="icon icon-thumbs-down"></i><span>0</span>
+								class="icon icon-thumbs-down"></i><span>${gadReplayList.down_count }</span>
 							</a> <a class="oldVirgin" title="老神回复"> <i
-								class="icon icon-hand-down"></i>老神回复(<span>0</span>)
+								class="icon icon-hand-down"></i>老神回复(<span>${gadReplayList.old_picture }</span>)
 							</a>
 							<dd>
 								<input id="txtCommentContent_145099" type="text" class="text01"
@@ -73,8 +83,7 @@
 									onclick="postcommentinfo(145099,2);">
 							</dd>
 							<dt class="upDown">
-								<a href="javascript:void(0)" id="c-145092" class="comments"><em
-									id="span_CommentNum_145092" class="clorRed">1</em> 条评论<span
+								<a href="javascript:void(0)" title="查看评论" id="c-145092" class="comments">查看评论<span
 									id="spanPlus_145092">+</span></a>
 							</dt>
 						</div>
@@ -101,9 +110,11 @@
 							</div>
 						</div>
 					</div>
+					</c:forEach>
+					
 
 
-
+				<%--
 					<div class="index-content-items">
 						<div class="item-content ft14" style="text-align: center;">
 							<div class="item-content-title ft20">
@@ -156,7 +167,7 @@
 							</ul>
 						</div>
 					</div>
-					</div>
+					</div> --%>
 					<div>
 						<div class="bdsharebuttonbox float-right">
 							<a href="#" class="bds_more" data-cmd="more"></a><a href="#"
@@ -197,10 +208,33 @@
 					</div>
 					<div class="clear"></div>
 					<div class="item-next">
-						<span class="float-left ft12"> 上一篇： <a href="#" title="上一篇">上一篇</a>
-						</span> <span class="float-right ft12"> 下一篇： <a href="#"
-							title="下一篇">下一篇</a>
-						</span>
+						<c:if test="${gadrelayList.havePrePage }">
+							<a href="gadreplay/5_${gadrelayList.pageNumber-1}">上一页</a>
+						</c:if>
+						<c:if test="${gadrelayList.pageNumber > 4 }">
+							<a href="gadreplay/5_${gadrelayList.pageNumber-4 }.html">${gadrelayList.pageNumber-4 }</a>
+							<a href="gadreplay/5_${gadrelayList.pageNumber-3 }.html">${gadrelayList.pageNumber-3 }</a>
+							<a href="gadreplay/5_${gadrelayList.pageNumber-2 }.html">${gadrelayList.pageNumber-2 }</a>
+							<a href="gadreplay/5_${gadrelayList.pageNumber-1 }.html">${gadrelayList.pageNumber-1 }</a>
+						</c:if>
+						<a href="gadreplay/5_${gadrelayList.pageNumber}.html" style="color: red">${gadrelayList.pageNumber}</a>
+						<c:if test="${gadrelayList.pageCount-gadrelayList.pageNumber>4 }">
+							<a href="gadreplay/5_${gadrelayList.pageNumber+1 }.html">${gadrelayList.pageNumber+1 }</a>
+							<a href="gadreplay/5_${gadrelayList.pageNumber+2 }.html">${gadrelayList.pageNumber+2 }</a>
+							<a href="gadreplay/5_${gadrelayList.pageNumber+3 }.html">${gadrelayList.pageNumber+3 }</a>
+							<a href="gadreplay/5_${gadrelayList.pageNumber+4}.html">${gadrelayList.pageNumber+4 }</a>
+						</c:if>
+						<c:if test="${gadrelayList.pageCount-gadrelayList.pageNumber<4 }">
+							<c:set var="number" value="${gadrelayList.pageCount-gadrelayList.pageNumber}"/>
+							<c:if test="${number>0 }">
+								<c:forEach begin="1" end="${number }" step="1" varStatus="status">
+									<a href="gadreplay/5_${gadrelayList.pageNumber+status.index}.html">${gadrelayList.pageNumber+status.index}</a>
+								</c:forEach>
+							</c:if>
+						</c:if>
+						<c:if test="${gadrelayList.haveNextPage }">
+							<a href="gadreplay/5_${gadrelayList.pageNumber+1}.html">下一页</a>
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -218,7 +252,7 @@
 			var v = e.value;
 			if (v == '快来说两句吧！不用登录也能评论哦！') {
 				e.value = '';
-				e.style.color = '#000'
+				e.style.color = '#000';
 			}
 		}
 		document.getElementById("ipaddress").value = returnCitySN["cname"];
