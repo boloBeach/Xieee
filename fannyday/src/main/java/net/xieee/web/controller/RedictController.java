@@ -164,14 +164,21 @@ public class RedictController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="tag/{urlId}/{tag}.html")
-	public ModelAndView tagPages(@PathVariable String urlId,@PathVariable String tag,HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="tag/{urlId}/{tag}_{currentPage}.html")
+	public ModelAndView tagPages(@PathVariable String urlId,@PathVariable String tag,@PathVariable String currentPage,HttpServletRequest request,HttpServletResponse response){
 		ModelAndView modelAndView = new ModelAndView("tagPage");
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("id", urlId);
+		modelAndView.addObject("tagId", tag);
+		Integer keyId = StringUtil.stringToInt(tag);
+		if(keyId==0){
+			keyId = 1;
+		}
+		int rows = gadreplayServiceImpl.getTagRows(keyId);
+		modelAndView.addObject("gadrelayList", gadreplayServiceImpl.getTag(currentPage, rows, keyId));
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		return modelAndView;
 	}

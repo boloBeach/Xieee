@@ -196,33 +196,33 @@
 					<div class="clear"></div>
 					<div class="item-next ft12">
 						<c:if test="${gadrelayList.havePrePage }">
-							<a href="gadreplay/5_${gadrelayList.pageNumber-1}">上一页</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber-1}.html">上一页</a>
 						</c:if>
 						<c:if test="${gadrelayList.pageNumber > 4 }">
-							<a href="gadreplay/5_${gadrelayList.pageNumber-4 }.html">${gadrelayList.pageNumber-4 }</a>
-							<a href="gadreplay/5_${gadrelayList.pageNumber-3 }.html">${gadrelayList.pageNumber-3 }</a>
-							<a href="gadreplay/5_${gadrelayList.pageNumber-2 }.html">${gadrelayList.pageNumber-2 }</a>
-							<a href="gadreplay/5_${gadrelayList.pageNumber-1 }.html">${gadrelayList.pageNumber-1 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber-4 }.html">${gadrelayList.pageNumber-4 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber-3 }.html">${gadrelayList.pageNumber-3 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber-2 }.html">${gadrelayList.pageNumber-2 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber-1 }.html">${gadrelayList.pageNumber-1 }</a>
 						</c:if>
-						<a href="gadreplay/5_${gadrelayList.pageNumber}.html" style="color: red">${gadrelayList.pageNumber}</a>
+						<a href="tag/1/${tagId }_${gadrelayList.pageNumber}.html" style="color: red">${gadrelayList.pageNumber}</a>
 						<c:if test="${gadrelayList.pageCount-gadrelayList.pageNumber>4 }">
-							<a href="gadreplay/5_${gadrelayList.pageNumber+1 }.html">${gadrelayList.pageNumber+1 }</a>
-							<a href="gadreplay/5_${gadrelayList.pageNumber+2 }.html">${gadrelayList.pageNumber+2 }</a>
-							<a href="gadreplay/5_${gadrelayList.pageNumber+3 }.html">${gadrelayList.pageNumber+3 }</a>
-							<a href="gadreplay/5_${gadrelayList.pageNumber+4}.html">${gadrelayList.pageNumber+4 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber+1 }.html">${gadrelayList.pageNumber+1 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber+2 }.html">${gadrelayList.pageNumber+2 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber+3 }.html">${gadrelayList.pageNumber+3 }</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber+4}.html">${gadrelayList.pageNumber+4 }</a>
 						</c:if>
 						<c:if test="${gadrelayList.pageCount-gadrelayList.pageNumber<4 }">
 							<c:set var="number" value="${gadrelayList.pageCount-gadrelayList.pageNumber}"/>
 							<c:if test="${number>0 }">
 								<c:forEach begin="1" end="${number }" step="1" varStatus="status">
-									<a href="gadreplay/5_${gadrelayList.pageNumber+status.index}.html">${gadrelayList.pageNumber+status.index}</a>
+									<a href="tag/1/${tagId }_${gadrelayList.pageNumber+status.index}.html">${gadrelayList.pageNumber+status.index}</a>
 								</c:forEach>
 							</c:if>
 						</c:if>
 						<c:if test="${gadrelayList.haveNextPage }">
-							<a href="gadreplay/5_${gadrelayList.pageNumber+1}.html">下一页</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageNumber+1}.html">下一页</a>
 						</c:if>
-							<a href="gadreplay/5_${gadrelayList.pageCount}.html">最后一页</a>
+							<a href="tag/1/${tagId }_${gadrelayList.pageCount}.html">最后一页</a>
 					</div>
 				</div>
 			</div>

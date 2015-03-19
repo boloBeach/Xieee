@@ -10,11 +10,11 @@
   			<c:forEach var="tag" items="${tag }">
 	  			<c:choose>
 	  				<c:when test="${fn:length(tag.tag_name)>4}">
-	  					 <li><a href="#" title="${tag.tag_name }">${fn:substring(tag.tag_name, 0, 5)}</a></li>
+	  					 <li><a href="tag/1/${tag.id }_1.html" title="${tag.tag_name }">${fn:substring(tag.tag_name, 0, 5)}</a></li>
 	  				</c:when>
 	  				<c:otherwise>
 	  					<c:if test="${!empty tag.tag_name}">
-	  						<li><a href="#${tag.id }" title="${tag.tag_name }">${tag.tag_name }</a></li>
+	  						<li><a href="tag/1/${tag.id }_1.html" title="${tag.tag_name }">${tag.tag_name }</a></li>
 	  					</c:if>
 	  				</c:otherwise>
 	  			</c:choose>
