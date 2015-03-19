@@ -106,7 +106,7 @@ $(document).ready(function(){
 					success:function(data){
 						if(data!=null){
 							node.children("span").html(spanCount+1);
-							alert("顶成功");
+							alert("操作成功");
 						}
 					}
 				});
@@ -120,6 +120,9 @@ $(document).ready(function(){
 	$(".goodVirgin").on("click",function(){
 		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
+		if(typeof(cartoonId)=="undefined"){
+			cartoonId = $(this).nextAll("input").val();
+		}
 		var span = $(this).children("span").html();
 		oldresource($(this),ipAddress,span,"good",cartoonId,"likePicture.html");
 	});
@@ -127,6 +130,9 @@ $(document).ready(function(){
 	$(".badVirgin").on("click",function(){
 		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
+		if(typeof(cartoonId)=="undefined"){
+			cartoonId = $(this).nextAll("input").val();
+		}
 		var span = $(this).children("span").html();
 		oldresource($(this),ipAddress,span,"bad",cartoonId,"likePicture.html");
 	});
@@ -134,6 +140,9 @@ $(document).ready(function(){
 	$(".oldVirgin").on("click",function(){
 		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
+		if(typeof(cartoonId)=="undefined"){
+			cartoonId = $(this).nextAll("input").val();
+		}
 		var span = $(this).children("span").html();
 		oldresource($(this),ipAddress,span,"old",cartoonId,"likePicture.html");
 	});

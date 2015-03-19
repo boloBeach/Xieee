@@ -69,7 +69,7 @@ public class NeiHanPsPicture {
 		picture.setDetail(elementsDiv.text());
 		picture.setSpark_url(url);
 		picture.setAuthor("admin");
-		picture.setKey_word(Constants.key_word);
+		picture.setKey_word(Constants.key_word+"");
 		picture.setTitle(cartoonSpider.getTitle(document));
 		picture.setInter_url(httpHost + src);
 		picture.setHeight(cartoonSpider.getHeightByStyle(elementImg.attr("style")));

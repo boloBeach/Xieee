@@ -27,7 +27,7 @@ public class TestHahaqu {
 		String url = "";
 		String host = "www.hahaqu.com";
 			for(int i=1;i<=6770;i++){
-			url = "http://www.hahaqu.com/tag_7_"+i+".html";
+			url = "http://www.hahaqu.com/tag_7_"+40+".html";
 			try {
 				List<Picture> pictures = hahaquGodReply.getPicturesByHahaqu(url, host, host,"http://www.hahaqu.com/");
 				for (Picture picture : pictures) {
@@ -38,6 +38,7 @@ public class TestHahaqu {
 						downloadImage.Download(picture, host,Constants.god_reply_img_save_path,Constants.god_img_http_path);
 					}
 				}
+				break;
 			
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -45,7 +45,7 @@ public class Constants {
 	/**
 	 * 图片显示地址
 	 */
-	public final static String imgHTTPPath = "http://192.168.255.130/images/";
+	public final static String imgHTTPPath = "http://192.168.15.130/images/";
 
 	/**
 	 * 节操漫画的图片放置位置
@@ -55,17 +55,17 @@ public class Constants {
 	/**
 	 * 节操漫画的图片放置位置
 	 */
-	public final static String joker_img_http_path = "http://192.168.255.130/images/joke/";
+	public final static String joker_img_http_path = "http://192.168.15.130/images/joke/";
 
 	/**
 	 * cartoon nginx img path
 	 */
-	public final static String cartoon_img_http_path = "http://192.168.255.130/cartoon/";
+	public final static String cartoon_img_http_path = "http://192.168.15.130/cartoon/";
 
 	/**
 	 * 节操笑话的http img path
 	 */
-	public final static String virgin_img_http_path = "http://192.168.255.130/virgin/";
+	public final static String virgin_img_http_path = "http://192.168.15.130/virgin/";
 
 	/**
 	 * 节操笑话的保存路径
@@ -80,12 +80,12 @@ public class Constants {
 	/**
 	 * 神回复的http地址
 	 */
-	public final static String god_img_http_path = "http://192.168.255.130/images/godreply/";
+	public final static String god_img_http_path = "http://192.168.15.130/images/godreply/";
 
 	/**
 	 * ps 图片的http地址
 	 */
-	public final static String ps_img_http_path = "http://192.168.255.130/images/ps/";
+	public final static String ps_img_http_path = "http://192.168.15.130/images/ps/";
 
 	/**
 	 * spring xml name
@@ -130,12 +130,12 @@ public class Constants {
 	/**
 	 * @see 节操笑话的key_word
 	 */
-	public final static String key_word = "节操笑话";
+	public final static Integer key_word = 8;
 	
 	/**
 	 * @see 恶搞图片
 	 */
-	public final static String ps_key_word = "恶搞图片";
+	public final static Integer ps_key_word = 7;
 	
 	/**
 	 * @see detail每个分页的条数
@@ -146,5 +146,5 @@ public class Constants {
 	/**
 	 * @see 神回复
 	 */
-	public final static String god_reply="神回复";
+	public final static Integer god_reply=9;
 }

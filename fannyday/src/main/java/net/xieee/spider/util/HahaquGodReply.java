@@ -41,7 +41,7 @@ public class HahaquGodReply {
 		for (Element element : elements) {
 			Picture picture = new Picture();
 			hrefs = element.getElementsByTag("a");
-			picture.setKey_word(Constants.god_reply);
+			picture.setKey_word(Constants.god_reply+"");
 			if(hrefs.size()>=1){
 				picture.setTitle(hrefs.get(1).text());
 			}

@@ -9,12 +9,12 @@
   		<ul class="ft16">
   			<c:forEach var="tag" items="${tag }">
 	  			<c:choose>
-	  				<c:when test="${fn:length(tag.key_word)>4}">
-	  					 <li><a href="#" title="${tag.key_word }">${fn:substring(tag.key_word, 0, 4)}</a></li>
+	  				<c:when test="${fn:length(tag.tag_name)>4}">
+	  					 <li><a href="#" title="${tag.tag_name }">${fn:substring(tag.tag_name, 0, 5)}</a></li>
 	  				</c:when>
 	  				<c:otherwise>
-	  					<c:if test="${!empty tag.key_word}">
-	  						<li><a href="#" title="${tag.key_word }">${tag.key_word }</a></li>
+	  					<c:if test="${!empty tag.tag_name}">
+	  						<li><a href="#${tag.id }" title="${tag.tag_name }">${tag.tag_name }</a></li>
 	  					</c:if>
 	  				</c:otherwise>
 	  			</c:choose>

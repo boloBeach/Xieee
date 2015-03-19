@@ -121,7 +121,7 @@ public class RedictController {
 			virginId = maxId+"";
 		}
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
-		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(virginId,maxId,Constants.key_word ));
+		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(virginId,maxId,Constants.key_word+"" ));
 		int commontRows = commonServiceImpl.getCommontRowsById(urlId, virginId);
 		modelAndView.addObject("commontRows",commontRows);
 		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(virginId, commontRows,urlId, currentPage));
@@ -142,7 +142,7 @@ public class RedictController {
 		if(StringUtil.stringToInt(psId)==0){
 			psId = maxId+"";
 		}
-		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(psId,maxId,Constants.ps_key_word));
+		modelAndView.addObject("virgin",cartoonServiceImpl.getVirgin(psId,maxId,Constants.ps_key_word+""));
 		int commontRows = commonServiceImpl.getCommontRowsById(urlId, psId);
 		modelAndView.addObject("commontRows",commontRows);
 		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(psId,commontRows, urlId, currentPage));
@@ -156,10 +156,23 @@ public class RedictController {
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("id", urlId);
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		int rows = gadreplayServiceImpl.getGadRows();
 		modelAndView.addObject("gadrelayList", gadreplayServiceImpl.getGadReplay(currentPage, rows));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="tag/{urlId}/{tag}.html")
+	public ModelAndView tagPages(@PathVariable String urlId,@PathVariable String tag,HttpServletRequest request,HttpServletResponse response){
+		ModelAndView modelAndView = new ModelAndView("tagPage");
+		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
+		modelAndView.addObject("catalogList", list);
+		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
+		modelAndView.addObject("id", urlId);
+		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		return modelAndView;
 	}
 }
