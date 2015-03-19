@@ -1,5 +1,7 @@
 package net.xieee.util;
 
+import java.util.Random;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -58,6 +60,16 @@ public class StringUtil {
 			e.printStackTrace();
 			return 0;
 		}
-		
+	}
+	
+	/**
+	 * 随机生成10到30的数字
+	 * @return java.lang.Integer
+	 */
+	public static int random(){
+		Random random = new Random();
+		int k = random.nextInt();
+		int j = Math.abs(k % 20)+10;
+		return j;
 	}
 }

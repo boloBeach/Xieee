@@ -113,4 +113,11 @@ public interface PictureServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public int checkGadReply(String title,String detail);
+	
+	/**
+	 * 通过tagId来进行自动分组
+	 * @param tagId
+	 * @return 返回id(1,2,12)
+	 */
+	public int groupGif(int tagId,int titleId);
 }
