@@ -28,14 +28,14 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 
 	public int savePicture(Picture picture) {
 		if (!StringUtil.isNull(picture)) {
-			String sql = "insert into picture(picture_name,local_url,title,type,spark_url,author,parent_picture,key_word,width,height,inter_url,detail) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into picture(picture_name,local_url,title,type,spark_url,author,parent_picture,key_word,width,height,inter_url,detail,inter_url_small,local_url_small) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			Object[] params = { picture.getPicture_name(),
 					picture.getLocal_url(), picture.getTitle(),
 					picture.getType(), picture.getSpark_url(),
 					picture.getAuthor(), picture.getParent_picture(),
 					picture.getKey_word(), picture.getWidth(),
 					picture.getHeight(), picture.getInter_url(),
-					picture.getDetail() };
+					picture.getDetail(),picture.getInter_url_samll(),picture.getLocal_url_small() };
 			return save(sql, params);
 		}
 		return 0;
@@ -119,7 +119,7 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 	}
 
 	@Override
-	public int groupGif(int tagId,int titleId) {
+	public int groupGif(int tagId,String title) {
 		String sql = "select id,local_url,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+StringUtil.random()+"";
 		Object[] params = {tagId};
 		List list = getList(sql, params);
@@ -127,7 +127,7 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 		String insertParent = "insert into parent_picture(parent_picture_name,detail,picture_url,catalog_id) values(?,?,?,?)";
 		if(!list.isEmpty()){
 			map = (Map)list.get(0);
-			Object[] param = {"搞笑gif第"+titleId+"期",(String)map.get("title"),(String)map.get("local_url"),tagId};
+			Object[] param = {title,(String)map.get("title"),(String)map.get("local_url"),tagId};
 			int parentId  = save(insertParent, param);
 			// 保存好了，那么就修改picture表里面的catalog_id
 			if(!StringUtil.isNull(parentId)){

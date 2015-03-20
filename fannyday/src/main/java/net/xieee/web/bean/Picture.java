@@ -4,9 +4,11 @@ import java.util.Date;
 
 public class Picture {
 	private Integer id;
-	private String picture_name;
+	private String picture_name;	
+	private String local_url_small;
 	private String local_url;
 	private String inter_url;
+	private String inter_url_samll;
 	private String title;
 	private String type;
 	private Date modify_time;
@@ -37,6 +39,13 @@ public class Picture {
 		this.id = id;
 	}
 	
+	
+	public String getLocal_url_small() {
+		return local_url_small;
+	}
+	public void setLocal_url_small(String pLocal_url_small) {
+		local_url_small = pLocal_url_small;
+	}
 	public String getPicture_name() {
 		return picture_name;
 	}
@@ -44,6 +53,13 @@ public class Picture {
 		this.picture_name = picture_name;
 	}
 	
+	
+	public String getInter_url_samll() {
+		return inter_url_samll;
+	}
+	public void setInter_url_samll(String pInter_url_samll) {
+		inter_url_samll = pInter_url_samll;
+	}
 	public String getLocal_url() {
 		return local_url;
 	}
@@ -150,16 +166,16 @@ public class Picture {
 	}
 	@Override
 	public String toString() {
-		return "Picture [id=" + id + ", picture_name=" + picture_name
-				+ ", local_url=" + local_url + ", inter_url=" + inter_url
-				+ ", title=" + title + ", type=" + type + ", modify_time="
-				+ modify_time + ", spark_url=" + spark_url + ", detail="
-				+ detail + ", width=" + width + ", height=" + height
-				+ ", is_delete=" + is_delete + ", common_id=" + common_id
-				+ ", author=" + author + ", parent_picture=" + parent_picture
-				+ ", top_count=" + top_count + ", down_count=" + down_count
-				+ ", old_count=" + old_count + ", key_word=" + key_word + "]";
+		return "Picture [id=" + id + ", picture_name=" + picture_name + ", local_url_small=" + local_url_small
+				+ ", local_url=" + local_url + ", inter_url=" + inter_url + ", inter_url_samll=" + inter_url_samll
+				+ ", title=" + title + ", type=" + type + ", modify_time=" + modify_time + ", spark_url=" + spark_url
+				+ ", detail=" + detail + ", width=" + width + ", height=" + height + ", is_delete=" + is_delete
+				+ ", common_id=" + common_id + ", author=" + author + ", parent_picture=" + parent_picture
+				+ ", top_count=" + top_count + ", down_count=" + down_count + ", old_count=" + old_count
+				+ ", key_word=" + key_word + ", inter_url_title=" + inter_url_title + "]";
 	}
+	
+	
 	
 	
 }

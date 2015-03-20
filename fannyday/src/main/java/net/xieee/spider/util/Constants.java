@@ -81,6 +81,16 @@ public class Constants {
 	 * 神回复的http地址
 	 */
 	public final static String god_img_http_path = "http://192.168.15.130/images/godreply/";
+	
+	/**
+	 * 今日囧图的nginx 存放地址
+	 */
+	public final static String today_img_save_path="/usr/local/nginx/html/fannyday/images/today";
+	
+	/**
+	 * 今日囧途的http地址
+	 */
+	public final static String today_img_http_path = "http://192.168.15.130/images/today/";
 
 	/**
 	 * ps 图片的http地址
@@ -141,6 +151,11 @@ public class Constants {
 	 * @see detail每个分页的条数
 	 */
 	public final static Integer detailt_picture_size=1;
+	
+	/**
+	 * 今日囧途的key_wrod
+	 */
+	public final static Integer today_keyword = 3;
 	
 	
 	/**

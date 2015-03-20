@@ -119,5 +119,5 @@ public interface PictureServiceInter extends BaseServiceInter {
 	 * @param tagId
 	 * @return 返回id(1,2,12)
 	 */
-	public int groupGif(int tagId,int titleId);
+	public int groupGif(int tagId,String titleId);
 }

@@ -18,8 +18,9 @@ public class TestParentPicture {
 	
 	public static void main(String[] args) {
 		TestParentPicture testParentPicture = new TestParentPicture();
-		for (int i = 5; i < 50000; i++) {
-			System.out.println(pictureServiceImpl.groupGif(2, i));
+		for (int i = 6; i < 50000; i++) {
+			//System.out.println(pictureServiceImpl.groupGif(2, "搞笑gif第"+i+"期"));
+			//System.out.println(pictureServiceImpl.groupGif(3, "搞笑gif第"+i+"期"));
 		}
 	}
 }

@@ -50,6 +50,7 @@ public class DownloadImage {
 					os.write(bs, 0, len);
 				}
 				cartoon.setCartoon_local_url(httpPath+cartoon.getCartoon_image_name());
+				
 				pictureServiceImpl.saveCartoon(cartoon);
 				os.close();
 				is.close();
@@ -99,6 +100,40 @@ public class DownloadImage {
 			os.write(bs, 0, len);
 		}
 		picture.setLocal_url(httpPath+picture.getPicture_name());
+		
+		if(picture.getInter_url_samll()!=null){
+			url = new URL(picture.getInter_url_samll());
+			String inter_url_small_name = picture.getInter_url_samll().substring(picture.getInter_url_samll().lastIndexOf("/")+1, picture.getInter_url_samll().length());
+			connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestProperty("Accept", "image/webp,*/*;q=0.8");
+			connection.setRequestProperty("Accept-Encoding", "gzip, deflate, sdch");
+			connection.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4");
+			connection.setRequestProperty("Cache-Control", "max-age=0");
+			connection.setRequestProperty("Connection", "keep-alive");
+			connection.setRequestProperty("Host", host);
+			connection.setRequestProperty("Referer", "http://image.baidu.com");
+			
+			//connection.setRequestProperty("Host", host);
+			//connection.setRequestProperty("Accept", "image/webp,*/*;q=0.8");
+			//connection.setRequestProperty("Accept-Encoding", "gzip,deflate,sdch");
+			//connection.setRequestProperty("Accept-Language", "en-US,en;q=0.8");
+			connection.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36");
+			is = connection.getInputStream();
+			/*BufferedImage bufferedImage = ImageIO.read(is);
+			picture.setWidth(bufferedImage.getWidth());
+			picture.setHeight(bufferedImage.getHeight());*/
+			bs = new byte[1024];
+			sf = new File(fileSavePath);
+			if (!sf.exists()) {
+				sf.mkdirs();
+			}
+			os = new FileOutputStream(sf.getPath() + "/" + inter_url_small_name);
+			while ((len = is.read(bs)) != -1) {
+				os.write(bs, 0, len);
+			}
+			picture.setLocal_url_small(httpPath+inter_url_small_name);
+		}
+		
 		pictureServiceImpl.savePicture(picture);
 		os.close();
 		is.close();
