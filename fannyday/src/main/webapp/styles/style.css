@@ -32,6 +32,17 @@ em {
     clear: both;
 }
 
+.item-content-img{
+	text-align: center;
+}
+.item-content-img img{
+	width: auto;
+	max-width: 95%;
+	height: auto;
+}
+.item-content-img div{
+	margin-top: 25px;
+}
 .ft12 {
     font-size: 12px;
 }
@@ -376,6 +387,9 @@ em {
 .index-content-left-item {
     border-bottom: 1px solid #DCDCDC;
     padding-bottom: 20px;
+}
+.center{
+	text-align: center;
 }
 .index-content-left-item h1{
     padding: 15px 0 10px 0;

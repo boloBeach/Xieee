@@ -120,15 +120,23 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 
 	@Override
 	public int groupGif(int tagId,String title) {
-		String sql = "select id,local_url,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+StringUtil.random()+"";
+		String sql = "select id,local_url,local_url_small,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+StringUtil.random()+"";
 		Object[] params = {tagId};
 		List list = getList(sql, params);
 		Map map = null;
 		String insertParent = "insert into parent_picture(parent_picture_name,detail,picture_url,catalog_id) values(?,?,?,?)";
 		if(!list.isEmpty()){
 			map = (Map)list.get(0);
-			Object[] param = {title,(String)map.get("title"),(String)map.get("local_url"),tagId};
-			int parentId  = save(insertParent, param);
+			int parentId = 0;
+			if(!StringUtil.isNull(map.get("local_url_small"))){
+				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url_small"),tagId};
+				parentId = save(insertParent, param);
+			}else {
+				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url"),tagId};
+				parentId = save(insertParent, param);
+			}
+			
+			
 			// 保存好了，那么就修改picture表里面的catalog_id
 			if(!StringUtil.isNull(parentId)){
 				String ids = "";

@@ -83,6 +83,11 @@ public class RedictController {
 		ModelAndView modelAndView = new ModelAndView("detailpicture");
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
+		int rows = indexServiceImpl.getIndexPictureDetailRows(parentId);
+		modelAndView.addObject("pictureList", indexServiceImpl.getIndexPictureDetail(parentId, currentPage, rows));
+		modelAndView.addObject("parentBean",indexServiceImpl.getParentPictureById(parentId));
+		modelAndView.addObject("id", urlId);
+		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		return modelAndView;
 	}

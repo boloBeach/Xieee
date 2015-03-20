@@ -41,24 +41,28 @@
 					</span>
 				</div>
 				<div class="index-content-left-item">
-					<h1 class="ft20">Beautiful flying people</h1>
-					<div class="item-info ft12">
+					<h1 class="ft20 center">${parentBean.parent_picture_name}</h1>
+					<div class="item-info ft12 center">
 						<i class="gray">by</i>&nbsp;&nbsp;themefuse&nbsp; <i class="gray">on
 							2014/12/29</i>&nbsp; 0 comments <span class="item-type item-type-4"></span>
 					</div>
 					<div class="item-content ft14">
-						React components implement a render() method that takes input data
-						and returns what to display. This example uses an XML-like syntax
-						called JSX. Input data that is passed into the component can be
-						accessed by render() via this.props.<br> React components
-						implement a render() method that takes input data and returns what
-						to display. This example uses an XML-like syntax called JSX. Input
-						data that is passed into the component can be accessed by render()
-						via this.props.<br> React components implement a render()
-						method that takes input data and returns what to display. This
-						example uses an XML-like syntax called JSX. Input data that is
-						passed into the component can be accessed by render() via
-						this.props.<br>
+						<c:forEach var="listItem" items="${pictureList.list }">
+							<div class="item-content-img">
+								<img title="${listItem.title}" alt="${listItem.title}" src="${listItem.local_url}"/>
+								<div>
+									<c:choose>
+										<c:when test="${empty listItem.detail }">
+											${listItem.title }
+										</c:when>
+										<c:otherwise>
+											${listItem.detail }
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+						</c:forEach>
+						<br>
 					</div>
 					<div class="item-assess">
 						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i>10

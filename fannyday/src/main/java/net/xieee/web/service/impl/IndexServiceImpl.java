@@ -126,9 +126,9 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 			return null;
 		}
 		Pager pager = new Pager();
-		Integer currentPages = 1;
-		if(!StringUtil.isNull(currentPage)){
-			currentPages = Integer.valueOf(currentPage);
+		Integer currentPages = StringUtil.stringToInt(currentPage);
+		if(currentPages==0){
+			currentPages = 1;
 		}
 		Object[] params = {parentId};
 		pager.Pager(getRowsGif(parentId), Constants.detailt_picture_size, currentPages);
@@ -145,6 +145,51 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		String sql ="select count(id) from picture where parent_picture=? and is_delete=1";
 		Object[] params = {parentId};
 		return getCount(sql, params);
+	}
+
+	@Override
+	public Pager getIndexPictureDetail(String pParentId, String pCurrentPages, int pRows) {
+		if(StringUtil.isNull(pParentId)){
+			return null;
+		}
+		Pager pager = new Pager();
+		Integer currentPages = StringUtil.stringToInt(pCurrentPages);
+		if(currentPages==0){
+			currentPages = 1;
+		}
+		Object[] params = {pParentId};
+		pager.Pager(pRows, Constants.detailt_picture_size, currentPages);
+		String sql = "select id,height,width,detail,author,top_count,down_count,old_picture,modify_time,title,local_url,local_url_small from picture where parent_picture =? and  is_delete=1";
+		pager =  findBypager(sql, pager, params);
+		return pager;
+	}
+
+	@Override
+	public int getIndexPictureDetailRows(String pParentId) {
+		if(!StringUtil.isNull(pParentId)){
+			String sql = "select count(id) from picture where is_delete=1 and parent_picture=?";
+			Object[] params = {pParentId};
+			return getCount(sql, params);
+		}
+		return 0;
+	}
+
+	@Override
+	public ParentPicture getParentPictureById(String pParentId) {
+		if(!StringUtil.isNull(pParentId)){
+			String sql = "select parent_picture_name, detail,id from parent_picture where id=?";
+			Object[] params = {pParentId};
+			List list = getList(sql, params);
+			if(list!=null && !list.isEmpty()){
+				Map map = (Map)list.get(0);
+				ParentPicture parentPicture = new ParentPicture();
+				parentPicture.setId((Integer)map.get("id"));
+				parentPicture.setParent_picture_name((String)map.get("parent_picture_name"));
+				parentPicture.setDetail((String)map.get("detail"));
+				return parentPicture;
+			}
+		}
+		return null;
 	}
 
 }
