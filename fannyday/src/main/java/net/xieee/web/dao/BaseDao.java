@@ -22,6 +22,14 @@ public interface BaseDao<T> {
 	 * @param sql
 	 */
 	public int save(String sql,Object[] params);
+	
+	/**
+	 * 保存数据
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	public int saveTemplate(String sql,Object[] params);
 	/**
 	 * 更新数据
 	 * @param sql

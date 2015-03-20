@@ -36,7 +36,7 @@ public class PictureServiceImpl extends BaseServiceImpl implements
 					picture.getKey_word(), picture.getWidth(),
 					picture.getHeight(), picture.getInter_url(),
 					picture.getDetail(),picture.getInter_url_samll(),picture.getLocal_url_small() };
-			return save(sql, params);
+			return saveTemplate(sql, params);
 		}
 		return 0;
 	}

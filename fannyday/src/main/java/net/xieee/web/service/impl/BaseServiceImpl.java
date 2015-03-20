@@ -78,4 +78,9 @@ public class BaseServiceImpl<T> implements BaseServiceInter {
 		return baseDao.getListByClass(sql, clazz,params);
 	}
 
+	@Override
+	public int saveTemplate(String sql, Object[] params) {
+		return baseDao.saveTemplate(sql, params);
+	}
+
 }

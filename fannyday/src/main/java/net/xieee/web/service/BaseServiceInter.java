@@ -54,6 +54,14 @@ public interface BaseServiceInter<T> {
 	public List<Map<String,Object>> getList(String sql,Object[] params);
 	
 	/**
+	 * 保存信息
+	 * @param sql
+	 * @param params
+	 * @return
+	 */
+	public int saveTemplate(String sql,Object[] params);
+	
+	/**
 	 * 分页查询
 	 * @param sql
 	 * @return

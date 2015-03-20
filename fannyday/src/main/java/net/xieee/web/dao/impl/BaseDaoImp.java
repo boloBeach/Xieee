@@ -105,6 +105,12 @@ public class BaseDaoImp<T> implements BaseDao {
 		  return keyHolder.getKey().intValue();
 	}
 
+	
+	public int saveTemplate(String sql,Object[] params){
+		return jdbcTemplate.update(sql, params);
+	}
+	
+	
 	public int update(String sql, Object[] params) {
 		// TODO Auto-generated method stub
 		return jdbcTemplate.update(sql, params);
