@@ -27,7 +27,7 @@ public class TestToday {
 		String httpHost = "http://bbs.scnjnews.com/";
 		TodayJoke todayJoke = new TodayJoke();
 		DownloadImage downloadImage = new DownloadImage();
-		for (int i = 4; i < 500; i++) {
+		for (int i = 1; i < 500; i++) {
 			try {
 				String url = "http://pic.scnjnews.com/forum.php?mod=forumdisplay&fid=173&filter=&orderby=lastpost&page="+i+"&t=5450279";
 				List<Picture> list = todayJoke.getTodayJoke(url, url_host, bbs_host, referer, httpHost);

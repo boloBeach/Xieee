@@ -20,8 +20,8 @@ public class DownloadImage {
 	public PictureServiceImpl pictureServiceImpl;
 	public DownloadImage(){
 		// 首先判断是否已经被下载了，如果被下载了，那么直接就返回。通过获取xml文件才做。
-		String xmlPath = DownloadImage.class.getClassLoader().getResource(Constants.springXMLName).getPath();
-		ApplicationContext context = new FileSystemXmlApplicationContext("/"+xmlPath);
+		String xmlPath = DownloadImage.class.getClassLoader().getResource("resources/"+Constants.springXMLName).getPath();
+		ApplicationContext context = new FileSystemXmlApplicationContext(xmlPath);
 		pictureServiceImpl = (PictureServiceImpl) context.getBean("pictureServiceImpl");
 	}
 	

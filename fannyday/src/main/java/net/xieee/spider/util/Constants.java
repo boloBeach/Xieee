@@ -45,7 +45,7 @@ public class Constants {
 	/**
 	 * 图片显示地址
 	 */
-	public final static String imgHTTPPath = "http://192.168.15.130/images/";
+	public final static String imgHTTPPath = "http://www.bolobeach.com/images/";
 
 	/**
 	 * 节操漫画的图片放置位置
@@ -55,17 +55,17 @@ public class Constants {
 	/**
 	 * 节操漫画的图片放置位置
 	 */
-	public final static String joker_img_http_path = "http://192.168.15.130/images/joke/";
+	public final static String joker_img_http_path = "http://www.bolobeach.com/images/joke/";
 
 	/**
 	 * cartoon nginx img path
 	 */
-	public final static String cartoon_img_http_path = "http://192.168.15.130/cartoon/";
+	public final static String cartoon_img_http_path = "http://www.bolobeach.com/cartoon/";
 
 	/**
 	 * 节操笑话的http img path
 	 */
-	public final static String virgin_img_http_path = "http://192.168.15.130/virgin/";
+	public final static String virgin_img_http_path = "http://www.bolobeach.com/virgin/";
 
 	/**
 	 * 节操笑话的保存路径
@@ -80,7 +80,7 @@ public class Constants {
 	/**
 	 * 神回复的http地址
 	 */
-	public final static String god_img_http_path = "http://192.168.15.130/images/godreply/";
+	public final static String god_img_http_path = "http://www.bolobeach.com/images/godreply/";
 	
 	/**
 	 * 今日囧图的nginx 存放地址
@@ -90,12 +90,12 @@ public class Constants {
 	/**
 	 * 今日囧途的http地址
 	 */
-	public final static String today_img_http_path = "http://192.168.15.130/images/today/";
+	public final static String today_img_http_path = "http://www.bolobeach.com/images/today/";
 
 	/**
 	 * ps 图片的http地址
 	 */
-	public final static String ps_img_http_path = "http://192.168.15.130/images/ps/";
+	public final static String ps_img_http_path = "http://www.bolobeach.com/images/ps/";
 
 	/**
 	 * spring xml name

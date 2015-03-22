@@ -1,7 +1,6 @@
 package net.xieee.spider.util;
 
 import net.xieee.web.bean.Picture;
-import net.xieee.web.bean.PictureBean;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;

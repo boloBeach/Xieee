@@ -2,9 +2,7 @@ package net.xieee.spider.util;
 
 import java.util.LinkedList;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
-/**
+/**-
  * 
  * @author royzhang
  *

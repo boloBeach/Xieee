@@ -18,7 +18,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 /**
  * 抓取漫画的信息，主要抓取网站为内涵吧O <class description>

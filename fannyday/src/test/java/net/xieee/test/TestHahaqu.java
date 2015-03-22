@@ -1,5 +1,6 @@
 package net.xieee.test;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -17,8 +18,8 @@ public class TestHahaqu {
 	public static PictureServiceImpl pictureServiceImpl;
 	public TestHahaqu(){
 		// 首先判断是否已经被下载了，如果被下载了，那么直接就返回。通过获取xml文件才做。
-		String xmlPath = DownloadImage.class.getClassLoader().getResource(Constants.springXMLName).getPath();
-		ApplicationContext context = new FileSystemXmlApplicationContext("/"+xmlPath);
+		//String xmlPath = DownloadImage.class.getClassLoader().getResource("resources/"+Constants.springXMLName).getPath();
+		ApplicationContext context = new FileSystemXmlApplicationContext("C:/Users/bolobeach/Desktop/linux/jar/TestHaHaqu/resources/"+Constants.springXMLName);
 		pictureServiceImpl = (PictureServiceImpl) context.getBean("pictureServiceImpl");
 	}
 	public void test(){
@@ -27,7 +28,7 @@ public class TestHahaqu {
 		String url = "";
 		String host = "www.hahaqu.com";
 			for(int i=1;i<=6770;i++){
-			url = "http://www.hahaqu.com/tag_7_"+40+".html";
+			url = "http://www.hahaqu.com/tag_7_"+i+".html";
 			try {
 				List<Picture> pictures = hahaquGodReply.getPicturesByHahaqu(url, host, host,"http://www.hahaqu.com/");
 				for (Picture picture : pictures) {
@@ -38,7 +39,6 @@ public class TestHahaqu {
 						downloadImage.Download(picture, host,Constants.god_reply_img_save_path,Constants.god_img_http_path);
 					}
 				}
-				break;
 			
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -60,7 +60,7 @@
 								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: auto;">
 							</c:when>
 							<c:when test="${virgin[0].width==0 }">
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: 2500px;">
+								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: auto;">
 							</c:when>
 							<c:otherwise>
 								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:auto ;height: auto;">

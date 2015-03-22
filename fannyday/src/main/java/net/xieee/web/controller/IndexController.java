@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.IndexServiceInter;
 
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.Header;
 
 /**
  * 这个是用来做首页登录的controller

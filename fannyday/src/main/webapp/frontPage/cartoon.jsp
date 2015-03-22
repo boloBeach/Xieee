@@ -59,7 +59,7 @@
 								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
 							</c:when>
 							<c:when test="${cartoon[0].cartoon_width==0 }">
-								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: 2500px;">
+								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
 							</c:when>
 							<c:otherwise>
 								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:auto ;height: auto;">

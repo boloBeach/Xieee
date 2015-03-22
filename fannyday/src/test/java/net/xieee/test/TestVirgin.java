@@ -3,6 +3,7 @@ package net.xieee.test;
 import net.xieee.spider.util.Constants;
 import net.xieee.spider.util.DownloadImage;
 import net.xieee.spider.util.NeiHanPsPicture;
+import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Picture;
 
 public class TestVirgin {
@@ -19,7 +20,9 @@ public class TestVirgin {
 			try {
 				Picture picture = neiHanPsPicture.getPicturesByNeiHanVirgin(url, referer, host, httpHost);
 				System.out.println(picture.toString());
-				downloadImage.Download(picture, host,Constants.virgin_img_save_path,Constants.virgin_img_http_path);
+				if(!StringUtil.isNull(picture) && picture.getInter_url()!=null){
+					downloadImage.Download(picture, host,Constants.virgin_img_save_path,Constants.virgin_img_http_path);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

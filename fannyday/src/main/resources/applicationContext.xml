@@ -34,6 +34,9 @@
 		<property name="defaultAutoCommit" value="${defaultAutoCommit}"></property>
 		<property name="initialSize" value="${initialSize}"></property>
 		<property name="connectionProperties" value="${connectionProperties}"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"></property>
+		<property name="testWhileIdle" value="${testWhileIdle}"></property>
+		<property name="validationQuery" value="${validationQuery}"></property>
 	</bean>
 
 	<!-- jdbc注入 -->
