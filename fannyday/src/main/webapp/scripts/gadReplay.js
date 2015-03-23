@@ -69,10 +69,11 @@ $(document).ready(function(){
 		$(this).parent("div").parent("div").hide(1000);
 	});
 	$(".btn01").on("click",function(){
-		if(!$(this).hasClass('Onclick')){
+		var btnNode = $(this);
+		var dt = btnNode.parent("dd").next("dt").find("span");
+		if(!btnNode.hasClass('Onclick')){
 			//样式不存在
-			$(this).addClass('Onclick')
-			var btnNode = $(this);
+			btnNode.addClass('Onclick')
 			var resourceId = btnNode.parent("dd").prevAll("input").val();
 			var catalogId = $("#catalogId").val();
 			var content = btnNode.prev().val();
@@ -87,19 +88,26 @@ $(document).ready(function(){
 						dataType:"json",
 						type:"post",
 						success:function(data){
-							if(data=="1"){
+							if(data!="0"){
 								btnNode.parent("dd").parent("div").next().show(1000);
 								btnNode.parent("dd").parent("div").next().find("ul").prepend($("<li><img src='images/user.png'><div><span class='name gray'>"+ipaddress+"的网友:</span> <span class='says black'>"+content+"</span><span class='time gray'>"+new Date().Format("yyyy-MM-dd hh:mm:ss ") +"<em class='treadDown'> <i class='tread'></i>(0) </em> <em class='favourTop'> <i class='favour'></i>(0) </em> </span> </div></li>"));
+								dt.show();
+								dt.html("操作成功");
 								setTimeout(function(){btnNode.removeClass('Onclick')},5000);
 							}
 						}
 					});
 				}else{
-					alert("不能输入太多了,我饱了,限200字");
+					dt.show();
+					dt.html("不能输入超过200字");
 				}
 			}else{
-				alert("评论不能为空唷。");
+				dt.show();
+				dt.html("评论不能为空唷。");
 			}
+		}else{
+			dt.show();
+			dt.html("不能点快咯！！");
 		}
 	});
 	

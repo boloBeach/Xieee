@@ -81,7 +81,9 @@
 							</dd>
 							<dt class="upDown">
 								<a href="javascript:void(0)" title="查看评论" id="c-145092" class="comments">查看评论</a>
+								<span style="display:none;display:none; color: red;" class="ft12" >操作成功</span>
 							</dt>
+							
 						</div>
 						<div class="comentlist">
 							<h2>最新评论</h2>

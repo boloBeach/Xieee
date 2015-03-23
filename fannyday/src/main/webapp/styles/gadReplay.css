@@ -1,5 +1,5 @@
 .index-content-items {
-	width: 630px;
+	width: 750px;
 	border: 1px solid #c9dfa9;
 	background: #f1faf2;
 	margin-top: 10px;
@@ -46,7 +46,7 @@ dd {
 }
 
 .btn01 {
-	width: 60px;
+	width: 65px;
 	color: #457c21;
 	height: 30px;
 	border: none;
@@ -56,7 +56,7 @@ dd {
 }
 
 .text01 {
-	width: 234px;
+	width: 284px;
 	height: 25px;
 	border: none;
 	margin: 2px 0 0 2px;
@@ -73,7 +73,7 @@ dt {
 }
 
 .comentlist {
-	width: 630px;
+	width: 750px;
 	color: #868686;
 	display: none;
 	margin-top: 16px;

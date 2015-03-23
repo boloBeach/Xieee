@@ -153,7 +153,7 @@ em {
 }
 
 .index-container {
-    width: 980px;
+    width: 1100px;
     margin: 0 auto;
 }
 .index-header {
@@ -335,7 +335,7 @@ em {
     width: 100%;
 }
 .index-content-left {
-    width: 630px;
+    width: 750px;
     float: left;
     min-height: 300px;
 }
@@ -804,7 +804,7 @@ em {
 .index-content-item{
 	margin-top:20px;
 	width:100%;
-	height:1293px;
+	height:1580px;
 	border: 1px solid #D1D1D1;
 }
 .index-content-item-title{
@@ -826,7 +826,7 @@ em {
 }
 .content-list li{
 	float: left;
-	width: 177px;
+	width: 230px;
 	text-align: center;
 	margin-right: 7px;
 	margin-top: 10px;
@@ -834,8 +834,8 @@ em {
 	border: 1px dashed #D1D1D1;
 }
 .content-list img{
-	height: 155px;
-	width: 174px;
+	height: 200px;
+	width: 225px;
 	border: 1px solid #EBEBEB;
 	padding: 3px;
 }
@@ -843,7 +843,8 @@ em {
 	text-indent: 2em;
 	overflow: hidden;
 	text-align:left;
-	height: 24px;
+	height: 34px;
+	font-size: 15px;
 }
 
 #commont input[type=text]{

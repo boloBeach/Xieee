@@ -55,7 +55,7 @@ $(document).ready(function(){
 					$("#checkCode").focus();
 					errorMessage.html("对不起，您输入的验证码错误,请重新输入!");
 				}
-				if(data=="1"){
+				if(data>"0"){
 					$(".common").prepend($("<li><img src='images/user.png'><div><span class='name gray'>"+ipaddress+"的网友:</span> <span class='says black'>"+content+"</span><span class='time gray'>"+new Date().Format("yyyy-MM-dd hh:mm:ss ") +"<em> <i class='tread'></i>(0) </em> <em> <i class='favour'></i>(0) </em> </span> </div></li>"));
 				}
 			}
@@ -91,7 +91,7 @@ $(document).ready(function(){
 		}
 		return "";
 	}
-	function oldresource(node,ipAddress,spanCount,type,cartoonId,url){
+	function oldresource(node,virgin,ipAddress,spanCount,type,cartoonId,url){
 		var spanCount = parseInt(spanCount);
 		// 首先获取cookie
 		var cookieCartoonId = getCookie(cartoonId+type);
@@ -106,13 +106,13 @@ $(document).ready(function(){
 					success:function(data){
 						if(data!=null){
 							node.children("span").html(spanCount+1);
-							alert("操作成功");
+							node.parent().children(".ft12").html("操作成功");
 						}
 					}
 				});
 			}
 		}else{
-			alert("对不起，您今天已经顶过了");
+			node.parent().children(".ft12").html("对不起，您今天已经顶过了");
 		}
 	}
 	
@@ -124,7 +124,7 @@ $(document).ready(function(){
 			cartoonId = $(this).nextAll("input").val();
 		}
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"good",cartoonId,"likePicture.html");
+		oldresource($(this),"virgin",ipAddress,span,"good",cartoonId,"likePicture.html");
 	});
 	
 	$(".badVirgin").on("click",function(){
@@ -134,7 +134,7 @@ $(document).ready(function(){
 			cartoonId = $(this).nextAll("input").val();
 		}
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"bad",cartoonId,"likePicture.html");
+		oldresource($(this),"virgin",ipAddress,span,"bad",cartoonId,"likePicture.html");
 	});
 	
 	$(".oldVirgin").on("click",function(){
@@ -144,7 +144,7 @@ $(document).ready(function(){
 			cartoonId = $(this).nextAll("input").val();
 		}
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"old",cartoonId,"likePicture.html");
+		oldresource($(this),"virgin",ipAddress,span,"old",cartoonId,"likePicture.html");
 	});
 	
 	
@@ -152,21 +152,21 @@ $(document).ready(function(){
 		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"good",cartoonId,"likeResource.html");
+		oldresource($(this),"no",ipAddress,span,"good",cartoonId,"likeResource.html");
 	});
 	
 	$(".bad").on("click",function(){
 		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"bad",cartoonId,"likeResource.html");
+		oldresource($(this),"no",ipAddress,span,"bad",cartoonId,"likeResource.html");
 	});
 	
 	$(".old").on("click",function(){
 		var ipAddress = $("#ipaddress").val();
 		var cartoonId = $(".cartoon_id").val();
 		var span = $(this).children("span").html();
-		oldresource($(this),ipAddress,span,"old",cartoonId,"likeResource.html");
+		oldresource($(this),"no",ipAddress,span,"old",cartoonId,"likeResource.html");
 	});
 	
 	function replace(obj){

@@ -46,8 +46,8 @@
 					</span>
 				</div>
 				<div class="index-content-left-item">
-					<h1 class="ft20">${cartoon[0].cartoon_title }</h1>
-					<div class="item-info ft12">
+					<h1 class="ft20 center">${cartoon[0].cartoon_title }</h1>
+					<div class="item-info ft12 center">
 						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[0].cartoon_user_name }&nbsp; <i class="gray">on
 							${fn:substring(virgin[0].modify_time, 0, 19)} </i>&nbsp; ${commontRows } comments <span class="item-type item-type-4"></span>
 					</div>
@@ -74,8 +74,8 @@
 						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${cartoon[0].top_count}</span></a> 
 						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${cartoon[0].down_count}</span> </a> 
 						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${cartoon[0].old_cartoon}</span>)</a>
-						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏
-						</a>
+						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏</a>
+						<span class="ft12" style="color: red;display:none;line-height: 30px;">操作成功</span>
 					</div>
 					<div>
 						<div class="bdsharebuttonbox float-right">
