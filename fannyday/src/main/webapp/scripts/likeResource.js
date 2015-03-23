@@ -106,13 +106,13 @@ $(document).ready(function(){
 					success:function(data){
 						if(data!=null){
 							node.children("span").html(spanCount+1);
-							node.parent().children(".ft12").html("操作成功");
+							node.parent().children("span:last").text("操作成功");
 						}
 					}
 				});
 			}
 		}else{
-			node.parent().children(".ft12").html("对不起，您今天已经顶过了");
+			node.parent().children("span:last").text("对不起，您今天已经顶过了");
 		}
 	}
 	
