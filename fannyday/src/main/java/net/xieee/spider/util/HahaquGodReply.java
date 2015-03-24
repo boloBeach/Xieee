@@ -47,6 +47,7 @@ public class HahaquGodReply {
 			}
 			pic_text = element.getElementsByClass("pic_text");
 			picture.setSpark_url(url);
+			picture.setKey_word(Constants.god_reply+"");
 			if(pic_text!=null){
 				if(pic_text.first()!=null){
 					pictures = pic_text.first().getElementsByTag("img");
