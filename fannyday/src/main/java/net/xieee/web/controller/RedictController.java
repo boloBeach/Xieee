@@ -1,11 +1,13 @@
 package net.xieee.web.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.xieee.spider.util.Constants;
+import net.xieee.util.Pager;
 import net.xieee.util.StringUtil;
 import net.xieee.web.bean.Catalog;
 import net.xieee.web.service.CartoonServiceInter;
@@ -84,7 +86,11 @@ public class RedictController {
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		int rows = indexServiceImpl.getIndexPictureDetailRows(parentId);
-		modelAndView.addObject("pictureList", indexServiceImpl.getIndexPictureDetail(parentId, currentPage, rows));
+		Pager pager = indexServiceImpl.getIndexPictureDetail(parentId, currentPage, rows);
+		if(pager.getList()!=null || !pager.getList().isEmpty()){
+			(Map)pager.getList().get(0);
+		}
+		modelAndView.addObject("pictureList",pager );
 		modelAndView.addObject("parentBean",indexServiceImpl.getParentPictureById(parentId));
 		modelAndView.addObject("id", urlId);
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
