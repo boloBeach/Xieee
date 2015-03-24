@@ -175,19 +175,12 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 	}
 
 	@Override
-	public ParentPicture getParentPictureById(String pParentId) {
+	public List getParentPictureById(String pParentId,String catalogId) {
 		if(!StringUtil.isNull(pParentId)){
-			String sql = "select parent_picture_name, detail,id from parent_picture where id=?";
-			Object[] params = {pParentId};
+			String sql = "select parent_picture_name, detail,id from parent_picture WHERE id = ? AND catalog_id=? AND is_delete = 1 UNION select parent_picture_name, detail,id from parent_picture	WHERE id = ( SELECT max(id) FROM parent_picture WHERE id < ? AND catalog_id=? 	AND is_delete = 1 ) UNION select parent_picture_name, detail,id from parent_picture WHERE id = ( SELECT min(id) FROM parent_picture WHERE id > ? AND catalog_id=?  AND is_delete = 1 	)";
+			Object[] params = {pParentId,catalogId,pParentId,catalogId,pParentId,catalogId};
 			List list = getList(sql, params);
-			if(list!=null && !list.isEmpty()){
-				Map map = (Map)list.get(0);
-				ParentPicture parentPicture = new ParentPicture();
-				parentPicture.setId((Integer)map.get("id"));
-				parentPicture.setParent_picture_name((String)map.get("parent_picture_name"));
-				parentPicture.setDetail((String)map.get("detail"));
-				return parentPicture;
-			}
+			return list;
 		}
 		return null;
 	}

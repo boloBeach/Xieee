@@ -127,6 +127,6 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 * @param parentId
 	 * @return
 	 */
-	public ParentPicture getParentPictureById(String parentId);
+	public List getParentPictureById(String pParentId,String catalogId);
 
 }

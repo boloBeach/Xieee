@@ -72,6 +72,7 @@ public class TestURL {
 				+ pageIndex
 				* pageSize
 				+ "&rn=60&z=3&itg=1&fr=&width=0&height=0&lm=-1&ic=0&s=0";
+		System.out.println(url);
 		Connection connection = Jsoup.connect(url);
 		List<Picture> list = new ArrayList<Picture>();
 		connection.referrer("http://image.baidu.com/");

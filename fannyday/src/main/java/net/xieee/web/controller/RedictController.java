@@ -87,11 +87,18 @@ public class RedictController {
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		int rows = indexServiceImpl.getIndexPictureDetailRows(parentId);
 		Pager pager = indexServiceImpl.getIndexPictureDetail(parentId, currentPage, rows);
+		String resourceId = "";
 		if(pager.getList()!=null || !pager.getList().isEmpty()){
-			(Map)pager.getList().get(0);
+			Map map = (Map)pager.getList().get(0);
+			resourceId = map.get("id").toString();
 		}
+		String commontPages = request.getParameter("commontPage");
+		int commontRows = commonServiceImpl.getCommontRowsById(urlId, resourceId);
+		modelAndView.addObject("commontRows",commontRows);
+		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(resourceId,commontRows, urlId, commontPages));
+		
 		modelAndView.addObject("pictureList",pager );
-		modelAndView.addObject("parentBean",indexServiceImpl.getParentPictureById(parentId));
+		modelAndView.addObject("parentBean",indexServiceImpl.getParentPictureById(parentId,urlId));
 		modelAndView.addObject("id", urlId);
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
