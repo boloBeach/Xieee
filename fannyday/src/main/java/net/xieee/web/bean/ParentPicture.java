@@ -11,7 +11,15 @@ public class ParentPicture {
 	private String is_delete;
 	private Integer catalog_id;
 	private String picture_url;
+	private Integer picture_count;
 	
+	
+	public Integer getPicture_count() {
+		return picture_count;
+	}
+	public void setPicture_count(Integer picture_count) {
+		this.picture_count = picture_count;
+	}
 	public String getPicture_url() {
 		return picture_url;
 	}

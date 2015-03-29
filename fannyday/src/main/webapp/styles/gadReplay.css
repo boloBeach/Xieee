@@ -56,7 +56,7 @@ dd {
 }
 
 .text01 {
-	width: 284px;
+	width: 264px;
 	height: 25px;
 	border: none;
 	margin: 2px 0 0 2px;
@@ -162,7 +162,7 @@ dt {
 	margin-top: 10px;
 	width: auto;
 	max-width: 90%;
-	max-height: 4500px;
+	max-height: 6500px;
 	height: auto;
 }
 

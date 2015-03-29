@@ -135,7 +135,7 @@ public class Constants {
 	/**
 	 * @see 随机生成12个搞笑漫画出来。
 	 */
-	public final static Integer rand_cartoon_count = 12;
+	public final static Integer rand_cartoon_count = 19;
 
 	/**
 	 * @see 节操笑话的key_word

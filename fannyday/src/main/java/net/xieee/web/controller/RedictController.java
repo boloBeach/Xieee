@@ -94,12 +94,16 @@ public class RedictController {
 		}
 		String commontPages = request.getParameter("commontPage");
 		int commontRows = commonServiceImpl.getCommontRowsById(urlId, resourceId);
+		indexServiceImpl.saveSkimCount(parentId);
 		modelAndView.addObject("commontRows",commontRows);
 		modelAndView.addObject("commonList",commonServiceImpl.getCartoonCommonByResourceId(resourceId,commontRows, urlId, commontPages));
-		
+		List pictureLists = indexServiceImpl.getParentPictureById(parentId,urlId);
 		modelAndView.addObject("pictureList",pager );
-		modelAndView.addObject("parentBean",indexServiceImpl.getParentPictureById(parentId,urlId));
+		modelAndView.addObject("parentBean",pictureLists);
 		modelAndView.addObject("id", urlId);
+		modelAndView.addObject("resourceId", resourceId);
+		modelAndView.addObject("parentId", parentId);
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		return modelAndView;
@@ -110,6 +114,7 @@ public class RedictController {
 		ModelAndView modelAndView = new ModelAndView("cartoon");
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		String currentPage = request.getParameter("currentPage");
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		int maxId = cartoonServiceImpl.getMaxId();
 		if(StringUtil.stringToInt(cartoonId)==0){
 			cartoonId = maxId+"";
@@ -135,6 +140,7 @@ public class RedictController {
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		int maxId = cartoonServiceImpl.getVirginMaxId();
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		if(StringUtil.stringToInt(virginId)==0){
 			virginId = maxId+"";
 		}
@@ -156,6 +162,7 @@ public class RedictController {
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		int maxId = cartoonServiceImpl.getPsMaxId();
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		if(StringUtil.stringToInt(psId)==0){
 			psId = maxId+"";
@@ -177,6 +184,7 @@ public class RedictController {
 		modelAndView.addObject("id", urlId);
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
 		int rows = gadreplayServiceImpl.getGadRows();
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		modelAndView.addObject("gadrelayList", gadreplayServiceImpl.getGadReplay(currentPage, rows));
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		return modelAndView;
@@ -191,6 +199,7 @@ public class RedictController {
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("id", urlId);
 		modelAndView.addObject("tagId", tag);
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		Integer keyId = StringUtil.stringToInt(tag);
 		if(keyId==0){
 			keyId = 1;

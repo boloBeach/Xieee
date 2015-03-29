@@ -22,7 +22,11 @@
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <link href="styles/style.css" rel="stylesheet" type="text/css">
-
+ <script type="text/javascript">
+	  function refresh(obj) {
+	      obj.src = "imageServlet?"+Math.random();
+	   }
+    </script>
 <script type="text/javascript"
 	src="scripts/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/index.js"></script>
@@ -41,6 +45,8 @@
 						class="ft12">首页</a>&nbsp;»&nbsp;<a href="" class="ft12">今日囧图</a>
 					</span>
 				</div>
+				<input type="hidden" value="${id }" id="catalogId"/>
+				<input type="hidden" value="${resourceId}" class="cartoon_id"/>
 				<c:forEach var="listItem" items="${pictureList.list }">
 				<div class="index-content-left-item">
 					<h1 class="ft20 center">
@@ -49,7 +55,7 @@
 					</c:if>
 					</h1>
 					<div class="item-info ft12 center">
-						<i class="gray">by</i>&nbsp;&nbsp;themefuse&nbsp; <i class="gray">on
+						<i class="gray">by</i>&nbsp;&nbsp;${listItem.author }&nbsp; <i class="gray">on
 							${fn:substring(listItem.modify_time, 0, 19)}</i>&nbsp; ${commontRows } comments <span class="item-type item-type-4"></span>
 					</div>
 					<div class="item-content ft14">
@@ -66,13 +72,20 @@
 								</c:choose>
 							</div>
 						</div>
+						<c:if test="${pictureList.havePrePage }">
+							<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber-1 }.html" title="点击看上一张" class="goRi" hidefocus="true" style="display:inline;"></a>
+						</c:if>
+						<c:if test="${pictureList.haveNextPage }">
+							<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber+1 }.html" title="点击看下一张" class="goLf" hidefocus="true" style="display:inline;"></a>
+						</c:if>
 						<br>
 					</div>
 					<div class="item-assess">
-						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i>${listItem.top_count}
-						</a> <a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i>${listItem.down_count}
-						</a> <a class="bad" title="老图"> <i class="icon icon-hand-down"></i>${listItem.old_picture}
-						</a>
+						<input type="hidden" class="cartoon_id" value="${listItem.id }"/>
+						<a class="goodVirgin" title="顶一个"> <i class="icon icon-hand-up"></i><span>${listItem.top_count}</span></a> 
+						<a class="badVirgin" title="且..."> <i class="icon icon-thumbs-down"></i><span>${listItem.down_count}</span> </a> 
+						<a class="oldVirgin" title="老笑话"> <i class="icon icon-hand-down"></i>老笑话(<span>${listItem.old_picture}</span>)</a>
+						<span class="ft12" style="color: red;display:none;line-height: 30px;">操作成功</span>
 					</div>
 					</c:forEach>
 					<div>
@@ -143,15 +156,19 @@
 					</div> 
 					<div class="clear"></div>
 					<div class="item-comment-write">
-						<form>
+						<form action="#" method="post" id="commont">
 							<textarea id="comment" class="ft14"></textarea>
-							<input type="button" value="发表评论">
+							<label for="checkCode">请输入验证码:</label>
+							<input id="checkCode" type="text" name="checkCode" id="checkCode"/>&nbsp;&nbsp;
+							<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
+							<span  style="color: red" id="error-message"></span>
+							<input type="button" id="submitCommont" value="发表评论">
 						</form>
 					</div>
 					<div class="clear"></div>
 					<div class="item-comment ft12">
 						<h2>评论：</h2>
-						<ul>
+						<ul class="common">
 						
 						<c:forEach var="common" items="${commonList.list}" >
 								<li><img src="images/user.png">
@@ -201,6 +218,14 @@
 			</div>
 			<%@include file="footer.jsp"%>
 		</div>
-	</div>
+		<input type="hidden" id="ipaddress" value=""/>
+		<input type="hidden" id="ip" value=""/>
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script type="text/javascript">
+			document.getElementById("ipaddress").value=returnCitySN["cname"];
+			document.getElementById("ip").value=returnCitySN["cip"];
+		</script>
+		<script type="text/javascript" src="scripts/likeResource.js"></script>
+		
 </body>
 </html>

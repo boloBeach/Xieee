@@ -106,6 +106,7 @@ $(document).ready(function(){
 					success:function(data){
 						if(data!=null){
 							node.children("span").html(spanCount+1);
+							node.parent().children("span:last").show();
 							node.parent().children("span:last").text("操作成功");
 						}
 					}

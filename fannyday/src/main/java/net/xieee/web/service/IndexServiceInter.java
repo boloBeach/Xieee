@@ -128,5 +128,19 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 * @return
 	 */
 	public List getParentPictureById(String pParentId,String catalogId);
+	
+	/**
+	 * 访问一次detail页面，就记录一次
+	 * @param parent_picture_id
+	 * @return
+	 */
+	public int saveSkimCount(String parent_picture_id);
+	
+	
+	/**
+	 * 获取12条最多浏览的detail
+	 * @return
+	 */
+	public List getParentPictureTopSkim();
 
 }

@@ -41,6 +41,7 @@ public class IndexController {
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
+		modelAndView.addObject("topSkimCount",indexServiceImpl.getParentPictureTopSkim());
 		modelAndView.addObject("id",urlId);
 		return modelAndView;
 	}

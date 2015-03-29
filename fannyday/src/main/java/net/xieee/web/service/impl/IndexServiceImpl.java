@@ -82,21 +82,21 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		String sql = null;
 		if(StringUtil.isNull(type) || type.equals("heat")){
 			if(StringUtil.isNull(urlId)|| StringUtil.stringToInt(urlId)==1 || StringUtil.stringToInt(urlId)==0 ){
-				sql = "select id,parent_picture_name,picture_url,detail from parent_picture where is_delete=?  order by skim_count DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by skim_count DESC limit 18";
 				Object[] params = {1};
 				return findList(sql, params);
 			}else {
-				sql = "select id,parent_picture_name,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by skim_count DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by skim_count DESC limit 18";
 				Object[] params = {1,StringUtil.stringToInt(urlId)};
 				return findList(sql, params);
 			}
 		}else {
 			if(StringUtil.isNull(urlId)|| StringUtil.stringToInt(urlId)==1 || StringUtil.stringToInt(urlId)==0 ){
-				sql = "select id,parent_picture_name,picture_url,detail from parent_picture where is_delete=?  order by modify_time DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by modify_time DESC limit 18";
 				Object[] params = {1};
 				return findList(sql, params);
 			}else {
-				sql = "select id,parent_picture_name,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by modify_time DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by modify_time DESC limit 18";
 				Object[] params = {1,StringUtil.stringToInt(urlId)};
 				return findList(sql, params);
 			}
@@ -183,6 +183,23 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 			return list;
 		}
 		return null;
+	}
+
+	@Override
+	public int saveSkimCount(String parent_picture_id) {
+		if(StringUtil.isNull(parent_picture_id)){
+			return 0;
+		}
+		
+		String sql ="update parent_picture set skim_count=skim_count+1 where id=?";
+		Object[] params ={parent_picture_id};
+		return update(sql, params);
+	}
+
+	@Override
+	public List getParentPictureTopSkim() {
+		String sql = "select id,parent_picture_name,catalog_id,detail,picture_count from  parent_picture  order by skim_count desc limit 19";
+		return findList(sql, null);
 	}
 
 }
