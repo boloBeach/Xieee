@@ -94,28 +94,29 @@ em {
 	float: left;
 }
 
-a.goLf {
+.goLf {
+	display:block;
 	cursor: url(../images/cursor_left.cur), auto;
 	height: 500px;
-	width: 100%;
+	width: 325px;
 	position: absolute;
 	left: 0;
 	top: 0;
-	display: none;
 	background: url(about:blank);
 	outline: none;
 }
 
-a.goRi {
+.goRi {
+	display:block;
 	cursor: url(../images/cursor_right.cur), auto;
 	height: 500px;
-	width: 100%;
+	width: 325px;
 	position: absolute;
 	right: 0;
 	top: 0;
-	display: none;
 	background: url(about:blank);
 	outline: none;
+	z-index: 100;
 }
 
 .float-right {
