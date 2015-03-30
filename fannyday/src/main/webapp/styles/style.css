@@ -923,9 +923,11 @@ a.goRi {
 	margin-left: 18px;
 	margin-top: 10px;
 	line-height: 20px;
-	height: 100px;
+	min-height:50px;
+	max-height: 100px;
 	display: inline-block;
-	border-bottom-style: 1px solid #DCDCDC;
+	border-bottom: 1px solid #DCDCDC;
+	overflow: hidden;
 }
 
 .user-picture {

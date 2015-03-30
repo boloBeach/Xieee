@@ -38,20 +38,7 @@
   				<c:forEach var="randCartoon" items="${randCartoon}">
   					<li><a href="cartoon/1-${randCartoon.id }.html" class="blank" title=${randCartoon.cartoon_title }">${randCartoon.cartoon_title }</a></li>
   				</c:forEach>
-  				<!-- this is foreach 12 pages  -->
- 				<!-- <li><a href="detail.html" class="blank" title="姑娘你别胡思乱想了，世界上爱你的人多着呢">姑娘你别胡思乱想了，世界上爱你的人多着呢</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li> -->
- 			</ul>
+  			</ul>
  		</div>
  </div>
  
@@ -65,19 +52,6 @@
  				<c:forEach var="skimList" items="${topSkimCount }">
  					<li><a href="detail/${skimList.catalog_id }/${skimList.id }/picture_0.html" class="blank" title="${skimList.parent_picture_name }--${skimList.detail }">${skimList.parent_picture_name }--${fn:substring(skimList.detail, 0, 12)}...[${skimList.picture_count }P]</a></li>
  				</c:forEach>
- 				<!-- this is foreach 12 pages  --><!-- 
- 				<li><a href="detail.html" class="blank" title="姑娘你别胡思乱想了，世界上爱你的人多着呢">姑娘你别胡思乱想了，世界上爱你的人多着呢</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li>
- 				<li><a href="detail.html" class="blank" title="冷漫画：做一个像老师一样的男子汉。[10P]">冷漫画：做一个像老师一样的男子汉。[10P]</a></li> -->
  			</ul>
  		</div>
  </div>

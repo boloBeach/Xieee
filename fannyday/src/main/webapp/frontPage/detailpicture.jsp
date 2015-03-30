@@ -72,12 +72,12 @@
 								</c:choose>
 							</div>
 						</div>
-						<c:if test="${pictureList.havePrePage }">
+						<%-- <c:if test="${pictureList.havePrePage }">
 							<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber-1 }.html" title="点击看上一张" class="goRi" hidefocus="true" style="display:inline;"></a>
 						</c:if>
 						<c:if test="${pictureList.haveNextPage }">
 							<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber+1 }.html" title="点击看下一张" class="goLf" hidefocus="true" style="display:inline;"></a>
-						</c:if>
+						</c:if> --%>
 						<br>
 					</div>
 					<div class="item-assess">
