@@ -60,12 +60,15 @@
 					</div>
 					<div class="item-content ft14">
 						<div class="item-content-img">
+							
+							
 							<c:if test="${pictureList.havePrePage }">
-								<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber-1 }.html" title="点击看上一张" class="goRi" hidefocus="true" >上一页</a>
+								<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber-1 }.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
 							</c:if>
+							
 							<c:if test="${pictureList.haveNextPage }">
-								<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber+1 }.html" title="点击看下一张" class="goLf" hidefocus="true" >下一页</a>
-							</c:if> 
+								<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber+1 }.html" title="点击看下一张" class="goRi" hidefocus="true" ></a>
+							</c:if>
 							<img title="${listItem.title}" alt="${listItem.title}" src="${listItem.local_url}"/>
 							<div>
 								<c:choose>
