@@ -12,12 +12,12 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>Happy Day -- 搞笑漫画</title>
+<title>嘻哈大全-神回复吐槽第${gadrelayList.pageNumber}期</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="keywords" content="神回复,神问答,搞怪回答,爆笑回复,吐槽,神回复吐槽">
+<meta http-equiv="description" content="嘻哈大全提供全球神回复第${gadrelayList.pageNumber}期">
 <link href="styles/reset.css" rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -100,63 +100,6 @@
 						</div>
 					</div>
 					</c:forEach>
-					
-
-
-				<%--
-					<div class="index-content-items">
-						<div class="item-content ft14" style="text-align: center;">
-							<div class="item-content-title ft20">
-								女人怎么发现男朋友出轨的
-							</div>
-							<div class="item-info ft12">
-								<i class="gray">by</i>&nbsp;&nbsp;admin&nbsp; <i class="gray">on
-									2015-03-04 18:16:05  </i>
-							</div>
-							<div class="item-content-img ft16">
-								<div>
-									<img alt="女人怎么发现男朋友出轨的" src="http://www.hahaqu.com/d/file/p/2015/02/27/5f7570f532625f75da70142d536d94ea.jpg">
-								</div>
-							</div>
-						</div>
-						<div class="items-assess">
-							<a class="goodVirgin" title="顶一个"> <i
-								class="icon icon-hand-up"></i><span>0</span></a> <a
-								class="badVirgin" title="且..."> <i
-								class="icon icon-thumbs-down"></i><span>0</span>
-							</a> <a class="oldVirgin" title="老神回复"> <i
-								class="icon icon-hand-down"></i>老神回复(<span>0</span>)
-							</a>
-							<dd>
-								<input id="txtCommentContent_145099" type="text" class="text01"
-									value="快来说两句吧！不用登录也能评论哦！" onclick="javascript:cleartext(this);"><input
-									id="145099" type="button" class="btn01" value="我要评论"
-									onclick="postcommentinfo(145099,2);">
-							</dd>
-							<dt class="upDown">
-								<a href="javascript:void(0)" id="c-145092" class="comments"><em
-									id="span_CommentNum_145092" class="clorRed">1</em> 条评论<span
-									id="spanPlus_145092">+</span></a>
-							</dt>
-						</div>
-						<div class="comentlist">
-							<h2>最新评论</h2>
-							<ul class="common ft12">
-								<li>
-									<img src="images/user.png">
-									<div>
-										<span class="name gray">四川省成都市的网友:</span> 
-										<span class="says black">这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了</span>
-										<span class="time gray">2015-03-11 00:44:13<em> <i class="tread"></i>(21)
-										</em> <em> <i class="favour"></i>(23)
-										</em>
-										</span>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					</div> --%>
 					<div>
 						<div class="bdsharebuttonbox float-right">
 							<a href="#" class="bds_more" data-cmd="more"></a><a href="#"

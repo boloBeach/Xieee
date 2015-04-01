@@ -51,7 +51,10 @@ em {
 	max-width: 95%;
 	height: auto;
 }
-
+.item-content{
+	width: 750px;
+	position: relative;
+}
 .item-content-img div {
 	margin-top: 25px;
 }
@@ -530,7 +533,11 @@ em {
 	max-width: 100%;
 }
 
-.index-content-left-item .item-assess a {
+.item-assess{
+	width:400px;
+	float: left;
+}
+.index-content-left-item .item-assess a{
 	display: block;
 	float: left;
 	padding: 5px 10px;

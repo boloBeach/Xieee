@@ -12,12 +12,59 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>Happy Day -- 搞笑漫画</title>
+<c:choose>
+	<c:when test="${tagId eq '1' }">
+		<title>嘻哈大全-雷人网事第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="雷人网事,雷人,搞笑图片,嘻哈大全">
+		<meta http-equiv="description" content="嘻哈大全提供雷人网事">
+	</c:when>
+	
+	<c:when test="${tagId eq '2' }">
+		<title>嘻哈大全-搞笑Gif第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="嘻哈大全,gif,GIF,搞笑gif,动态图片,gif图片,gif动画,邪恶动态图">
+		<meta http-equiv="description" content="嘻哈大全GIF库为大家提供互联网最新最搞笑的gif动画图片,享受瞬间高潮,就上嘻哈大全GIF库。这是一个看了就不想关的网站">
+	</c:when>
+	
+	<c:when test="${tagId eq '3' }">
+		<title>嘻哈大全-邪恶漫画第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="漫画,搞笑,搞笑漫画,嘻哈大全">
+		<meta http-equiv="description" content="最恶搞的漫画,最好笑的情节,这就是嘻哈大全的搞笑漫画,可以为大家带来快乐--嘻哈大全提供全球搞笑漫画">
+	</c:when>
+	
+	<c:when test="${tagId eq '4' }">
+		<title>嘻哈大全-漂亮MM第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="MM,漂亮,美女,美眉,嘻哈大全,时尚,高清美女">
+		<meta http-equiv="description" content="嘻哈大全美女图库为大家提供全球各类漂亮的MM,让大家在闲暇之余看看MM,陶怡情操。看漂亮美眉就上嘻哈大全漂亮MM">
+	</c:when>
+	
+	<c:when test="${tagId eq '7' }">
+		<title>嘻哈大全-恶搞图片第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="恶搞,雷人,图片,嘻哈大全,搞笑">
+		<meta http-equiv="description" content="嘻哈大全恶搞图片库">
+	</c:when>
+	
+	<c:when test="${tagId eq '6' }">
+		<title>嘻哈大全-搞笑图片第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="图片,嘻哈大全,搞笑">
+		<meta http-equiv="description" content="嘻哈大全搞笑图片库">
+	</c:when>
+	
+	<c:when test="${tagId eq '8' }">
+		<title>嘻哈大全-节操笑话第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="图片,嘻哈大全,搞笑,笑话,节操,无节操">
+		<meta http-equiv="description" content="最不要节操的嘻哈大全为你提供一个看节操图片的地方,希望你喜欢">
+	</c:when>
+	
+	<c:when test="${tagId eq '9' }">
+		<title>嘻哈大全-神回复第${gadrelayList.pageNumber-1}期</title>
+		<meta http-equiv="keywords" content="神回复,神问答,搞怪回答,爆笑回复,吐槽,神回复吐槽">
+		<meta http-equiv="description" content="嘻哈大全提供全球神回复">
+	</c:when>
+</c:choose>
+
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
 <link href="styles/reset.css" rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -50,7 +97,15 @@
 						<div class="index-content-items">
 						<div class="item-content ft14" style="text-align: center;">
 							<div class="item-content-title ft20">
-								${gadReplayList.title}
+								<c:choose>
+									<c:when test="${empty gadReplayList.title }">
+										${gadReplayList.detail }
+									</c:when>
+									<c:otherwise>
+										${gadReplayList.title}
+									</c:otherwise>
+								</c:choose>
+								
 							</div>
 							<div class="item-info ft12">
 								<i class="gray">by</i>&nbsp;&nbsp;admin&nbsp; <i class="gray">on
@@ -72,7 +127,7 @@
 						<div class="items-assess">
 							<a class="goodVirgin" title="顶一个"> <i class="icon icon-hand-up"></i><span>${gadReplayList.top_count }</span></a>
 							<a class="badVirgin" title="且..."> <i class="icon icon-thumbs-down"></i><span>${gadReplayList.down_count }</span></a>
-							<a class="oldVirgin" title="老神回复"> <i class="icon icon-hand-down"></i>老神回复(<span>${gadReplayList.old_picture }</span>)</a>
+							<a class="oldVirgin" title="老图"> <i class="icon icon-hand-down"></i>老图(<span>${gadReplayList.old_picture }</span>)</a>
 							<input type="hidden" value="${gadReplayList.id }"/>
 							<dd>
 								<input id="txtCommentContent_145099" type="text" class="text01"
@@ -99,63 +154,6 @@
 						</div>
 					</div>
 					</c:forEach>
-					
-
-
-				<%--
-					<div class="index-content-items">
-						<div class="item-content ft14" style="text-align: center;">
-							<div class="item-content-title ft20">
-								女人怎么发现男朋友出轨的
-							</div>
-							<div class="item-info ft12">
-								<i class="gray">by</i>&nbsp;&nbsp;admin&nbsp; <i class="gray">on
-									2015-03-04 18:16:05  </i>
-							</div>
-							<div class="item-content-img ft16">
-								<div>
-									<img alt="女人怎么发现男朋友出轨的" src="http://www.hahaqu.com/d/file/p/2015/02/27/5f7570f532625f75da70142d536d94ea.jpg">
-								</div>
-							</div>
-						</div>
-						<div class="items-assess">
-							<a class="goodVirgin" title="顶一个"> <i
-								class="icon icon-hand-up"></i><span>0</span></a> <a
-								class="badVirgin" title="且..."> <i
-								class="icon icon-thumbs-down"></i><span>0</span>
-							</a> <a class="oldVirgin" title="老神回复"> <i
-								class="icon icon-hand-down"></i>老神回复(<span>0</span>)
-							</a>
-							<dd>
-								<input id="txtCommentContent_145099" type="text" class="text01"
-									value="快来说两句吧！不用登录也能评论哦！" onclick="javascript:cleartext(this);"><input
-									id="145099" type="button" class="btn01" value="我要评论"
-									onclick="postcommentinfo(145099,2);">
-							</dd>
-							<dt class="upDown">
-								<a href="javascript:void(0)" id="c-145092" class="comments"><em
-									id="span_CommentNum_145092" class="clorRed">1</em> 条评论<span
-									id="spanPlus_145092">+</span></a>
-							</dt>
-						</div>
-						<div class="comentlist">
-							<h2>最新评论</h2>
-							<ul class="common ft12">
-								<li>
-									<img src="images/user.png">
-									<div>
-										<span class="name gray">四川省成都市的网友:</span> 
-										<span class="says black">这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了这个实在是太好笑了</span>
-										<span class="time gray">2015-03-11 00:44:13<em> <i class="tread"></i>(21)
-										</em> <em> <i class="favour"></i>(23)
-										</em>
-										</span>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					</div> --%>
 					<div>
 						<div class="bdsharebuttonbox float-right">
 							<a href="#" class="bds_more" data-cmd="more"></a><a href="#"

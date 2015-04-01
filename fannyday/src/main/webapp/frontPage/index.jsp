@@ -11,19 +11,45 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>邪恶搞笑gif</title>
+<c:if test="${id eq '1' }">
+	<title>嘻哈大全-快乐每一天</title>
+</c:if>
+
+<c:if test="${id eq '2' }">
+	<title>嘻哈大全-搞笑Gif</title>
+</c:if>
+
+<c:if test="${id eq '3' }">
+	<title>嘻哈大全-今日囧图</title>
+</c:if>
+
+<c:if test="${id eq '4' }">
+	<title>嘻哈大全-漂亮MM</title>
+</c:if>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="搞笑,gif,内涵图">
-<meta http-equiv="description" content="This is my page">
+<c:if test="${id eq '1' }">
+	<meta http-equiv="keywords" content="嘻哈大全,gif,搞笑,搞笑gif,今日囧途,漂亮MM,神回复,吐槽,神回复吐槽,恶搞,恶搞PS,节操笑话,笑话">
+	<meta http-equiv="description" content="嘻哈大全收录了网民都爱看的内涵图,同时也是国内最全的爆笑gif图片库,为大家提供各类最搞笑的gif图片,看图片就上嘻哈大全">
+</c:if>
+<c:if test="${id eq '2' }">
+	<meta http-equiv="keywords" content="嘻哈大全,gif,GIF,搞笑gif,动态图片,gif图片,gif动画,邪恶动态图">
+	<meta http-equiv="description" content="嘻哈大全GIF库为大家提供互联网最新最搞笑的gif动画图片,享受瞬间高潮,就上嘻哈大全GIF库。这是一个看了就不想关的网站">
+</c:if>
+<c:if test="${id eq '3' }">
+	<meta http-equiv="keywords" content="嘻哈大全,今日囧图,蛊惑图,每日囧途,搞笑,搞笑八卦,爆笑囧图,搞笑图片">
+	<meta http-equiv="description" content="嘻哈大全今日囧图库为大家提供各类好看的每日囧图图片,让大家笑喷.看囧图就上嘻哈大全今日囧图">
+</c:if>
+<c:if test="${id eq '4' }">
+	<meta http-equiv="keywords" content="MM,漂亮,美女,美眉,时尚,高清美女">
+	<meta http-equiv="description" content="嘻哈大全美女图库为大家提供全球各类漂亮的MM,让大家在闲暇之余看看MM,陶怡情操。看漂亮美眉就上嘻哈大全漂亮MM">
+</c:if>
 <link href="./styles/reset.css" rel="stylesheet" type="text/css">
-<link href="./styles/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link href="./styles/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="styles/style.css" rel="stylesheet" type="text/css">
 <link href="styles/lightbox.css" rel="stylesheet" type="text/css">
-<script type="text/javascript"
-	src="./scripts/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./scripts/jquery-1.7.2.min.js"></script>
 <script language="javascript">
 	$(document).ready(function() {
 		$(".tab_left a").each(function(j) {

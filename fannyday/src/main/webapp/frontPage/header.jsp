@@ -20,7 +20,7 @@
 <!--header start-->
 <div class="index-header">
 	<div class="index-head">
-		<div class="index-logo ft20">Happy Day</div>
+		<div class="index-logo ft20">嘻哈大全</div>
 		<div class="index-rss">
 			<ul>
 				<li><a class="qq"> <i></i> <span class="gray"> <em
@@ -38,9 +38,7 @@
 	</div>
 	<div class="index-nav">
 		<ul>
-			<c:forEach items="${catalogList}" var="catalogList"
-				varStatus="status">
-				
+			<c:forEach items="${catalogList}" var="catalogList" varStatus="status">
 				<c:if test="${catalogList.id eq id}">
 					<li class="on">
 					<input type="hidden" value="${catalogList.id}" class="showUrlId"/>

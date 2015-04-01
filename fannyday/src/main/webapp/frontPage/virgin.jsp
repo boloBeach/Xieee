@@ -12,12 +12,12 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>Happy Day -- 搞笑漫画</title>
+<title>嘻哈大全- ${virgin[0].title }</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="keywords" content="笑话 ,节操,爆笑笑话,内涵笑话,幽默笑话,笑话大全">
+<meta http-equiv="description" content="最不要节操的嘻哈大全为你提供一个看节操图片的地方,希望你喜欢">
 <link href="styles/reset.css" rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">

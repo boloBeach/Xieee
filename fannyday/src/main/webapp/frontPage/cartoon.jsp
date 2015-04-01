@@ -12,12 +12,12 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>Happy Day -- 搞笑漫画</title>
+<title>嘻哈大全-搞笑漫画 ${cartoon[0].cartoon_title }</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="keywords" content="漫画,搞笑,搞笑漫画,嘻哈大全">
+<meta http-equiv="description" content="最恶搞的漫画,最好笑的情节,这就是嘻哈大全的搞笑漫画,可以为大家带来快乐--嘻哈大全提供全球搞笑漫画">
 <link href="styles/reset.css" rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -48,23 +48,31 @@
 				<div class="index-content-left-item">
 					<h1 class="ft20 center">${cartoon[0].cartoon_title }</h1>
 					<div class="item-info ft12 center">
-						<i class="gray">by</i>&nbsp;&nbsp;${cartoon[0].cartoon_user_name }&nbsp; <i class="gray">on
-							${fn:substring(virgin[0].modify_time, 0, 19)} </i>&nbsp; ${commontRows } comments <span class="item-type item-type-4"></span>
+						<i class="gray">by</i>&nbsp;${cartoon[0].cartoon_user_name }&nbsp; <i class="gray">on
+							${fn:substring(virgin[0].modify_time, 0, 19)} </i> ${commontRows } comments <span class="item-type item-type-4"></span>
 					</div>
 					<input type="hidden" value="${id }" id="catalogId"/>
 					<input type="hidden" value="${cartoon[0].id}" id="cartoonId"/>
 					<div class="item-content ft14" style="text-align: center;">
+						<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
 						<c:choose>
-							<c:when test="${cartoon[0].cartoon_width>600}">
-								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
-							</c:when>
-							<c:when test="${cartoon[0].cartoon_width==0 }">
-								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
+							<c:when test="${!empty cartoon[1]}">
+								<a href="cartoon/${id}-${cartoon[1].id}.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
 							</c:when>
 							<c:otherwise>
-								<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:auto ;height: auto;">
+								<a href="cartoon.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
 							</c:otherwise>
 						</c:choose>
+						
+						<c:choose>
+							<c:when test="${!empty cartoon[2]}">
+								<a href="cartoon/${id}-${cartoon[2].id}.html" title="点击看下一张" class="goRi" hidefocus="true"></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" title="点击看下一张" class="goRi" hidefocus="true"></a>
+							</c:otherwise>
+						</c:choose>
+						
 						<br>
 						<br>
 						${cartoon[0].cartoon_detial }<br>
@@ -74,10 +82,9 @@
 						<a class="good" title="顶一个"> <i class="icon icon-hand-up"></i><span>${cartoon[0].top_count}</span></a> 
 						<a class="bad" title="且..."> <i class="icon icon-thumbs-down"></i><span>${cartoon[0].down_count}</span> </a> 
 						<a class="old" title="老漫画"> <i class="icon icon-hand-down"></i>老漫画(<span>${cartoon[0].old_cartoon}</span>)</a>
-						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏</a>
-						<span class="ft12" style="color: red;display:none;line-height: 30px;">操作成功</span>
+						<span class="ft12" style="color: red; display:none; line-height: 30px;">操作成功</span>
 					</div>
-					<div>
+					<div style="width: 200px;float: right;">
 						<div class="bdsharebuttonbox float-right">
 							<a href="#" class="bds_more" data-cmd="more"></a><a href="#"
 								class="bds_qzone" data-cmd="qzone"></a><a href="#"
@@ -169,30 +176,6 @@
 									</div>
 								</li>
 							</c:forEach>
-							<!-- <li><img src="images/user.png">
-								<div>
-									<span class="name gray">XX</span> <span class="says black">搞笑</span>
-									<span class="time gray">1天前 <em> <i class="tread"></i>(21)
-									</em> <em> <i class="favour"></i>(23)
-									</em>
-									</span>
-								</div></li>
-							<li><img src="images/user.png">
-								<div>
-									<span class="name gray">XX</span> <span class="says black">搞笑</span>
-									<span class="time gray">1天前 <em> <i class="tread"></i>(21)
-									</em> <em> <i class="favour"></i>(23)
-									</em>
-									</span>
-								</div></li>
-							<li><img src="images/user.png">
-								<div>
-									<span class="name gray">XX</span> <span class="says black">搞笑</span>
-									<span class="time gray">1天前 <em> <i class="tread"></i>(21)
-									</em> <em> <i class="favour"></i>(23)
-									</em>
-									</span>
-								</div></li> -->
 						</ul>
 					</div>
 					<div class="clear"></div>

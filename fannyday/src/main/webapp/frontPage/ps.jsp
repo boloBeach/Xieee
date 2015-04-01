@@ -12,12 +12,12 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>Happy Day -- 搞笑漫画</title>
+<title>嘻哈大全-恶搞PS${virgin[0].title }</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
+<meta http-equiv="keywords" content="恶搞、PS、PS图片,PS大神,各种恶搞,各种雷人">
+<meta http-equiv="description" content="最搞怪的PS,让你无法想象的PS,技术崇拜把骚年--嘻哈大全提供恶搞PS">
 <link href="styles/reset.css" rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -55,15 +55,22 @@
 					</div>
 					
 					<div class="item-content ft14" style="text-align: center;">
+						<img alt="${virgin[0].title }" src="${virgin[0].local_url }">
 						<c:choose>
-							<c:when test="${virgin[0].width>600}">
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: auto;">
-							</c:when>
-							<c:when test="${virgin[0].width==0 }">
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: auto;">
+							<c:when test="${!empty virgin[1]}">
+								<a href="ps/${id}-${virgin[1].id}.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
 							</c:when>
 							<c:otherwise>
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:auto ;height: auto;">
+								<a href="#" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${!empty virgin[2]}">
+								<a href="ps/${id}-${virgin[2].id}.html" title="点击看下一张" class="goRi" hidefocus="true"></a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" title="点击看下一张" class="goRi" hidefocus="true"></a>
 							</c:otherwise>
 						</c:choose>
 						<br>
@@ -74,8 +81,7 @@
 						<input type="hidden" class="virgin_id" value="${virgin[0].id }"/>
 						<a class="goodVirgin" title="顶一个"> <i class="icon icon-hand-up"></i><span>${virgin[0].top_count}</span></a> 
 						<a class="badVirgin" title="且..."> <i class="icon icon-thumbs-down"></i><span>${virgin[0].down_count}</span> </a> 
-						<a class="oldVirgin" title="老漫画"> <i class="icon icon-hand-down"></i>老笑话(<span>${virgin[0].old_picture}</span>)</a>
-						<a class="collect" title="我要收藏"> <i class="icon icon-heart"></i>收藏</a>
+						<a class="oldVirgin" title="PS很老了"> <i class="icon icon-hand-down"></i>PS很老了(<span>${virgin[0].old_picture}</span>)</a>
 						<span class="ft12" style="color: red;display:none;line-height: 30px;">操作成功</span>
 					</div>
 					<div>

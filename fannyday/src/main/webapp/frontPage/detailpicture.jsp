@@ -12,7 +12,29 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>Happy Day -- detail picture</title>
+<c:if test="${id eq '2' }">
+	<title>嘻哈大全-
+		<c:if test="${not empty parentBean && fn:length(parentBean)>1}">
+			${parentBean[0].parent_picture_name }
+		</c:if>
+	 </title>
+</c:if>
+
+<c:if test="${id eq '3' }">
+	<title>嘻哈大全-
+		<c:if test="${not empty parentBean && fn:length(parentBean)>1}">
+			${parentBean[0].parent_picture_name }
+		</c:if>
+	 </title>
+</c:if>
+
+<c:if test="${id eq '4' }">
+	<title>嘻哈大全-
+		<c:if test="${not empty parentBean && fn:length(parentBean)>1}">
+			${parentBean[0].parent_picture_name }
+		</c:if>
+	 </title>
+</c:if>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -88,7 +110,7 @@
 						<input type="hidden" class="cartoon_id" value="${listItem.id }"/>
 						<a class="goodVirgin" title="顶一个"> <i class="icon icon-hand-up"></i><span>${listItem.top_count}</span></a> 
 						<a class="badVirgin" title="且..."> <i class="icon icon-thumbs-down"></i><span>${listItem.down_count}</span> </a> 
-						<a class="oldVirgin" title="老笑话"> <i class="icon icon-hand-down"></i>老笑话(<span>${listItem.old_picture}</span>)</a>
+						<a class="oldVirgin" title="老图"> <i class="icon icon-hand-down"></i>老图(<span>${listItem.old_picture}</span>)</a>
 						<span class="ft12" style="color: red;display:none;line-height: 30px;">操作成功</span>
 					</div>
 					</c:forEach>
