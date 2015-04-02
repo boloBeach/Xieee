@@ -16,7 +16,7 @@
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8b32aeb6a52cfe406c86afa3c9b7cafa";
+  hm.src = "//hm.baidu.com/hm.js?032a33f7d77bc10397258a7e663d754a";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
@@ -67,19 +67,19 @@ var _hmt = _hmt || [];
 						<img alt="${virgin[0].title }" src="${virgin[0].local_url }">
 						<c:choose>
 							<c:when test="${!empty virgin[1]}">
-								<a href="ps/${id}-${virgin[1].id}.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+								<a href="ps/${id}-${virgin[1].id}.html" title="点击看下一张" class="goRi"  hidefocus="true" ></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+								<a href="ps/${id}-${virgin[0].id}.html" title="点击看下一张" class="goRi"  hidefocus="true" ></a>
 							</c:otherwise>
 						</c:choose>
 						
 						<c:choose>
 							<c:when test="${!empty virgin[2]}">
-								<a href="ps/${id}-${virgin[2].id}.html" title="点击看下一张" class="goRi" hidefocus="true"></a>
+								<a href="ps/${id}-${virgin[2].id}.html" title="点击看上一张" class="goLf" hidefocus="true"></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" title="点击看下一张" class="goRi" hidefocus="true"></a>
+								<a href="ps/${id}-${virgin[0].id}.html" title="点击看上一张" class="goLf" hidefocus="true"></a>
 							</c:otherwise>
 						</c:choose>
 						<br>

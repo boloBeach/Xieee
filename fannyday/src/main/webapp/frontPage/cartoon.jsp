@@ -16,11 +16,12 @@
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?8b32aeb6a52cfe406c86afa3c9b7cafa";
+  hm.src = "//hm.baidu.com/hm.js?032a33f7d77bc10397258a7e663d754a";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
+
 <title>嘻哈大全-搞笑漫画 ${cartoon[0].cartoon_title }</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -66,19 +67,19 @@ var _hmt = _hmt || [];
 						<img alt="${cartoon[0].cartoon_title }" src="${cartoon[0].cartoon_local_url }" style="width:600px ;height: auto;">
 						<c:choose>
 							<c:when test="${!empty cartoon[1]}">
-								<a href="cartoon/${id}-${cartoon[1].id}.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+								<a href="cartoon/${id}-${cartoon[1].id}.html" title="点击看下一张" class="goRi"  hidefocus="true" ></a>
 							</c:when>
 							<c:otherwise>
-								<a href="cartoon.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+								<a href="cartoon.html" title="点击看下一张" class="goRi"  hidefocus="true" ></a>
 							</c:otherwise>
 						</c:choose>
 						
 						<c:choose>
 							<c:when test="${!empty cartoon[2]}">
-								<a href="cartoon/${id}-${cartoon[2].id}.html" title="点击看下一张" class="goRi" hidefocus="true"></a>
+								<a href="cartoon/${id}-${cartoon[2].id}.html" title="点击看上一张" class="goLf"  hidefocus="true"></a>
 							</c:when>
 							<c:otherwise>
-								<a href="#" title="点击看下一张" class="goRi" hidefocus="true"></a>
+								<a href="cartoon/${id}-${cartoon[0].id}.html" title="点击看上一张" class="goLf" hidefocus="true"></a>
 							</c:otherwise>
 						</c:choose>
 						

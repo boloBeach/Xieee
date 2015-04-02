@@ -63,7 +63,8 @@
         		   }else{
         			   contentList.html("");
         			   for(var i=0;i<data.length;i++){
-        				   $("<li> <a href='detail/"+uriId+"/"+data[i].id+"/picture_0.html' target='_blank'><img src= "+data[i].picture_url+" data-bd-imgshare-binded='1'/> </a><p><a href='detail/"+uriId+"/"+data[i].id+"/picture_0.html' target='_blank' title="+data[i].detail+"><div>"+data[i].detail+"</div> </a></p> </li>").appendTo(contentList);
+        				  $("<li> <a href='detail/"+uriId+"/"+data[i].id+"/picture_0.html' target='_blank'><img src= "+data[i].picture_url+" data-bd-imgshare-binded='1'/> </a><p><a href='detail/"+uriId+"/"+data[i].id+"/picture_0.html' target='_blank' title="+data[i].detail+"><div>"+data[i].detail+"</div> </a></p> </li>").appendTo(contentList);
+        				  // $("<li><div class='img_block'><a href='detail/"+uriId+"/"+data[i].id+"/picture_0.html' target='_blank'> <img src="+data[i].picture_url+" data-bd-imgshare-binded='1'> </a> <a href='#' rel='lightbox[plants]' title="+data[i].detail+" class='zoom'>放大</a> <a href='#' class='ilike'>YYM</a> </div> <h3>"+data[i].detail+"</h3> <div class='iNum'> <span>1</span><a href='#'>4</a> </div> <p><a href='detail/"+uriId+"/"+data[i].id+"/picture_0.html' target='_blank' title="+data[i].detail+">"+data[i].detail+"</a></p></li>").appendTo(contentList);
         			   }
         		   }
         	   }

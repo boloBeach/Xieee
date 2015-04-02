@@ -82,21 +82,21 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		String sql = null;
 		if(StringUtil.isNull(type) || type.equals("heat")){
 			if(StringUtil.isNull(urlId)|| StringUtil.stringToInt(urlId)==1 || StringUtil.stringToInt(urlId)==0 ){
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by skim_count DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by skim_count DESC limit 12";
 				Object[] params = {1};
 				return findList(sql, params);
 			}else {
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by skim_count DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by skim_count DESC limit 12";
 				Object[] params = {1,StringUtil.stringToInt(urlId)};
 				return findList(sql, params);
 			}
 		}else {
 			if(StringUtil.isNull(urlId)|| StringUtil.stringToInt(urlId)==1 || StringUtil.stringToInt(urlId)==0 ){
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by modify_time DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by modify_time DESC limit 12";
 				Object[] params = {1};
 				return findList(sql, params);
 			}else {
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by modify_time DESC limit 18";
+				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by modify_time DESC limit 12";
 				Object[] params = {1,StringUtil.stringToInt(urlId)};
 				return findList(sql, params);
 			}
