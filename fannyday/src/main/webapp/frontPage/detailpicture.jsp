@@ -12,6 +12,15 @@
 <html>
 <head>
 <base href="<%=basePath%>">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8b32aeb6a52cfe406c86afa3c9b7cafa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <c:if test="${id eq '2' }">
 	<title>嘻哈大全-
 		<c:if test="${not empty parentBean && fn:length(parentBean)>1}">

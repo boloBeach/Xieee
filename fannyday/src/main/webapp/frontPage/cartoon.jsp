@@ -12,6 +12,15 @@
 <html>
 <head>
 <base href="<%=basePath%>">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8b32aeb6a52cfe406c86afa3c9b7cafa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <title>嘻哈大全-搞笑漫画 ${cartoon[0].cartoon_title }</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">

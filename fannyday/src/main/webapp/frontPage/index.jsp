@@ -10,6 +10,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?8b32aeb6a52cfe406c86afa3c9b7cafa";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 <base href="<%=basePath%>">
 <c:if test="${id eq '1' }">
 	<title>嘻哈大全-快乐每一天</title>
