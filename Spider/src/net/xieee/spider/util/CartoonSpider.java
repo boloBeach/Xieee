@@ -140,11 +140,14 @@ public class CartoonSpider {
 		connection.setRequestProperty("Accept-Language", "en-US,en;q=0.8");
 		connection.setRequestProperty("Cache-Control", "max-age=0");
 		connection.setRequestProperty("Connection", "keep-alive");
+		connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36");
 		connection.setRequestProperty("Host", host);
 		connection.setRequestProperty("Referer", referer);
-		InputStream inputStream = connection.getInputStream();
+		if(connection == null){
+			return null;
+		}
 		// 对应的字符编码转换
-		Reader reader = new InputStreamReader(inputStream, "UTF-8");
+		Reader reader = new InputStreamReader(connection.getInputStream(), "UTF-8");
 		BufferedReader bufferedReader = new BufferedReader(reader);
 		String str = null;
 		StringBuffer sb = new StringBuffer();

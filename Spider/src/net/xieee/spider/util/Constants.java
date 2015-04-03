@@ -173,9 +173,9 @@ public class Constants {
 	public final static Integer	today_keyword			= 3;
 
 	/**
-	 * 搞笑图片的key_word
+	 * 搞笑图片的key_word--对应我们的ps页面
 	 */
-	public final static Integer	joke_keyword			= 6;
+	public final static Integer	joke_keyword			= 4;
 
 	/**
 	 * 漂亮MM的key_word

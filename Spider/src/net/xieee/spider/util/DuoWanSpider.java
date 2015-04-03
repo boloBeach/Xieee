@@ -74,6 +74,52 @@ public class DuoWanSpider {
 		}
 		return list;
 	}
+	
+	/**
+	 * 自动抓取的，因为可能每周只有一个gif，所以需要自己抓取
+	* <method description>
+	*
+	* @param url
+	* @param host
+	* @param referer
+	* @param httpHost
+	* @return
+	* @throws Exception
+	 */
+	public List<Picture> getSpiderDuoWanGif(String url, String host, String referer, String httpHost) throws Exception {
+		Document document = Jsoup.parse(StringEscapeUtils.unescapeJava(getJsonString(url, host, referer)));
+		Element element = document.getElementsByTag("li").first();
+		String hrefDetail = "";
+		Element hrefElement = null;
+		String href = null;
+		String small_img = null;
+		String jsonDetail = null;
+		List<Picture> list = new ArrayList<Picture>();
+		String imgUrl = "";
+		hrefElement = element.getElementsByTag("a").first();
+		small_img = element.getElementsByTag("img").first().attr("src");
+		href = hrefElement.attr("href");
+		hrefDetail = "http://tu.duowan.com/index.php?r=show/getByGallery/&gid="+getSpiderId(href)+"&_=1427690951100";
+		jsonDetail = StringEscapeUtils.unescapeJava(getJsonString(hrefDetail, httpHost, referer));
+		JSONObject jsonObject = JSONObject.fromObject(jsonDetail);
+		JSONArray jsonArray = jsonObject.getJSONArray("picInfo");
+		for (Object object : jsonArray) {
+			Picture picture = new Picture();
+			picture.setSpark_url(hrefDetail);
+			picture.setKey_word(Constants.gif_img_keyword+"");
+			picture.setInter_url_samll(small_img);
+			JSONObject imgObject = (JSONObject)object;
+			picture.setDetail(imgObject.getString("add_intro"));
+			picture.setAuthor("admin");
+			picture.setWidth(imgObject.getInt("file_width"));
+			picture.setHeight(imgObject.getInt("file_height"));
+			imgUrl = imgObject.getString("url");
+			picture.setPicture_name(imgUrl.substring(imgUrl.lastIndexOf("/")+1, imgUrl.length()));
+			picture.setInter_url(imgUrl);
+			list.add(picture);
+		}
+		return list;
+	}
 
 	 
 
@@ -113,6 +159,7 @@ public class DuoWanSpider {
 		connection.setRequestProperty("Cache-Control", "max-age=0");
 		connection.setRequestProperty("Connection", "keep-alive");
 		connection.setRequestProperty("Host", host);
+		connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36");
 		connection.setRequestProperty("Referer", referer);
 		InputStream inputStream = connection.getInputStream();
 		// 对应的字符编码转换

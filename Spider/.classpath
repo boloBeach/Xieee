@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/jsoup-1.8.1.jar"/>
 	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/mysql-connector-java-5.1.18.jar"/>
+	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/rt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

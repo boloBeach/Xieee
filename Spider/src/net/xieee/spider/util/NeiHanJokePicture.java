@@ -16,7 +16,7 @@ import org.jsoup.nodes.Element;
  */
 public class NeiHanJokePicture {
 	/**
-	 * 获取内涵吧里面的搞笑图片
+	 * 获取内涵吧里面的恶搞图片
 	 * <method description>
 	 *
 	 * @param url 内涵吧的url地址
