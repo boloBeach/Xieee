@@ -1,9 +1,11 @@
 package net.xieee.util;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import net.xieee.web.bean.Cartoon;
+import net.xieee.web.bean.Params;
 import net.xieee.web.bean.Picture;
 
 public class PictureServiceImpl {
@@ -124,6 +126,36 @@ public class PictureServiceImpl {
 		}
 		return 0;
 	}
+	
+	
+	public Params getParamsById(Integer id){
+		if(StringUtil.isNull(id)){
+			return null;
+		}
+		String sql = "select id,param,param_value,descript from params where id=?";
+		Object[] params = {id};
+		List<HashMap<String, Object>> lists = DB.excuteQuery(sql, params, DB.getScoreConnection());
+		if(!lists.isEmpty()){
+			HashMap map = lists.get(0);
+			Params param = new Params();
+			param.setDescript((String)map.get("descript"));
+			param.setId((Integer)map.get("id"));
+			param.setParamValue((String)map.get("param_value"));
+			param.setParam((String)map.get("param"));
+			return param;
+		}
+		return null;
+	}
+	
+	public int saveParams(Integer paramValue,Integer id){
+		if(StringUtil.isNull(paramValue) || StringUtil.isNull(id)){
+			return 0;
+		}
+		String sql = "update params set param_value=? where id=?";
+		Object[] params = {paramValue,id};
+		return DB.excuteUpdate(sql, params, DB.getScoreConnection());
+	}
+	
 
 	/*@Override
 	public int groupGif(int tagId,String title) {
