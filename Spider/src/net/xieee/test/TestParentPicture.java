@@ -17,7 +17,7 @@ public class TestParentPicture {
 				Params params = pictureServiceImpl.getParamsById(i);
 				System.out.println(params.toString());
 			} catch (InterruptedException e) {
-				logger.error("线程出现错误:"+e.toString());
+				logger.error("The Thead Error="+e.toString());
 				e.printStackTrace();
 			}
 		}

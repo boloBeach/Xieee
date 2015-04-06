@@ -156,22 +156,35 @@ public class PictureServiceImpl {
 		return DB.excuteUpdate(sql, params, DB.getScoreConnection());
 	}
 	
+	
+	public int update(String sql,Object[] params){
+		return DB.excuteUpdate(sql, params, DB.getScoreConnection()); 
+	}
+	
+	public int save(String sql,Object[] params){
+		return DB.excuteUpdate(sql, params, DB.getScoreConnection());
+	}
+	
+	public List<HashMap<String, Object>> getList(String sql,Object[] params){
+		return DB.excuteQuery(sql, params, DB.getScoreConnection());
+	}
 
-	/*@Override
+	
 	public int groupGif(int tagId,String title) {
-		String sql = "select id,local_url,local_url_small,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+StringUtil.random()+"";
+		Integer temp = StringUtil.random();
+		String sql = "select id,local_url,local_url_small,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+temp+"";
 		Object[] params = {tagId};
 		List list = getList(sql, params);
 		Map map = null;
-		String insertParent = "insert into parent_picture(parent_picture_name,detail,picture_url,catalog_id) values(?,?,?,?)";
+		String insertParent = "insert into parent_picture(parent_picture_name,detail,picture_url,catalog_id,picture_count) values(?,?,?,?,?)";
 		if(!list.isEmpty()){
 			map = (Map)list.get(0);
 			int parentId = 0;
 			if(!StringUtil.isNull(map.get("local_url_small"))){
-				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url_small"),tagId};
+				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url_small"),tagId,temp};
 				parentId = save(insertParent, param);
 			}else {
-				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url"),tagId};
+				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url"),tagId,temp};
 				parentId = save(insertParent, param);
 			}
 			
@@ -189,5 +202,5 @@ public class PictureServiceImpl {
 			}
 		}
 		return 0;
-	}*/
+	}
 }
