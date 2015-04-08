@@ -2,17 +2,16 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/commons-beanutils-1.8.0.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/commons-dbcp-1.4.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/commons-lang-2.5.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/commons-pool-1.5.4.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/ezmorph-1.0.6.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/json-lib-2.4-jdk15.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/jsoup-1.8.1.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/mysql-connector-java-5.1.18.jar"/>
-	<classpathentry kind="lib" path="E:/BaiduYunDownload/baseJar/baseJar/rt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/commons-dbcp-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/commons-pool-1.5.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/jsoup-1.8.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bolobeach/Desktop/linux/baseJar/mysql-connector-java-5.1.18.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -151,6 +151,39 @@ public class DB {
 		return datas;
 	}
 
+	public static int save(String sql,Object[] params,Connection connection){
+		int result = -1;
+		PreparedStatement stmt = null;
+		if(!StringUtil.isNull(connection)){
+			try {
+				stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				if (params != null) {
+					int i = 0;
+					for (Object obj : params) {
+						if (obj instanceof Date) {
+							stmt.setTimestamp(i + 1, Timestamp.valueOf(FileUtil.getStringByDate((Date)obj)));
+						} else {
+							stmt.setObject(i + 1, obj);
+						}
+						i++;
+					}
+				}
+				stmt.executeUpdate();
+				ResultSet resultSet =  stmt.getGeneratedKeys();
+				if(resultSet.next()){
+					result = resultSet.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("save方法执行sql语句方法异常" + sql + "-----错误信息为"
+						+ e.toString());
+			}finally{
+				close(_conn, stmt, null);
+			}
+		}
+		return result;
+	}
+	
 	/**
 	 * 执行更新操作返回的行数
 	 * 
@@ -191,6 +224,8 @@ public class DB {
 		return result;
 	}
 
+	
+	
 	private static void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
 			if (rs != null) {

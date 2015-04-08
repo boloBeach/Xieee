@@ -19,10 +19,8 @@ public class TestParentPicture {
 				Params params = pictureServiceImpl.getParamsById(arrayId[i]);
 				pictureServiceImpl.groupGif(params.getId(), params.getDescript()+""+params.getParamValue()+"期");
 				pictureServiceImpl.saveParams(StringUtil.stringToInt(params.getParamValue())+1, params.getId());
-				System.out.println(params.toString());
 			} catch (InterruptedException e) {
 				logger.error("The Thead Error="+e.toString());
-				e.printStackTrace();
 			}
 		}
 	}

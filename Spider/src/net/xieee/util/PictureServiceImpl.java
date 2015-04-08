@@ -162,7 +162,7 @@ public class PictureServiceImpl {
 	}
 	
 	public int save(String sql,Object[] params){
-		return DB.excuteUpdate(sql, params, DB.getScoreConnection());
+		return DB.save(sql, params, DB.getScoreConnection());
 	}
 	
 	public List<HashMap<String, Object>> getList(String sql,Object[] params){
@@ -172,7 +172,7 @@ public class PictureServiceImpl {
 	
 	public int groupGif(int tagId,String title) {
 		Integer temp = StringUtil.random();
-		String sql = "select id,local_url,local_url_small,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+temp+"";
+		String sql = "select id,local_url,local_url_small,detail,title from picture where is_delete=1 and key_word=? and parent_picture is null limit "+temp+"";
 		Object[] params = {tagId};
 		List list = getList(sql, params);
 		Map map = null;
