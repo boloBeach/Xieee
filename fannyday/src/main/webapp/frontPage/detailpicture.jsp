@@ -82,8 +82,17 @@ var _hmt = _hmt || [];
 				<div class="index-content-left-item">
 					<h1 class="ft20 center">
 					<c:if test="${not empty parentBean && fn:length(parentBean)>1}">
-						${parentBean[0].parent_picture_name }
+						${parentBean[0].parent_picture_name } --
 					</c:if>
+					
+					<c:choose>
+						<c:when test="${empty listItem.detail }">
+							${listItem.title }
+						</c:when>
+						<c:otherwise>
+							${listItem.detail }
+						</c:otherwise>
+					</c:choose>
 					</h1>
 					<div class="item-info ft12 center">
 						<i class="gray">by</i>&nbsp;&nbsp;${listItem.author }&nbsp; <i class="gray">on
@@ -92,14 +101,23 @@ var _hmt = _hmt || [];
 					<div class="item-content ft14">
 						<div class="item-content-img">
 							
+							<c:choose>
+								<c:when test="${pictureList.havePrePage }">
+									<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber-1 }.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+								</c:when>
+								<c:otherwise>
+									<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber}.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
+								</c:otherwise>
+							</c:choose>
 							
-							<c:if test="${pictureList.havePrePage }">
-								<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber-1 }.html" title="点击看上一张" class="goLf"  hidefocus="true" ></a>
-							</c:if>
-							
-							<c:if test="${pictureList.haveNextPage }">
-								<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber+1 }.html" title="点击看下一张" class="goRi" hidefocus="true" ></a>
-							</c:if>
+							<c:choose>
+								<c:when test="${pictureList.haveNextPage }">
+									<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber+1 }.html" title="点击看下一张" class="goRi" hidefocus="true" ></a>
+								</c:when>
+								<c:otherwise>
+									<a href="detail/${id }/${parentId}/picture_${pictureList.pageNumber}.html" title="点击看下一张" class="goRi" hidefocus="true" ></a>
+								</c:otherwise>
+							</c:choose>
 							<img title="${listItem.title}" alt="${listItem.title}" src="${listItem.local_url}"/>
 							<div>
 								<c:choose>
