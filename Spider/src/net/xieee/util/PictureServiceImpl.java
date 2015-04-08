@@ -180,11 +180,17 @@ public class PictureServiceImpl {
 		if(!list.isEmpty()){
 			map = (Map)list.get(0);
 			int parentId = 0;
-			if(!StringUtil.isNull(map.get("local_url_small"))){
+			if(!StringUtil.isNull(map.get("local_url_small")) && !StringUtil.isNull(map.get("title"))){
 				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url_small"),tagId,temp};
 				parentId = save(insertParent, param);
-			}else {
+			}else if(StringUtil.isNull(map.get("local_url_small")) && !StringUtil.isNull(map.get("title"))) {
 				Object[] param  = {title,(String)map.get("title"),(String)map.get("local_url"),tagId,temp};
+				parentId = save(insertParent, param);
+			}else if(StringUtil.isNull(map.get("local_url_small")) && StringUtil.isNull(map.get("title"))) {
+				Object[] param  = {title,(String)map.get("detail"),(String)map.get("local_url"),tagId,temp};
+				parentId = save(insertParent, param);
+			}else {
+				Object[] param  = {title,(String)map.get("detail"),(String)map.get("local_url_small"),tagId,temp};
 				parentId = save(insertParent, param);
 			}
 			
