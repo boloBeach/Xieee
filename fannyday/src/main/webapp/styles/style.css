@@ -449,7 +449,7 @@ em {
 
 .index-content-left-title {
 	border-bottom: 1px solid #D1D1D1;
-	padding-bottom: 20px;
+	padding-bottom: 17px;
 }
 
 .index-content-left-title ul {
@@ -975,7 +975,7 @@ em {
 .index-content-item {
 	margin-top: 20px;
 	width: 100%;
-	height: 1560px;
+	min-height: 1560px;
 	border: 1px solid #D1D1D1;
 }
 
