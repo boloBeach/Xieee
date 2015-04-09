@@ -5,7 +5,7 @@ $(document).ready(function(){
 	var hasEmail = false;
 	function checkEmail(checkEmail){
 		$.ajax({
-			url : "checkEmail",
+			url : "checkEmail.html",
 			type : "get",
 			cache : false,
 			dataType : 'text',

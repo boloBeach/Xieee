@@ -60,7 +60,7 @@ public class LoginController {
 		return new ModelAndView("redirect:register.html");
 	}
 	
-	@RequestMapping(value="checkEmail")
+	@RequestMapping(value="checkEmail.html")
 	public void checkEmail(HttpServletRequest request,HttpServletResponse response){
 		response.setContentType("text/json; charset=UTF-8");
 		response.setHeader("Cache-Control", "no-cache");

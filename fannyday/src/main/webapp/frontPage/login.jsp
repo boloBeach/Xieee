@@ -48,15 +48,15 @@ html, body {
                 <ul class="login-form own ft12">
                 	
                     <li>
-                        <label for="login_email">邮　　箱：</label>
+                        <label for="login_email">邮　箱:</label>
                         <input type="text" id="login_email" name="email">
                     </li>
                     <li>
-                        <label for="login_password">密　　码：</label>
+                        <label for="login_password">密　码:</label>
                         <input type="password" id="login_password" name="user_password">
                     </li>
                     <li>
-                    	<label for="randomCode">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+                    	<label for="randomCode">验证码:</label>
                     	<input type="text" id="randomCode" name="checkCode"/>
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet">
                     </li>

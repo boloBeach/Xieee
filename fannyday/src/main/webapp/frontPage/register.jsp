@@ -41,24 +41,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <form action="regist.html" method="post">
                 <ul class="login-form ft12">
                     <li>
-                        <label for="login_email">邮　　箱：</label>
+                        <label for="login_email">邮　　箱:</label>
                         <input type="text" id="regist_email" name="email">
                     </li>
                     <li>
-                        <label for="username">昵　　称：</label>
+                        <label for="username">昵　　称:</label>
                         <input type="text" id="username" name="user_name">
                     </li>
                     <li>
-                        <label for="login_password">密　　码：</label>
+                        <label for="login_password">密　　码:</label>
                         <input type="password" id="login_password" name="user_password">
                     </li>
                     <li>
-                        <label for="chk_password">确认密码：</label>
+                        <label for="chk_password">确认密码:</label>
                         <input type="password" id="chk_password">
                     </li>
                     
                     <li>
-                    	<label for="randomCode">验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+                    	<label for="randomCode">验 证 码:</label>
                     	<input type="text" id="randomCode" name="checkCode"/>
                     	<img title="点击更换" class="random-image" onclick="javascript:refresh(this);" src="imageServlet"> 
                     </li>

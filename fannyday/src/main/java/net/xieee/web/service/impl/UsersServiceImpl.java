@@ -24,7 +24,7 @@ public class UsersServiceImpl extends BaseServiceImpl implements
 		String sql = "select user_password,user_name from users where email=? and is_delete=?";
 		Object[] params = { email,1 };
 		List<Map<String, Object>> list = getList(sql, params);
-		if (list.size() > 0) {
+		if (list!= null && list.size() > 0) {
 			Object user_password = list.get(0).get("user_password");
 			if (user_password.equals(MD5.GetMD5Code(password))) {
 				// if login success then update the login_count and last_login_date
