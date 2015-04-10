@@ -103,12 +103,18 @@
 			navSelector : "#more",
 			nextSelector : "#more a",
 			itemSelector : ".item",
+			debug: true,
+			dataType: 'json',
+			template :function(data){
+				alert(data);
+				return "";
+			},
 			loading : {
 				img : "images/masonry_loading_1.gif",
 				msgText : '正在加载中....',
 				finishedMsg : '木有了,看看下一页',
+				animate:true,
 				finished : function() {
-
 					sp++;
 					if (sp >= 10) { //到第10页结束事件
 						$("#more").remove();
@@ -118,10 +124,12 @@
 					}
 				}
 			},
-			errorCallback : function() {
-				$("#pagebox").show();
+			errorCallback : function(e) {
+				alert("error"+e);
+				//$("#pagebox").show();
 			}
 		}, function(newElements) {
+			alert(newElements);
 			var $newElems = $(newElements);
 			$('.infinite_scroll').masonry('appended', $newElems, false);
 			$newElems.fadeIn();
@@ -196,33 +204,9 @@
 						</div>
 					</div>
 					<button id="ScrollToTop" class="btnimg Button2 WhiteButton" type="button">返回<br>顶部</button>
-					<%-- <div class="main  tab_kc1" style="display: block;">
-						<ul class="waterfall">
-						 <c:if test="${!empty randPicture }">
-	              				<c:forEach var="randPicture" items="${randPicture}">
-	              					<li>
-	              						<div class="img_block">
-											<a href="detail/${randPicture.catalog_id}/${randPicture.id }/picture_0.html" target="_blank">
-		              							<img src="${randPicture.picture_url }" data-bd-imgshare-binded="1">
-		              						</a>
-											<a href="#" rel="lightbox[plants]" title="${randPicture.detail}" class="zoom">放大</a>
-											<a href="#" class="ilike">YYM</a>
-										</div>
-										<h3>${randPicture.detail}</h3>
-										<div class="iNum">
-											<span>1</span><a href="#">4</a>
-										</div>
-										<p><a href="detail/${randPicture.catalog_id}/${randPicture.id }/picture_0.html" target="_blank" title="${randPicture.detail }">${randPicture.detail}</a></p>
-			              				
-	              					</li>
-	              				</c:forEach>
-	              			</c:if> 
-						</ul>
-						
-					</div> --%>
 				</div>
 			</div>
-
+			<div id="more"><a href="showResource.html?type=heat&urlId=2&page=1"></a></div>
 			<div class="index-content-right">
 				<%@ include file="right.jsp"%>
 			</div>
