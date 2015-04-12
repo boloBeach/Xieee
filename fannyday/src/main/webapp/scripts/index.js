@@ -54,8 +54,7 @@
            var contentList = $(".content-list");
            var uriId = $(".showUrlId").val();
            $.ajax({
-        	   url:"showResource.html",
-        	   data:{type:type,urlId:uriId},
+        	   url:uriId+"/"+type+"/showResource.html",
         	   dataType:"json",
         	   success:function(data){
         		   if(data==null){

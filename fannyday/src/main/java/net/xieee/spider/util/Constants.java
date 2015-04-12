@@ -111,6 +111,11 @@ public class Constants {
 	 * 显示首页的信息的默认的pagesize个数
 	 */
 	public final static Integer index_pageSize = 5;
+	
+	/**
+	 * 首页瀑布流每页显示多少条数据
+	 */
+	public final static Integer index_picture_count=12;
 
 	/**
 	 * 显示首页的信息的默认显示方式，按照时间的先后顺序来进系

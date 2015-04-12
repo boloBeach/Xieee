@@ -36,8 +36,9 @@ public class IndexController {
 		// 获取一级菜单
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
 		ModelAndView modelAndView = new ModelAndView("/index");
+		String currentPage = request.getParameter("page");
 		modelAndView.addObject("catalogList", list);
-		modelAndView.addObject("randPicture", indexServiceImpl.randPicture(urlId,null));
+		modelAndView.addObject("randPicture", indexServiceImpl.randPicture(urlId,null,currentPage));
 		modelAndView.addObject("tag",indexServiceImpl.getTag());
 		modelAndView.addObject("randCartoon",indexServiceImpl.randCartoon());
 		modelAndView.addObject("newcommontList", indexServiceImpl.getNewCommontList());
@@ -66,13 +67,12 @@ public class IndexController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="showResource.html")
-	public void showResource(HttpServletRequest request,HttpServletResponse response){
+	@RequestMapping(value="{urlId}/{type}/showResource.html")
+	public void showResource(HttpServletRequest request,HttpServletResponse response,@PathVariable String urlId,@PathVariable String type){
 		response.setContentType("text/json; charset=UTF-8");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
-		String urlId = request.getParameter("urlId");
-		String type = request.getParameter("type");
+		String currentPage = request.getParameter("page");
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -80,7 +80,7 @@ public class IndexController {
 			logger.error(e.toString());
 		}
 		Gson gson = new Gson();
-		out.write(gson.toJson(indexServiceImpl.randPicture(urlId,type)));
+		out.write(gson.toJson(indexServiceImpl.randPicture(urlId,type,currentPage)));
 		out.close();
 	}
 }

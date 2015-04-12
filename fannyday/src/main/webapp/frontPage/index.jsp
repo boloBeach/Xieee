@@ -105,10 +105,7 @@
 			itemSelector : ".item",
 			debug: true,
 			dataType: 'json',
-			template :function(data){
-				alert(data);
-				return "";
-			},
+			appendCallback: false,
 			loading : {
 				img : "images/masonry_loading_1.gif",
 				msgText : '正在加载中....',
@@ -125,15 +122,28 @@
 				}
 			},
 			errorCallback : function(e) {
-				alert("error"+e);
+				alert(e.toString());
 				//$("#pagebox").show();
 			}
-		}, function(newElements) {
-			alert(newElements);
-			var $newElems = $(newElements);
-			$('.infinite_scroll').masonry('appended', $newElems, false);
-			$newElems.fadeIn();
-			item_callback();
+		},
+		function(json, opts ) {
+			if(json!=null){
+				json = eval(json);
+				console.error(this.options.itemSelector);
+				for(var i =0;i<json.length;i++){
+					var catalogId = json[i].catalog_id;
+					var newElems = "<div class='item masonry_brick'><div class='item_t'> <div class='img'>"+
+								+"<a href='detail/"+catalogId+"'/"+json[i].id+"/picture_0.html' target='_blank'><img width='210' alt="+json[i].detail+"src="+json[i].picture_url+" /></a>"+
+								+"<div class='btns'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' class='Button2 Button11 WhiteButton ContrastButton  repin_link  notlogin'><em></em>浏览<span"+
+								+"class='num'>(102)</span></a> <div class='f-r'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' class='Button2 Button11 WhiteButton ContrastButton likebuttonnotlogin'>"+
+								+"<em></em><span class='text'>收藏</span><span class='num'>(0)</span></a> </div> </div> </div> <div class='title'>"+
+								+"<span><a href='detail/"+ catalogId +"/"+json[i].id+"/picture_0.html' target='_blank' title="+json[i].detail+">"+json[i].detail+"</a></span>"+
+								+"</div> </div> <div class='item_b clearfix'> <div class='items_likes fl'> <span>标签:  <a href='#'>搞笑gif</a> <a href='#'>恶搞图片</a> </span> </div> </div> </div>";
+					//console.error(newElems);
+					$('.infinite_scroll').masonry('appended', newElems, false);
+				}
+				item_callback();  
+			}
 			return;
 		});
 	});
@@ -206,7 +216,7 @@
 					<button id="ScrollToTop" class="btnimg Button2 WhiteButton" type="button">返回<br>顶部</button>
 				</div>
 			</div>
-			<div id="more"><a href="showResource.html?type=heat&urlId=2&page=1"></a></div>
+			<div id="more"><a href="${id}/heat/showResource.html?page=1"></a></div>
 			<div class="index-content-right">
 				<%@ include file="right.jsp"%>
 			</div>

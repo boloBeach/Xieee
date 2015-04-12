@@ -42,7 +42,7 @@ public interface IndexServiceInter extends BaseServiceInter {
 	 *            类型，默认是按照热度来进行排序，有热度和时间
 	 * @return
 	 */
-	public List randPicture(String urlId, String type);
+	public List randPicture(String urlId, String type,String currentPage);
 
 
 
