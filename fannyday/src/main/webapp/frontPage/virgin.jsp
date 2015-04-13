@@ -64,15 +64,22 @@ var _hmt = _hmt || [];
 					</div>
 					
 					<div class="item-content ft14" style="text-align: center;">
+						<img alt="${virgin[0].title }" src="${virgin[0].local_url }">
 						<c:choose>
-							<c:when test="${virgin[0].width>600}">
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: auto;">
-							</c:when>
-							<c:when test="${virgin[0].width==0 }">
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:600px ;height: auto;">
+							<c:when test="${!empty virgin[1]}">
+								<a href="virgin/${id}-${virgin[1].id}.html" title="点击看下一张" class="goRi"  hidefocus="true" ></a>
 							</c:when>
 							<c:otherwise>
-								<img alt="${virgin[0].title }" src="${virgin[0].local_url }" style="width:auto ;height: auto;">
+								<a href="virgin/${id}-${virgin[0].id}.html" title="点击看下一张" class="goRi"  hidefocus="true" ></a>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${!empty virgin[2]}">
+								<a href="virgin/${id}-${virgin[2].id}.html" title="点击看上一张" class="goLf" hidefocus="true"></a>
+							</c:when>
+							<c:otherwise>
+								<a href="virgin/${id}-${virgin[0].id}.html" title="点击看上一张" class="goLf" hidefocus="true"></a>
 							</c:otherwise>
 						</c:choose>
 						<br>
@@ -129,24 +136,23 @@ var _hmt = _hmt || [];
 					<div class="item-next">
 						<span class="float-left ft12"> 上一篇：
 						<c:choose>
-							<c:when test="${!empty virgin[1]}">
-								<a title="${virgin[1].title }" href="virgin/${id }-${virgin[1].id}.html">${virgin[1].title }</a>
+							<c:when test="${!empty virgin[2]}">
+								<a title="${virgin[2].title }" href="virgin/${id }-${virgin[2].id}.html">${virgin[2].title }</a>
 							</c:when>
 							<c:otherwise>
-								<a title="没有上一页了!!" href="virgin/${id }-0.html">没有上一页了!!</a>
+								<a href="virgin/${id }-0.html" title="没有上一页了!!" >没有上一页了!!</a>
 							</c:otherwise>
 						</c:choose>
-						
 						</span> 
 						
 						<span class="float-right ft12"> 
 						下一篇：
 						<c:choose>
-							<c:when test="${!empty virgin[2]}">
-								<a title="${virgin[2].title }" href="virgin/${id }-${virgin[2].id}.html">${virgin[2].title }</a>
+							<c:when test="${!empty virgin[1]}">
+								<a title="${virgin[1].title }" href="virgin/${id }-${virgin[1].id}.html">${virgin[1].title }</a>
 							</c:when>
 							<c:otherwise>
-								<a href="virgin/${id }-0.html" title="没有下一页了!!" >没有下一页了!!</a>
+								<a title="没有下一页了!!" href="virgin/${id }-0.html">没有下一页了!!</a>
 							</c:otherwise>
 						</c:choose>
 						</span>
