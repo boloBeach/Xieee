@@ -65,8 +65,9 @@
 <link href="./styles/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 <link href="styles/style.css" rel="stylesheet" type="text/css">
 <link href="styles/pbl.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="./scripts/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="./scripts/jquery.infinitescroll.js"></script>
+<script type="text/javascript" src="./scripts/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="./scripts/jquery.infinitescroll.min.js"></script>
+<script type="text/javascript" src="./scripts/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 	function item_masonry() {
 		$('.item img').load(function() {
@@ -113,6 +114,7 @@
 				animate:true,
 				finished : function() {
 					sp++;
+					console.error(sp);
 					if (sp >= 10) { //到第10页结束事件
 						$("#more").remove();
 						$("#infscr-loading").hide();
@@ -122,25 +124,22 @@
 				}
 			},
 			errorCallback : function(e) {
-				alert(e.toString());
+				console("errorCallBack:======"+e.toString());
 				//$("#pagebox").show();
+			},
+			template:function(data){
+				console.error(data);
 			}
 		},
 		function(json, opts ) {
 			if(json!=null){
 				json = eval(json);
-				console.error(this.options.itemSelector);
 				for(var i =0;i<json.length;i++){
 					var catalogId = json[i].catalog_id;
-					var newElems = "<div class='item masonry_brick'><div class='item_t'> <div class='img'>"+
-								+"<a href='detail/"+catalogId+"'/"+json[i].id+"/picture_0.html' target='_blank'><img width='210' alt="+json[i].detail+"src="+json[i].picture_url+" /></a>"+
-								+"<div class='btns'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' class='Button2 Button11 WhiteButton ContrastButton  repin_link  notlogin'><em></em>浏览<span"+
-								+"class='num'>(102)</span></a> <div class='f-r'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' class='Button2 Button11 WhiteButton ContrastButton likebuttonnotlogin'>"+
-								+"<em></em><span class='text'>收藏</span><span class='num'>(0)</span></a> </div> </div> </div> <div class='title'>"+
-								+"<span><a href='detail/"+ catalogId +"/"+json[i].id+"/picture_0.html' target='_blank' title="+json[i].detail+">"+json[i].detail+"</a></span>"+
-								+"</div> </div> <div class='item_b clearfix'> <div class='items_likes fl'> <span>标签:  <a href='#'>搞笑gif</a> <a href='#'>恶搞图片</a> </span> </div> </div> </div>";
-					//console.error(newElems);
-					$('.infinite_scroll').masonry('appended', newElems, false);
+					var $newElems = $("<div class='item masonry_brick'><div class='item_t'> <div class='img'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' target='_blank'><img width='210' alt="+json[i].detail+" src="+json[i].picture_url+" /></a><div class='btns'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' class='Button2 Button11 WhiteButton ContrastButton  repin_link  notlogin'><em></em>浏览<span class='num'>("+json[i].skim_count+")</span></a> <div class='f-r'><a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html' class='Button2 Button11 WhiteButton ContrastButton likebuttonnotlogin'><em></em><span class='text'>喜欢</span><span class='num'>(0)</span></a> </div> </div> </div> <div class='title'><span><a href='detail/"+ catalogId +"/"+json[i].id+"/picture_0.html' target='_blank' title="+json[i].detail+">"+json[i].detail+"</a></span></div> </div> <div class='item_b clearfix'> <div class='items_likes fl'> <span>标签:  <a href='detail/"+catalogId+"/"+json[i].id+"/picture_0.html'>"+json[i].tag+"</a></span> </div> </div> </div>");
+					console.error($newElems);
+					$newElems.appendTo($('.infinite_scroll'));
+					$('.infinite_scroll').masonry('appended', $newElems);
 				}
 				item_callback();  
 			}
@@ -184,15 +183,15 @@
 	
 												<a href="detail/${randPicture.catalog_id}/${randPicture.id }/picture_0.html" data-id="1092"
 													class="Button2 Button11 WhiteButton ContrastButton  repin_link  notlogin"><em></em>浏览<span
-													class="num">(102)</span></a>
+													class="num">(${randPicture.skim_count })</span></a>
 	
 												<div class="f-r">
 													<a href="detail/${randPicture.catalog_id}/${randPicture.id }/picture_0.html" data-id="1092"
 														class="Button2 Button11 WhiteButton ContrastButton likebuttonnotlogin">
-														<em></em><span class="text">收藏</span><span class="num">(0)</span>
+														<em></em><span class="text">喜欢</span><span class="num">(0)</span>
 													</a>
 												</div>
-												<!-- 收藏 攒一个  结束-->
+												<!-- 喜欢 攒一个  结束-->
 											</div>
 										</div>
 										<div class="title">
@@ -202,8 +201,7 @@
 									<div class="item_b clearfix">
 										<div class="items_likes fl">
 											<span>标签: 
-												<a href="#">搞笑gif</a>
-												<a href="#">恶搞图片</a>
+												<a href="#">${randPicture.tag }</a>
 											</span>
 										</div>
 									</div>

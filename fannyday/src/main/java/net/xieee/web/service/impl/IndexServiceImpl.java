@@ -86,21 +86,21 @@ public class IndexServiceImpl<T> extends BaseServiceImpl<T> implements
 		String sql = null;
 		if(StringUtil.isNull(type) || type.equals("heat")){
 			if(StringUtil.isNull(urlId)|| StringUtil.stringToInt(urlId)==1 || StringUtil.stringToInt(urlId)==0 ){
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by skim_count DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
+				sql = "select id,parent_picture_name,skim_count,CASE WHEN catalog_id=2 THEN '搞笑gif' WHEN catalog_id=3 THEN '今日囧图' ELSE  '神级ps' end as tag,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by skim_count DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
 				Object[] params = {1};
 				return findList(sql, params);
 			}else {
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by skim_count DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
+				sql = "select id,parent_picture_name,skim_count,catalog_id,picture_url,detail,CASE WHEN catalog_id=2 THEN '搞笑gif' WHEN catalog_id=3 THEN '今日囧图' ELSE  '神级ps' end as tag from parent_picture where is_delete=? and catalog_id=?  order by skim_count DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
 				Object[] params = {1,StringUtil.stringToInt(urlId)};
 				return findList(sql, params);
 			}
 		}else {
 			if(StringUtil.isNull(urlId)|| StringUtil.stringToInt(urlId)==1 || StringUtil.stringToInt(urlId)==0 ){
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=?  order by modify_time DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
+				sql = "select id,parent_picture_name,skim_count,catalog_id,picture_url,detail，CASE WHEN catalog_id=2 THEN '搞笑gif' WHEN catalog_id=3 THEN '今日囧图' ELSE  '神级ps' end as tag from parent_picture where is_delete=?  order by modify_time DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
 				Object[] params = {1};
 				return findList(sql, params);
 			}else {
-				sql = "select id,parent_picture_name,catalog_id,picture_url,detail from parent_picture where is_delete=? and catalog_id=?  order by modify_time DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
+				sql = "select id,parent_picture_name,skim_count,catalog_id,picture_url,detail，CASE WHEN catalog_id=2 THEN '搞笑gif' WHEN catalog_id=3 THEN '今日囧图' ELSE  '神级ps' end as tag from parent_picture where is_delete=? and catalog_id=?  order by modify_time DESC limit "+(page-1)*Constants.index_picture_count+" , "+Constants.index_picture_count;
 				Object[] params = {1,StringUtil.stringToInt(urlId)};
 				return findList(sql, params);
 			}

@@ -35,7 +35,7 @@ public class IndexController {
 			HttpServletResponse response) {
 		// 获取一级菜单
 		List<Catalog> list = indexServiceImpl.getCatalogByParentId(null);
-		ModelAndView modelAndView = new ModelAndView("/index");
+		ModelAndView modelAndView = new ModelAndView("index");
 		String currentPage = request.getParameter("page");
 		modelAndView.addObject("catalogList", list);
 		modelAndView.addObject("randPicture", indexServiceImpl.randPicture(urlId,null,currentPage));
