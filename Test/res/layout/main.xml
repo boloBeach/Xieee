@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="IMEI" />
+
+            <EditText
+                android:id="@+id/imei"
+                style="@style/Item.Edit"
+                android:hint="请输入IMEI"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/rimei"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="IMSI" />
+
+            <EditText
+                android:id="@+id/imsi"
+                style="@style/Item.Edit"
+                android:hint="请输入IMSI"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/rimsi"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="手机号码" />
+
+            <EditText
+                android:id="@+id/number"
+                style="@style/Item.Edit"
+                android:hint="请输入手机号码" />
+
+            <Button
+                android:id="@+id/rnumber"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="SIM卡序号" />
+
+            <EditText
+                android:id="@+id/simserial"
+                style="@style/Item.Edit"
+                android:hint="请输入SIM卡序号"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/rsimserial"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="WIFI MAC" />
+
+            <EditText
+                android:id="@+id/wifimac"
+                style="@style/Item.Edit"
+                android:hint="请输入WIFI MAC" />
+
+            <Button
+                android:id="@+id/rwifimac"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="蓝牙MAC" />
+
+            <EditText
+                android:id="@+id/bluemac"
+                style="@style/Item.Edit"
+                android:hint="请输入蓝牙MAC" />
+
+            <Button
+                android:id="@+id/rbluemac"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="Android ID" />
+
+            <EditText
+                android:id="@+id/androidid"
+                style="@style/Item.Edit"
+                android:hint="请输入Android ID" />
+
+            <Button
+                android:id="@+id/randroidid"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="机器系列号" />
+
+            <EditText
+                android:id="@+id/serial"
+                style="@style/Item.Edit"
+                android:hint="请输入系列号" />
+
+            <Button
+                android:id="@+id/rserial"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/Item.Layout" >
+
+            <TextView
+                style="@style/Item.Label"
+                android:text="品牌" />
+
+            <EditText
+                android:id="@+id/brand"
+                style="@style/Item.Edit"
+                android:hint="请输入品牌名" />
+
+            <Button
+                android:id="@+id/rbrand"
+                style="@style/Item.Button"
+                android:text="随机" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

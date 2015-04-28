@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="CustomTheme.Light" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.ActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@color/color_primary2_light</item>
+        <item name="android:titleTextStyle">@style/AppTheme.ActionBar.Title</item>
+    </style>
+
+    <style name="AppTheme.ActionBar.Title" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Item">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Item.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Item.Label">
+        <item name="android:layout_width">50dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="Item.Edit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">50dip</item>
+        <item name="android:layout_marginRight">80dip</item>
+    </style>
+
+    <style name="Item.Button">
+        <item name="android:layout_width">80dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+</resources>
