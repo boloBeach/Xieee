@@ -4,5 +4,11 @@
     <string name="app_name">bolobeach</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+	<string name="save">save</string>
+	<string name="random_save">随机并保存</string>
+	<string name="keep">留存</string>
+	<string name="imei">imei:</string>
+	<string name="android_id">android id</string>
+	<string name="wifi_mac">wifi mac</string>
+	
 </resources>

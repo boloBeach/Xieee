@@ -8,9 +8,119 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.zh.bolobeach.MainActivity" >
 
+    <Button
+        android:id="@+id/random_save"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/save"
+        android:layout_alignBottom="@+id/save"
+        android:layout_margin="0dp"
+        android:layout_toRightOf="@+id/save"
+        android:text="@string/random_save"
+        android:textSize="10sp" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:text="@string/save"
+        android:textSize="10sp" />
+
+    <EditText
+        android:id="@+id/keep_number"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/random_save"
+        android:layout_toRightOf="@+id/random_save"
+        android:ems="10"
+        android:inputType="text"
+        android:text="1" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/keep"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/keep_number"
+        android:layout_toRightOf="@+id/keep_number"
+        android:text="@string/keep"
+        android:textSize="10sp" />
+
     <TextView
+        android:id="@+id/imei"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_below="@+id/save"
+        android:layout_marginTop="16dp"
+        android:text="@string/imei"
+        android:textSize="10dp" />
+
+    <EditText
+        android:id="@+id/imei_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/imei"
+        android:layout_alignBottom="@+id/imei"
+        android:layout_toRightOf="@+id/save"
+        android:ems="10"
+        android:inputType="text" />
+
+
+    <EditText
+        android:id="@+id/android_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imei_text"
+        android:layout_below="@+id/imei_text"
+        android:layout_marginTop="18dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/wifi_mac_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/wifi_mac"
+        android:layout_alignBottom="@+id/wifi_mac"
+        android:layout_alignLeft="@+id/android_id_text"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/wifi_mac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/android_id"
+        android:layout_below="@+id/android_id"
+        android:layout_marginTop="28dp"
+        android:text="@string/wifi_mac"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/android_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/android_id_text"
+        android:layout_alignLeft="@+id/imei"
+        android:text="@string/android_id"
+        android:textSize="10dp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/wifi_mac_text"
+        android:layout_below="@+id/wifi_mac_text"
+        android:layout_marginTop="19dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editText1"
+        android:layout_toLeftOf="@+id/editText1"
+        android:text="TextView" />
 
 </RelativeLayout>
