@@ -1,7 +1,7 @@
 /**
  * 
  * @author zhhaogen
- * ´´½¨ÓÚ 2015-3-14 ÏÂÎç7:13:50
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2015-3-14 ï¿½ï¿½ï¿½ï¿½7:13:50
  */
 package com.zh.bolobeach;
 
@@ -28,7 +28,7 @@ public class MainHook implements IXposedHookLoadPackage
 
 
 	/**
-	 * Ê¹ÓÃSharedPreferences×ö¹²ÏíÊı¾İÊ§°Ü
+	 * è·å–imei,imsi,phoneNumber,sim serrial,wifi mac,blue mac,android id,serial,brandç­‰ç­‰ä¿¡æ¯
 	 * 
 	 * @param lpparam
 	 */
@@ -46,30 +46,29 @@ public class MainHook implements IXposedHookLoadPackage
 				for (String k : ks)
 				{
 					String v = pre.getString(k, null);
+					System.out.println("key==="+k+ " values="+v);
 					maps.put(k, v);
 					if (TextUtils.isEmpty(v))
 					{
-						System.out.println("{" + lpparam.packageName + "}¶ÁÈ¡´¢´æÄÚÈİÊ§°Ü: " + k
-								+ " ÎªNull");
+						System.out.println("{" + lpparam.packageName + "}è·å–: " + k+ "null");
 						break;
 					}
 				}
 				if (maps.isEmpty())
 				{
 					System.out.println("{" + lpparam.packageName
-							+ "}¶ÁÈ¡´¢´æÄÚÈİÊ§°Ü:  SharedPreferences ÎªNull");
+							+ "}æ˜¯:  SharedPreferences INull");
 				} else
 				{
 					HookAll(maps);
 				}
 			} catch (Throwable e)
 			{
-				System.out.println("{" + lpparam.packageName + "}¶ÁÈ¡´¢´æÄÚÈİÊ§°Ü:"
-						+ e.getMessage());
+				System.err.println("{" + lpparam.packageName + "}å‡ºé”™äº†ã€‚:" + e.getMessage());
 			}
 		} else
 		{
-			System.out.println("¶ÁÈ¡»º´æÄÚÈİ");
+			System.out.println("init å·²ç» ä¸ºtrue");
 		}
 	}
 
@@ -88,10 +87,9 @@ public class MainHook implements IXposedHookLoadPackage
 		HookMethod(TelephonyManager.class, "getDeviceId", map.get("imei"));
 		HookMethod(TelephonyManager.class, "getSubscriberId", map.get("imsi"));
 		HookMethod(TelephonyManager.class, "getLine1Number", map.get("number"));
-		HookMethod(TelephonyManager.class, "getSimSerialNumber",
-				map.get("simserial"));
+		//HookMethod(TelephonyManager.class, "getSimSerialNumber", map.get("simserial"));
 		HookMethod(WifiInfo.class, "getMacAddress", map.get("wifimac"));
-		HookMethod(BluetoothAdapter.class, "getAddress", map.get("bluemac"));
+		//HookMethod(BluetoothAdapter.class, "getAddress", map.get("bluemac"));
 		try
 		{
 			XposedHelpers.findField(android.os.Build.class, "SERIAL").set(null, map.get("serial"));
@@ -99,7 +97,7 @@ public class MainHook implements IXposedHookLoadPackage
 			 
 		} catch (Throwable e)
 		{
-			System.out.println("ĞŞ¸Ä Build Ê§°Ü!" + e.getMessage());
+			System.err.println("serial and brand error" + e.getMessage());
 		}
 		try
 		{
@@ -121,7 +119,7 @@ public class MainHook implements IXposedHookLoadPackage
 							} });
 		} catch (Throwable e)
 		{
-			System.out.println("ĞŞ¸Ä androidid Ê§°Ü!" + e.getMessage());
+			System.err.println("HookAll error" + e.getMessage());
 		}
 
 	}
@@ -131,8 +129,7 @@ public class MainHook implements IXposedHookLoadPackage
 	{
 		try
 		{
-			XposedHelpers.findAndHookMethod(cl, method,
-					new Object[] { new XC_MethodHook()
+			XposedHelpers.findAndHookMethod(cl, method, new Object[] { new XC_MethodHook()
 					{
 						protected void afterHookedMethod(MethodHookParam param)
 								throws Throwable
@@ -143,7 +140,7 @@ public class MainHook implements IXposedHookLoadPackage
 					} });
 		} catch (Throwable e)
 		{
-			System.out.println("ĞŞ¸Ä" + method + "Ê§°Ü!" + e.getMessage());
+			System.err.println("è°ƒç”¨" + method + "å‡ºé”™" + e.getMessage());
 		}
 	}
 }

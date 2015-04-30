@@ -107,7 +107,7 @@
         android:textSize="10dp" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/imsi_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/wifi_mac_text"
@@ -116,11 +116,12 @@
         android:ems="10" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/imsi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/editText1"
-        android:layout_toLeftOf="@+id/editText1"
-        android:text="TextView" />
+        android:layout_alignBaseline="@+id/imsi_text"
+        android:layout_alignBottom="@+id/imsi_text"
+        android:layout_alignLeft="@+id/wifi_mac"
+        android:text="@string/imsi_text" />
 
 </RelativeLayout>
