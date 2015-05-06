@@ -38,8 +38,7 @@ public class MainHook implements IXposedHookLoadPackage
 		{
 			try
 			{
-				XSharedPreferences pre = new XSharedPreferences(this.getClass()
-						.getPackage().getName(), "prefs");
+				XSharedPreferences pre = new XSharedPreferences(this.getClass().getPackage().getName(), "prefs");
 				String ks[] = { "imei", "imsi", "number", "simserial",
 						"wifimac", "bluemac", "androidid", "serial", "brand" };
 				HashMap<String, String> maps = new HashMap<String, String>();

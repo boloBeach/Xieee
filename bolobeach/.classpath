@@ -7,5 +7,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="lib" path="XposedBridgeApi-20150213.jar"/>
 	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="libs/fastjson-1.1.36.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
