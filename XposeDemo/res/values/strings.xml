@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">手机信息设置</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="app_description">xposedemo</string>
+
+    <!-- button -->
+    <string name="button_change">随机并且保存</string>
+    <string name="button_save">保存</string>
+    <string name="button_history">历史记录</string>
+    
+    <!-- phone info -->
+    <string name="imei">IMEI:</string>
+    <string name="mac">MAC:</string>
+    <string name="imsi">imsi:</string>
+    <string name="android_id">Android id:</string>
+    <string name="wifiSSID">WifiSSID:</string>
+    <string name="wifiBSSID">WifiBSSID:</string>
+    <string name="telephone">手机号码:</string>
+    <string name="simICCID">sim序列号:</string>
+    <string name="simStatus">sim卡的状态:</string>
+    <string name="DNOId">运营商id:</string>
+    <string name="simCountry">sim卡国家:</string>
+    <string name="DNOName">运营商名字:</string>
+    <string name="phoneName">手机名字:</string>
+    <string name="phoneFWH">系统固件:</string>
+    <string name="HVGA">分辨率:</string>
+</resources>
