@@ -1,6 +1,7 @@
 package com.zh.bolobeach.util;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.zh.bolobeach.bean.Category;
@@ -27,12 +28,12 @@ public class DbAdapter {
 	public static final int		DBASE_VERSION	= 1;
 
 	public static final String	DBASE_CREATE	= "create table history "
-														+ "(imei text,androidId text,wifiMac text,WifiSSID text,"
+														+ "(id INTEGER PRIMARY KEY AUTOINCREMENT,imei text,androidId text,wifiMac text,WifiSSID text,"
 														+ "wifiBSSID text,telephone text,simICCID text,simIMSI text, "
 														+ "simStatus text,DNOId text,simCountry text,DNOName text, "
 														+ "phoneName text,phoneFWH text,HVGA text,categoryId text,createTime text);";
 
-	public static final String	CATEGORY_CREATE	= "create table category(categoryId text not null,categoryName text,createDate text)";
+	public static final String	CATEGORY_CREATE	= "create table category(categoryId INTEGER PRIMARY KEY AUTOINCREMENT,categoryName text,createDate text)";
 	private DataBaseHelper		mBaseHelper;
 	private SQLiteDatabase		mDb;
 
@@ -81,9 +82,8 @@ public class DbAdapter {
 	public boolean insertCatagory(Category category) {
 		if (category.getCatagoryId() != null) {
 			getWritableDatabase();
-			String sql = "insert into category values(?,?,?)";
-			Object[] param = { category.getCatagoryId(), category.getCatagoryName(), category.getCreateDate() };
-			;
+			String sql = "insert into category(categoryName,categoryDate) values(?,?)";
+			Object[] param = {category.getCatagoryName(), category.getCreateDate() };
 			mDb.execSQL(sql, param);
 			return true;
 		}
@@ -99,9 +99,18 @@ public class DbAdapter {
 	 * @return
 	 */
 	public boolean insertHistory(History history) {
+		
+		if(history.getCategoryId()==null || history.getCategoryId()==""){
+			Category category = new Category();
+			category.setCatagoryName(new Date().getTime()+"");
+			category.setCreateDate(new Date()+"");
+			insertCatagory(category);
+			history.setCategoryId("1");
+		}
+		
 		if (history.getAndroidId() != null) {
 			getWritableDatabase();
-			String sql = "insert into history values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into history(imei,androidId,wifiMac,WifiSSID,wifiBSSID,telephone,simICCID,simIMSI,simStatus,DNOId,simCountry,DNOName,phoneName,phoneFWH,HVGA,categoryId,createTime) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			Object[] param = { history.getImei(), history.getAndroidId(), history.getWifiMac(), history.getWifiSSID(),
 					history.getWifiBSSID(), history.getTelephone(), history.getSimICCID(), history.getSimIMSI(),
 					history.getSimStatus(), history.getDNOId(), history.getSimCountry(), history.getDNOName(),
@@ -153,6 +162,7 @@ public class DbAdapter {
 		if (cursor != null && cursor.moveToFirst()) {
 			while (cursor.moveToNext()) {
 				History history = new History();
+				history.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				history.setAndroidId(cursor.getString(cursor.getColumnIndex("androidId")));
 				history.setCategoryId(cursor.getString(cursor.getColumnIndex("categoryId")));
 				history.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
@@ -174,6 +184,45 @@ public class DbAdapter {
 			}
 		}
 		return list;
+	}
+
+
+
+	/**
+	 * 获取每一个history
+	 * <method description>
+	 *
+	 * @param historyId
+	 * @return
+	 */
+	public History getHistoryById(String historyId) {
+		getReadableDatabase();
+		Cursor cursor = mDb.query(DBASE_TABLE, null, "id=?", new String[] { historyId }, null, null, null);
+		if (cursor != null && cursor.moveToFirst()) {
+			while (cursor.moveToNext()) {
+				History history = new History();
+				history.setId(cursor.getInt(cursor.getColumnIndex("id")));
+				history.setAndroidId(cursor.getString(cursor.getColumnIndex("androidId")));
+				history.setCategoryId(cursor.getString(cursor.getColumnIndex("categoryId")));
+				history.setCreateTime(cursor.getString(cursor.getColumnIndex("createTime")));
+				history.setDNOId(cursor.getString(cursor.getColumnIndex("DNOId")));
+				history.setDNOName(cursor.getString(cursor.getColumnIndex("DNOName")));
+				history.setHVGA(cursor.getString(cursor.getColumnIndex("HVGA")));
+				history.setImei(cursor.getString(cursor.getColumnIndex("imei")));
+				history.setPhoneFWH(cursor.getString(cursor.getColumnIndex("phoneFWH")));
+				history.setPhoneName(cursor.getString(cursor.getColumnIndex("phoneName")));
+				history.setSimCountry(cursor.getString(cursor.getColumnIndex("simCountry")));
+				history.setSimICCID(cursor.getString(cursor.getColumnIndex("simICCID")));
+				history.setSimIMSI(cursor.getString(cursor.getColumnIndex("simIMSI")));
+				history.setSimStatus(cursor.getString(cursor.getColumnIndex("simStatus")));
+				history.setTelephone(cursor.getString(cursor.getColumnIndex("telephone")));
+				history.setWifiBSSID(cursor.getString(cursor.getColumnIndex("wifiBSSID")));
+				history.setWifiMac(cursor.getString(cursor.getColumnIndex("wifiMac")));
+				history.setWifiSSID(cursor.getString(cursor.getColumnIndex("WifiSSID")));
+				return history;
+			}
+		}
+		return null;
 	}
 
 	private class DataBaseHelper extends SQLiteOpenHelper {

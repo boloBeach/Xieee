@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: D:\\soft\\resouce\\glp\\GLPLabs\\glpenv20131014\\GLPStore\\workspace\\XposeDemo\\src\\com\\android\\xposedemo\\ITimerService.aidl
+ * Original file: C:\\Users\\royzhang\\git\\Xieee\\XposeDemo\\src\\com\\android\\xposedemo\\ITimerService.aidl
  */
 package com.android.xposedemo;
 public interface ITimerService extends android.os.IInterface

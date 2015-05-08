@@ -1,13 +1,18 @@
 package com.zh.bolobeach.util;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
+import android.Manifest.permission;
+import android.widget.Switch;
+
 /**
- * 帮助类,生成各种随机的id值
+ * 帮助类,生成各种随机的id值 <br/>
  * imei是15位randomNum(15) <br/>
- * imsi是15位 randomNum(15) <br/>
- * simserial是20位randomNum(20)<br/> 
- * wifimac是17位 randomWifiMac<br/> 
+ * imsi是15位 getRandomImsi <br/>
+ * simserial是20位randomNum(20)<br/>
+ * wifimac是17位 randomWifiMac<br/>
  * bluemac是17位 randomBlueMac<br/>
  * androidid是16位 randomAndroidId(16)<br/>
  * serial是19位+a randomNum(19)+a<br/>
@@ -28,6 +33,40 @@ public class Utils {
 			return true;
 		}
 		return false;
+	}
+
+
+
+	/**
+	 * 生成imsi，imsi有三部分组成，是15位数字,MCC+MNC+MSIN MCC 移动国家码 中国是460 一共三位 MNC
+	 * 是移动网络号码，目前中国一共有两位
+	 * ,中国移动系统使用00、02、07，中国联通GSM系统使用01、06，中国电信CDMA系统使用03、05、电信4G使用11，中国铁通系统使用20
+	 * <method description>
+	 *
+	 * @param index 如果是1表示是移动，如果是2表示联通，如果是3表示电信
+	 * @return
+	 */
+	public static String getRandomImsi(int index) {
+		StringBuilder stringBuilder = new StringBuilder("460");
+		String[] unicomMnc = { "01", "06"};
+		String[] mobileMnc = { "00", "02","07"};
+		String[] dyMnc = {"03","05","11"};
+		
+		Random random = new Random();
+		int indexMnc = random.nextInt(2);
+		int indexMobileMnc = random.nextInt(1);
+		if(index==1){
+			stringBuilder.append(mobileMnc[indexMnc]);
+		}
+		if(index==2){
+			stringBuilder.append(unicomMnc[indexMobileMnc]);
+		}
+		if(index==3){
+			stringBuilder.append(dyMnc[indexMnc]);
+		}
+		stringBuilder.append(randomNum(10));
+		return stringBuilder.toString();
+
 	}
 
 
@@ -128,8 +167,7 @@ public class Utils {
 
 
 	/**
-	 * 生成Android id值
-	 * <method description>
+	 * 生成Android id值 <method description>
 	 *
 	 * @param numSize
 	 * @return
@@ -144,5 +182,45 @@ public class Utils {
 
 		}
 		return res;
+	}
+	
+	public static int checkPhone(String telephone){
+		int result = 0;
+		String[] unicomMnc = {"130","131","132","155","156","145","185","186","176","185"};
+		String[] mobileMnc = {"1340","1341","1342","1343","1344","1345","1346","1347","1348","135","136","137","138","139","150","151","152","158","159","182","183","184","157","187","188","147","178" };
+		String[] dyMnc = {"133","153","180","181","189","177"};
+		List unicomList = Arrays.asList(unicomMnc);
+		List mobileList = Arrays.asList(mobileMnc);
+		List dyList = Arrays.asList(dyMnc);
+		
+		if(telephone!=null){
+			String temp = telephone.substring(3, 6);
+			if(unicomList.contains(temp)){
+				return 2;
+			}
+			if(mobileList.contains(temp)){
+				return 1;
+			}
+			
+			if(dyList.contains(temp)){
+				return 3;
+			}
+		}
+		return result;
+	}
+	
+	public static String checkDNOName(String telephone){
+		if(telephone != null){
+			int temp = checkPhone(telephone);
+			switch (temp) {
+			case 1:
+				return "中国移动";
+			case 2:
+				return "中国联通";
+			default:
+				return "中国电信";
+			}
+		}
+		return null;
 	}
 }

@@ -10,6 +10,9 @@
     <string name="button_change">随机并且保存</string>
     <string name="button_save">保存</string>
     <string name="button_history">历史记录</string>
+    <string name="typeName">分类名字</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
     
     <!-- phone info -->
     <string name="imei">IMEI:</string>

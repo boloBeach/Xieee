@@ -1,6 +1,7 @@
 package com.zh.bolobeach.bean;
 
 public class History {
+	private Integer mId;
 	private String	mImei;			// imei
 	private String	mAndroidId;	// andorid id
 	private String	mWifiMac;		// wifimac地址
@@ -18,6 +19,18 @@ public class History {
 	private String	mHVGA; // 分辨率
 	private String	mCategoryId;
 	private String	mCreateTime;	// 创建的时间
+
+
+
+	public Integer getId() {
+		return mId;
+	}
+
+
+
+	public void setId(Integer pId) {
+		mId = pId;
+	}
 
 
 

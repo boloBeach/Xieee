@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content">
+
+	  <Button
+	      android:id="@+id/edit"
+	      android:layout_alignParentTop="true"
+	      android:layout_toLeftOf="@+id/delete"
+	      android:textSize="10dp"
+	      android:layout_width="50dp"
+	      android:layout_height="40dp"
+	      android:text="@string/edit" />
+
+	  <TextView
+	      android:id="@+id/history_imei"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_alignBaseline="@+id/edit"
+	      android:layout_alignBottom="@+id/edit"
+	      android:layout_alignParentLeft="true"
+	      android:text="510222222222222" />
+
+	  <Button
+	      android:id="@+id/delete"
+	      android:layout_width="50dp"
+	      android:layout_height="40dp"
+	      android:layout_alignParentRight="true"
+	      android:layout_alignParentTop="true"
+	      android:text="@string/delete"
+	      android:textSize="10dp" />
+	      
+</RelativeLayout>
