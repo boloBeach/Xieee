@@ -9,6 +9,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
 import android.content.Context;
 import android.os.Binder;
 import android.os.Build;
@@ -27,6 +28,7 @@ public class XposeDemo implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 	private static String	TAG						= "XposeDemo";
 	private static boolean	mTelephonyManagerHooked	= false;
 	private static boolean	mWiFiManagerHooked		= false;
+	private static boolean  mLocationManagerHooked  = false;
 
 
 
@@ -78,9 +80,7 @@ public class XposeDemo implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 			// Context.TELEPHONY_SERVICE);
 			Class<?> clazz = instance.getClass();
 			while (clazz != null) {
-				// Util.log(hook, Log.WARN, "Class " + clazz);
 				for (Method method : clazz.getDeclaredMethods())
-					// Util.log(hook, Log.WARN, "Declared " + method);
 					clazz = clazz.getSuperclass();
 			}
 
@@ -93,12 +93,17 @@ public class XposeDemo implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 				hookAll(XTelephonyManager.getInstances(instance), "1");
 				mTelephonyManagerHooked = true;
 			}
-		} else if (name.equals(Context.WIFI_SERVICE)) {
+		}else if (name.equals(Context.WIFI_SERVICE)) { // wifi信息的
 			// WiFi manager
 			if (!mWiFiManagerHooked) {
 				hookAll(XWifiManager.getInstances(instance), "1");
 				mWiFiManagerHooked = true;
 			}
+		}else if(name.equals(Context.LOCATION_SERVICE)){
+		    // localtion manager
+		    if(!mLocationManagerHooked){
+		        hookAll(XLocationManager.getInstances(), "1");
+		    }
 		}
 	}
 

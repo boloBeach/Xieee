@@ -2,33 +2,21 @@ package com.android.xposedemo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
 
-import android.content.SharedPreferences;
-import android.os.Binder;
-import android.telephony.CellLocation;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.PhoneStateListener;
-import android.telephony.ServiceState;
-import android.telephony.SignalStrength;
-import android.telephony.CellInfo;
-import android.telephony.TelephonyManager;
-import android.telephony.gsm.GsmCellLocation;
-import android.util.Log;
+import com.zh.bolobeach.util.TelephonyManagerMethods;
 
 public class XTelephonyManager extends XHook {
-	private Methods mMethod;
+	private TelephonyManagerMethods mMethod;
 	private String mClassName;
 	//private static final Map<PhoneStateListener, XPhoneStateListener> mListener = new WeakHashMap<PhoneStateListener, XPhoneStateListener>();
 
-	private XTelephonyManager(Methods method, String restrictionName, String className) {
+	private XTelephonyManager(TelephonyManagerMethods method, String restrictionName, String className) {
 		super(restrictionName, method.name(), null);
 		mMethod = method;
 		mClassName = className;
 	}
 
-	private XTelephonyManager(Methods method, String restrictionName, String className, int sdk) {
+	private XTelephonyManager(TelephonyManagerMethods method, String restrictionName, String className, int sdk) {
 		super(restrictionName, method.name(), null, sdk);
 		mMethod = method;
 		mClassName = className;
@@ -67,11 +55,6 @@ public class XTelephonyManager extends XHook {
 	// public void listen(PhoneStateListener listener, int events)
 	// frameworks/base/telephony/java/android/telephony/TelephonyManager.java
 	// http://developer.android.com/reference/android/telephony/TelephonyManager.html
-
-	// @formatter:off
-	private enum Methods {
-		getDeviceId
-	};
 	// @formatter:on
 
 	public static List<XHook> getInstances(Object instance) {
@@ -81,7 +64,7 @@ public class XTelephonyManager extends XHook {
 
 		
 
-		listHook.add(new XTelephonyManager(Methods.getDeviceId,"1", className));
+		listHook.add(new XTelephonyManager(TelephonyManagerMethods.getDeviceId,"1", className));
 		return listHook;
 	}
 
@@ -91,9 +74,10 @@ public class XTelephonyManager extends XHook {
 	}
 
 	@Override
+	// 设置imei
 	protected void after(XParam param) throws Throwable {
 		
-		if(mMethod==Methods.getDeviceId)
+		if(mMethod==TelephonyManagerMethods.getDeviceId)
 		{
 			if (param.getResult() != null)
 			{

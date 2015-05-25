@@ -100,13 +100,15 @@ public class XLocationManager extends XHook {
 			}else if (mMethod == Methods.getLastKnownLocation) {
 				
 				Location location = (Location) param.getResult();
+			    // 这里采用GPS来提供网络，其实这里还可以采用LocationManager.NETWORK_PROVIDER
+				
+				//Location location2 = new Location(LocationManager.NETWORK_PROVIDER);
 				Location location2=new Location(LocationManager.GPS_PROVIDER);
 				location2.setLatitude(123.34);
 				//location2.setAltitude(23.32);
 				location2.setLongitude(111.11);
 				if (location != null)
 				{
-					
 					param.setResult(location2);
 				}else {
 					param.setResult(location2);
